@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============== SEO — homepage-level tags ============== -->
+<title>Mashraf Shoes — Buy Shoes Online in Pakistan | Men, Women & Kids | Cash on Delivery</title>
+<meta name="description" content="Shop Mashraf Shoes online in Pakistan. Men's, women's and kids' footwear — sneakers, formal shoes, khussa, sandals. Nationwide Cash on Delivery, free shipping over Rs. 3500.">
+<meta name="keywords" content="shoes online Pakistan, buy shoes online Pakistan, men shoes Pakistan, women shoes Pakistan, kids shoes Pakistan, cash on delivery shoes, Mashraf Shoes">
+<link rel="canonical" href="https://mashrafshoes.store/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mashraf Shoes — Buy Shoes Online in Pakistan">
+<meta property="og:description" content="Men's, women's and kids' footwear. Nationwide Cash on Delivery.">
+<meta property="og:url" content="https://mashrafshoes.store/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OnlineStore",
+  "name": "Mashraf Shoes",
+  "url": "https://mashrafshoes.store/",
+  "description": "Online footwear store in Pakistan offering men's, women's and kids' shoes with nationwide Cash on Delivery.",
+  "areaServed": "PK"
+}
+</script>
+
+<style>
+  :root{
+    --canvas:   #F3F6FB;
+    --leather:  #1D4ED8;
+    --leather-dark: #123C87;
+    --ink:      #14213D;
+    --charcoal: #0B2447;
+    --thread:   #E0483E;
+    --stock:    #1E8E5A;
+    --paper:    #FFFFFF;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--canvas);
+    color:var(--ink);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    line-height:1.5;
+  }
+  .tag-font{ font-family:Georgia,'Times New Roman',serif; font-weight:700; }
+  .mono{ font-family:'Courier New', monospace; letter-spacing:0.03em; }
+  a{ color:inherit; }
+
+  /* signature stitched divider — same motif as product pages, ties the site together */
+  .stitch{
+    height:14px;
+    background-image:repeating-linear-gradient(90deg, var(--leather-dark) 0 10px, transparent 10px 20px);
+    background-position:center; background-size:20px 2px; background-repeat:repeat-x;
+    opacity:0.5;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    background:var(--charcoal); color:var(--paper);
+    padding:18px 6vw; display:flex; justify-content:space-between; align-items:center;
+    position:sticky; top:0; z-index:50;
+  }
+  header .brand{ font-size:1.4rem; letter-spacing:0.06em; }
+  header nav{ display:flex; gap:28px; align-items:center; }
+  header nav a{ text-decoration:none; font-size:0.85rem; letter-spacing:0.02em; }
+  header nav a.cta{
+    background:var(--thread); padding:9px 16px; border-radius:3px; font-size:0.8rem;
+  }
+  .menu-toggle{ display:none; background:none; border:none; color:var(--paper); font-size:1.4rem; cursor:pointer; }
+
+  @media (max-width:760px){
+    header nav{
+      position:fixed; top:60px; right:0; left:0; background:var(--charcoal);
+      flex-direction:column; padding:20px 6vw; gap:16px; display:none;
+    }
+    header nav.open{ display:flex; }
+    .menu-toggle{ display:block; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:70px 6vw 50px; text-align:center; max-width:760px; margin:0 auto;
+  }
+  .hero .eyebrow{
+    color:var(--thread); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.14em; margin-bottom:14px;
+  }
+  .hero h1{ font-size:2.6rem; line-height:1.2; margin-bottom:16px; }
+  .hero p{ font-size:1.05rem; color:rgba(43,36,32,0.75); margin-bottom:28px; }
+  .hero .buttons{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn{
+    text-decoration:none; padding:14px 28px; border-radius:3px; font-size:0.95rem; display:inline-block;
+  }
+  .btn.primary{ background:var(--thread); color:var(--paper); }
+  .btn.secondary{ border:1px solid var(--ink); color:var(--ink); }
+
+  /* ---------- trust bar ---------- */
+  .trust-bar{
+    display:flex; justify-content:center; gap:36px; flex-wrap:wrap;
+    padding:22px 6vw; background:var(--paper); border-top:1px solid rgba(43,36,32,0.1); border-bottom:1px solid rgba(43,36,32,0.1);
+    font-size:0.82rem;
+  }
+
+  /* ---------- categories ---------- */
+  .categories{ padding:60px 6vw 20px; max-width:1200px; margin:0 auto; }
+  .categories h2, .catalog h2{
+    font-size:0.8rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--leather-dark);
+    margin-bottom:24px; text-align:center;
+  }
+  .cat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media (max-width:700px){ .cat-grid{ grid-template-columns:1fr; } }
+  .cat-card{
+    background:var(--charcoal); color:var(--paper); border-radius:4px; padding:34px 24px;
+    text-align:center; text-decoration:none; position:relative; overflow:hidden;
+  }
+  .cat-card h3{ font-size:1.3rem; margin-bottom:6px; }
+  .cat-card span{ font-size:0.78rem; color:rgba(255,255,255,0.6); }
+
+  /* ---------- catalog / filters ---------- */
+  .catalog{ padding:60px 6vw 20px; max-width:1200px; margin:0 auto; }
+  .filters{ display:flex; gap:10px; justify-content:center; margin-bottom:32px; flex-wrap:wrap; align-items:center; }
+  .filters button{
+    background:transparent; border:1px solid var(--ink); color:var(--ink);
+    padding:8px 18px; border-radius:20px; font-size:0.82rem; cursor:pointer;
+  }
+  .filters button.active{ background:var(--ink); color:var(--paper); }
+  .filters select{
+    background:transparent; border:1px solid var(--ink); color:var(--ink);
+    padding:8px 14px; border-radius:20px; font-size:0.82rem; cursor:pointer;
+  }
+
+  .grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
+  }
+  @media (max-width:900px){ .grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:520px){ .grid{ grid-template-columns:1fr; } }
+
+  .card{
+    background:var(--paper); border:1px solid rgba(43,36,32,0.12); border-radius:4px; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .card .photo{
+    background:#FFFFFF; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
+    position:relative; border-bottom:1px solid rgba(43,36,32,0.08);
+  }
+  .card .photo img{ width:100%; height:100%; object-fit:contain; }
+  .card .badge{
+    position:absolute; top:10px; left:10px; background:var(--charcoal); color:var(--paper);
+    font-size:0.65rem; text-transform:uppercase; letter-spacing:0.06em; padding:4px 9px; border-radius:3px;
+  }
+  .card .badge.sale{ background:var(--thread); }
+  .card .badge.new{ background:var(--stock); }
+  .card .wishlist{
+    position:absolute; top:8px; right:8px; width:32px; height:32px; border-radius:50%;
+    background:rgba(255,255,255,0.9); border:none; cursor:pointer; font-size:1rem;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card .wishlist.active{ color:var(--thread); }
+  .card .body{ padding:14px 16px 16px; flex:1; display:flex; flex-direction:column; }
+  .card .brand{ font-size:0.9rem; font-weight:700; margin-bottom:2px; }
+  .card .name{ font-size:0.82rem; color:rgba(43,36,32,0.65); margin-bottom:8px; }
+  .card .rating{ font-size:0.75rem; color:rgba(43,36,32,0.6); margin-bottom:8px; display:flex; align-items:center; gap:4px; }
+  .card .rating .stars{ color:#C9A227; }
+  .card .price{ font-size:1rem; margin-bottom:2px; display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .card .price .old{ color:rgba(43,36,32,0.4); text-decoration:line-through; font-size:0.82rem; }
+  .card .price .off{ color:var(--thread); font-size:0.82rem; font-weight:700; }
+  .card .delivery{ font-size:0.75rem; color:rgba(43,36,32,0.55); margin-bottom:12px; }
+  .card .order{
+    margin-top:auto; text-decoration:none; text-align:center; background:var(--thread); color:var(--paper);
+    padding:11px; border-radius:3px; font-size:0.85rem;
+  }
+
+  .empty{ text-align:center; padding:40px; color:rgba(43,36,32,0.5); font-size:0.9rem; }
+
+  /* ---------- seo copy block ---------- */
+  .seo-copy{ max-width:760px; margin:70px auto 20px; padding:0 6vw; font-size:0.9rem; color:rgba(43,36,32,0.75); }
+  .seo-copy h2{ font-size:1rem; margin-bottom:10px; color:var(--ink); }
+
+  footer{
+    padding:34px 6vw; margin-top:40px; font-size:0.78rem; color:rgba(43,36,32,0.55);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand tag-font">Mashraf Shoes</div>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <nav id="nav">
+    <a href="#men">Men</a>
+    <a href="#women">Women</a>
+    <a href="#kids">Kids</a>
+    <a class="cta" href="https://wa.me/923001234567" target="_blank">WhatsApp Us</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Har Qadam, Mashraf</div>
+  <h1 class="tag-font">Shoes online in Pakistan, delivered to your door</h1>
+  <p>Men's, women's and kids' footwear — sneakers, formal shoes, khussa and sandals. Cash on Delivery, nationwide.</p>
+  <div class="buttons">
+    <a class="btn primary" href="#catalog">Shop Now</a>
+    <a class="btn secondary" href="https://wa.me/923001234567" target="_blank">Order on WhatsApp</a>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <span>💵 Cash on Delivery</span>
+  <span>🚚 Nationwide Delivery</span>
+  <span>↩ 7-Day Exchange</span>
+  <span>📦 Free Shipping over Rs. 3,500</span>
+</div>
+
+<section class="categories" id="categories">
+  <h2>Shop by Category</h2>
+  <div class="cat-grid">
+    <a class="cat-card" href="#men" onclick="filterCategory('men')"><h3>Men</h3><span>Formal · Sneakers · Boots</span></a>
+    <a class="cat-card" href="#women" onclick="filterCategory('women')"><h3>Women</h3><span>Khussa · Flats · Sandals</span></a>
+    <a class="cat-card" href="#kids" onclick="filterCategory('kids')"><h3>Kids</h3><span>School · Casual</span></a>
+  </div>
+</section>
+
+<div class="stitch"></div>
+
+<section class="catalog" id="catalog">
+  <h2>All Products</h2>
+  <div class="filters" id="filters">
+    <button data-cat="all" class="active">All</button>
+    <button data-cat="men">Men</button>
+    <button data-cat="women">Women</button>
+    <button data-cat="kids">Kids</button>
+    <select id="sortSelect">
+      <option value="default">Sort: Featured</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="rating-desc">Rating: High to Low</option>
+    </select>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="seo-copy">
+  <h2>Buy Shoes Online in Pakistan — Mashraf Shoes</h2>
+  <p>Mashraf Shoes is an online footwear store in Pakistan offering men's, women's and kids' shoes with nationwide Cash on Delivery. From formal shoes and sneakers to khussa and school shoes, every order ships across Pakistan with free shipping on orders over Rs. 3,500 and a 7-day exchange policy.</p>
+</section>
+
+<footer>
+  <span>© Mashraf Shoes Pakistan</span>
+  <span>Cash on Delivery · Nationwide Shipping · WhatsApp Support</span>
+</footer>
+
+<script src="products.js"></script>
+<script>
+  const grid = document.getElementById('grid');
+  const filterButtons = document.querySelectorAll('#filters button');
+  const sortSelect = document.getElementById('sortSelect');
+  let currentFilter = 'all';
+
+  function getWishlist(){
+    try{ return JSON.parse(localStorage.getItem('mashraf_wishlist') || '[]'); }
+    catch(e){ return []; }
+  }
+  function toggleWishlist(id){
+    let list = getWishlist();
+    list = list.includes(id) ? list.filter(x => x !== id) : [...list, id];
+    localStorage.setItem('mashraf_wishlist', JSON.stringify(list));
+    render();
+  }
+
+  function starString(rating){
+    const full = Math.round(rating);
+    return '★'.repeat(full) + '☆'.repeat(5 - full);
+  }
+
+  function render(){
+    let list = currentFilter === 'all' ? [...products] : products.filter(p => p.category === currentFilter);
+
+    const sortBy = sortSelect.value;
+    if(sortBy === 'price-asc') list.sort((a,b) => a.price - b.price);
+    if(sortBy === 'price-desc') list.sort((a,b) => b.price - a.price);
+    if(sortBy === 'rating-desc') list.sort((a,b) => b.rating - a.rating);
+
+    if(!list.length){
+      grid.innerHTML = '<div class="empty">No products in this category yet.</div>';
+      return;
+    }
+
+    const wishlist = getWishlist();
+
+    grid.innerHTML = list.map(p => {
+      const off = p.oldPrice ? Math.round(100 - (p.price / p.oldPrice) * 100) : null;
+      const isWished = wishlist.includes(p.id);
+      const badgeClass = p.badge === 'Sale' ? 'sale' : (p.badge === 'New' ? 'new' : '');
+      return `
+      <div class="card">
+        <div class="photo">
+          ${p.badge ? `<span class="badge ${badgeClass}">${p.badge}</span>` : ''}
+          <button class="wishlist ${isWished ? 'active' : ''}" onclick="toggleWishlist(${p.id})">${isWished ? '♥' : '♡'}</button>
+          <img src="${p.image}" alt="${p.name}" onerror="this.style.display='none'">
+        </div>
+        <div class="body">
+          <div class="brand">${p.brand}</div>
+          <div class="name">${p.name}</div>
+          <div class="rating"><span class="stars">${starString(p.rating)}</span> ${p.rating} (${p.ratingCount})</div>
+          <div class="price mono">
+            Rs. ${p.price.toLocaleString()}
+            ${p.oldPrice ? `<span class="old">Rs. ${p.oldPrice.toLocaleString()}</span><span class="off">-${off}%</span>` : ''}
+          </div>
+          <div class="delivery">Free delivery</div>
+          <a class="order" target="_blank"
+             href="https://wa.me/${p.whatsappNumber}?text=${encodeURIComponent('I want to order: ' + p.name + ' (Rs. ' + p.price + '), COD')}">
+             Order on WhatsApp
+          </a>
+        </div>
+      </div>
+    `}).join('');
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.cat;
+      render();
+    });
+  });
+
+  sortSelect.addEventListener('change', render);
+
+  function filterCategory(cat){
+    currentFilter = cat;
+    filterButtons.forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+    render();
+  }
+
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('nav').classList.toggle('open');
+  });
+
+  render();
+</script>
+
+</body>
+</html>
