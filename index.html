@@ -38,12 +38,13 @@
     --paper:    #FFFFFF;
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
-  html{ scroll-behavior:smooth; }
+  html{ scroll-behavior:smooth; overflow-x:hidden; }
   body{
     background:var(--canvas);
     color:var(--ink);
     font-family:'Helvetica Neue', Arial, sans-serif;
     line-height:1.5;
+    overflow-x:hidden;
   }
   .tag-font{ font-family:Georgia,'Times New Roman',serif; font-weight:700; }
   .mono{ font-family:'Courier New', monospace; letter-spacing:0.03em; }
@@ -62,6 +63,9 @@
     background:#EFEAE1; color:var(--ink); font-size:0.72rem; letter-spacing:0.03em;
     display:flex; justify-content:center; gap:32px; padding:9px 6vw; flex-wrap:wrap;
     text-transform:uppercase;
+  }
+  @media (max-width:480px){
+    .announce{ gap:14px; font-size:0.62rem; padding:8px 4vw; }
   }
 
   /* ---------- header ---------- */
@@ -86,6 +90,10 @@
     header nav.open{ display:flex; }
     .menu-toggle{ display:block; }
   }
+  @media (max-width:420px){
+    header .brand{ font-size:1.05rem; }
+    header{ padding:16px 5vw; }
+  }
 
   /* ---------- hero ---------- */
   .hero-wrap{
@@ -100,6 +108,12 @@
   .hero h1 .accent{ color:var(--leather); }
   .hero p{ font-size:1.05rem; color:rgba(28,27,25,0.7); margin-bottom:28px; max-width:440px; }
   .hero .buttons{ display:flex; gap:14px; flex-wrap:wrap; }
+  @media (max-width:480px){
+    .hero-wrap{ padding:36px 5vw; }
+    .hero h1{ font-size:2rem; }
+    .hero p{ font-size:0.95rem; max-width:none; }
+    .btn{ padding:12px 20px; font-size:0.82rem; }
+  }
   .btn{
     text-decoration:none; padding:14px 28px; border-radius:3px; font-size:0.9rem; display:inline-block;
     text-transform:uppercase; letter-spacing:0.04em;
@@ -118,6 +132,10 @@
   .promo-amount span{ font-size:3rem; font-weight:700; color:var(--leather-dark); display:block; }
   .promo-sub{ font-size:0.8rem; color:rgba(28,27,25,0.6); margin-bottom:20px; }
   .promo-btn{ width:100%; }
+  @media (max-width:480px){
+    .promo-amount span{ font-size:2.2rem; }
+    .promo-box{ padding:24px 18px; }
+  }
 
   /* ---------- trust bar ---------- */
   .trust-bar{
@@ -208,6 +226,20 @@
   .empty{ text-align:center; padding:40px; color:rgba(43,36,32,0.5); font-size:0.9rem; }
   .view-all{ text-align:center; margin-top:36px; }
 
+  /* ---------- promo strip banner ---------- */
+  .promo-strip{
+    background:var(--charcoal); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; gap:20px;
+    padding:20px 6vw; flex-wrap:wrap; text-align:center;
+  }
+  .promo-strip-tag{
+    background:var(--leather); color:var(--charcoal); font-size:0.7rem; text-transform:uppercase;
+    letter-spacing:0.08em; padding:5px 12px; border-radius:20px; font-weight:700;
+  }
+  .promo-strip-text{ font-size:1rem; }
+  .promo-strip .btn.primary{ background:var(--leather); color:var(--charcoal); padding:10px 20px; }
+  @media (max-width:480px){ .promo-strip-text{ font-size:0.85rem; } }
+
   /* ---------- seo copy block ---------- */
   .seo-copy{ max-width:760px; margin:70px auto 20px; padding:0 6vw; font-size:0.9rem; color:rgba(43,36,32,0.75); }
   .seo-copy h2{ font-size:1rem; margin-bottom:10px; color:var(--ink); }
@@ -216,6 +248,87 @@
     padding:34px 6vw; margin-top:40px; font-size:0.78rem; color:rgba(43,36,32,0.55);
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
   }
+  /* =====================================================================
+     MOBILE REDESIGN (max-width: 640px)
+     Not just shrinking the desktop layout — restructured for phone use:
+     tighter spacing, horizontal-scroll category chips, list-style product
+     cards (image left, info right) instead of a cramped grid, and a
+     sticky WhatsApp bar for one-tap ordering while browsing.
+     ===================================================================== */
+  @media (max-width:640px){
+
+    .announce{ gap:0; font-size:0.6rem; padding:7px 4vw; justify-content:space-between; }
+    .announce span{ white-space:nowrap; }
+
+    header{ padding:14px 4vw; }
+    header .brand{ font-size:1rem; }
+
+    .hero-wrap{ padding:28px 4vw 20px; gap:20px; }
+    .hero .eyebrow{ font-size:0.7rem; margin-bottom:8px; }
+    .hero h1{ font-size:1.7rem; margin-bottom:10px; }
+    .hero p{ font-size:0.88rem; margin-bottom:18px; }
+    .btn{ padding:13px 20px; font-size:0.8rem; }
+
+    .promo-box{ padding:20px 16px; }
+    .promo-amount span{ font-size:2rem; }
+
+    .trust-bar{ gap:16px; padding:14px 4vw; font-size:0.7rem; }
+
+    .categories{ padding:32px 0 10px; }
+    .categories h2{ padding:0 4vw; margin-bottom:14px; }
+    .cat-grid{
+      display:flex; overflow-x:auto; gap:12px; padding:0 4vw 8px;
+      scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;
+    }
+    .cat-grid::-webkit-scrollbar{ display:none; }
+    .cat-card{
+      flex:0 0 auto; width:150px; scroll-snap-align:start; padding:20px 16px;
+    }
+    .cat-card.promo-tile{ width:210px; grid-column:unset; }
+
+    .promo-strip{ flex-direction:column; gap:10px; padding:16px 5vw; }
+    .promo-strip-text{ font-size:0.85rem; }
+
+    .catalog{ padding:32px 0 20px; }
+    .catalog h2{ padding:0 4vw; }
+    .filters{
+      flex-wrap:nowrap; overflow-x:auto; justify-content:flex-start;
+      padding:0 4vw 4px; margin-bottom:18px; -webkit-overflow-scrolling:touch;
+    }
+    .filters::-webkit-scrollbar{ display:none; }
+    .filters button{ flex:0 0 auto; white-space:nowrap; }
+    .filters select{ flex:0 0 auto; }
+
+    /* list-style cards instead of grid tiles */
+    .grid{ display:flex; flex-direction:column; gap:12px; padding:0 4vw; }
+    .card{ flex-direction:row; }
+    .card .photo{ width:110px; min-width:110px; aspect-ratio:1/1; }
+    .card .wishlist{ width:26px; height:26px; font-size:0.85rem; top:6px; right:6px; }
+    .card .badge{ font-size:0.58rem; padding:3px 7px; top:6px; left:6px; }
+    .card .body{ padding:10px 12px; }
+    .card .brand{ font-size:0.82rem; }
+    .card .name{ font-size:0.76rem; margin-bottom:5px; }
+    .card .rating{ font-size:0.68rem; margin-bottom:5px; }
+    .card .price{ font-size:0.92rem; }
+    .card .delivery{ font-size:0.68rem; margin-bottom:8px; }
+    .card .order{ padding:9px; font-size:0.78rem; }
+
+    .view-all{ padding:0 4vw; }
+    .seo-copy{ padding:0 4vw; margin:40px auto 10px; }
+    footer{ padding:24px 4vw; flex-direction:column; text-align:center; }
+
+    /* sticky quick-order bar, mobile only */
+    body{ padding-bottom:64px; }
+    .mobile-order-bar{
+      display:flex; position:fixed; bottom:0; left:0; right:0; z-index:60;
+      background:var(--charcoal); padding:12px 5vw; align-items:center; justify-content:center;
+    }
+    .mobile-order-bar a{
+      color:var(--paper); text-decoration:none; font-size:0.85rem; text-transform:uppercase;
+      letter-spacing:0.05em; display:flex; align-items:center; gap:8px;
+    }
+  }
+  .mobile-order-bar{ display:none; }
 </style>
 </head>
 <body>
@@ -279,6 +392,14 @@
 
 <div class="stitch"></div>
 
+<section class="promo-strip">
+  <span class="promo-strip-tag">New Arrival</span>
+  <span class="promo-strip-text">Diamante Strap Sandals — 8 Colors, Rs. 1,300</span>
+  <a class="btn primary" href="#catalog">Shop Now</a>
+</section>
+
+<div class="stitch"></div>
+
 <section class="catalog" id="catalog">
   <h2>New Arrivals</h2>
   <div class="filters" id="filters">
@@ -306,6 +427,10 @@
   <span>© M Ashraf Shoes Pakistan</span>
   <span>Cash on Delivery · Nationwide Shipping · WhatsApp Support</span>
 </footer>
+
+<div class="mobile-order-bar">
+  <a href="https://wa.me/923165856079" target="_blank">💬 Order on WhatsApp</a>
+</div>
 
 <script src="products.js"></script>
 <script>
@@ -366,7 +491,7 @@
           </div>
           <div class="delivery">Free delivery</div>
           <a class="order" target="_blank"
-             href="https://wa.me/${p.whatsappNumber}?text=${encodeURIComponent('I want to order: ' + p.name + ' (Rs. ' + p.price + '), COD')}">
+             href="https://wa.me/${p.whatsappNumber}?text=${encodeURIComponent('I want to order: ' + p.name + ' (Rs. ' + p.price + '). Please confirm size and delivery charge (Rs.200 advance online / Rs.250 COD).')}">
              Order on WhatsApp
           </a>
         </div>
