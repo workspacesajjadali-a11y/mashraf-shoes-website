@@ -27,7 +27,7 @@
 const products = [
   {
     id: 1,
-    brand: "Mashraf",
+    brand: "M Ashraf",
     name: "Classic Chukka Boots",
     category: "men",
     price: 4499,
@@ -37,11 +37,11 @@ const products = [
     sizes: [6, 7, 8, 9, 10, 11],
     image: "images/boot-001.jpg",
     badge: "Best Seller",
-    whatsappNumber: "923001234567"
+    whatsappNumber: "923165856079"
   },
   {
     id: 2,
-    brand: "Mashraf",
+    brand: "M Ashraf",
     name: "Everyday Slip-On Sneakers",
     category: "men",
     price: 3299,
@@ -51,11 +51,11 @@ const products = [
     sizes: [7, 8, 9, 10, 11],
     image: "images/sneaker-001.jpg",
     badge: "New",
-    whatsappNumber: "923001234567"
+    whatsappNumber: "923165856079"
   },
   {
     id: 3,
-    brand: "Mashraf",
+    brand: "M Ashraf",
     name: "Embroidered Khussa",
     category: "women",
     price: 2799,
@@ -65,11 +65,11 @@ const products = [
     sizes: [3, 4, 5, 6, 7, 8],
     image: "images/khussa-001.jpg",
     badge: "Sale",
-    whatsappNumber: "923001234567"
+    whatsappNumber: "923165856079"
   },
   {
     id: 4,
-    brand: "Mashraf",
+    brand: "M Ashraf",
     name: "Comfort Walking Flats",
     category: "women",
     price: 2499,
@@ -79,11 +79,11 @@ const products = [
     sizes: [3, 4, 5, 6, 7, 8],
     image: "images/flats-001.jpg",
     badge: "",
-    whatsappNumber: "923001234567"
+    whatsappNumber: "923165856079"
   },
   {
     id: 5,
-    brand: "Mashraf",
+    brand: "M Ashraf",
     name: "School Shoes — Velcro",
     category: "kids",
     price: 1899,
@@ -93,11 +93,11 @@ const products = [
     sizes: [10, 11, 12, 13, 1, 2],
     image: "images/kids-001.jpg",
     badge: "Sale",
-    whatsappNumber: "923001234567"
+    whatsappNumber: "923165856079"
   },
   {
     id: 6,
-    brand: "Mashraf",
+    brand: "M Ashraf",
     name: "Kids Light-Up Sneakers",
     category: "kids",
     price: 2199,
@@ -107,12 +107,12 @@ const products = [
     sizes: [10, 11, 12, 13, 1, 2],
     image: "images/kids-002.jpg",
     badge: "New",
-    whatsappNumber: "923001234567"
+    whatsappNumber: "923165856079"
   }
 ];
 
 /* FIELD NOTES ADDED FOR THIS LAYOUT:
-   - brand: shown above the product name (e.g. "Mashraf") — keep as "Mashraf" unless you stock other brands
+   - brand: shown above the product name (e.g. "M Ashraf") — keep as "M Ashraf" unless you stock other brands
    - rating: number 0-5, one decimal (e.g. 4.6)
    - ratingCount: how many reviews that rating is based on — update as real reviews come in
 */
