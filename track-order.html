@@ -37,7 +37,7 @@
 
 <script>
   // Replace with your SheetDB URL from Setup 1 once you have it
-  const SHEETDB_ENDPOINT = 'PASTE_YOUR_SHEETDB_URL_HERE';
+  const SHEETDB_ENDPOINT = 'https://sheetdb.io/api/v1/yzl7r82ebgjdk';
 
   async function trackOrder(){
     const id = document.getElementById('orderIdInput').value.trim();
@@ -47,7 +47,7 @@
     resultEl.classList.remove('show');
 
     if(!id){ errorEl.textContent = 'Please enter an Order ID.'; return; }
-    if(SHEETDB_ENDPOINT === 'PASTE_YOUR_SHEETDB_URL_HERE'){
+    if(SHEETDB_ENDPOINT === 'https://sheetdb.io/api/v1/yzl7r82ebgjdk'){
       errorEl.textContent = 'Order tracking is being set up — please contact us on WhatsApp for now.';
       return;
     }
