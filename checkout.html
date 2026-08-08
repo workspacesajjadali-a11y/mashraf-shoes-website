@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Checkout — M Ashraf Shoes</title>
+<style>
+  :root{
+    color-scheme:light; --white:#FFFFFF; --ink:#1A1A18; --ink-soft:rgba(26,26,24,0.62);
+    --accent:#1B5E43; --charcoal:#171614; --line:rgba(26,26,24,0.12);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; background:#FAFAF7; color:var(--ink); padding-bottom:40px; }
+  header{ background:#fff; border-bottom:2px solid var(--accent); padding:16px 5vw; }
+  header a{ text-decoration:none; color:var(--ink); font-weight:700; font-size:16px; }
+  main{ max-width:600px; margin:0 auto; padding:24px 5vw; }
+  h1{ font-size:20px; margin-bottom:20px; }
+  .order-summary{ background:#fff; border:2px solid var(--accent); border-radius:8px; padding:16px; margin-bottom:24px; }
+  .order-summary h2{ font-size:14px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:12px; }
+  .cart-item{ display:flex; justify-content:space-between; font-size:13px; padding:8px 0; border-bottom:1px solid var(--line); }
+  .cart-item:last-of-type{ border-bottom:none; }
+  .cart-total{ display:flex; justify-content:space-between; font-weight:700; font-size:15px; margin-top:10px; padding-top:10px; border-top:2px solid var(--accent); }
+  .empty-cart{ text-align:center; padding:40px 0; color:var(--ink-soft); }
+
+  label{ display:block; font-size:13px; font-weight:600; margin:16px 0 6px; }
+  input, select, textarea{
+    width:100%; padding:12px; border:2px solid var(--line); border-radius:6px; font-size:14px; font-family:inherit;
+  }
+  input:focus, textarea:focus{ outline:none; border-color:var(--accent); }
+  .location-btn{
+    margin-top:8px; width:100%; padding:11px; background:transparent; border:2px solid var(--accent);
+    color:var(--accent); border-radius:6px; font-size:13px; font-weight:600; cursor:pointer;
+  }
+  .location-status{ font-size:12px; color:var(--ink-soft); margin-top:6px; }
+
+  .payment-options{ display:flex; flex-direction:column; gap:10px; margin-top:8px; }
+  .payment-option{
+    display:flex; align-items:center; gap:10px; border:2px solid var(--line); border-radius:6px; padding:12px;
+    cursor:pointer;
+  }
+  .payment-option.selected{ border-color:var(--accent); background:rgba(27,94,67,0.05); }
+  .payment-option.disabled{ opacity:0.5; cursor:not-allowed; }
+  .payment-option input{ width:auto; }
+
+  .submit-btn{
+    width:100%; padding:15px; background:var(--charcoal); color:#fff; border:none;
+    border-radius:8px; font-size:15px; font-weight:700; cursor:pointer; margin-top:24px;
+  }
+  .submit-btn:disabled{ opacity:0.5; cursor:not-allowed; }
+  .note{ font-size:11px; color:var(--ink-soft); margin-top:10px; text-align:center; }
+</style>
+</head>
+<body>
+
+<header><a href="index.html">← M Ashraf Shoes</a></header>
+
+<main>
+  <h1>Checkout</h1>
+
+  <div class="order-summary" id="orderSummary"></div>
+
+  <form id="checkoutForm">
+    <label>Full Name</label>
+    <input type="text" id="custName" required placeholder="Your name">
+
+    <label>Phone Number</label>
+    <input type="tel" id="custPhone" required placeholder="03XXXXXXXXX">
+
+    <label>Delivery Address</label>
+    <textarea id="custAddress" rows="3" required placeholder="House #, street, area, city"></textarea>
+    <button type="button" class="location-btn" onclick="useMyLocation()">📍 Use My Current Location</button>
+    <div class="location-status" id="locationStatus"></div>
+
+    <label>Payment Method</label>
+    <div class="payment-options">
+      <label class="payment-option selected" id="codOption">
+        <input type="radio" name="payment" value="COD" checked onclick="selectPayment('COD')">
+        Cash on Delivery (Rs. 250 delivery charge)
+      </label>
+      <label class="payment-option disabled">
+        <input type="radio" name="payment" value="Online" disabled>
+        Pay Online — Coming Soon
+      </label>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">Place Order</button>
+    <p class="note">Your order will be confirmed via WhatsApp after you submit.</p>
+  </form>
+</main>
+
+<script src="cart.js"></script>
+<script>
+  function renderSummary(){
+    const cart = getCart();
+    const summaryEl = document.getElementById('orderSummary');
+    if(!cart.length){
+      summaryEl.innerHTML = '<div class="empty-cart">Your cart is empty. <a href="index.html">Go shopping</a></div>';
+      document.getElementById('submitBtn').disabled = true;
+      return;
+    }
+    const itemsHtml = cart.map(item => `
+      <div class="cart-item"><span>${item.productName} — ${item.color}, Size ${item.size} × ${item.qty}</span><span>Rs. ${(item.price*item.qty).toLocaleString()}</span></div>
+    `).join('');
+    const deliveryCharge = 250; // COD default, updates if online payment activates later
+    const total = cartTotal() + deliveryCharge;
+    summaryEl.innerHTML = `
+      <h2>Order Summary</h2>
+      ${itemsHtml}
+      <div class="cart-item"><span>Delivery Charge</span><span>Rs. ${deliveryCharge}</span></div>
+      <div class="cart-total"><span>Total</span><span>Rs. ${total.toLocaleString()}</span></div>
+    `;
+  }
+
+  function selectPayment(method){
+    document.querySelectorAll('.payment-option').forEach(el => el.classList.remove('selected'));
+    document.getElementById('codOption').classList.add('selected');
+  }
+
+  function useMyLocation(){
+    const status = document.getElementById('locationStatus');
+    if(!navigator.geolocation){
+      status.textContent = 'Location not supported on this device — please type your address manually.';
+      return;
+    }
+    status.textContent = 'Getting your location...';
+    navigator.geolocation.getCurrentPosition(async (pos) => {
+      const { latitude, longitude } = pos.coords;
+      try{
+        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+        const data = await res.json();
+        document.getElementById('custAddress').value = data.display_name || `${latitude}, ${longitude}`;
+        status.textContent = 'Location added — please double-check the address is accurate.';
+      }catch(e){
+        document.getElementById('custAddress').value = `Lat: ${latitude}, Lng: ${longitude}`;
+        status.textContent = 'Got coordinates, but could not convert to address — please add details manually.';
+      }
+    }, () => {
+      status.textContent = 'Could not get location — please type your address manually.';
+    });
+  }
+
+  function generateOrderId(){
+    const num = Math.floor(1000 + Math.random() * 9000);
+    return 'MAS-' + num;
+  }
+
+  document.getElementById('checkoutForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const cart = getCart();
+    if(!cart.length) return;
+
+    const orderId = generateOrderId();
+    const name = document.getElementById('custName').value;
+    const phone = document.getElementById('custPhone').value;
+    const address = document.getElementById('custAddress').value;
+    const deliveryCharge = 250;
+    const total = cartTotal() + deliveryCharge;
+
+    const itemsText = cart.map(i => `${i.productName} (${i.color}, Size ${i.size}) x${i.qty}`).join(', ');
+
+    /* =====================================================================
+       ORDER SUBMISSION — TWO INTEGRATIONS TO WIRE IN ONCE YOU HAVE THEM:
+
+       1. SHEETDB_ENDPOINT — for order tracking (Google Sheet)
+          Replace the placeholder below once you've done Setup 1.
+       2. FORMSPREE_ENDPOINT — for email notification
+          Replace the placeholder below once you've done Setup 2.
+       ===================================================================== */
+    const SHEETDB_ENDPOINT = 'PASTE_YOUR_SHEETDB_URL_HERE';
+    const FORMSPREE_ENDPOINT = 'PASTE_YOUR_FORMSPREE_URL_HERE';
+
+    // Write order to Google Sheet (order tracking)
+    if(SHEETDB_ENDPOINT !== 'PASTE_YOUR_SHEETDB_URL_HERE'){
+      try{
+        await fetch(SHEETDB_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: [{
+            OrderID: orderId, Date: new Date().toLocaleString(), CustomerName: name,
+            Phone: phone, Address: address, Product: itemsText, Color: '', Size: '',
+            Price: cartTotal(), DeliveryCharge: deliveryCharge, PaymentMethod: 'COD', Status: 'Processing'
+          }]})
+        });
+      }catch(err){ console.error('Sheet logging failed:', err); }
+    }
+
+    // Send email notification
+    if(FORMSPREE_ENDPOINT !== 'PASTE_YOUR_FORMSPREE_URL_HERE'){
+      try{
+        await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ orderId, name, phone, address, items: itemsText, total })
+        });
+      }catch(err){ console.error('Email notification failed:', err); }
+    }
+
+    // Always fall back to WhatsApp confirmation regardless of the above
+    const waMsg = `New Order ${orderId}\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nItems: ${itemsText}\nTotal: Rs. ${total}\nPayment: Cash on Delivery`;
+    localStorage.removeItem('mashraf_cart');
+    window.location.href = `order-confirmed.html?id=${orderId}&wa=${encodeURIComponent(waMsg)}`;
+  });
+
+  renderSummary();
+</script>
+
+</body>
+</html>
