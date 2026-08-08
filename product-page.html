@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#171614">
 
 <title>Diamante Strap Sandals Online in Pakistan | Cash on Delivery – M Ashraf Shoes</title>
-<meta name="description" content="Buy Diamante Strap Sandals online in Pakistan. 8 colors, sizes 5-10, synthetic strap with rubber sole. Nationwide Cash on Delivery. Order via WhatsApp.">
+<meta name="description" content="Buy Diamante Strap Sandals online in Pakistan. 8 colors, sizes 5-10, synthetic strap with rubber sole. Nationwide Cash on Delivery. Order directly online.">
 <meta name="keywords" content="women sandals online Pakistan, diamante sandals Pakistan, flat sandals online, cash on delivery sandals, Stylo Shoes sandals, ladies sandals Pakistan">
 <link rel="canonical" href="https://mashrafshoes.store/product-page.html">
 
@@ -152,7 +152,7 @@
 
       <div class="cta">
         <button class="primary" id="addToCartBtn" onclick="addProductToCart()">Add to Cart</button>
-        <a class="primary" id="waLink" target="_blank" href="#" style="background:transparent; border:2px solid #1A1A18; color:#1A1A18;">Order on WhatsApp</a>
+        <button class="primary" id="buyNowBtn" onclick="buyNow()" style="background:transparent; border:2px solid #1A1A18; color:#1A1A18;">Buy Now</button>
         <button class="pay-online" disabled title="Online payment coming soon">Pay Online — Coming Soon</button>
       </div>
     </div>
@@ -193,10 +193,6 @@
 <script src="cart.js"></script>
 <script src="products.js"></script>
 <script>
-  // Fallback default: if products.js hasn't loaded yet, the Order button
-  // still works with a generic message instead of staying broken/dead.
-  document.getElementById('waLink').href = 'https://wa.me/923165856079?text=' + encodeURIComponent('I want to order the Diamante Strap Sandals — please send available colors and sizes.');
-
   try{
     const product = products[0];
     let currentVariant = 0;
@@ -228,7 +224,6 @@
       grid.innerHTML = variant.sizes.map(s => `
         <button class="${s===selectedSize?'active':''}" onclick="selectSize(${s}, this)">${s}</button>
       `).join('');
-      updateLink();
     }
 
     window.selectVariant = function(i){
@@ -241,14 +236,7 @@
       selectedSize = s;
       document.querySelectorAll('.size-grid button').forEach(b => b.classList.remove('active'));
       el.classList.add('active');
-      updateLink();
     };
-
-    function updateLink(){
-      const variant = product.variants[currentVariant];
-      const msg = `I want to order: ${product.name} — ${variant.color}, Size ${selectedSize} (Rs. ${product.price}). Please confirm delivery charge (Rs.200 advance online / Rs.250 COD).`;
-      document.getElementById('waLink').href = `https://wa.me/${product.whatsappNumber}?text=${encodeURIComponent(msg)}`;
-    }
 
     // If the customer arrived via a link from the homepage (e.g. ?color=Pink),
     // pre-select that exact color instead of always defaulting to the first one
@@ -268,10 +256,16 @@
       setTimeout(() => { btn.textContent = original; }, 1500);
     };
 
+    window.buyNow = function(){
+      const variant = product.variants[currentVariant];
+      addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.image);
+      window.location.href = 'checkout.html';
+    };
+
     renderSwatches();
     renderSizes();
   }catch(err){
-    console.error('Product data failed to load, showing fallback order link instead:', err);
+    console.error('Product data failed to load:', err);
   }
 
   // Image zoom — works regardless of whether product data loaded successfully
