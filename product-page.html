@@ -101,19 +101,28 @@
   .size-note{ font-size:0.78rem; color:rgba(28,27,25,0.55); margin-top:6px; }
 
   footer{ padding:24px 6vw; font-size:0.75rem; color:rgba(28,27,25,0.5); text-align:center; }
+  .visual.zoomed img{ transform:scale(2); cursor:zoom-out; }
+  .visual{ overflow:hidden; }
+  .visual img{ transition:transform 0.25s ease; width:100%; }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="brand tag-font">M Ashraf Shoes</div>
+  <div style="display:flex; align-items:center; justify-content:space-between;">
+    <a href="index.html" class="brand tag-font" style="text-decoration:none; color:inherit;">← M Ashraf Shoes</a>
+    <a href="cart.html" style="position:relative; text-decoration:none; color:inherit; font-size:22px;" aria-label="Cart">
+      🛍️<span id="cartBadge" style="display:none; position:absolute; top:-4px; right:-8px; background:#1B5E43; color:#fff; font-size:10px; width:16px; height:16px; border-radius:50%; align-items:center; justify-content:center;"></span>
+    </a>
+  </div>
 </header>
 
 <main>
   <div class="product">
-    <div class="visual">
+    <div class="visual" id="zoomContainer" onclick="toggleZoom()" style="cursor:zoom-in;">
       <img id="mainImage" src="images/sandal-maroon.jpeg" alt="Diamante Strap Sandals">
     </div>
+    <p style="font-size:11px; color:rgba(28,27,25,0.5); text-align:center; margin-top:6px;">Tap image to zoom</p>
 
     <div class="info">
       <div class="eyebrow">Women's Footwear · Stylo Shoes</div>
@@ -142,7 +151,8 @@
       </div>
 
       <div class="cta">
-        <a class="primary" id="waLink" target="_blank" href="#">Order on WhatsApp</a>
+        <button class="primary" id="addToCartBtn" onclick="addProductToCart()">Add to Cart</button>
+        <a class="primary" id="waLink" target="_blank" href="#" style="background:transparent; border:2px solid #1A1A18; color:#1A1A18;">Order on WhatsApp</a>
         <button class="pay-online" disabled title="Online payment coming soon">Pay Online — Coming Soon</button>
       </div>
     </div>
@@ -180,6 +190,7 @@
 
 <footer>© M Ashraf Shoes Pakistan · Cash on Delivery · Nationwide Shipping</footer>
 
+<script src="cart.js"></script>
 <script src="products.js"></script>
 <script>
   // Fallback default: if products.js hasn't loaded yet, the Order button
@@ -239,11 +250,34 @@
       document.getElementById('waLink').href = `https://wa.me/${product.whatsappNumber}?text=${encodeURIComponent(msg)}`;
     }
 
+    // If the customer arrived via a link from the homepage (e.g. ?color=Pink),
+    // pre-select that exact color instead of always defaulting to the first one
+    const urlParams = new URLSearchParams(window.location.search);
+    const requestedColor = urlParams.get('color');
+    if(requestedColor){
+      const foundIndex = product.variants.findIndex(v => v.color === requestedColor);
+      if(foundIndex > -1) currentVariant = foundIndex;
+    }
+
+    window.addProductToCart = function(){
+      const variant = product.variants[currentVariant];
+      addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.image);
+      const btn = document.getElementById('addToCartBtn');
+      const original = btn.textContent;
+      btn.textContent = 'Added to Cart ✓';
+      setTimeout(() => { btn.textContent = original; }, 1500);
+    };
+
     renderSwatches();
     renderSizes();
   }catch(err){
     console.error('Product data failed to load, showing fallback order link instead:', err);
   }
+
+  // Image zoom — works regardless of whether product data loaded successfully
+  window.toggleZoom = function(){
+    document.getElementById('zoomContainer').classList.toggle('zoomed');
+  };
 </script>
 
 </body>
