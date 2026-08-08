@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Order Confirmed — M Ashraf Shoes</title>
+<style>
+  :root{ --accent:#1B5E43; --ink:#1A1A18; --charcoal:#171614; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; background:#FAFAF7; color:var(--ink); text-align:center; padding:60px 6vw; }
+  .check{ font-size:48px; color:var(--accent); margin-bottom:16px; }
+  h1{ font-size:22px; margin-bottom:8px; }
+  .order-id{ font-size:18px; font-weight:700; color:var(--accent); margin-bottom:20px; }
+  p{ color:rgba(26,26,24,0.65); font-size:14px; margin-bottom:24px; max-width:400px; margin-left:auto; margin-right:auto; }
+  .btn{ display:inline-block; text-decoration:none; padding:14px 26px; border-radius:8px; font-size:14px; font-weight:600; margin:6px; }
+  .btn-primary{ background:var(--charcoal); color:#fff; }
+  .btn-outline{ border:2px solid var(--accent); color:var(--accent); }
+</style>
+</head>
+<body>
+  <div class="check">✓</div>
+  <h1>Order Placed Successfully</h1>
+  <div class="order-id" id="orderIdDisplay"></div>
+  <p>Save your Order ID to track your order status anytime. We'll also confirm your order details over WhatsApp.</p>
+  <a class="btn btn-primary" id="waConfirm" href="#" target="_blank">Confirm on WhatsApp</a>
+  <a class="btn btn-outline" href="track-order.html">Track My Order</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get('id') || 'N/A';
+    const waMsg = params.get('wa') || '';
+    document.getElementById('orderIdDisplay').textContent = 'Order ID: ' + orderId;
+    document.getElementById('waConfirm').href = `https://wa.me/923165856079?text=${waMsg}`;
+  </script>
+</body>
+</html>
