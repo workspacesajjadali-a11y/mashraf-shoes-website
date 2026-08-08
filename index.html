@@ -400,7 +400,7 @@
 <script src="products.js"></script>
 <script>
   // Replace with your Formspree URL from setup-formspree-email.md once ready
-  const FORMSPREE_ENDPOINT = 'PASTE_YOUR_FORMSPREE_URL_HERE';
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeajevvd';
 
   document.getElementById('inquiryForm').addEventListener('submit', async function(e){
     e.preventDefault();
@@ -412,7 +412,7 @@
       message: document.getElementById('inqMessage').value
     };
 
-    if(FORMSPREE_ENDPOINT === 'PASTE_YOUR_FORMSPREE_URL_HERE'){
+    if(FORMSPREE_ENDPOINT === 'https://formspree.io/f/xeajevvd'){
       statusEl.textContent = 'Inquiry system is being finalized — please note your number, we will reach out soon.';
       statusEl.style.color = '#A13A2E';
       return;
