@@ -167,11 +167,11 @@
        2. FORMSPREE_ENDPOINT — for email notification
           Replace the placeholder below once you've done Setup 2.
        ===================================================================== */
-    const SHEETDB_ENDPOINT = 'PASTE_YOUR_SHEETDB_URL_HERE';
-    const FORMSPREE_ENDPOINT = 'PASTE_YOUR_FORMSPREE_URL_HERE';
+    const SHEETDB_ENDPOINT = 'https://sheetdb.io/api/v1/yzl7r82ebgjdk';
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeajevvd';
 
     // Write order to Google Sheet (order tracking)
-    if(SHEETDB_ENDPOINT !== 'PASTE_YOUR_SHEETDB_URL_HERE'){
+    if(SHEETDB_ENDPOINT !== 'https://sheetdb.io/api/v1/yzl7r82ebgjdk'){
       try{
         await fetch(SHEETDB_ENDPOINT, {
           method: 'POST',
@@ -186,7 +186,7 @@
     }
 
     // Send email notification
-    if(FORMSPREE_ENDPOINT !== 'PASTE_YOUR_FORMSPREE_URL_HERE'){
+    if(FORMSPREE_ENDPOINT !== 'https://formspree.io/f/xeajevvd'){
       try{
         await fetch(FORMSPREE_ENDPOINT, {
           method: 'POST',
