@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Track Your Order — M Ashraf Shoes</title>
+<style>
+  :root{ --accent:#1B5E43; --ink:#1A1A18; --charcoal:#171614; --line:rgba(26,26,24,0.12); }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; background:#FAFAF7; color:var(--ink); }
+  header{ background:#fff; border-bottom:2px solid var(--accent); padding:16px 5vw; }
+  header a{ text-decoration:none; color:var(--ink); font-weight:700; font-size:16px; }
+  main{ max-width:480px; margin:0 auto; padding:40px 6vw; text-align:center; }
+  h1{ font-size:20px; margin-bottom:20px; }
+  input{ width:100%; padding:14px; border:2px solid var(--line); border-radius:8px; font-size:15px; text-align:center; margin-bottom:12px; }
+  input:focus{ outline:none; border-color:var(--accent); }
+  button{ width:100%; padding:14px; background:var(--charcoal); color:#fff; border:none; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; }
+  .result{ margin-top:24px; text-align:left; background:#fff; border:2px solid var(--accent); border-radius:8px; padding:16px; display:none; }
+  .result.show{ display:block; }
+  .result .status{ font-size:18px; font-weight:700; color:var(--accent); margin-bottom:10px; }
+  .result div{ font-size:13px; margin-bottom:6px; color:rgba(26,26,24,0.7); }
+  .error{ color:#A13A2E; font-size:13px; margin-top:12px; }
+</style>
+</head>
+<body>
+
+<header><a href="index.html">← M Ashraf Shoes</a></header>
+
+<main>
+  <h1>Track Your Order</h1>
+  <input type="text" id="orderIdInput" placeholder="Enter your Order ID (e.g. MAS-1234)">
+  <button onclick="trackOrder()">Track Order</button>
+  <div class="error" id="errorMsg"></div>
+  <div class="result" id="result"></div>
+</main>
+
+<script>
+  // Replace with your SheetDB URL from Setup 1 once you have it
+  const SHEETDB_ENDPOINT = 'PASTE_YOUR_SHEETDB_URL_HERE';
+
+  async function trackOrder(){
+    const id = document.getElementById('orderIdInput').value.trim();
+    const errorEl = document.getElementById('errorMsg');
+    const resultEl = document.getElementById('result');
+    errorEl.textContent = '';
+    resultEl.classList.remove('show');
+
+    if(!id){ errorEl.textContent = 'Please enter an Order ID.'; return; }
+    if(SHEETDB_ENDPOINT === 'PASTE_YOUR_SHEETDB_URL_HERE'){
+      errorEl.textContent = 'Order tracking is being set up — please contact us on WhatsApp for now.';
+      return;
+    }
+
+    try{
+      const res = await fetch(`${SHEETDB_ENDPOINT}/search?OrderID=${encodeURIComponent(id)}`);
+      const data = await res.json();
+      if(!data.length){
+        errorEl.textContent = 'Order not found — please check your Order ID.';
+        return;
+      }
+      const order = data[0];
+      resultEl.innerHTML = `
+        <div class="status">${order.Status || 'Processing'}</div>
+        <div><strong>Order ID:</strong> ${order.OrderID}</div>
+        <div><strong>Date:</strong> ${order.Date}</div>
+        <div><strong>Items:</strong> ${order.Product}</div>
+        <div><strong>Total:</strong> Rs. ${order.Price}</div>
+      `;
+      resultEl.classList.add('show');
+    }catch(err){
+      errorEl.textContent = 'Something went wrong — please try again or contact us on WhatsApp.';
+    }
+  }
+</script>
+
+</body>
+</html>
