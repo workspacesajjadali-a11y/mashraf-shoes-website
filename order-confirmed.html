@@ -22,16 +22,14 @@
   <div class="check">✓</div>
   <h1>Order Placed Successfully</h1>
   <div class="order-id" id="orderIdDisplay"></div>
-  <p>Save your Order ID to track your order status anytime. We'll also confirm your order details over WhatsApp.</p>
-  <a class="btn btn-primary" id="waConfirm" href="#" target="_blank">Confirm on WhatsApp</a>
-  <a class="btn btn-outline" href="track-order.html">Track My Order</a>
+  <p>Save your Order ID to track your order status anytime. We've received your order and will contact you if anything needs confirming.</p>
+  <a class="btn btn-primary" href="track-order.html">Track My Order</a>
+  <a class="btn btn-outline" href="index.html">Continue Shopping</a>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const orderId = params.get('id') || 'N/A';
-    const waMsg = params.get('wa') || '';
     document.getElementById('orderIdDisplay').textContent = 'Order ID: ' + orderId;
-    document.getElementById('waConfirm').href = `https://wa.me/923165856079?text=${waMsg}`;
   </script>
 </body>
 </html>
