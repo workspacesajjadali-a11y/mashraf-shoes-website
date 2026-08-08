@@ -159,47 +159,33 @@
 
     const itemsText = cart.map(i => `${i.productName} (${i.color}, Size ${i.size}) x${i.qty}`).join(', ');
 
-    /* =====================================================================
-       ORDER SUBMISSION — TWO INTEGRATIONS TO WIRE IN ONCE YOU HAVE THEM:
-
-       1. SHEETDB_ENDPOINT — for order tracking (Google Sheet)
-          Replace the placeholder below once you've done Setup 1.
-       2. FORMSPREE_ENDPOINT — for email notification
-          Replace the placeholder below once you've done Setup 2.
-       ===================================================================== */
     const SHEETDB_ENDPOINT = 'https://sheetdb.io/api/v1/yzl7r82ebgjdk';
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeajevvd';
 
     // Write order to Google Sheet (order tracking)
-    if(SHEETDB_ENDPOINT !== 'https://sheetdb.io/api/v1/yzl7r82ebgjdk'){
-      try{
-        await fetch(SHEETDB_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ data: [{
-            OrderID: orderId, Date: new Date().toLocaleString(), CustomerName: name,
-            Phone: phone, Address: address, Product: itemsText, Color: '', Size: '',
-            Price: cartTotal(), DeliveryCharge: deliveryCharge, PaymentMethod: 'COD', Status: 'Processing'
-          }]})
-        });
-      }catch(err){ console.error('Sheet logging failed:', err); }
-    }
+    try{
+      await fetch(SHEETDB_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: [{
+          OrderID: orderId, Date: new Date().toLocaleString(), CustomerName: name,
+          Phone: phone, Address: address, Product: itemsText, Color: '', Size: '',
+          Price: cartTotal(), DeliveryCharge: deliveryCharge, PaymentMethod: 'COD', Status: 'Processing'
+        }]})
+      });
+    }catch(err){ console.error('Sheet logging failed:', err); }
 
     // Send email notification
-    if(FORMSPREE_ENDPOINT !== 'https://formspree.io/f/xeajevvd'){
-      try{
-        await fetch(FORMSPREE_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ orderId, name, phone, address, items: itemsText, total })
-        });
-      }catch(err){ console.error('Email notification failed:', err); }
-    }
+    try{
+      await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orderId, name, phone, address, items: itemsText, total })
+      });
+    }catch(err){ console.error('Email notification failed:', err); }
 
-    // Always fall back to WhatsApp confirmation regardless of the above
-    const waMsg = `New Order ${orderId}\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nItems: ${itemsText}\nTotal: Rs. ${total}\nPayment: Cash on Delivery`;
     localStorage.removeItem('mashraf_cart');
-    window.location.href = `order-confirmed.html?id=${orderId}&wa=${encodeURIComponent(waMsg)}`;
+    window.location.href = `order-confirmed.html?id=${orderId}`;
   });
 
   renderSummary();
