@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#ffffff">
 
 <title>M Ashraf Shoes — Women's Sandals & Footwear Online in Pakistan | Cash on Delivery</title>
-<meta name="description" content="Shop diamante strap sandals and women's footwear online in Pakistan. 8 colors, sizes 5-10, nationwide Cash on Delivery, easy exchange. Order via WhatsApp today.">
+<meta name="description" content="Shop diamante strap sandals and women's footwear online in Pakistan. 8 colors, sizes 5-10, nationwide Cash on Delivery, easy exchange. Order directly online.">
 <meta name="keywords" content="women sandals online Pakistan, diamante sandals Pakistan, flat sandals online, buy sandals online Pakistan, cash on delivery sandals, ladies sandals Pakistan, shoes online Pakistan, M Ashraf Shoes, wholesale shoes Pakistan">
 <link rel="canonical" href="https://mashrafshoes.store/">
 
@@ -298,6 +298,9 @@
 
 <!-- OFFER BANNER: left-right scrollable, per sketch -->
 <section class="offer-section reveal">
+  <h1 style="font-size:15px; font-weight:700; text-align:center; padding:0 var(--space-3) var(--space-2); color:var(--ink-soft);">
+    Women's Sandals &amp; Footwear Online in Pakistan — Cash on Delivery
+  </h1>
   <div class="offer-scroll">
     <div class="offer-card">
       <div class="tag">New Arrival</div>
@@ -306,10 +309,10 @@
       <a class="btn btn-primary" href="#shop">Shop Now</a>
     </div>
     <div class="offer-card">
-      <div class="tag">Nationwide</div>
-      <h2 class="serif">Free Delivery, COD Available</h2>
-      <p>Order via WhatsApp, pay when it arrives</p>
-      <a class="btn btn-outline" href="https://wa.me/923165856079" target="_blank">Order on WhatsApp</a>
+      <div class="tag">Easy Checkout</div>
+      <h2 class="serif">Order Directly, No Chatting Needed</h2>
+      <p>Add to cart, enter your address, done — Cash on Delivery available</p>
+      <a class="btn btn-outline" href="#shop">Shop Now</a>
     </div>
     <div class="offer-card">
       <div class="tag">Trade</div>
@@ -346,13 +349,35 @@
     <div>
       <h3 class="serif">Wholesale</h3>
       <p>Shopkeepers and retailers — get bulk pricing on our full catalog.</p>
-      <a class="btn btn-outline" href="https://wa.me/923165856079?text=I'm%20interested%20in%20wholesale%20pricing" target="_blank">Enquire on WhatsApp</a>
+      <a class="btn btn-outline" href="#contact" onclick="document.getElementById('inquiryType').value='Wholesale'">Send Inquiry</a>
     </div>
     <div>
       <h3 class="serif">Bulk Buyers</h3>
-      <p>Ordering in large quantity? Message us for a custom quote.</p>
-      <a class="btn btn-outline" href="https://wa.me/923165856079?text=I'm%20a%20bulk%20buyer%2C%20interested%20in%20a%20quote" target="_blank">Enquire on WhatsApp</a>
+      <p>Ordering in large quantity? Send us your details for a custom quote.</p>
+      <a class="btn btn-outline" href="#contact" onclick="document.getElementById('inquiryType').value='Bulk Order'">Send Inquiry</a>
     </div>
+  </div>
+</section>
+
+<!-- CONTACT / INQUIRY: customer leaves their number, we call back -->
+<section class="section" id="contact" style="padding:var(--space-6) var(--space-3); background:#fff; border-top:2px solid var(--accent); border-bottom:2px solid var(--accent);">
+  <div class="wrap" style="max-width:480px;">
+    <div class="section-head">
+      <div class="kicker">Contact</div>
+      <h2>Have a Question?</h2>
+      <p>Leave your number and a short message — we'll contact you directly.</p>
+    </div>
+    <form id="inquiryForm">
+      <input type="hidden" id="inquiryType" value="General">
+      <label style="display:block; font-size:13px; font-weight:600; margin:14px 0 6px;">Your Name</label>
+      <input type="text" id="inqName" required placeholder="Your name" style="width:100%; padding:12px; border:2px solid var(--line); border-radius:6px; font-size:14px;">
+      <label style="display:block; font-size:13px; font-weight:600; margin:14px 0 6px;">Phone Number</label>
+      <input type="tel" id="inqPhone" required placeholder="03XXXXXXXXX" style="width:100%; padding:12px; border:2px solid var(--line); border-radius:6px; font-size:14px;">
+      <label style="display:block; font-size:13px; font-weight:600; margin:14px 0 6px;">Message</label>
+      <textarea id="inqMessage" rows="3" required placeholder="What would you like to ask?" style="width:100%; padding:12px; border:2px solid var(--line); border-radius:6px; font-size:14px; font-family:inherit;"></textarea>
+      <button type="submit" class="btn btn-primary" style="width:100%; margin-top:16px;">Send Inquiry</button>
+      <p id="inquiryStatus" style="font-size:12px; text-align:center; margin-top:10px; color:var(--ink-soft);"></p>
+    </form>
   </div>
 </section>
 
@@ -360,20 +385,54 @@
 <footer id="about" class="reveal">
   <div class="foot-links">
     <a href="#about">About Us</a>
-    <a href="https://wa.me/923165856079" target="_blank">Contact</a>
+    <a href="#contact">Contact</a>
     <a href="mailto:info@mashrafshoes.store">Email</a>
   </div>
-  <div class="foot-contact" id="contact">WhatsApp: +92 316 5856079 · info@mashrafshoes.store</div>
+  <div class="foot-contact">info@mashrafshoes.store</div>
   <div class="foot-copy">© M Ashraf Shoes Pakistan — Cash on Delivery · Nationwide Shipping</div>
 </footer>
 
 <div class="mobile-bar">
-  <a href="https://wa.me/923165856079" target="_blank">💬 Order on WhatsApp</a>
+  <a href="cart.html">🛍️ View Cart</a>
 </div>
 
 <script src="cart.js"></script>
 <script src="products.js"></script>
 <script>
+  // Replace with your Formspree URL from setup-formspree-email.md once ready
+  const FORMSPREE_ENDPOINT = 'PASTE_YOUR_FORMSPREE_URL_HERE';
+
+  document.getElementById('inquiryForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const statusEl = document.getElementById('inquiryStatus');
+    const payload = {
+      type: document.getElementById('inquiryType').value,
+      name: document.getElementById('inqName').value,
+      phone: document.getElementById('inqPhone').value,
+      message: document.getElementById('inqMessage').value
+    };
+
+    if(FORMSPREE_ENDPOINT === 'PASTE_YOUR_FORMSPREE_URL_HERE'){
+      statusEl.textContent = 'Inquiry system is being finalized — please note your number, we will reach out soon.';
+      statusEl.style.color = '#A13A2E';
+      return;
+    }
+
+    try{
+      await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      statusEl.textContent = 'Thank you — we will contact you shortly.';
+      statusEl.style.color = '#1B5E43';
+      document.getElementById('inquiryForm').reset();
+    }catch(err){
+      statusEl.textContent = 'Something went wrong — please try again.';
+      statusEl.style.color = '#A13A2E';
+    }
+  });
+
   const grid = document.getElementById('grid');
   const catButtons = document.querySelectorAll('.cat-item');
   let currentFilter = 'all';
@@ -467,10 +526,6 @@
             <button class="order" onclick="addToCart(${p.id}, '${p.name.replace(/'/g,"\\'")}', '${variant.color}', ${variant.sizes[0]}, ${p.price}, '${variant.image}'); this.textContent='Added ✓'; setTimeout(()=>this.textContent='Add to Cart',1200);">
               Add to Cart
             </button>
-            <a class="btn-wa-outline" target="_blank"
-               href="https://wa.me/${p.whatsappNumber}?text=${encodeURIComponent('I want to order: ' + p.name + ' — ' + variant.color + ' (Rs. ' + p.price + '). Available sizes: ' + variant.sizes.join(', ') + '. Please confirm size and delivery charge (Rs.200 advance online / Rs.250 COD).')}">
-               Order on WhatsApp
-            </a>
           </div>
         </div>
       </div>
