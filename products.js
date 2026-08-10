@@ -33,15 +33,36 @@ const products = [
     badge: "New",
     material: "Synthetic (rexine) strap with diamante embellishment, rubber sole",
     whatsappNumber: "923165856079",
+    pageUrl: "product-page.html",
     variants: [
-      { color: "Maroon", image: "images/sandal-maroon.jpeg", sizes: [5,6,7,8,9,10] },
-      { color: "Mustard", image: "images/sandal-mustard.jpeg", sizes: [5,6,7,8,9,10] },
-      { color: "Pink", image: "images/sandal-pink.jpeg", sizes: [5,6,7,8,9,10] },
-      { color: "Multicolor (Pink Sole)", image: "images/sandal-multicolor-pink.jpeg", sizes: [5,6,7,8,9,10] },
-      { color: "Grey", image: "images/sandal-grey.jpeg", sizes: [5,6,7,8,9,10] },
-      { color: "White", image: "images/sandal-white.jpeg", sizes: [6,7,8,9,10] },
-      { color: "Multicolor (Black Sole)", image: "images/sandal-multicolor-black.jpeg", sizes: [5,6,7,8,9,10] },
-      { color: "Silver (Black Sole)", image: "images/sandal-silver.jpeg", sizes: [5] }
+      { color: "Maroon", image: "images/diamante-strap-sandals-maroon-pakistan.jpeg", sizes: [5,6,7,8,9,10] },
+      { color: "Mustard", image: "images/diamante-strap-sandals-mustard-pakistan.jpeg", sizes: [5,6,7,8,9,10] },
+      { color: "Pink", image: "images/diamante-strap-sandals-pink-pakistan.jpeg", sizes: [5,6,7,8,9,10] },
+      { color: "Multicolor (Pink Sole)", image: "images/diamante-strap-sandals-multicolor-pink-sole.jpeg", sizes: [5,6,7,8,9,10] },
+      { color: "Grey", image: "images/diamante-strap-sandals-grey-pakistan.jpeg", sizes: [5,6,7,8,9,10] },
+      { color: "White", image: "images/diamante-strap-sandals-white-pakistan.jpeg", sizes: [6,7,8,9,10] },
+      { color: "Multicolor (Black Sole)", image: "images/diamante-strap-sandals-multicolor-black-sole.jpeg", sizes: [5,6,7,8,9,10] },
+      { color: "Silver (Black Sole)", image: "images/diamante-strap-sandals-silver-black-sole.jpeg", sizes: [5] }
+    ]
+  },
+  {
+    id: 2,
+    brand: "Stylish Shoes",
+    name: "Braided Toe-Ring Sandals",
+    category: "women",
+    price: 999,
+    oldPrice: null,
+    rating: 4.6,
+    ratingCount: 5,
+    badge: "New",
+    material: "Synthetic (rexine) braided strap with rhinestone embellishment, synthetic sole",
+    whatsappNumber: "923165856079",
+    pageUrl: "product-braided-sandals.html",
+    variants: [
+      { color: "Black", image: "images/braided-toe-ring-sandals-black-pakistan.jpeg", sizes: [6,7,9,10] },
+      { color: "Maroon", image: "images/braided-toe-ring-sandals-maroon-pakistan.jpeg", sizes: [6,7,9,10] },
+      { color: "White", image: "images/braided-toe-ring-sandals-white-pakistan.jpeg", sizes: [6,7,8,9,10] },
+      { color: "Red", image: "images/braided-toe-ring-sandals-red-pakistan.jpeg", sizes: [6,7,9,10] }
     ]
   }
 ];
@@ -50,5 +71,6 @@ const products = [
    - Price is per pair
    - Advance payment online: Rs. 200 delivery charge
    - Cash on Delivery (COD): Rs. 250 delivery charge
-   - White: size 5 out of stock. Silver (Black Sole): only size 5 in stock.
+   - Diamante Strap Sandals: White has size 5 out of stock. Silver (Black Sole): only size 5 in stock.
+   - Braided Toe-Ring Sandals: Black/Maroon/Red missing sizes 5 and 8. White has full 6-10 range (also missing size 5).
 */
