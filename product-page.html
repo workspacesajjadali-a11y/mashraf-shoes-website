@@ -1,278 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light only">
-<meta name="theme-color" content="#171614">
+/* =====================================================================
+   M ASHRAF SHOES — PRODUCT DATA
 
-<title>Diamante Strap Sandals Online in Pakistan | Cash on Delivery – M Ashraf Shoes</title>
-<meta name="description" content="Buy Diamante Strap Sandals online in Pakistan. 8 colors, sizes 5-10, synthetic strap with rubber sole. Nationwide Cash on Delivery. Order directly online.">
-<meta name="keywords" content="women sandals online Pakistan, diamante sandals Pakistan, flat sandals online, cash on delivery sandals, Stylo Shoes sandals, ladies sandals Pakistan">
-<link rel="canonical" href="https://mashrafshoes.store/product-page.html">
+   HOW TO ADD A NEW PRODUCT:
+   1. Take a photo with a plain WHITE background
+   2. Name the photo file simply, no spaces: e.g. "boot-002.jpg"
+   3. Upload it into the /images folder in your GitHub repo
+   4. Copy one whole { ... } block below, paste before the closing ]
+   5. Change every value for your new product, commit on GitHub
+   6. Cloudflare rebuilds automatically — live in under a minute
 
-<meta property="og:type" content="product">
-<meta property="og:title" content="Diamante Strap Sandals Online in Pakistan | M Ashraf Shoes">
-<meta property="og:description" content="8 colors, sizes 5-10, nationwide Cash on Delivery.">
+   PRODUCTS WITH MULTIPLE COLORS:
+   Add a new { color, image, sizes } block inside "variants" instead of
+   a whole new product. One card, color swatches the customer can click.
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "Diamante Strap Sandals",
-  "description": "Synthetic strap sandals with diamante embellishment and rubber sole, available in 8 colors.",
-  "brand": { "@type": "Brand", "name": "Stylo Shoes" },
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "PKR",
-    "price": "1300",
-    "availability": "https://schema.org/InStock"
+   FIELD NOTES:
+   - category: exactly "men", "women", or "kids" (lowercase)
+   - material: shown on the product page under description
+   - sizes: Pakistani local sizing = UK sizing (no conversion needed
+     for the number itself — see the size chart built into product-page.html)
+   ===================================================================== */
+
+const products = [
+  {
+    id: 1,
+    brand: "Stylo Shoes",
+    name: "Diamante Strap Sandals",
+    category: "women",
+    price: 1300,
+    oldPrice: null,
+    rating: 4.5,
+    ratingCount: 8,
+    badge: "New",
+    material: "Synthetic (rexine) strap with diamante embellishment, rubber sole",
+    whatsappNumber: "923165856079",
+    pageUrl: "product-page.html",
+    variants: [
+      { color: "Maroon", image: "images/diamante-strap-sandals-maroon-pakistan.jpeg", sizes: [5,6,7,8,9,10] },
+      { color: "Mustard", image: "images/diamante-strap-sandals-mustard-pakistan.jpeg", sizes: [5,6,7,8,9,10] },
+      { color: "Pink", image: "images/diamante-strap-sandals-pink-pakistan.jpeg", sizes: [5,6,7,8,9,10] },
+      { color: "Multicolor (Pink Sole)", image: "images/diamante-strap-sandals-multicolor-pink-sole.jpeg", sizes: [5,6,7,8,9,10] },
+      { color: "Grey", image: "images/diamante-strap-sandals-grey-pakistan.jpeg", sizes: [5,6,7,8,9,10] },
+      { color: "White", image: "images/diamante-strap-sandals-white-pakistan.jpeg", sizes: [6,7,8,9,10] },
+      { color: "Multicolor (Black Sole)", image: "images/diamante-strap-sandals-multicolor-black-sole.jpeg", sizes: [5,6,7,8,9,10] },
+      { color: "Silver (Black Sole)", image: "images/diamante-strap-sandals-silver-black-sole.jpeg", sizes: [5] }
+    ]
+  },
+  {
+    id: 2,
+    brand: "Stylish Shoes",
+    name: "Braided Toe-Ring Sandals",
+    category: "women",
+    price: 999,
+    oldPrice: null,
+    rating: 4.6,
+    ratingCount: 5,
+    badge: "New",
+    material: "Synthetic (rexine) braided strap with rhinestone embellishment, synthetic sole",
+    whatsappNumber: "923165856079",
+    pageUrl: "product-braided-sandals.html",
+    variants: [
+      { color: "Black", image: "images/braided-toe-ring-sandals-black-pakistan.jpeg", sizes: [6,7,9,10] },
+      { color: "Maroon", image: "images/braided-toe-ring-sandals-maroon-pakistan.jpeg", sizes: [6,7,9,10] },
+      { color: "White", image: "images/braided-toe-ring-sandals-white-pakistan.jpeg", sizes: [6,7,8,9,10] },
+      { color: "Red", image: "images/braided-toe-ring-sandals-red-pakistan.jpeg", sizes: [6,7,9,10] }
+    ]
   }
-}
-</script>
+];
 
-<style>
-  :root{
-    color-scheme: light;
-    --canvas: #FFFFFF; --leather: #1B5E43; --leather-dark: #14432F;
-    --ink: #1A1A18; --charcoal: #171614; --thread: #1A1A18; --stock: #1B5E43; --paper: #FFFFFF;
-  }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ background:var(--canvas); color:var(--ink); font-family:'Helvetica Neue',Arial,sans-serif; line-height:1.5; }
-  .tag-font{ font-family:Georgia,'Times New Roman',serif; font-weight:700; }
-  .mono{ font-family:'Courier New',monospace; letter-spacing:0.03em; }
-
-  header{ padding:20px 6vw; border-bottom:1px solid rgba(28,27,25,0.12); }
-  header .brand{ font-size:1.2rem; letter-spacing:0.06em; }
-
-  main{ max-width:1080px; margin:0 auto; padding:0 6vw; }
-  .product{ display:grid; grid-template-columns:1.1fr 1fr; gap:48px; padding:40px 0; align-items:start; }
-  @media (max-width:760px){ .product{ grid-template-columns:1fr; gap:24px; padding:24px 0; } }
-
-  .visual{ background:var(--paper); border:2px solid var(--leather); border-radius:8px; padding:20px; }
-  .visual img{ width:100%; height:auto; display:block; border-radius:3px; }
-
-  .info .eyebrow{ color:var(--leather-dark); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px; }
-  .info h1{ font-size:1.8rem; margin-bottom:6px; }
-  .info .brand-line{ font-size:0.85rem; color:rgba(28,27,25,0.6); margin-bottom:16px; }
-  .price{ font-size:1.5rem; margin:10px 0; }
-  .stock-badge{ display:inline-block; font-size:0.8rem; color:var(--stock); border:1px solid var(--stock); border-radius:20px; padding:3px 12px; }
-
-  .swatch-section{ margin:20px 0; }
-  .swatch-section .label{ font-size:0.8rem; margin-bottom:8px; display:block; }
-  .swatch-row{ display:flex; gap:10px; flex-wrap:wrap; }
-  .swatch{
-    width:32px; height:32px; border-radius:50%; border:2px solid transparent; cursor:pointer;
-    box-shadow:0 0 0 1px rgba(28,27,25,0.25);
-  }
-  .swatch.active{ border-color:var(--charcoal); }
-  #colorName{ font-size:0.85rem; margin-top:8px; color:rgba(28,27,25,0.7); }
-
-  .sizes{ margin:20px 0; }
-  .sizes .label{ font-size:0.8rem; margin-bottom:8px; display:block; }
-  .size-grid{ display:flex; gap:8px; flex-wrap:wrap; }
-  .size-grid button{
-    width:42px; height:42px; border:1px solid var(--ink); background:transparent; color:var(--ink);
-    border-radius:3px; cursor:pointer; font-size:0.9rem;
-  }
-  .size-grid button.active{ background:var(--ink); color:var(--paper); }
-  .size-chart-link{ font-size:0.78rem; color:var(--leather-dark); text-decoration:underline; cursor:pointer; margin-top:8px; display:inline-block; }
-
-  .trust-row{ display:flex; gap:14px; margin:18px 0; flex-wrap:wrap; }
-  .trust-row span{ font-size:0.75rem; border:1px solid rgba(28,27,25,0.2); border-radius:3px; padding:6px 10px; background:var(--paper); }
-
-  .cta{ margin-top:20px; display:flex; flex-direction:column; gap:10px; }
-  .cta a, .cta button{
-    text-decoration:none; padding:15px; border-radius:3px; font-size:0.9rem; text-align:center; border:none; cursor:pointer;
-    text-transform:uppercase; letter-spacing:0.03em;
-  }
-  .cta .primary{ background:var(--charcoal); color:var(--paper); }
-  .cta .pay-online{ background:transparent; border:1px dashed rgba(28,27,25,0.35); color:rgba(28,27,25,0.5); cursor:not-allowed; }
-
-  .desc{ padding:10px 0 40px; max-width:640px; }
-  .desc h2{ font-size:1rem; text-transform:uppercase; letter-spacing:0.08em; margin:24px 0 10px; }
-  .desc p{ margin-bottom:12px; color:rgba(28,27,25,0.8); }
-  .desc ul{ margin:0 0 12px 20px; color:rgba(28,27,25,0.8); }
-
-  table.size-table{ width:100%; border-collapse:collapse; margin:12px 0 20px; font-size:0.85rem; }
-  table.size-table th, table.size-table td{ border:1px solid rgba(28,27,25,0.15); padding:8px 10px; text-align:center; }
-  table.size-table th{ background:var(--charcoal); color:var(--paper); font-weight:600; }
-  table.size-table tr:nth-child(even){ background:rgba(198,161,91,0.08); }
-  .size-note{ font-size:0.78rem; color:rgba(28,27,25,0.55); margin-top:6px; }
-
-  footer{ padding:24px 6vw; font-size:0.75rem; color:rgba(28,27,25,0.5); text-align:center; }
-  .visual.zoomed img{ transform:scale(2); cursor:zoom-out; }
-  .visual{ overflow:hidden; }
-  .visual img{ transition:transform 0.25s ease; width:100%; }
-</style>
-</head>
-<body>
-
-<header>
-  <div style="display:flex; align-items:center; justify-content:space-between;">
-    <a href="index.html" class="brand tag-font" style="text-decoration:none; color:inherit;">← M Ashraf Shoes</a>
-    <a href="cart.html" style="position:relative; text-decoration:none; color:inherit; font-size:22px;" aria-label="Cart">
-      🛍️<span id="cartBadge" style="display:none; position:absolute; top:-4px; right:-8px; background:#1B5E43; color:#fff; font-size:10px; width:16px; height:16px; border-radius:50%; align-items:center; justify-content:center;"></span>
-    </a>
-  </div>
-</header>
-
-<main>
-  <div class="product">
-    <div class="visual" id="zoomContainer" onclick="toggleZoom()" style="cursor:zoom-in;">
-      <img id="mainImage" src="images/sandal-maroon.jpeg" alt="Diamante Strap Sandals">
-    </div>
-    <p style="font-size:11px; color:rgba(28,27,25,0.5); text-align:center; margin-top:6px;">Tap image to zoom</p>
-
-    <div class="info">
-      <div class="eyebrow">Women's Footwear · Stylo Shoes</div>
-      <h1 class="tag-font">Diamante Strap Sandals</h1>
-      <div class="brand-line">Brand: Stylo Shoes — sold via M Ashraf Shoes</div>
-
-      <div class="price mono">Rs. 1,300</div>
-      <span class="stock-badge">In Stock</span>
-
-      <div class="swatch-section">
-        <span class="label mono">COLOR</span>
-        <div class="swatch-row" id="swatchRow"></div>
-        <div id="colorName">Maroon</div>
-      </div>
-
-      <div class="sizes">
-        <span class="label mono">SELECT SIZE (Pakistani / UK)</span>
-        <div class="size-grid" id="sizeGrid"></div>
-        <span class="size-chart-link" onclick="document.getElementById('sizeChart').scrollIntoView({behavior:'smooth'})">See size chart ↓</span>
-      </div>
-
-      <div class="trust-row">
-        <span>💵 Cash on Delivery</span>
-        <span>🚚 Nationwide delivery</span>
-        <span>↩ 7-day exchange</span>
-      </div>
-
-      <div class="cta">
-        <button class="primary" id="addToCartBtn" onclick="addProductToCart()">Add to Cart</button>
-        <button class="primary" id="buyNowBtn" onclick="buyNow()" style="background:transparent; border:2px solid #1A1A18; color:#1A1A18;">Buy Now</button>
-        <button class="pay-online" disabled title="Online payment coming soon">Pay Online — Coming Soon</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="desc">
-    <h2>Product Details</h2>
-    <p>Diamante-embellished strap sandals, available in 8 colors. A flat, everyday slide with a comfortable rubber sole — easy to match with both casual and festive outfits.</p>
-    <ul>
-      <li>Material: Synthetic (rexine) strap with diamante embellishment, rubber sole</li>
-      <li>Sizes: 5–10 (Pakistani / UK sizing)</li>
-      <li>Colors: Maroon, Mustard, Pink, Multicolor (Pink Sole), Grey, White, Multicolor (Black Sole), Silver (Black Sole)</li>
-    </ul>
-
-    <h2>Delivery Options</h2>
-    <ul>
-      <li>Advance payment online: Rs. 200 delivery charge</li>
-      <li>Cash on Delivery (COD): Rs. 250 delivery charge</li>
-      <li>Dispatched within 24–48 hours, nationwide delivery in 3–5 working days</li>
-    </ul>
-
-    <h2 id="sizeChart">Size Chart — Pakistani, UK, US &amp; EU</h2>
-    <table class="size-table">
-      <tr><th>Pakistani / UK</th><th>US</th><th>EU</th></tr>
-      <tr><td>5</td><td>7</td><td>38</td></tr>
-      <tr><td>6</td><td>8</td><td>39</td></tr>
-      <tr><td>7</td><td>9</td><td>40.5</td></tr>
-      <tr><td>8</td><td>10</td><td>41</td></tr>
-      <tr><td>9</td><td>11</td><td>42.5</td></tr>
-      <tr><td>10</td><td>12</td><td>44</td></tr>
-    </table>
-    <p class="size-note">Pakistan follows UK sizing, so the number on the size tag is your UK size directly. Sizing can vary about half a size between brands — if you're between two sizes, we recommend sizing up.</p>
-  </div>
-</main>
-
-<footer>© M Ashraf Shoes Pakistan · Cash on Delivery · Nationwide Shipping</footer>
-
-<script src="cart.js"></script>
-<script src="products.js"></script>
-<script>
-  try{
-    const product = products[0];
-    let currentVariant = 0;
-    let selectedSize = null;
-
-    const swatchColors = {
-      'Maroon':'#7A1F2B','Mustard':'#C6A15B','Pink':'#E8B4BC','Grey':'#9B9B93',
-      'White':'#F5F5F0','Silver (Black Sole)':'#B8B8B0',
-      'Multicolor (Pink Sole)':'linear-gradient(90deg,#E8B4BC,#C6A15B,#7A1F2B)',
-      'Multicolor (Black Sole)':'linear-gradient(90deg,#141312,#C6A15B,#7A1F2B)'
-    };
-
-    function renderSwatches(){
-      const row = document.getElementById('swatchRow');
-      row.innerHTML = product.variants.map((v,i) => `
-        <button class="swatch ${i===currentVariant?'active':''}"
-          style="background:${swatchColors[v.color]||'#ccc'}"
-          title="${v.color}" onclick="selectVariant(${i})"></button>
-      `).join('');
-      document.getElementById('colorName').textContent = product.variants[currentVariant].color;
-      document.getElementById('mainImage').src = product.variants[currentVariant].image;
-      document.getElementById('mainImage').alt = product.name + ' — ' + product.variants[currentVariant].color;
-    }
-
-    function renderSizes(){
-      const variant = product.variants[currentVariant];
-      selectedSize = variant.sizes[0];
-      const grid = document.getElementById('sizeGrid');
-      grid.innerHTML = variant.sizes.map(s => `
-        <button class="${s===selectedSize?'active':''}" onclick="selectSize(${s}, this)">${s}</button>
-      `).join('');
-    }
-
-    window.selectVariant = function(i){
-      currentVariant = i;
-      renderSwatches();
-      renderSizes();
-    };
-
-    window.selectSize = function(s, el){
-      selectedSize = s;
-      document.querySelectorAll('.size-grid button').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
-    };
-
-    // If the customer arrived via a link from the homepage (e.g. ?color=Pink),
-    // pre-select that exact color instead of always defaulting to the first one
-    const urlParams = new URLSearchParams(window.location.search);
-    const requestedColor = urlParams.get('color');
-    if(requestedColor){
-      const foundIndex = product.variants.findIndex(v => v.color === requestedColor);
-      if(foundIndex > -1) currentVariant = foundIndex;
-    }
-
-    window.addProductToCart = function(){
-      const variant = product.variants[currentVariant];
-      addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.image);
-      const btn = document.getElementById('addToCartBtn');
-      const original = btn.textContent;
-      btn.textContent = 'Added to Cart ✓';
-      setTimeout(() => { btn.textContent = original; }, 1500);
-    };
-
-    window.buyNow = function(){
-      const variant = product.variants[currentVariant];
-      addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.image);
-      window.location.href = 'checkout.html';
-    };
-
-    renderSwatches();
-    renderSizes();
-  }catch(err){
-    console.error('Product data failed to load:', err);
-  }
-
-  // Image zoom — works regardless of whether product data loaded successfully
-  window.toggleZoom = function(){
-    document.getElementById('zoomContainer').classList.toggle('zoomed');
-  };
-</script>
-
-</body>
-</html>
+/* DELIVERY NOTE:
+   - Price is per pair
+   - Advance payment online: Rs. 200 delivery charge
+   - Cash on Delivery (COD): Rs. 250 delivery charge
+   - Diamante Strap Sandals: White has size 5 out of stock. Silver (Black Sole): only size 5 in stock.
+   - Braided Toe-Ring Sandals: Black/Maroon/Red missing sizes 5 and 8. White has full 6-10 range (also missing size 5).
+*/
