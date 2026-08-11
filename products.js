@@ -35,7 +35,7 @@ const products = [
     whatsappNumber: "923165856079",
     pageUrl: "product-page.html",
     variants: [
-      { color: "Maroon", images: ["images/diamante-strap-sandals-maroon-pakistan.jpeg"], sizes: [5,6,7,8,9,10] },
+      { color: "Maroon", images: ["images/diamante-strap-sandals-maroon-pakistan.jpeg 2"], sizes: [5,6,7,8,9,10] },
       { color: "Mustard", images: ["images/diamante-strap-sandals-mustard-pakistan.jpeg"], sizes: [5,6,7,8,9,10] },
       { color: "Pink", images: ["images/diamante-strap-sandals-pink-pakistan.jpeg"], sizes: [5,6,7,8,9,10] },
       { color: "Multicolor (Pink Sole)", images: ["images/diamante-strap-sandals-multicolor-pink-sole.jpeg"], sizes: [5,6,7,8,9,10] },
