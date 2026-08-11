@@ -35,14 +35,14 @@ const products = [
     whatsappNumber: "923165856079",
     pageUrl: "product-page.html",
     variants: [
-      { color: "Maroon", image: "images/diamante-strap-sandals-maroon-pakistan.jpeg", sizes: [5,6,7,8,9,10] },
-      { color: "Mustard", image: "images/diamante-strap-sandals-mustard-pakistan.jpeg", sizes: [5,6,7,8,9,10] },
-      { color: "Pink", image: "images/diamante-strap-sandals-pink-pakistan.jpeg", sizes: [5,6,7,8,9,10] },
-      { color: "Multicolor (Pink Sole)", image: "images/diamante-strap-sandals-multicolor-pink-sole.jpeg", sizes: [5,6,7,8,9,10] },
-      { color: "Grey", image: "images/diamante-strap-sandals-grey-pakistan.jpeg", sizes: [5,6,7,8,9,10] },
-      { color: "White", image: "images/diamante-strap-sandals-white-pakistan.jpeg", sizes: [6,7,8,9,10] },
-      { color: "Multicolor (Black Sole)", image: "images/diamante-strap-sandals-multicolor-black-sole.jpeg", sizes: [5,6,7,8,9,10] },
-      { color: "Silver (Black Sole)", image: "images/diamante-strap-sandals-silver-black-sole.jpeg", sizes: [5] }
+      { color: "Maroon", images: ["images/diamante-strap-sandals-maroon-pakistan.jpeg"], sizes: [5,6,7,8,9,10] },
+      { color: "Mustard", images: ["images/diamante-strap-sandals-mustard-pakistan.jpeg"], sizes: [5,6,7,8,9,10] },
+      { color: "Pink", images: ["images/diamante-strap-sandals-pink-pakistan.jpeg"], sizes: [5,6,7,8,9,10] },
+      { color: "Multicolor (Pink Sole)", images: ["images/diamante-strap-sandals-multicolor-pink-sole.jpeg"], sizes: [5,6,7,8,9,10] },
+      { color: "Grey", images: ["images/diamante-strap-sandals-grey-pakistan.jpeg"], sizes: [5,6,7,8,9,10] },
+      { color: "White", images: ["images/diamante-strap-sandals-white-pakistan.jpeg"], sizes: [6,7,8,9,10] },
+      { color: "Multicolor (Black Sole)", images: ["images/diamante-strap-sandals-multicolor-black-sole.jpeg"], sizes: [5,6,7,8,9,10] },
+      { color: "Silver (Black Sole)", images: ["images/diamante-strap-sandals-silver-black-sole.jpeg"], sizes: [5] }
     ]
   },
   {
@@ -59,10 +59,21 @@ const products = [
     whatsappNumber: "923165856079",
     pageUrl: "product-braided-sandals.html",
     variants: [
-      { color: "Black", image: "images/braided-toe-ring-sandals-black-pakistan.jpeg", sizes: [6,7,9,10] },
-      { color: "Maroon", image: "images/braided-toe-ring-sandals-maroon-pakistan.jpeg", sizes: [6,7,9,10] },
-      { color: "White", image: "images/braided-toe-ring-sandals-white-pakistan.jpeg", sizes: [6,7,8,9,10] },
-      { color: "Red", image: "images/braided-toe-ring-sandals-red-pakistan.jpeg", sizes: [6,7,9,10] }
+      { color: "Black", images: [
+          "images/braided-toe-ring-sandals-black-pakistan-1.jpeg",
+          "images/braided-toe-ring-sandals-black-pakistan-2.jpeg",
+          "images/braided-toe-ring-sandals-black-pakistan-3.jpeg"
+        ], sizes: [6,7,9,10] },
+      { color: "White", images: [
+          "images/braided-toe-ring-sandals-white-pakistan-1.jpeg",
+          "images/braided-toe-ring-sandals-white-pakistan-2.jpeg",
+          "images/braided-toe-ring-sandals-white-pakistan-3.jpeg"
+        ], sizes: [6,7,8,9,10] },
+      { color: "Red", images: [
+          "images/braided-toe-ring-sandals-red-pakistan-1.jpeg",
+          "images/braided-toe-ring-sandals-red-pakistan-2.jpeg",
+          "images/braided-toe-ring-sandals-red-pakistan-3.jpeg"
+        ], sizes: [6,7,9,10] }
     ]
   }
 ];
