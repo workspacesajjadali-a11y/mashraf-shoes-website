@@ -67,6 +67,10 @@
     <label>Phone Number</label>
     <input type="tel" id="custPhone" required placeholder="03XXXXXXXXX">
 
+    <label>Email Address</label>
+    <input type="email" id="custEmail" required placeholder="you@example.com">
+    <p style="font-size:11px; color:var(--ink-soft); margin-top:-8px;">We'll send your Order ID here so you can track it anytime.</p>
+
     <label>Delivery Address</label>
     <textarea id="custAddress" rows="3" required placeholder="House #, street, area, city"></textarea>
     <button type="button" class="location-btn" onclick="useMyLocation()">📍 Use My Current Location</button>
@@ -89,6 +93,7 @@
   </form>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="cart.js"></script>
 <script>
   function renderSummary(){
@@ -153,6 +158,7 @@
     const orderId = generateOrderId();
     const name = document.getElementById('custName').value;
     const phone = document.getElementById('custPhone').value;
+    const email = document.getElementById('custEmail').value;
     const address = document.getElementById('custAddress').value;
     const deliveryCharge = 250;
     const total = cartTotal() + deliveryCharge;
@@ -162,6 +168,15 @@
     const SHEETDB_ENDPOINT = 'https://sheetdb.io/api/v1/yzl7r82ebgjdk';
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeajevvd';
 
+    /* =====================================================================
+       CUSTOMER ORDER CONFIRMATION EMAIL — EmailJS
+       Fill these in once you've completed EmailJS setup (see the guide).
+       Until then, this step is silently skipped — everything else still works.
+       ===================================================================== */
+    const EMAILJS_PUBLIC_KEY = 'c7yXvgOghq9a9CwfT';
+    const EMAILJS_SERVICE_ID = 'service_52gd5h6';
+    const EMAILJS_TEMPLATE_ID = 'template_g7s2238';
+
     // Write order to Google Sheet (order tracking)
     try{
       await fetch(SHEETDB_ENDPOINT, {
@@ -169,20 +184,30 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ data: [{
           OrderID: orderId, Date: new Date().toLocaleString(), CustomerName: name,
-          Phone: phone, Address: address, Product: itemsText, Color: '', Size: '',
+          Phone: phone, Email: email, Address: address, Product: itemsText, Color: '', Size: '',
           Price: cartTotal(), DeliveryCharge: deliveryCharge, PaymentMethod: 'COD', Status: 'Processing'
         }]})
       });
     }catch(err){ console.error('Sheet logging failed:', err); }
 
-    // Send email notification
+    // Notify you (the shop owner) via Formspree
     try{
       await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ orderId, name, phone, address, items: itemsText, total })
+        body: JSON.stringify({ orderId, name, phone, email, address, items: itemsText, total })
       });
-    }catch(err){ console.error('Email notification failed:', err); }
+    }catch(err){ console.error('Owner email notification failed:', err); }
+
+    // Send confirmation to the CUSTOMER via EmailJS
+    if(window.emailjs){
+      try{
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          to_email: email, to_name: name, order_id: orderId,
+          items: itemsText, total: total
+        }, EMAILJS_PUBLIC_KEY);
+      }catch(err){ console.error('Customer confirmation email failed:', err); }
+    }
 
     localStorage.removeItem('mashraf_cart');
     window.location.href = `order-confirmed.html?id=${orderId}`;
