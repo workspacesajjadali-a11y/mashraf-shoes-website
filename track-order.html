@@ -4,70 +4,222 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
-<title>Track Your Order — M Ashraf Shoes</title>
+<title>Track Order & Order History — M Ashraf Shoes</title>
 <style>
-  :root{ --accent:#1B5E43; --ink:#1A1A18; --charcoal:#171614; --line:rgba(26,26,24,0.12); }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; background:#FAFAF7; color:var(--ink); }
-  header{ background:#fff; border-bottom:2px solid var(--accent); padding:16px 5vw; }
-  header a{ text-decoration:none; color:var(--ink); font-weight:700; font-size:16px; }
-  main{ max-width:480px; margin:0 auto; padding:40px 6vw; text-align:center; }
-  h1{ font-size:20px; margin-bottom:20px; }
-  input{ width:100%; padding:14px; border:2px solid var(--line); border-radius:8px; font-size:15px; text-align:center; margin-bottom:12px; }
-  input:focus{ outline:none; border-color:var(--accent); }
-  button{ width:100%; padding:14px; background:var(--charcoal); color:#fff; border:none; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; }
-  .result{ margin-top:24px; text-align:left; background:#fff; border:2px solid var(--accent); border-radius:8px; padding:16px; display:none; }
-  .result.show{ display:block; }
-  .result .status{ font-size:18px; font-weight:700; color:var(--accent); margin-bottom:10px; }
-  .result div{ font-size:13px; margin-bottom:6px; color:rgba(26,26,24,0.7); }
-  .error{ color:#A13A2E; font-size:13px; margin-top:12px; }
+  :root{
+    --accent:#1B5E43;
+    --ink:#1A1A18;
+    --charcoal:#171614;
+    --line:rgba(26,26,24,0.12);
+  }
+  *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  }
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+    background:#FAFAF7;
+    color:var(--ink);
+  }
+  header{
+    background:#fff;
+    border-bottom:2px solid var(--accent);
+    padding:16px 5vw;
+  }
+  header a{
+    text-decoration:none;
+    color:var(--ink);
+    font-weight:700;
+    font-size:16px;
+  }
+  main{
+    max-width:520px;
+    margin:0 auto;
+    padding:40px 6vw;
+    text-align:center;
+  }
+  h1{
+    font-size:20px;
+    margin-bottom:8px;
+  }
+  p.sub{
+    font-size:13px;
+    color:rgba(26,26,24,0.6);
+    margin-bottom:20px;
+  }
+  input{
+    width:100%;
+    padding:14px;
+    border:2px solid var(--line);
+    border-radius:8px;
+    font-size:15px;
+    text-align:center;
+    margin-bottom:12px;
+  }
+  input:focus{
+    outline:none;
+    border-color:var(--accent);
+  }
+  button{
+    width:100%;
+    padding:14px;
+    background:var(--charcoal);
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .result{
+    margin-top:20px;
+    text-align:left;
+    background:#fff;
+    border:2px solid var(--accent);
+    border-radius:8px;
+    padding:16px;
+    display:none;
+  }
+  .result.show{
+    display:block;
+  }
+  .result + .result{
+    margin-top:12px;
+  }
+  .result div{
+    font-size:13px;
+    margin-bottom:6px;
+    color:rgba(26,26,24,0.7);
+  }
+  /* NEW STATUS FIELD */
+  .order-status{
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px solid var(--line);
+  }
+  .order-status span{
+    display:inline-block;
+    margin-left:4px;
+    padding:4px 9px;
+    border-radius:999px;
+    background:rgba(27,94,67,0.10);
+    color:var(--accent);
+    font-weight:700;
+  }
+  .error{
+    color:#A13A2E;
+    font-size:13px;
+    margin-top:12px;
+  }
+  #resultsWrap{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:20px;
+  }
 </style>
 </head>
 <body>
-
-<header><a href="index.html">← M Ashraf Shoes</a></header>
-
+<header>
+  <a href="index.html">← M Ashraf Shoes</a>
+</header>
 <main>
-  <h1>Track Your Order</h1>
-  <input type="text" id="orderIdInput" placeholder="Enter your Order ID (e.g. MAS-1234)">
-  <button onclick="trackOrder()">Track Order</button>
+  <h1>Track Order &amp; Order History</h1>
+  <p class="sub">
+    Enter your Order ID to track one order, or your email to see all your past orders.
+  </p>
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Order ID (MAS-1234) or your email"
+  >
+  <button onclick="search()">Search</button>
   <div class="error" id="errorMsg"></div>
-  <div class="result" id="result"></div>
+  <div id="resultsWrap"></div>
 </main>
-
 <script>
-  const SHEETDB_ENDPOINT = 'https://sheetdb.io/api/v1/yzl7r82ebgjdk';
-
-  async function trackOrder(){
-    const id = document.getElementById('orderIdInput').value.trim();
-    const errorEl = document.getElementById('errorMsg');
-    const resultEl = document.getElementById('result');
+  /* ==============================
+     GOOGLE SHEETS / SHEETDB
+     ============================== */
+  const SHEETDB_ENDPOINT =
+    'https://sheetdb.io/api/v1/yzl7r82ebgjdk';
+  /* ==============================
+     DISPLAY ORDER
+     ============================== */
+  function renderOrder(order){
+    return `
+      <div class="result show">
+        <div>
+          <strong>Order ID:</strong>
+          ${order.OrderID || ''}
+        </div>
+        <div>
+          <strong>Date:</strong>
+          ${order.Date || ''}
+        </div>
+        <div>
+          <strong>Items:</strong>
+          ${order.Product || ''}
+        </div>
+        <div>
+          <strong>Total:</strong>
+          Rs. ${order.Price || ''}
+        </div>
+        <!-- NEW STATUS OPTION -->
+        <div class="order-status">
+          <strong>Status:</strong>
+          <span>${order.Status || 'Processing'}</span>
+        </div>
+      </div>
+    `;
+  }
+  /* ==============================
+     SEARCH ORDER
+     ============================== */
+  async function search(){
+    const query =
+      document.getElementById('searchInput').value.trim();
+    const errorEl =
+      document.getElementById('errorMsg');
+    const resultsWrap =
+      document.getElementById('resultsWrap');
+    /* Clear previous results */
     errorEl.textContent = '';
-    resultEl.classList.remove('show');
-
-    if(!id){ errorEl.textContent = 'Please enter an Order ID.'; return; }
-
+    resultsWrap.innerHTML = '';
+    /* Empty search */
+    if(!query){
+      errorEl.textContent =
+        'Please enter an Order ID or email.';
+      return;
+    }
+    /* Determine whether user entered email or Order ID */
+    const isEmail = query.includes('@');
+    const field = isEmail
+      ? 'Email'
+      : 'OrderID';
     try{
-      const res = await fetch(`${SHEETDB_ENDPOINT}/search?OrderID=${encodeURIComponent(id)}`);
+      const res = await fetch(
+        `${SHEETDB_ENDPOINT}/search?${field}=${encodeURIComponent(query)}`
+      );
       const data = await res.json();
+      /* No order found */
       if(!data.length){
-        errorEl.textContent = 'Order not found — please check your Order ID.';
+        errorEl.textContent = isEmail
+          ? 'No past orders found for this email.'
+          : 'Order not found — please check your Order ID.';
         return;
       }
-      const order = data[0];
-      resultEl.innerHTML = `
-        <div class="status">${order.Status || 'Processing'}</div>
-        <div><strong>Order ID:</strong> ${order.OrderID}</div>
-        <div><strong>Date:</strong> ${order.Date}</div>
-        <div><strong>Items:</strong> ${order.Product}</div>
-        <div><strong>Total:</strong> Rs. ${order.Price}</div>
-      `;
-      resultEl.classList.add('show');
+      /* Most recent order first */
+      data.reverse().forEach(order => {
+        resultsWrap.innerHTML +=
+          renderOrder(order);
+      });
     }catch(err){
-      errorEl.textContent = 'Something went wrong — please try again in a moment.';
+      errorEl.textContent =
+        'Something went wrong — please try again in a moment.';
     }
   }
 </script>
-
 </body>
 </html>
