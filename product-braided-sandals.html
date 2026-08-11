@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#171614">
 
 <title>Toe Ring Sandals Online in Pakistan | Braided Strap | Cash on Delivery – M Ashraf Shoes</title>
-<meta name="description" content="Buy Braided Toe Ring Sandals online in Pakistan. 3 colors, sizes 5-10, rhinestone embellished strap. Nationwide Cash on Delivery. Order directly online.">
+<meta name="description" content="Buy Braided Toe Ring Sandals online in Pakistan. 4 colors, sizes 5-10, rhinestone embellished strap. Nationwide Cash on Delivery. Order directly online.">
 <meta name="keywords" content="toe ring sandals Pakistan, braided sandals online Pakistan, toe ring sandal online, rhinestone sandals Pakistan, cash on delivery sandals, ladies sandals Pakistan, Stylish Shoes sandals">
 <link rel="canonical" href="https://mashrafshoes.store/product-braided-sandals.html">
 
@@ -120,9 +120,10 @@
 <main>
   <div class="product">
     <div class="visual" id="zoomContainer" onclick="toggleZoom()" style="cursor:zoom-in;">
-      <img id="mainImage" src="images/braided-toe-ring-sandals-black-pakistan.jpeg" alt="Braided Toe-Ring Sandals">
+      <img id="mainImage" src="images/braided-toe-ring-sandals-black-pakistan-1.jpeg" alt="Braided Toe-Ring Sandals">
     </div>
     <p style="font-size:11px; color:rgba(28,27,25,0.5); text-align:center; margin-top:6px;">Tap image to zoom</p>
+    <div id="thumbRow" style="display:flex; gap:8px; margin-top:10px; justify-content:center;"></div>
 
     <div class="info">
       <div class="eyebrow">Women's Footwear · Stylish Shoes</div>
@@ -205,6 +206,8 @@
       'Multicolor (Black Sole)':'linear-gradient(90deg,#141312,#C6A15B,#7A1F2B)'
     };
 
+    let currentImageIndex = 0;
+
     function renderSwatches(){
       const row = document.getElementById('swatchRow');
       row.innerHTML = product.variants.map((v,i) => `
@@ -213,9 +216,33 @@
           title="${v.color}" onclick="selectVariant(${i})"></button>
       `).join('');
       document.getElementById('colorName').textContent = product.variants[currentVariant].color;
-      document.getElementById('mainImage').src = product.variants[currentVariant].image;
-      document.getElementById('mainImage').alt = product.name + ' — ' + product.variants[currentVariant].color;
+      currentImageIndex = 0;
+      renderMainImage();
+      renderThumbnails();
     }
+
+    function renderMainImage(){
+      const variant = product.variants[currentVariant];
+      document.getElementById('mainImage').src = variant.images[currentImageIndex];
+      document.getElementById('mainImage').alt = product.name + ' — ' + variant.color;
+    }
+
+    function renderThumbnails(){
+      const variant = product.variants[currentVariant];
+      const thumbRow = document.getElementById('thumbRow');
+      if(variant.images.length <= 1){ thumbRow.innerHTML = ''; return; }
+      thumbRow.innerHTML = variant.images.map((img, i) => `
+        <img src="${img}" onclick="event.stopPropagation(); selectImage(${i})"
+          style="width:56px; height:56px; object-fit:cover; border-radius:4px; cursor:pointer;
+          border:2px solid ${i===currentImageIndex ? '#1A1A18' : 'transparent'}; box-shadow:0 0 0 1px rgba(28,27,25,0.15);">
+      `).join('');
+    }
+
+    window.selectImage = function(i){
+      currentImageIndex = i;
+      renderMainImage();
+      renderThumbnails();
+    };
 
     function renderSizes(){
       const variant = product.variants[currentVariant];
@@ -249,7 +276,7 @@
 
     window.addProductToCart = function(){
       const variant = product.variants[currentVariant];
-      addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.image);
+      addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.images[0]);
       const btn = document.getElementById('addToCartBtn');
       const original = btn.textContent;
       btn.textContent = 'Added to Cart ✓';
@@ -258,7 +285,7 @@
 
     window.buyNow = function(){
       const variant = product.variants[currentVariant];
-      addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.image);
+      addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.images[0]);
       window.location.href = 'checkout.html';
     };
 
