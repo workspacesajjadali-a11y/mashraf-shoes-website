@@ -213,7 +213,7 @@
           title="${v.color}" onclick="selectVariant(${i})"></button>
       `).join('');
       document.getElementById('colorName').textContent = product.variants[currentVariant].color;
-      document.getElementById('mainImage').src = product.variants[currentVariant].image;
+      document.getElementById('mainImage').src = product.variants[currentVariant].images[0];
       document.getElementById('mainImage').alt = product.name + ' — ' + product.variants[currentVariant].color;
     }
 
@@ -249,7 +249,7 @@
 
     window.addProductToCart = function(){
       const variant = product.variants[currentVariant];
-      addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.image);
+      addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.images[0]);
       const btn = document.getElementById('addToCartBtn');
       const original = btn.textContent;
       btn.textContent = 'Added to Cart ✓';
@@ -258,7 +258,7 @@
 
     window.buyNow = function(){
       const variant = product.variants[currentVariant];
-      addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.image);
+      addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.images[0]);
       window.location.href = 'checkout.html';
     };
 
