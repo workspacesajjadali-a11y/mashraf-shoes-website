@@ -225,3 +225,45 @@ const products = [
   }
 
 ];
+{
+  id: 4,
+  brand: "M Ashraf Shoes",
+  name: "Men's Perforated Cross-Strap Casual Sandals",
+  category: "men",
+  price: 1499,
+  oldPrice: null,
+  rating: 4.5,
+  ratingCount: 1,
+  badge: "New",
+  material: "Leather-look synthetic material",
+  whatsappNumber: "923165856079",
+  pageUrl: "product-perforated-cross-strap-sandals.html",
+
+  variants: [
+
+    {
+      color: "Black",
+
+      images: [
+        "images/mens-perforated-cross-strap-sandals-black-pakistan-1.jpeg",
+        "images/mens-perforated-cross-strap-sandals-black-pakistan-2.jpeg",
+        "images/mens-perforated-cross-strap-sandals-black-pakistan-3.jpeg"
+      ],
+
+      sizes: [7, 8, 9, 10, 11]
+    },
+
+    {
+      color: "Brown",
+
+      images: [
+        "images/mens-perforated-cross-strap-sandals-brown-pakistan-1.jpeg",
+        "images/mens-perforated-cross-strap-sandals-brown-pakistan-2.jpeg",
+        "images/mens-perforated-cross-strap-sandals-brown-pakistan-3.jpeg"
+      ],
+
+      sizes: [7, 8, 9, 10, 11]
+    }
+
+  ]
+},
