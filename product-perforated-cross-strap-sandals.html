@@ -56,7 +56,6 @@
   --leather-dark:#14432F;
   --ink:#1A1A18;
   --charcoal:#171614;
-  --thread:#1A1A18;
   --stock:#1B5E43;
   --paper:#FFFFFF;
 }
@@ -108,7 +107,7 @@ main{
   align-items:start;
 }
 
-@media (max-width:760px){
+@media(max-width:760px){
   .product{
     grid-template-columns:1fr;
     gap:24px;
@@ -268,7 +267,6 @@ main{
   gap:10px;
 }
 
-.cta a,
 .cta button{
   text-decoration:none;
   padding:15px;
@@ -369,13 +367,10 @@ footer{
     <a href="cart.html"
        style="position:relative;text-decoration:none;color:inherit;font-size:22px;"
        aria-label="Cart">
-
       🛍️
-
       <span id="cartBadge"
         style="display:none;position:absolute;top:-4px;right:-8px;background:#1B5E43;color:#fff;font-size:10px;width:16px;height:16px;border-radius:50%;align-items:center;justify-content:center;">
       </span>
-
     </a>
 
   </div>
@@ -383,290 +378,217 @@ footer{
 
 <main>
 
-  <div class="product">
+<div class="product">
 
-    <div>
+<div>
 
-      <div class="visual"
-           id="zoomContainer"
-           onclick="toggleZoom()"
-           style="cursor:zoom-in;">
+<div class="visual"
+     id="zoomContainer"
+     onclick="toggleZoom()"
+     style="cursor:zoom-in;">
 
-        <img
-          id="mainImage"
-          src="images/mens-perforated-cross-strap-sandals-black-pakistan-1.jpeg"
-          alt="Black men's perforated cross-strap casual sandals">
+<img
+id="mainImage"
+src="images/mens-perforated-cross-strap-sandals-black-pakistan-1.jpeg"
+alt="Black men's perforated cross-strap casual sandals">
+
+</div>
 
-      </div>
+<p style="font-size:11px;color:rgba(28,27,25,0.5);text-align:center;margin-top:6px;">
+Tap image to zoom
+</p>
 
-      <p style="font-size:11px;color:rgba(28,27,25,0.5);text-align:center;margin-top:6px;">
-        Tap image to zoom
-      </p>
+<div
+id="thumbRow"
+style="display:flex;gap:8px;margin-top:10px;justify-content:center;flex-wrap:wrap;">
+</div>
 
-      <div
-        id="thumbRow"
-        style="display:flex;gap:8px;margin-top:10px;justify-content:center;flex-wrap:wrap;">
-      </div>
+</div>
 
-    </div>
+<div class="info">
 
+<div class="eyebrow">
+Men's Footwear · M Ashraf Shoes
+</div>
 
-    <div class="info">
+<h1 class="tag-font">
+Men's Perforated Cross-Strap Casual Sandals
+</h1>
 
-      <div class="eyebrow">
-        Men's Footwear · M Ashraf Shoes
-      </div>
+<div class="brand-line">
+Brand: M Ashraf Shoes
+</div>
 
-      <h1 class="tag-font">
-        Men's Perforated Cross-Strap Casual Sandals
-      </h1>
+<div class="price mono">
+Rs. 1,499
+</div>
 
-      <div class="brand-line">
-        Brand: M Ashraf Shoes
-      </div>
+<span class="stock-badge">
+In Stock
+</span>
 
-      <div class="price mono">
-        Rs. 1,499
-      </div>
+<div class="swatch-section">
 
-      <span class="stock-badge">
-        In Stock
-      </span>
+<span class="label mono">
+COLOR
+</span>
 
+<div
+class="swatch-row"
+id="swatchRow">
+</div>
 
-      <div class="swatch-section">
+<div id="colorName">
+Black
+</div>
 
-        <span class="label mono">
-          COLOR
-        </span>
+</div>
 
-        <div
-          class="swatch-row"
-          id="swatchRow">
-        </div>
+<div class="sizes">
 
-        <div id="colorName">
-          Black
-        </div>
+<span class="label mono">
+SELECT SIZE (Pakistani / UK)
+</span>
 
-      </div>
+<div
+class="size-grid"
+id="sizeGrid">
+</div>
 
+<span
+class="size-chart-link"
+onclick="document.getElementById('sizeChart').scrollIntoView({behavior:'smooth'})">
+See size chart ↓
+</span>
 
-      <div class="sizes">
+</div>
 
-        <span class="label mono">
-          SELECT SIZE (Pakistani / UK)
-        </span>
+<div class="trust-row">
+<span>💵 Cash on Delivery</span>
+<span>🚚 Nationwide delivery</span>
+<span>↩ 7-day exchange</span>
+</div>
 
-        <div
-          class="size-grid"
-          id="sizeGrid">
-        </div>
+<div class="cta">
 
-        <span
-          class="size-chart-link"
-          onclick="document.getElementById('sizeChart').scrollIntoView({behavior:'smooth'})">
-          See size chart ↓
-        </span>
+<button
+class="primary"
+id="addToCartBtn"
+onclick="addProductToCart()">
+Add to Cart
+</button>
 
-      </div>
-
-
-      <div class="trust-row">
-
-        <span>💵 Cash on Delivery</span>
-        <span>🚚 Nationwide delivery</span>
-        <span>↩ 7-day exchange</span>
-
-      </div>
-
-
-      <div class="cta">
-
-        <button
-          class="primary"
-          id="addToCartBtn"
-          onclick="addProductToCart()">
-          Add to Cart
-        </button>
-
-        <button
-          class="primary"
-          id="buyNowBtn"
-          onclick="buyNow()"
-          style="background:transparent;border:2px solid #1A1A18;color:#1A1A18;">
-          Buy Now
-        </button>
-
-        <button
-          class="pay-online"
-          disabled
-          title="Online payment coming soon">
-          Pay Online — Coming Soon
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="desc">
-
-    <h2>
-      Men's Casual Sandals in Pakistan
-    </h2>
-
-    <p>
-      These men's casual sandals feature a clean cross-strap design with perforated detailing and an adjustable ankle strap for a secure fit. Available in classic Black and Brown, they are an easy everyday choice for casual wear, summer outings, shopping, travel and regular use.
-    </p>
-
-    <p>
-      If you are looking for men's sandals, gents chappal or a stylish mardana sandal in Pakistan, this design combines a simple look with practical coverage and an adjustable back strap.
-    </p>
-
-
-    <h2>
-      Product Details
-    </h2>
-
-    <ul>
-
-      <li>
-        Style: Men's cross-strap casual sandals
-      </li>
-
-      <li>
-        Upper: Leather-look material — confirm exact material before publishing if required
-      </li>
-
-      <li>
-        Design: Perforated front cross strap
-      </li>
-
-      <li>
-        Closure: Adjustable ankle strap
-      </li>
-
-      <li>
-        Colors: Black and Brown
-      </li>
-
-      <li>
-        Sizes: 7, 8, 9, 10 and 11
-      </li>
-
-      <li>
-        Price: Rs. 1,499
-      </li>
-
-    </ul>
-
-
-    <h2>
-      Why Choose These Men's Sandals?
-    </h2>
-
-    <p>
-      The cross-strap construction gives the sandal a neat everyday appearance, while the adjustable rear strap helps provide a more secure fit. The Black and Brown color options make this style easy to pair with everyday casual clothing.
-    </p>
-
-
-    <h2>
-      Delivery Options
-    </h2>
-
-    <ul>
-
-      <li>
-        Advance payment online: Rs. 200 delivery charge
-      </li>
-
-      <li>
-        Cash on Delivery (COD): Rs. 250 delivery charge
-      </li>
-
-      <li>
-        Dispatched within 24–48 hours
-      </li>
-
-      <li>
-        Nationwide delivery in 3–5 working days
-      </li>
-
-    </ul>
-
-
-    <h2 id="sizeChart">
-      Size Chart — Pakistani, UK, US &amp; EU
-    </h2>
-
-    <table class="size-table">
-
-      <tr>
-        <th>Pakistani / UK</th>
-        <th>US</th>
-        <th>EU</th>
-      </tr>
-
-      <tr>
-        <td>7</td>
-        <td>9</td>
-        <td>40.5</td>
-      </tr>
-
-      <tr>
-        <td>8</td>
-        <td>10</td>
-        <td>41</td>
-      </tr>
-
-      <tr>
-        <td>9</td>
-        <td>11</td>
-        <td>42.5</td>
-      </tr>
-
-      <tr>
-        <td>10</td>
-        <td>12</td>
-        <td>44</td>
-      </tr>
-
-      <tr>
-        <td>11</td>
-        <td>13</td>
-        <td>45</td>
-      </tr>
-
-    </table>
-
-    <p class="size-note">
-      Pakistan follows UK sizing, so the number on the size tag is generally used as the UK size. Sizing can vary between brands, so customers should check the size chart before ordering.
-    </p>
-
-  </div>
+<button
+class="primary"
+id="buyNowBtn"
+onclick="buyNow()"
+style="background:transparent;border:2px solid #1A1A18;color:#1A1A18;">
+Buy Now
+</button>
+
+<button
+class="pay-online"
+disabled
+title="Online payment coming soon">
+Pay Online — Coming Soon
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="desc">
+
+<h2>Men's Casual Sandals in Pakistan</h2>
+
+<p>
+These men's casual sandals feature a clean cross-strap design with perforated detailing and an adjustable ankle strap for a secure fit. Available in classic Black and Brown, they are an easy everyday choice for casual wear, summer outings, shopping, travel and regular use.
+</p>
+
+<p>
+If you are looking for men's sandals, gents chappal or a stylish mardana sandal in Pakistan, this design combines a simple look with practical coverage and an adjustable back strap.
+</p>
+
+<h2>Product Details</h2>
+
+<ul>
+<li>Style: Men's cross-strap casual sandals</li>
+<li>Upper: Leather-look material</li>
+<li>Design: Perforated front cross strap</li>
+<li>Closure: Adjustable ankle strap</li>
+<li>Colors: Black and Brown</li>
+<li>Sizes: 7, 8, 9, 10 and 11</li>
+<li>Price: Rs. 1,499</li>
+</ul>
+
+<h2>Why Choose These Men's Sandals?</h2>
+
+<p>
+The cross-strap construction gives the sandal a neat everyday appearance, while the adjustable rear strap helps provide a more secure fit. The Black and Brown color options make this style easy to pair with everyday casual clothing.
+</p>
+
+<h2>Delivery Options</h2>
+
+<ul>
+<li>Advance payment online: Rs. 200 delivery charge</li>
+<li>Cash on Delivery (COD): Rs. 250 delivery charge</li>
+<li>Dispatched within 24–48 hours</li>
+<li>Nationwide delivery in 3–5 working days</li>
+</ul>
+
+<h2 id="sizeChart">
+Size Chart — Pakistani, UK, US &amp; EU
+</h2>
+
+<table class="size-table">
+
+<tr>
+<th>Pakistani / UK</th>
+<th>US</th>
+<th>EU</th>
+</tr>
+
+<tr><td>7</td><td>9</td><td>40.5</td></tr>
+<tr><td>8</td><td>10</td><td>41</td></tr>
+<tr><td>9</td><td>11</td><td>42.5</td></tr>
+<tr><td>10</td><td>12</td><td>44</td></tr>
+<tr><td>11</td><td>13</td><td>45</td></tr>
+
+</table>
+
+<p class="size-note">
+Pakistan follows UK sizing, so the number on the size tag is generally used as the UK size. Sizing can vary between brands, so customers should check the size chart before ordering.
+</p>
+
+</div>
 
 </main>
 
-
 <footer>
-  © M Ashraf Shoes Pakistan · Cash on Delivery · Nationwide Shipping
+© M Ashraf Shoes Pakistan · Cash on Delivery · Nationwide Shipping
 </footer>
 
-
 <script src="cart.js"></script>
-
 <script src="products.js"></script>
-
 
 <script>
 
-try{
+try {
 
-  const product =
-    products.find(p => p.id === 3) || products[0];
+  /*
+   * ==========================================================
+   * PRODUCT 4
+   * THIS IS THE IMPORTANT FIX
+   * ==========================================================
+   */
+
+  const product = products.find(p => p.id === 4);
+
+  if (!product) {
+    throw new Error("Product ID 4 was not found in products.js");
+  }
 
   let currentVariant = 0;
   let selectedSize = null;
@@ -674,184 +596,166 @@ try{
 
 
   const swatchColors = {
-
-    'Black':'#1A1A18',
-
-    'Brown':'#5A3826'
-
+    "Black": "#1A1A18",
+    "Brown": "#5A3826"
   };
 
 
-  function renderSwatches(){
+  function renderSwatches() {
 
-    const row =
-      document.getElementById('swatchRow');
+    const row = document.getElementById("swatchRow");
 
-    row.innerHTML =
-      product.variants.map((v,i) => `
+    row.innerHTML = product.variants.map((v, i) => `
 
-        <button
-          class="swatch ${i===currentVariant?'active':''}"
-          style="background:${swatchColors[v.color]||'#ccc'}"
-          title="${v.color}"
-          aria-label="${v.color}"
-          onclick="selectVariant(${i})">
-        </button>
+      <button
+        class="swatch ${i === currentVariant ? "active" : ""}"
+        style="background:${swatchColors[v.color] || "#ccc"}"
+        title="${v.color}"
+        aria-label="${v.color}"
+        onclick="selectVariant(${i})">
+      </button>
 
-      `).join('');
+    `).join("");
 
-
-    document.getElementById('colorName').textContent =
+    document.getElementById("colorName").textContent =
       product.variants[currentVariant].color;
 
     currentImageIndex = 0;
 
     renderMainImage();
-
     renderThumbnails();
-
   }
 
 
-  function renderMainImage(){
+  function renderMainImage() {
 
-    const variant =
-      product.variants[currentVariant];
+    const variant = product.variants[currentVariant];
 
-    const image =
-      document.getElementById('mainImage');
+    const image = document.getElementById("mainImage");
 
-    image.src =
-      variant.images[currentImageIndex];
+    image.src = variant.images[currentImageIndex];
 
     image.alt =
-      product.name + ' — ' + variant.color;
-
+      product.name + " — " + variant.color;
   }
 
 
-  function renderThumbnails(){
+  function renderThumbnails() {
 
-    const variant =
-      product.variants[currentVariant];
+    const variant = product.variants[currentVariant];
 
-    const thumbRow =
-      document.getElementById('thumbRow');
+    const thumbRow = document.getElementById("thumbRow");
 
-    if(variant.images.length <= 1){
-
-      thumbRow.innerHTML = '';
-
+    if (!variant.images || variant.images.length <= 1) {
+      thumbRow.innerHTML = "";
       return;
-
     }
 
+    thumbRow.innerHTML = variant.images.map((img, i) => `
 
-    thumbRow.innerHTML =
-      variant.images.map((img,i) => `
+      <img
+        src="${img}"
+        alt="${product.name} ${variant.color} image ${i + 1}"
+        onclick="event.stopPropagation(); selectImage(${i})"
+        style="
+          width:56px;
+          height:56px;
+          object-fit:cover;
+          border-radius:4px;
+          cursor:pointer;
+          border:2px solid ${
+            i === currentImageIndex
+              ? "#1A1A18"
+              : "transparent"
+          };
+          box-shadow:0 0 0 1px rgba(28,27,25,0.15);
+        "
+      >
 
-        <img
-          src="${img}"
-          alt="${product.name} ${variant.color} image ${i+1}"
-          onclick="event.stopPropagation();selectImage(${i})"
-          style="
-            width:56px;
-            height:56px;
-            object-fit:cover;
-            border-radius:4px;
-            cursor:pointer;
-            border:2px solid ${i===currentImageIndex ? '#1A1A18' : 'transparent'};
-            box-shadow:0 0 0 1px rgba(28,27,25,0.15);
-          ">
-
-      `).join('');
-
+    `).join("");
   }
 
 
-  window.selectImage = function(i){
+  window.selectImage = function(i) {
 
     currentImageIndex = i;
 
     renderMainImage();
-
     renderThumbnails();
 
   };
 
 
-  function renderSizes(){
+  function renderSizes() {
 
-    const variant =
-      product.variants[currentVariant];
+    const variant = product.variants[currentVariant];
 
-    selectedSize =
-      variant.sizes[0];
+    selectedSize = variant.sizes[0];
 
-    const grid =
-      document.getElementById('sizeGrid');
+    const grid = document.getElementById("sizeGrid");
 
-    grid.innerHTML =
-      variant.sizes.map(s => `
+    grid.innerHTML = variant.sizes.map(s => `
 
-        <button
-          class="${s===selectedSize?'active':''}"
-          onclick="selectSize(${s},this)">
-          ${s}
-        </button>
+      <button
+        class="${s === selectedSize ? "active" : ""}"
+        onclick="selectSize(${s}, this)">
+        ${s}
+      </button>
 
-      `).join('');
-
+    `).join("");
   }
 
 
-  window.selectVariant = function(i){
+  window.selectVariant = function(i) {
 
     currentVariant = i;
 
     renderSwatches();
-
     renderSizes();
 
   };
 
 
-  window.selectSize = function(s,el){
+  window.selectSize = function(s, el) {
 
     selectedSize = s;
 
     document
-      .querySelectorAll('.size-grid button')
-      .forEach(b => b.classList.remove('active'));
+      .querySelectorAll(".size-grid button")
+      .forEach(b => b.classList.remove("active"));
 
-    el.classList.add('active');
+    el.classList.add("active");
 
   };
 
+
+  /*
+   * Allow links such as:
+   *
+   * product-perforated-cross-strap-sandals.html?color=Brown
+   *
+   */
 
   const urlParams =
     new URLSearchParams(window.location.search);
 
   const requestedColor =
-    urlParams.get('color');
+    urlParams.get("color");
 
-  if(requestedColor){
+  if (requestedColor) {
 
     const foundIndex =
       product.variants.findIndex(
-        v => v.color === requestedColor
+        v => v.color.toLowerCase() === requestedColor.toLowerCase()
       );
 
-    if(foundIndex > -1){
-
+    if (foundIndex > -1) {
       currentVariant = foundIndex;
-
     }
-
   }
 
 
-  window.addProductToCart = function(){
+  window.addProductToCart = function() {
 
     const variant =
       product.variants[currentVariant];
@@ -865,26 +769,23 @@ try{
       variant.images[0]
     );
 
-
     const btn =
-      document.getElementById('addToCartBtn');
+      document.getElementById("addToCartBtn");
 
     const original =
       btn.textContent;
 
     btn.textContent =
-      'Added to Cart ✓';
+      "Added to Cart ✓";
 
     setTimeout(() => {
-
       btn.textContent = original;
-
-    },1500);
+    }, 1500);
 
   };
 
 
-  window.buyNow = function(){
+  window.buyNow = function() {
 
     const variant =
       product.variants[currentVariant];
@@ -899,31 +800,34 @@ try{
     );
 
     window.location.href =
-      'checkout.html';
+      "checkout.html";
 
   };
 
 
-  renderSwatches();
+  /*
+   * INITIALIZE PRODUCT 4
+   */
 
+  renderSwatches();
   renderSizes();
 
 }
-catch(err){
+catch (err) {
 
   console.error(
-    'Product data failed to load:',
+    "Product 4 failed to load:",
     err
   );
 
 }
 
 
-window.toggleZoom = function(){
+window.toggleZoom = function() {
 
   document
-    .getElementById('zoomContainer')
-    .classList.toggle('zoomed');
+    .getElementById("zoomContainer")
+    .classList.toggle("zoomed");
 
 };
 
