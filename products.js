@@ -30,7 +30,6 @@ const products = [
         ],
         sizes: [5, 6, 7, 8, 9, 10]
       },
-
       {
         color: "Mustard",
         images: [
@@ -38,7 +37,6 @@ const products = [
         ],
         sizes: [5, 6, 7, 8, 9, 10]
       },
-
       {
         color: "Pink",
         images: [
@@ -46,7 +44,6 @@ const products = [
         ],
         sizes: [5, 6, 7, 8, 9, 10]
       },
-
       {
         color: "Multicolor (Pink Sole)",
         images: [
@@ -54,7 +51,6 @@ const products = [
         ],
         sizes: [5, 6, 7, 8, 9, 10]
       },
-
       {
         color: "Grey",
         images: [
@@ -62,7 +58,6 @@ const products = [
         ],
         sizes: [5, 6, 7, 8, 9, 10]
       },
-
       {
         color: "White",
         images: [
@@ -70,7 +65,6 @@ const products = [
         ],
         sizes: [6, 7, 8, 9, 10]
       },
-
       {
         color: "Multicolor (Black Sole)",
         images: [
@@ -78,7 +72,6 @@ const products = [
         ],
         sizes: [5, 6, 7, 8, 9, 10]
       },
-
       {
         color: "Silver (Black Sole)",
         images: [
@@ -118,7 +111,6 @@ const products = [
         ],
         sizes: [6, 7, 9, 10]
       },
-
       {
         color: "White",
         images: [
@@ -128,7 +120,6 @@ const products = [
         ],
         sizes: [6, 7, 8, 9, 10]
       },
-
       {
         color: "Red",
         images: [
@@ -161,7 +152,6 @@ const products = [
     pageUrl: "product-kare-embellished-sandals.html",
 
     variants: [
-
       {
         color: "Black",
         images: [
@@ -171,7 +161,6 @@ const products = [
         ],
         sizes: [7, 8, 9]
       },
-
       {
         color: "Brown",
         images: [
@@ -181,7 +170,6 @@ const products = [
         ],
         sizes: [8, 9]
       },
-
       {
         color: "Dark Brown",
         images: [
@@ -214,7 +202,6 @@ const products = [
     pageUrl: "product-perforated-cross-strap-sandals.html",
 
     variants: [
-
       {
         color: "Black",
         images: [
@@ -224,7 +211,6 @@ const products = [
         ],
         sizes: [7, 8, 9, 10, 11]
       },
-
       {
         color: "Brown",
         images: [
@@ -233,6 +219,64 @@ const products = [
           "images/mens-perforated-cross-strap-sandals-brown-pakistan-3.jpeg"
         ],
         sizes: [7, 8, 9, 10, 11]
+      }
+    ]
+  },
+
+
+  /* ================================================================
+     PRODUCT 5 — MEN'S PESHAWARI CHAPPAL
+     ================================================================ */
+
+  {
+    id: 5,
+
+    brand: "A.K.R.",
+
+    name: "Men's Peshawari Chappal – Traditional Cross-Strap",
+
+    category: "men",
+
+    price: 2199,
+
+    oldPrice: 3000,
+
+    rating: 0,
+
+    ratingCount: 0,
+
+    badge: "Sale",
+
+    material: "Synthetic leather-look upper with stitched sole",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-peshawari-chappal-men.html",
+
+    deliveryPrice: 150,
+
+    variants: [
+
+      {
+        color: "Black",
+
+        images: [
+          "images/mens-peshawari-chappal-black-pakistan-1.jpeg",
+          "images/mens-peshawari-chappal-black-pakistan-2.jpeg"
+        ],
+
+        sizes: [6, 7, 8, 9, 10]
+      },
+
+      {
+        color: "Brown",
+
+        images: [
+          "images/mens-peshawari-chappal-brown-pakistan-1.jpeg",
+          "images/mens-peshawari-chappal-brown-pakistan-2.jpeg"
+        ],
+
+        sizes: [6, 7, 8, 9, 10]
       }
 
     ]
