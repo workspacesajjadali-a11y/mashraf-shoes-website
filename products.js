@@ -156,11 +156,12 @@ const products = [
     rating: 0,
     ratingCount: 0,
     badge: "New",
-    material: "Synthetic upper and strap with decorative embellishment and synthetic sole",
+    material: "Synthetic upper/strap with decorative embellishment and synthetic sole",
     whatsappNumber: "923165856079",
     pageUrl: "product-kare-embellished-sandals.html",
 
     variants: [
+
       {
         color: "Black",
         images: [
@@ -213,6 +214,7 @@ const products = [
     pageUrl: "product-perforated-cross-strap-sandals.html",
 
     variants: [
+
       {
         color: "Black",
         images: [
@@ -232,6 +234,7 @@ const products = [
         ],
         sizes: [7, 8, 9, 10, 11]
       }
+
     ]
   }
 
