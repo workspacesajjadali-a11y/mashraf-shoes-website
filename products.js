@@ -18,10 +18,7 @@ const products = [
     rating: 0,
     ratingCount: 8,
     badge: "New",
-
-    material:
-      "Synthetic rexine strap with diamante embellishment and rubber sole",
-
+    material: "Synthetic (rexine) strap with diamante embellishment, rubber sole",
     whatsappNumber: "923165856079",
     pageUrl: "product-page.html",
 
@@ -107,10 +104,7 @@ const products = [
     rating: 4.6,
     ratingCount: 5,
     badge: "New",
-
-    material:
-      "Synthetic rexine braided strap with rhinestone embellishment and synthetic sole",
-
+    material: "Synthetic (rexine) braided strap with rhinestone embellishment, synthetic sole",
     whatsappNumber: "923165856079",
     pageUrl: "product-braided-sandals.html",
 
@@ -162,10 +156,7 @@ const products = [
     rating: 0,
     ratingCount: 0,
     badge: "New",
-
-    material:
-      "Synthetic upper and strap with decorative embellishment and synthetic sole",
-
+    material: "Synthetic upper/strap with decorative embellishment and synthetic sole",
     whatsappNumber: "923165856079",
     pageUrl: "product-kare-embellished-sandals.html",
 
@@ -217,10 +208,7 @@ const products = [
     rating: 4.5,
     ratingCount: 1,
     badge: "New",
-
-    material:
-      "Leather-look synthetic material with perforated cross-strap design",
-
+    material: "Leather-look synthetic material",
     whatsappNumber: "923165856079",
     pageUrl: "product-perforated-cross-strap-sandals.html",
 
@@ -257,8 +245,7 @@ const products = [
 
     brand: "M Ashraf Shoes",
 
-    name:
-      "Men's Peshawari Chappal – Traditional Pakistani Chappal",
+    name: "Men's Peshawari Chappal – Traditional Pakistani Sandal",
 
     category: "men",
 
@@ -272,31 +259,28 @@ const products = [
 
     badge: "Sale",
 
-    material:
-      "Synthetic leather-look upper with traditional stitched sole and adjustable back strap",
+    material: "Synthetic leather-look upper with stitched sole and adjustable back strap",
 
     whatsappNumber: "923165856079",
 
-    pageUrl:
-      "product-peshawari-chappal.html",
+    pageUrl: "product-peshawari-chappal.html",
 
     deliveryCharge: 150,
 
     description:
-      "Traditional men's Peshawari Chappal featuring a classic closed-toe design, traditional cross-strap upper and adjustable back strap. A stylish Pakistani traditional sandal suitable for everyday wear, Eid, weddings, family gatherings, casual outings and traditional outfits.",
+      "Traditional men's Peshawari Chappal featuring a classic closed-toe design, cross-strap upper and adjustable back strap. A stylish Pakistani traditional sandal suitable for everyday wear, Eid, weddings, gatherings and casual traditional outfits.",
 
     seoTitle:
-      "Men's Peshawari Chappal Online in Pakistan | Traditional Pakistani Chappal",
+      "Men's Peshawari Chappal Online in Pakistan | Traditional Peshawari Chappal",
 
     seoDescription:
-      "Shop men's Peshawari Chappal online in Pakistan. Traditional Pakistani Peshawari sandal with closed-toe design and adjustable back strap. Available in Black and Brown, sizes 6-10. Sale price Rs. 2,199 with Rs. 150 delivery.",
+      "Shop men's Peshawari Chappal online in Pakistan. Traditional Pakistani Peshawari sandal with closed-toe design and adjustable back strap. Black and Brown, sizes 6-10. Sale price Rs. 2,199 with only Rs. 150 delivery.",
 
     seoKeywords: [
       "Peshawari Chappal",
       "Peshawari Chapal",
       "Peshawari Chappal Pakistan",
       "Peshawari Chappal online",
-      "Peshawari Chappal online Pakistan",
       "men's Peshawari Chappal",
       "mens Peshawari sandal",
       "Pakistani Chappal",
@@ -306,39 +290,33 @@ const products = [
       "mardana chappal",
       "men's chappal Pakistan",
       "gents chappal Pakistan",
-      "traditional men's sandals Pakistan",
-      "black Peshawari Chappal",
-      "brown Peshawari Chappal"
+      "traditional men's sandals Pakistan"
     ],
 
-    variants: [
+    /* ============================================================
+       IMPORTANT:
+       THESE ARE THE ACTUAL FILE NAMES WITH .jpeg.heic
+       ============================================================ */
 
-      /* ============================================================
-         BLACK
-         ============================================================ */
+    variants: [
 
       {
         color: "Black",
 
         images: [
-          "images/mens-peshawari-chappal-black-pakistan-1.jpeg",
-          "images/mens-peshawari-chappal-black-pakistan-2.jpeg"
+          "images/mens-peshawari-chappal-black-pakistan-1.jpeg.heic",
+          "images/mens-peshawari-chappal-black-pakistan-2.jpeg.heic"
         ],
 
         sizes: [6, 7, 8, 9, 10]
       },
 
-
-      /* ============================================================
-         BROWN
-         ============================================================ */
-
       {
         color: "Brown",
 
         images: [
-          "images/mens-peshawari-chappal-brown-pakistan-1.jpeg",
-          "images/mens-peshawari-chappal-brown-pakistan-2.jpeg"
+          "images/mens-peshawari-chappal-brown-pakistan-1.jpeg.heic",
+          "images/mens-peshawari-chappal-brown-pakistan-2.jpeg.heic"
         ],
 
         sizes: [6, 7, 8, 9, 10]
