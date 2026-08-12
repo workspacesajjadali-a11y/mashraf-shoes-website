@@ -30,6 +30,7 @@ const products = [
         ],
         sizes: [5, 6, 7, 8, 9, 10]
       },
+
       {
         color: "Mustard",
         images: [
@@ -37,6 +38,7 @@ const products = [
         ],
         sizes: [5, 6, 7, 8, 9, 10]
       },
+
       {
         color: "Pink",
         images: [
@@ -44,6 +46,7 @@ const products = [
         ],
         sizes: [5, 6, 7, 8, 9, 10]
       },
+
       {
         color: "Multicolor (Pink Sole)",
         images: [
@@ -51,6 +54,7 @@ const products = [
         ],
         sizes: [5, 6, 7, 8, 9, 10]
       },
+
       {
         color: "Grey",
         images: [
@@ -58,6 +62,7 @@ const products = [
         ],
         sizes: [5, 6, 7, 8, 9, 10]
       },
+
       {
         color: "White",
         images: [
@@ -65,6 +70,7 @@ const products = [
         ],
         sizes: [6, 7, 8, 9, 10]
       },
+
       {
         color: "Multicolor (Black Sole)",
         images: [
@@ -72,6 +78,7 @@ const products = [
         ],
         sizes: [5, 6, 7, 8, 9, 10]
       },
+
       {
         color: "Silver (Black Sole)",
         images: [
@@ -111,6 +118,7 @@ const products = [
         ],
         sizes: [6, 7, 9, 10]
       },
+
       {
         color: "White",
         images: [
@@ -120,6 +128,7 @@ const products = [
         ],
         sizes: [6, 7, 8, 9, 10]
       },
+
       {
         color: "Red",
         images: [
@@ -161,6 +170,7 @@ const products = [
         ],
         sizes: [7, 8, 9]
       },
+
       {
         color: "Brown",
         images: [
@@ -170,6 +180,7 @@ const products = [
         ],
         sizes: [8, 9]
       },
+
       {
         color: "Dark Brown",
         images: [
@@ -211,6 +222,7 @@ const products = [
         ],
         sizes: [7, 8, 9, 10, 11]
       },
+
       {
         color: "Brown",
         images: [
@@ -231,9 +243,9 @@ const products = [
   {
     id: 5,
 
-    brand: "A.K.R.",
+    brand: "M Ashraf Shoes",
 
-    name: "Men's Peshawari Chappal – Traditional Cross-Strap",
+    name: "Men's Peshawari Chappal – Traditional Pakistani Sandal",
 
     category: "men",
 
@@ -247,15 +259,43 @@ const products = [
 
     badge: "Sale",
 
-    material: "Synthetic leather-look upper with stitched sole",
+    material: "Synthetic leather-look upper with stitched sole and adjustable back strap",
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-peshawari-chappal-men.html",
+    pageUrl: "product-peshawari-chappal.html",
 
-    deliveryPrice: 150,
+    deliveryCharge: 150,
+
+    description:
+      "Traditional men's Peshawari Chappal featuring a classic closed-toe design, cross-strap upper and adjustable back strap. A stylish Pakistani traditional sandal suitable for everyday wear, Eid, weddings, gatherings and casual traditional outfits.",
+
+    seoTitle:
+      "Men's Peshawari Chappal Online in Pakistan | Traditional Peshawari Chappal",
+
+    seoDescription:
+      "Shop men's Peshawari Chappal online in Pakistan. Traditional Pakistani Peshawari sandal with closed-toe design and adjustable back strap. Black and Brown, sizes 6-10. Sale price Rs. 2,199 with only Rs. 150 delivery.",
+
+    seoKeywords: [
+      "Peshawari Chappal",
+      "Peshawari Chapal",
+      "Peshawari Chappal Pakistan",
+      "Peshawari Chappal online",
+      "men's Peshawari Chappal",
+      "mens Peshawari sandal",
+      "Pakistani Chappal",
+      "traditional Pakistani footwear",
+      "Peshawar Chappal",
+      "Peshawari sandals",
+      "mardana chappal",
+      "men's chappal Pakistan",
+      "gents chappal Pakistan",
+      "traditional men's sandals Pakistan"
+    ],
 
     variants: [
+
+      /* ---------------- BLACK ---------------- */
 
       {
         color: "Black",
@@ -267,6 +307,9 @@ const products = [
 
         sizes: [6, 7, 8, 9, 10]
       },
+
+
+      /* ---------------- BROWN ---------------- */
 
       {
         color: "Brown",
