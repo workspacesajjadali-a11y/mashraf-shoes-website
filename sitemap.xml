@@ -1,13 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
-    <loc>https://mashrafshoes.store/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+
+    <loc>
+      https://mashrafshoes.store/
+    </loc>
+
+    <changefreq>
+      weekly
+    </changefreq>
+
+    <priority>
+      1.0
+    </priority>
+
   </url>
+
+
   <url>
-    <loc>https://mashrafshoes.store/product-page.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+
+    <loc>
+      https://mashrafshoes.store/product-page.html
+    </loc>
+
+    <changefreq>
+      weekly
+    </changefreq>
+
+    <priority>
+      0.8
+    </priority>
+
   </url>
+
+
+  <url>
+
+    <loc>
+      https://mashrafshoes.store/product-braided-sandals.html
+    </loc>
+
+    <changefreq>
+      weekly
+    </changefreq>
+
+    <priority>
+      0.8
+    </priority>
+
+  </url>
+
+
+  <!-- NEW KARE PRODUCT -->
+
+  <url>
+
+    <loc>
+      https://mashrafshoes.store/product-kare-embellished-sandals.html
+    </loc>
+
+    <changefreq>
+      weekly
+    </changefreq>
+
+    <priority>
+      0.8
+    </priority>
+
+  </url>
+
 </urlset>
