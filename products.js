@@ -1,26 +1,17 @@
 /* =====================================================================
    M ASHRAF SHOES — PRODUCT DATA
 
-   HOW TO ADD A NEW PRODUCT:
-   1. Take a photo with a plain WHITE background
-   2. Name the photo file simply, no spaces: e.g. "boot-002.jpg"
-   3. Upload it into the /images folder in your GitHub repo
-   4. Copy one whole { ... } block below, paste before the closing ]
-   5. Change every value for your new product, commit on GitHub
-   6. Cloudflare rebuilds automatically — live in under a minute
-
-   PRODUCTS WITH MULTIPLE COLORS:
-   Add a new { color, image, sizes } block inside "variants" instead of
-   a whole new product. One card, color swatches the customer can click.
-
-   FIELD NOTES:
-   - category: exactly "men", "women", or "kids" (lowercase)
-   - material: shown on the product page under description
-   - sizes: Pakistani local sizing = UK sizing (no conversion needed
-     for the number itself — see the size chart built into product-page.html)
+   Existing products are kept unchanged.
+   New product added:
+   KARE Embellished Strap Flat Sandals
    ===================================================================== */
 
 const products = [
+
+  /* ================================================================
+     PRODUCT 1 — EXISTING
+     ================================================================ */
+
   {
     id: 1,
     brand: "Stylo Shoes",
@@ -28,23 +19,85 @@ const products = [
     category: "women",
     price: 1300,
     oldPrice: null,
-    rating: 4.5,
+    rating: 0,
     ratingCount: 8,
     badge: "New",
     material: "Synthetic (rexine) strap with diamante embellishment, rubber sole",
     whatsappNumber: "923165856079",
     pageUrl: "product-page.html",
+
     variants: [
-      { color: "Maroon", images: ["images/diamante-strap-sandals-maroon-pakistan 2.jpeg"], sizes: [5,6,7,8,9,10] },
-      { color: "Mustard", images: ["images/diamante-strap-sandals-mustard-pakistan.jpeg"], sizes: [5,6,7,8,9,10] },
-      { color: "Pink", images: ["images/diamante-strap-sandals-pink-pakistan.jpeg"], sizes: [5,6,7,8,9,10] },
-      { color: "Multicolor (Pink Sole)", images: ["images/diamante-strap-sandals-multicolor-pink-sole.jpeg"], sizes: [5,6,7,8,9,10] },
-      { color: "Grey", images: ["images/diamante-strap-sandals-grey-pakistan.jpeg"], sizes: [5,6,7,8,9,10] },
-      { color: "White", images: ["images/diamante-strap-sandals-white-pakistan.jpeg"], sizes: [6,7,8,9,10] },
-      { color: "Multicolor (Black Sole)", images: ["images/diamante-strap-sandals-multicolor-black-sole.jpeg"], sizes: [5,6,7,8,9,10] },
-      { color: "Silver (Black Sole)", images: ["images/diamante-strap-sandals-silver-black-sole.jpeg"], sizes: [5] }
+      {
+        color: "Maroon",
+        images: [
+          "images/diamante-strap-sandals-maroon-pakistan 2.jpeg"
+        ],
+        sizes: [5,6,7,8,9,10]
+      },
+
+      {
+        color: "Mustard",
+        images: [
+          "images/diamante-strap-sandals-mustard-pakistan.jpeg"
+        ],
+        sizes: [5,6,7,8,9,10]
+      },
+
+      {
+        color: "Pink",
+        images: [
+          "images/diamante-strap-sandals-pink-pakistan.jpeg"
+        ],
+        sizes: [5,6,7,8,9,10]
+      },
+
+      {
+        color: "Multicolor (Pink Sole)",
+        images: [
+          "images/diamante-strap-sandals-multicolor-pink-sole.jpeg"
+        ],
+        sizes: [5,6,7,8,9,10]
+      },
+
+      {
+        color: "Grey",
+        images: [
+          "images/diamante-strap-sandals-grey-pakistan.jpeg"
+        ],
+        sizes: [5,6,7,8,9,10]
+      },
+
+      {
+        color: "White",
+        images: [
+          "images/diamante-strap-sandals-white-pakistan.jpeg"
+        ],
+        sizes: [6,7,8,9,10]
+      },
+
+      {
+        color: "Multicolor (Black Sole)",
+        images: [
+          "images/diamante-strap-sandals-multicolor-black-sole.jpeg"
+        ],
+        sizes: [5,6,7,8,9,10]
+      },
+
+      {
+        color: "Silver (Black Sole)",
+        images: [
+          "images/diamante-strap-sandals-silver-black-sole.jpeg"
+        ],
+        sizes: [5]
+      }
     ]
   },
+
+
+  /* ================================================================
+     PRODUCT 2 — EXISTING
+     ================================================================ */
+
   {
     id: 2,
     brand: "Stylish Shoes",
@@ -58,30 +111,117 @@ const products = [
     material: "Synthetic (rexine) braided strap with rhinestone embellishment, synthetic sole",
     whatsappNumber: "923165856079",
     pageUrl: "product-braided-sandals.html",
+
     variants: [
-      { color: "Black", images: [
+      {
+        color: "Black",
+        images: [
           "images/braided-toe-ring-sandals-black-pakistan-1.jpeg",
           "images/braided-toe-ring-sandals-black-pakistan-2.jpeg",
           "images/braided-toe-ring-sandals-black-pakistan-3.jpeg"
-        ], sizes: [6,7,9,10] },
-      { color: "White", images: [
+        ],
+        sizes: [6,7,9,10]
+      },
+
+      {
+        color: "White",
+        images: [
           "images/braided-toe-ring-sandals-white-pakistan-1.jpeg",
           "images/braided-toe-ring-sandals-white-pakistan-2.jpeg",
           "images/braided-toe-ring-sandals-white-pakistan-3.jpeg"
-        ], sizes: [6,7,8,9,10] },
-      { color: "Red", images: [
+        ],
+        sizes: [6,7,8,9,10]
+      },
+
+      {
+        color: "Red",
+        images: [
           "images/braided-toe-ring-sandals-red-pakistan-1.jpeg",
           "images/braided-toe-ring-sandals-red-pakistan-2.jpeg",
           "images/braided-toe-ring-sandals-red-pakistan-3.jpeg"
-        ], sizes: [6,7,9,10] }
+        ],
+        sizes: [6,7,9,10]
+      }
+    ]
+  },
+
+
+  /* ================================================================
+     PRODUCT 3 — NEW KARE PRODUCT
+     ================================================================ */
+
+  {
+    id: 3,
+
+    brand: "KARE",
+
+    name: "Embellished Strap Flat Sandals",
+
+    category: "women",
+
+    price: 1999,
+
+    oldPrice: null,
+
+    rating: 0,
+
+    ratingCount: 0,
+
+    badge: "New",
+
+    material: "Synthetic upper/strap with decorative embellishment and synthetic sole",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-kare-embellished-sandals.html",
+
+    variants: [
+
+      /* ---------------- BLACK ---------------- */
+
+      {
+        color: "Black",
+
+        images: [
+          "images/kare-embellished-flat-sandals-black-pakistan-1.jpeg",
+          "images/kare-embellished-flat-sandals-black-pakistan-2.jpeg",
+          "images/kare-embellished-flat-sandals-black-pakistan-3.jpeg"
+        ],
+
+        sizes: [7,8,9]
+      },
+
+
+      /* ---------------- BROWN ---------------- */
+
+      {
+        color: "Brown",
+
+        images: [
+          "images/kare-embellished-flat-sandals-brown-pakistan-1.jpeg",
+          "images/kare-embellished-flat-sandals-brown-pakistan-2.jpeg",
+          "images/kare-embellished-flat-sandals-brown-pakistan-3.jpeg"
+        ],
+
+        sizes: [8,9]
+      },
+
+
+      /* ---------------- DARK BROWN ---------------- */
+
+      {
+        color: "Dark Brown",
+
+        images: [
+          "images/kare-embellished-flat-sandals-dark-brown-pakistan-1.jpeg",
+          "images/kare-embellished-flat-sandals-dark-brown-pakistan-2.jpeg",
+          "images/kare-embellished-flat-sandals-dark-brown-pakistan-3.jpeg"
+        ],
+
+        sizes: [6,9]
+      }
+
     ]
   }
-];
 
-/* DELIVERY NOTE:
-   - Price is per pair
-   - Advance payment online: Rs. 200 delivery charge
-   - Cash on Delivery (COD): Rs. 250 delivery charge
-   - Diamante Strap Sandals: White has size 5 out of stock. Silver (Black Sole): only size 5 in stock.
-   - Braided Toe-Ring Sandals: Black/Maroon/Red missing sizes 5 and 8. White has full 6-10 range (also missing size 5).
-*/
+];
