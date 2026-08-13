@@ -321,6 +321,100 @@ const products = [
 
         sizes: [6, 7, 8, 9, 10]
       }
+       /* ================================================================
+   PRODUCT 6 — LORO PIANA STYLE PREMIUM LOAFERS
+   ================================================================ */
+
+{
+  id: 6,
+
+  brand: "M Ashraf Shoes",
+
+  name: "Men's Premium Loro Piana Style Loafers",
+
+  category: "men",
+
+  price: 2499,
+
+  oldPrice: 3500,
+
+  rating: 0,
+
+  ratingCount: 0,
+
+  badge: "Sale",
+
+  material:
+    "Premium leather-look upper with soft loafer construction and durable sole",
+
+  whatsappNumber: "923165856079",
+
+  pageUrl: "product-loro-piana-style-loafers.html",
+
+  deliveryCharge: 0,
+
+  description:
+    "Premium men's loafers inspired by the elegant Loro Piana-style loafer look. A clean and sophisticated design suitable for casual wear, smart-casual outfits, office wear, dinners, gatherings and everyday use.",
+
+  seoTitle:
+    "Men's Premium Loro Piana Style Loafers Online in Pakistan | M Ashraf Shoes",
+
+  seoDescription:
+    "Shop men's premium Loro Piana style loafers online in Pakistan. Elegant luxury-inspired loafers available in Black and Brown, sizes 7 to 11. Sale price Rs. 2,499 from Rs. 3,500 with free delivery.",
+
+  seoKeywords: [
+    "Loro Piana loafers",
+    "Loro Piana style loafers",
+    "Loro Piana shoes Pakistan",
+    "Loro Piana style shoes Pakistan",
+    "men's loafers Pakistan",
+    "men loafers online Pakistan",
+    "premium loafers for men",
+    "luxury loafers Pakistan",
+    "designer style loafers",
+    "Italian style loafers",
+    "men's casual loafers",
+    "men's formal loafers",
+    "black loafers for men",
+    "brown loafers for men",
+    "premium men's shoes Pakistan",
+    "luxury men's shoes Pakistan",
+    "men's slip on shoes Pakistan",
+    "loafer shoes online Pakistan"
+  ],
+
+  variants: [
+
+    /* ---------------- BLACK ---------------- */
+
+    {
+      color: "Black",
+
+      images: [
+        "images/loro-piana-style-loafers-black-1.HEIC",
+        "images/loro-piana-style-loafers-black-2.HEIC",
+        "images/loro-piana-style-loafers-black-3.HEIC"
+      ],
+
+      sizes: [7, 8, 9, 10, 11]
+    },
+
+    /* ---------------- BROWN ---------------- */
+
+    {
+      color: "Brown",
+
+      images: [
+        "images/loro-piana-style-loafers-brown-1.HEIC",
+        "images/loro-piana-style-loafers-brown-2.HEIC",
+        "images/loro-piana-style-loafers-brown-3.HEIC"
+      ],
+
+      sizes: [7, 8, 9, 10]
+    }
+
+  ]
+},
 
     ]
   }
