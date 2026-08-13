@@ -342,3 +342,42 @@ const products = [
    ===================================================================== */
 
 window.products = products;
+{
+  id: 6,
+  brand: "M Ashraf Shoes",
+  name: "Men's Premium Luxury-Style Loafers",
+  category: "men",
+  price: 2499,
+  oldPrice: 3500,
+  rating: 0,
+  ratingCount: 0,
+  badge: "Sale",
+  material: "Premium-style loafer upper with slip-on construction",
+  whatsappNumber: "923165856079",
+  pageUrl: "product-premium-loafers.html",
+  deliveryCharge: 0,
+
+  variants: [
+
+    {
+      color: "Black",
+      images: [
+        "images/REPLACE-BLACK-1.jpeg",
+        "images/REPLACE-BLACK-2.jpeg",
+        "images/REPLACE-BLACK-3.jpeg"
+      ],
+      sizes: [7, 8, 9, 10, 11]
+    },
+
+    {
+      color: "Brown",
+      images: [
+        "images/REPLACE-BROWN-1.jpeg",
+        "images/REPLACE-BROWN-2.jpeg",
+        "images/REPLACE-BROWN-3.jpeg"
+      ],
+      sizes: [7, 8, 9, 10]
+    }
+
+  ]
+}
