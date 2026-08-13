@@ -23,7 +23,6 @@ const products = [
     pageUrl: "product-page.html",
 
     variants: [
-
       {
         color: "Maroon",
         images: [
@@ -87,7 +86,6 @@ const products = [
         ],
         sizes: [5]
       }
-
     ]
   },
 
@@ -111,7 +109,6 @@ const products = [
     pageUrl: "product-braided-sandals.html",
 
     variants: [
-
       {
         color: "Black",
         images: [
@@ -141,7 +138,6 @@ const products = [
         ],
         sizes: [6, 7, 9, 10]
       }
-
     ]
   },
 
@@ -165,7 +161,6 @@ const products = [
     pageUrl: "product-kare-embellished-sandals.html",
 
     variants: [
-
       {
         color: "Black",
         images: [
@@ -195,7 +190,6 @@ const products = [
         ],
         sizes: [6, 9]
       }
-
     ]
   },
 
@@ -219,7 +213,6 @@ const products = [
     pageUrl: "product-perforated-cross-strap-sandals.html",
 
     variants: [
-
       {
         color: "Black",
         images: [
@@ -239,7 +232,6 @@ const products = [
         ],
         sizes: [7, 8, 9, 10, 11]
       }
-
     ]
   },
 
@@ -250,21 +242,13 @@ const products = [
 
   {
     id: 5,
-
     brand: "M Ashraf Shoes",
-
     name: "Men's Peshawari Chappal – Traditional Pakistani Sandal",
-
     category: "men",
-
     price: 2199,
-
     oldPrice: 3000,
-
     rating: 0,
-
     ratingCount: 0,
-
     badge: "Sale",
 
     material:
@@ -303,32 +287,110 @@ const products = [
     ],
 
     variants: [
+      {
+        color: "Black",
+        images: [
+          "images/mens-peshawari-chappal-black-pakistan-1.jpeg.heic",
+          "images/mens-peshawari-chappal-black-pakistan-2.jpeg.heic"
+        ],
+        sizes: [6, 7, 8, 9, 10]
+      },
 
-      /* ---------------- BLACK ---------------- */
+      {
+        color: "Brown",
+        images: [
+          "images/mens-peshawari-chappal-brown-pakistan-1.jpeg.heic",
+          "images/mens-peshawari-chappal-brown-pakistan-2.jpeg.heic"
+        ],
+        sizes: [6, 7, 8, 9, 10]
+      }
+    ]
+  },
+
+
+  /* ================================================================
+     PRODUCT 6 — MEN'S PREMIUM LUXURY-STYLE LOAFERS
+     ================================================================ */
+
+  {
+    id: 6,
+
+    brand: "M Ashraf Shoes",
+
+    name: "Men's Premium Luxury-Style Loafers",
+
+    category: "men",
+
+    price: 2499,
+
+    oldPrice: 3500,
+
+    rating: 0,
+
+    ratingCount: 0,
+
+    badge: "Sale",
+
+    material:
+      "Premium-style loafer upper with slip-on construction",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-premium-loafers.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "Men's premium luxury-style loafers featuring a clean slip-on design inspired by modern Italian luxury footwear aesthetics. A versatile choice for formal wear, smart casual outfits, weddings, gatherings and everyday premium styling.",
+
+    seoTitle:
+      "Men's Premium Luxury Loafers Online in Pakistan | M Ashraf Shoes",
+
+    seoDescription:
+      "Shop men's premium luxury-style loafers online in Pakistan. Loro Piana-inspired loafer style in Black and Brown. Black sizes 7-11, Brown sizes 7-10. Sale price Rs. 2,499 with free delivery.",
+
+    seoKeywords: [
+      "men's loafers Pakistan",
+      "men loafers online Pakistan",
+      "premium loafers Pakistan",
+      "luxury loafers Pakistan",
+      "men's luxury shoes Pakistan",
+      "Loro Piana style loafers",
+      "Loro Piana inspired loafers",
+      "Italian style loafers men",
+      "premium men's loafers",
+      "formal loafers for men",
+      "smart casual loafers men",
+      "black loafers men Pakistan",
+      "brown loafers men Pakistan",
+      "men's slip on shoes Pakistan",
+      "luxury style shoes Pakistan"
+    ],
+
+    variants: [
 
       {
         color: "Black",
 
         images: [
-          "images/mens-peshawari-chappal-black-pakistan-1.jpeg.heic",
-          "images/mens-peshawari-chappal-black-pakistan-2.jpeg.heic"
+          "images/REPLACE-BLACK-1.jpeg",
+          "images/REPLACE-BLACK-2.jpeg",
+          "images/REPLACE-BLACK-3.jpeg"
         ],
 
-        sizes: [6, 7, 8, 9, 10]
+        sizes: [7, 8, 9, 10, 11]
       },
-
-
-      /* ---------------- BROWN ---------------- */
 
       {
         color: "Brown",
 
         images: [
-          "images/mens-peshawari-chappal-brown-pakistan-1.jpeg.heic",
-          "images/mens-peshawari-chappal-brown-pakistan-2.jpeg.heic"
+          "images/REPLACE-BROWN-1.jpeg",
+          "images/REPLACE-BROWN-2.jpeg",
+          "images/REPLACE-BROWN-3.jpeg"
         ],
 
-        sizes: [6, 7, 8, 9, 10]
+        sizes: [7, 8, 9, 10]
       }
 
     ]
@@ -338,46 +400,7 @@ const products = [
 
 
 /* =====================================================================
-   OPTIONAL GLOBAL ACCESS
+   GLOBAL ACCESS
    ===================================================================== */
 
 window.products = products;
-{
-  id: 6,
-  brand: "M Ashraf Shoes",
-  name: "Men's Premium Luxury-Style Loafers",
-  category: "men",
-  price: 2499,
-  oldPrice: 3500,
-  rating: 0,
-  ratingCount: 0,
-  badge: "Sale",
-  material: "Premium-style loafer upper with slip-on construction",
-  whatsappNumber: "923165856079",
-  pageUrl: "product-premium-loafers.html",
-  deliveryCharge: 0,
-
-  variants: [
-
-    {
-      color: "Black",
-      images: [
-        "images/REPLACE-BLACK-1.jpeg",
-        "images/REPLACE-BLACK-2.jpeg",
-        "images/REPLACE-BLACK-3.jpeg"
-      ],
-      sizes: [7, 8, 9, 10, 11]
-    },
-
-    {
-      color: "Brown",
-      images: [
-        "images/REPLACE-BROWN-1.jpeg",
-        "images/REPLACE-BROWN-2.jpeg",
-        "images/REPLACE-BROWN-3.jpeg"
-      ],
-      sizes: [7, 8, 9, 10]
-    }
-
-  ]
-}
