@@ -287,6 +287,7 @@ const products = [
     ],
 
     variants: [
+
       {
         color: "Black",
         images: [
@@ -304,6 +305,7 @@ const products = [
         ],
         sizes: [6, 7, 8, 9, 10]
       }
+
     ]
   },
 
@@ -341,53 +343,58 @@ const products = [
     deliveryCharge: 0,
 
     description:
-      "Men's premium luxury-style loafers featuring a clean slip-on design inspired by modern Italian luxury footwear aesthetics. A versatile choice for formal wear, smart casual outfits, weddings, gatherings and everyday premium styling.",
+      "Men's premium luxury-style loafers with a clean slip-on design and elegant metal detail. Inspired by the sophisticated look of luxury Italian-style loafers, suitable for formal wear, smart casual outfits, weddings, gatherings and everyday premium styling.",
 
     seoTitle:
-      "Men's Premium Luxury Loafers Online in Pakistan | M Ashraf Shoes",
+      "Men's Premium Luxury-Style Loafers Online in Pakistan",
 
     seoDescription:
-      "Shop men's premium luxury-style loafers online in Pakistan. Loro Piana-inspired loafer style in Black and Brown. Black sizes 7-11, Brown sizes 7-10. Sale price Rs. 2,499 with free delivery.",
+      "Shop men's premium luxury-style loafers online in Pakistan. Elegant slip-on loafers available in Black and Brown. Black sizes 7-11 and Brown sizes 7-10. Sale price Rs. 2,499 with free delivery.",
 
     seoKeywords: [
-      "men's loafers Pakistan",
-      "men loafers online Pakistan",
+      "men's loafers",
+      "mens loafers Pakistan",
       "premium loafers Pakistan",
+      "luxury style loafers",
       "luxury loafers Pakistan",
-      "men's luxury shoes Pakistan",
+      "men's premium shoes",
+      "men's slip on shoes",
+      "Italian style loafers",
       "Loro Piana style loafers",
       "Loro Piana inspired loafers",
-      "Italian style loafers men",
-      "premium men's loafers",
-      "formal loafers for men",
-      "smart casual loafers men",
-      "black loafers men Pakistan",
-      "brown loafers men Pakistan",
-      "men's slip on shoes Pakistan",
-      "luxury style shoes Pakistan"
+      "designer style loafers",
+      "formal loafers men",
+      "casual loafers men",
+      "men's shoes Pakistan",
+      "gents loafers Pakistan"
     ],
 
     variants: [
+
+      /* ---------------- BLACK ---------------- */
 
       {
         color: "Black",
 
         images: [
-          "images/REPLACE-BLACK-1.jpeg",
-          "images/REPLACE-BLACK-2.jpeg",
-          "images/REPLACE-BLACK-3.jpeg"
+          "images/mens-premium-loafers-black-pakistan-1.jpeg.heic",
+          "images/mens-premium-loafers-black-pakistan-2.jpeg.heic",
+          "images/mens-premium-loafers-black-pakistan-3.jpeg.heic"
         ],
 
         sizes: [7, 8, 9, 10, 11]
       },
 
+
+      /* ---------------- BROWN ---------------- */
+
       {
         color: "Brown",
 
         images: [
-          "images/REPLACE-BROWN-1.jpeg",
-          "images/REPLACE-BROWN-2.jpeg",
-          "images/REPLACE-BROWN-3.jpeg"
+          "images/mens-premium-loafers-brown-pakistan-1.jpeg.heic",
+          "images/mens-premium-loafers-brown-pakistan-2.jpeg.heic",
+          "images/mens-premium-loafers-brown-pakistan-3.jpeg.heic"
         ],
 
         sizes: [7, 8, 9, 10]
