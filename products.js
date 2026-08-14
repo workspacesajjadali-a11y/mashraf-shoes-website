@@ -375,40 +375,29 @@ const products = [
       "casual loafers men",
       "men's shoes Pakistan",
       "gents loafers Pakistan"
+   variants: [
+
+  {
+    color: "Brown",
+    images: [
+      "images/mens-premium-loafers-brown-pakistan-1.jpg",
+      "images/mens-premium-loafers-brown-pakistan-2.jpg",
+      "images/mens-premium-loafers-brown-pakistan-3.jpg"
     ],
+    sizes: [7, 8, 9, 10]
+  },
 
-    variants: [
+  {
+    color: "Black",
+    images: [
+      "images/mens-premium-loafers-black-pakistan-1.jpg",
+      "images/mens-premium-loafers-black-pakistan-2.jpg",
+      "images/mens-premium-loafers-black-pakistan-3.jpg"
+    ],
+    sizes: [7, 8, 9, 10, 11]
+  }
 
-      /* ---------------- BLACK ---------------- */
-
-      {
-        color: "Black",
-
-        images: [
-          "images/mens-premium-loafers-black-pakistan-1.jpg",
-          "images/mens-premium-loafers-black-pakistan-2.jpg",
-          "images/mens-premium-loafers-black-pakistan-3.jpg"
-        ],
-
-        sizes: [7, 8, 9, 10, 11]
-      },
-
-
-      /* ---------------- BROWN ---------------- */
-
-      {
-        color: "Brown",
-
-        images: [
-          "images/mens-premium-loafers-brown-pakistan-1.jpg",
-          "images/mens-premium-loafers-brown-pakistan-2.jpg",
-          "images/mens-premium-loafers-brown-pakistan-3.jpg"
-        ],
-
-        sizes: [7, 8, 9, 10]
-      }
-
-    ]
+]
   }
 
 ];
