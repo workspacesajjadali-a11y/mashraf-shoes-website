@@ -1,5 +1,6 @@
 /* =====================================================================
    M ASHRAF SHOES — PRODUCT DATA
+   COMPLETE FILE — PRODUCTS 1 TO 6
    ===================================================================== */
 
 const products = [
@@ -23,6 +24,7 @@ const products = [
     pageUrl: "product-page.html",
 
     variants: [
+
       {
         color: "Maroon",
         images: [
@@ -86,6 +88,7 @@ const products = [
         ],
         sizes: [5]
       }
+
     ]
   },
 
@@ -109,6 +112,7 @@ const products = [
     pageUrl: "product-braided-sandals.html",
 
     variants: [
+
       {
         color: "Black",
         images: [
@@ -138,6 +142,7 @@ const products = [
         ],
         sizes: [6, 7, 9, 10]
       }
+
     ]
   },
 
@@ -161,6 +166,7 @@ const products = [
     pageUrl: "product-kare-embellished-sandals.html",
 
     variants: [
+
       {
         color: "Black",
         images: [
@@ -190,6 +196,7 @@ const products = [
         ],
         sizes: [6, 9]
       }
+
     ]
   },
 
@@ -213,6 +220,7 @@ const products = [
     pageUrl: "product-perforated-cross-strap-sandals.html",
 
     variants: [
+
       {
         color: "Black",
         images: [
@@ -232,6 +240,7 @@ const products = [
         ],
         sizes: [7, 8, 9, 10, 11]
       }
+
     ]
   },
 
@@ -316,7 +325,6 @@ const products = [
 
   {
     id: 6,
-
     brand: "M Ashraf Shoes",
 
     name: "Men's Premium Luxury-Style Loafers",
