@@ -18,6 +18,7 @@ content="men loafers Pakistan, men's loafers online Pakistan, premium loafers Pa
 <link rel="canonical"
 href="https://mashrafshoes.store/product-premium-loafers.html">
 
+
 <meta property="og:type" content="product">
 
 <meta property="og:title"
@@ -30,7 +31,7 @@ content="Premium men's loafers in Black and Brown. Sizes 7-11. Sale price Rs. 2,
 content="https://mashrafshoes.store/product-premium-loafers.html">
 
 <meta property="og:image"
-content="https://mashrafshoes.store/images/mens-premium-loafers-black-pakistan-1.jpeg.heic">
+content="https://mashrafshoes.store/images/mens-premium-loafers-black-pakistan-1.jpeg">
 
 
 <script type="application/ld+json">
@@ -445,7 +446,7 @@ style="cursor:zoom-in;">
 
 <img
 id="mainImage"
-src="images/mens-premium-loafers-black-pakistan-1.jpeg.heic"
+src="images/mens-premium-loafers-black-pakistan-1.jpeg"
 alt="Men's premium black loafers">
 
 </div>
@@ -598,12 +599,19 @@ Product Details
 <ul>
 
 <li>Style: Premium men's loafers</li>
+
 <li>Design: Luxury-inspired slip-on loafer</li>
+
 <li>Colors: Black and Brown</li>
+
 <li>Black sizes: 7, 8, 9, 10 and 11</li>
+
 <li>Brown sizes: 7, 8, 9 and 10</li>
+
 <li>Original Price: Rs. 3,500</li>
+
 <li>Sale Price: Rs. 2,499</li>
+
 <li>Delivery: FREE across Pakistan</li>
 
 </ul>
@@ -625,10 +633,15 @@ Perfect For
 <ul>
 
 <li>Office and business casual wear</li>
+
 <li>Smart casual outfits</li>
+
 <li>Dinners and gatherings</li>
+
 <li>Wedding and event styling</li>
+
 <li>Everyday premium footwear</li>
+
 <li>Traditional and modern outfits</li>
 
 </ul>
@@ -641,8 +654,11 @@ Delivery Across Pakistan
 <ul>
 
 <li>Cash on Delivery available</li>
+
 <li>FREE delivery</li>
+
 <li>Nationwide delivery across Pakistan</li>
+
 <li>Dispatched within 24–48 hours</li>
 
 </ul>
@@ -710,6 +726,10 @@ Loafer Size Guide
 
 try{
 
+/* ============================================================
+   LOAFER PRODUCT
+   ============================================================ */
+
 const PRODUCT_ID = 6;
 
 const product = products.find(
@@ -724,13 +744,18 @@ throw new Error(
 
 }
 
+
 let currentVariant = 0;
 let selectedSize = null;
 let currentImageIndex = 0;
 
+
 const swatchColors = {
+
 Black:"#171614",
+
 Brown:"#5A3826"
+
 };
 
 
@@ -738,6 +763,7 @@ function renderSwatches(){
 
 const row =
 document.getElementById("swatchRow");
+
 
 row.innerHTML =
 product.variants.map((variant,index)=>`
@@ -752,12 +778,15 @@ onclick="selectVariant(${index})">
 
 `).join("");
 
+
 document.getElementById("colorName").textContent =
 product.variants[currentVariant].color;
+
 
 currentImageIndex=0;
 
 renderMainImage();
+
 renderThumbnails();
 
 }
@@ -771,8 +800,10 @@ product.variants[currentVariant];
 const image =
 document.getElementById("mainImage");
 
+
 image.src =
 variant.images[currentImageIndex];
+
 
 image.alt =
 product.name+" — "+variant.color;
@@ -787,6 +818,7 @@ product.variants[currentVariant];
 
 const thumbRow =
 document.getElementById("thumbRow");
+
 
 thumbRow.innerHTML =
 variant.images.map((image,index)=>`
@@ -819,6 +851,7 @@ window.selectImage=function(index){
 currentImageIndex=index;
 
 renderMainImage();
+
 renderThumbnails();
 
 };
@@ -834,6 +867,7 @@ variant.sizes[0];
 
 const grid =
 document.getElementById("sizeGrid");
+
 
 grid.innerHTML =
 variant.sizes.map(size=>`
@@ -854,6 +888,7 @@ window.selectVariant=function(index){
 currentVariant=index;
 
 renderSwatches();
+
 renderSizes();
 
 };
@@ -874,11 +909,16 @@ element.classList.add("active");
 };
 
 
+/* ============================================================
+   URL COLOR SUPPORT
+   ============================================================ */
+
 const urlParams =
 new URLSearchParams(window.location.search);
 
 const requestedColor =
 urlParams.get("color");
+
 
 if(requestedColor){
 
@@ -898,28 +938,44 @@ currentVariant=foundIndex;
 }
 
 
+/* ============================================================
+   ADD TO CART
+   ============================================================ */
+
 window.addProductToCart=function(){
 
 const variant =
 product.variants[currentVariant];
 
+
 addToCart(
+
 product.id,
+
 product.name,
+
 variant.color,
+
 selectedSize,
+
 product.price,
+
 variant.images[0]
+
 );
+
 
 const button =
 document.getElementById("addToCartBtn");
 
+
 const originalText =
 button.textContent;
 
+
 button.textContent =
 "Added to Cart ✓";
+
 
 setTimeout(()=>{
 
@@ -931,25 +987,42 @@ originalText;
 };
 
 
+/* ============================================================
+   BUY NOW
+   ============================================================ */
+
 window.buyNow=function(){
 
 const variant =
 product.variants[currentVariant];
 
+
 addToCart(
+
 product.id,
+
 product.name,
+
 variant.color,
+
 selectedSize,
+
 product.price,
+
 variant.images[0]
+
 );
+
 
 window.location.href =
 "checkout.html";
 
 };
 
+
+/* ============================================================
+   INITIALIZE
+   ============================================================ */
 
 renderSwatches();
 
@@ -965,6 +1038,10 @@ error
 
 }
 
+
+/* ============================================================
+   IMAGE ZOOM
+   ============================================================ */
 
 window.toggleZoom=function(){
 
