@@ -385,9 +385,9 @@ const products = [
         color: "Black",
 
         images: [
-          "images/mens-premium-loafers-black-pakistan-1.jpeg.heic",
-          "images/mens-premium-loafers-black-pakistan-2.jpeg.heic",
-          "images/mens-premium-loafers-black-pakistan-3.jpeg.heic"
+          "images/mens-premium-loafers-black-pakistan-1.jpeg",
+          "images/mens-premium-loafers-black-pakistan-2.jpeg",
+          "images/mens-premium-loafers-black-pakistan-3.jpeg"
         ],
 
         sizes: [7, 8, 9, 10, 11]
@@ -400,9 +400,9 @@ const products = [
         color: "Brown",
 
         images: [
-          "images/mens-premium-loafers-brown-pakistan-1.jpeg.heic",
-          "images/mens-premium-loafers-brown-pakistan-2.jpeg.heic",
-          "images/mens-premium-loafers-brown-pakistan-3.jpeg.heic"
+          "images/mens-premium-loafers-brown-pakistan-1.jpeg",
+          "images/mens-premium-loafers-brown-pakistan-2.jpeg",
+          "images/mens-premium-loafers-brown-pakistan-3.jpeg"
         ],
 
         sizes: [7, 8, 9, 10]
