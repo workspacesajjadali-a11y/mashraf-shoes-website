@@ -6,24 +6,51 @@
 <meta name="color-scheme" content="light only">
 <title>Order Confirmed — M Ashraf Shoes</title>
 <style>
-  :root{ --accent:#1B5E43; --ink:#1A1A18; --charcoal:#171614; }
+  :root{
+    --bg:#FBFAF7; --white:#FFFFFF; --ink:#1A1A18;
+    --ink-soft:rgba(26,26,24,0.62); --ink-faint:rgba(26,26,24,0.38);
+    --accent:#1B5E43; --accent-deep:#13452f; --line:rgba(26,26,24,0.10);
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
   *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; background:#FAFAF7; color:var(--ink); text-align:center; padding:60px 6vw; }
-  .check{ font-size:48px; color:var(--accent); margin-bottom:16px; }
-  h1{ font-size:22px; margin-bottom:8px; }
-  .order-id{ font-size:18px; font-weight:700; color:var(--accent); margin-bottom:20px; }
-  p{ color:rgba(26,26,24,0.65); font-size:14px; margin-bottom:24px; max-width:400px; margin-left:auto; margin-right:auto; }
-  .btn{ display:inline-block; text-decoration:none; padding:14px 26px; border-radius:8px; font-size:14px; font-weight:600; margin:6px; }
-  .btn-primary{ background:var(--charcoal); color:#fff; }
-  .btn-outline{ border:2px solid var(--accent); color:var(--accent); }
+  body{
+    font-family:var(--sans); background:var(--bg); color:var(--ink);
+    text-align:center; min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; padding:40px 6vw;
+  }
+  .check-wrap{
+    width:72px; height:72px; border-radius:50%; background:var(--accent);
+    display:flex; align-items:center; justify-content:center; margin-bottom:24px;
+    animation:pop .5s cubic-bezier(.2,1.4,.4,1);
+  }
+  .check-wrap svg{ width:34px; height:34px; stroke:#fff; }
+  @keyframes pop{ 0%{ transform:scale(0); } 100%{ transform:scale(1); } }
+  h1{ font-family:var(--serif); font-weight:400; font-size:30px; margin-bottom:12px; }
+  .order-id{
+    display:inline-block; font-size:17px; font-weight:700; color:var(--accent);
+    background:rgba(27,94,67,0.10); border-radius:999px; padding:8px 20px; margin-bottom:20px;
+  }
+  p{ color:var(--ink-soft); font-size:14px; margin-bottom:32px; max-width:420px; line-height:1.7; }
+  .btn{
+    display:inline-block; text-decoration:none; padding:14px 28px; border-radius:999px;
+    font-size:14px; font-weight:600; margin:6px; transition:all .2s ease;
+  }
+  .btn-primary{ background:var(--accent); color:#fff; }
+  .btn-primary:hover{ background:var(--accent-deep); }
+  .btn-outline{ border:1.5px solid var(--ink); color:var(--ink); }
+  .btn-outline:hover{ background:var(--ink); color:#fff; }
 </style>
 </head>
 <body>
-  <div class="check">✓</div>
+  <div class="check-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
   <h1>Order Placed Successfully</h1>
   <div class="order-id" id="orderIdDisplay"></div>
   <p>Save your Order ID to track your order status anytime. We've received your order and will contact you if anything needs confirming.</p>
   <a class="btn btn-primary" href="track-order.html">Track My Order</a>
+  <a class="btn btn-outline" href="account.html">My Account</a>
   <a class="btn btn-outline" href="index.html">Continue Shopping</a>
 
   <script>

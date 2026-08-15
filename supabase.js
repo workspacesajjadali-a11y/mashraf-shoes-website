@@ -1,0 +1,223 @@
+/* =====================================================================
+   M ASHRAF SHOES — SUPABASE CLIENT LIBRARY
+   - Loads the supabase-js CDN script on demand (no build step needed).
+   - Provides loadProducts(), saveOrder(), saveInquiry(),
+     plus Auth: signUp, signIn, signInWithGoogle, signOut, getSession,
+     onAuthChange, saveUserCart, loadUserCart, getMyOrders.
+   - Everything is a no-op / safe fallback until supabase-config.js
+     is filled in with real project credentials.
+   ===================================================================== */
+
+(function () {
+
+  const CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+
+  let client = null;
+  let cdnPromise = null;
+
+  function isConfigured() {
+    const url = window.SUPABASE_URL || '';
+    const key = window.SUPABASE_ANON_KEY || '';
+    return !/YOUR-PROJECT|YOUR-ANON/i.test(url + key);
+  }
+
+  function loadCdn() {
+    if (window.supabase) return Promise.resolve(window.supabase);
+    if (cdnPromise) return cdnPromise;
+    cdnPromise = new Promise(function (resolve, reject) {
+      const s = document.createElement('script');
+      s.src = CDN;
+      s.onload = function () { resolve(window.supabase); };
+      s.onerror = function () { reject(new Error('Failed to load supabase-js CDN')); };
+      document.head.appendChild(s);
+    });
+    return cdnPromise;
+  }
+
+  function getClient() {
+    if (!isConfigured()) return null;
+    if (client) return client;
+    client = window.supabase
+      ? window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY)
+      : null;
+    return client;
+  }
+
+  /* ---------------- AUTH ---------------- */
+
+  async function getSession() {
+    const c = getClient();
+    if (!c) return null;
+    const { data } = await c.auth.getSession();
+    return data ? data.session : null;
+  }
+
+  async function getUser() {
+    const session = await getSession();
+    return session ? session.user : null;
+  }
+
+  async function signUp(email, password) {
+    const c = getClient();
+    if (!c) return { data: null, error: { message: 'Supabase not configured yet.' } };
+    return c.auth.signUp({ email, password, options: { emailRedirectTo: window.location.origin + '/account.html' } });
+  }
+
+  async function signIn(email, password) {
+    const c = getClient();
+    if (!c) return { data: null, error: { message: 'Supabase not configured yet.' } };
+    return c.auth.signInWithPassword({ email, password });
+  }
+
+  async function signInWithGoogle() {
+    const c = getClient();
+    if (!c) return { data: null, error: { message: 'Supabase not configured yet.' } };
+    return c.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.origin + '/account.html' }
+    });
+  }
+
+  async function signOut() {
+    const c = getClient();
+    if (!c) return { error: null };
+    return c.auth.signOut();
+  }
+
+  async function onAuthChange(callback) {
+    const c = getClient();
+    if (!c) return function () {};
+    const { data } = c.auth.onAuthStateChange(function (event, session) {
+      callback(event, session);
+    });
+    return data.subscription.unsubscribe.bind(data.subscription);
+  }
+
+  /* ---------------- USER CART (per-email) ---------------- */
+
+  async function saveUserCart(email, items) {
+    const c = getClient();
+    if (!c || !email) return null;
+    const { data, error } = await c.rpc('save_cart', {
+      p_email: email,
+      p_items: items || []
+    });
+    if (error) throw error;
+    return data;
+  }
+
+  async function loadUserCart(email) {
+    const c = getClient();
+    if (!c || !email) return null;
+    const { data, error } = await c.rpc('load_cart', {
+      p_email: email
+    });
+    if (error) throw error;
+    return data;
+  }
+
+  /* ---------------- MY ORDERS (by email) ---------------- */
+
+  async function getMyOrders(email) {
+    const c = getClient();
+    if (!c || !email) return [];
+    const { data, error } = await c.rpc('get_my_orders', {
+      p_email: email
+    });
+    if (error) throw error;
+    return data || [];
+  }
+
+  /* ---------------- PRODUCTS ---------------- */
+
+  async function loadProducts() {
+    const c = getClient();
+    if (!c) return null;
+    const { data, error } = await c
+      .from('products')
+      .select('*')
+      .order('sort_order', { ascending: true });
+    if (error) throw error;
+    return data.map(rowToProduct);
+  }
+
+  function rowToProduct(row) {
+    return {
+      id: row.id,
+      brand: row.brand,
+      name: row.name,
+      category: row.category,
+      price: Number(row.price),
+      oldPrice: row.old_price == null ? null : Number(row.old_price),
+      rating: Number(row.rating || 0),
+      ratingCount: Number(row.rating_count || 0),
+      badge: row.badge,
+      material: row.material,
+      whatsappNumber: row.whatsapp_number,
+      pageUrl: row.page_url,
+      deliveryCharge: row.delivery_charge == null ? 0 : Number(row.delivery_charge),
+      description: row.description,
+      seoTitle: row.seo_title,
+      seoDescription: row.seo_description,
+      seoKeywords: row.seo_keywords || [],
+      variants: row.variants || []
+    };
+  }
+
+  /* ---------------- ORDERS ---------------- */
+
+  async function saveOrder(order) {
+    const c = getClient();
+    if (!c) return null;
+    const { data, error } = await c.rpc('place_order', {
+      p_order_id: order.orderId,
+      p_name: order.name,
+      p_phone: order.phone,
+      p_email: order.email,
+      p_address: order.address,
+      p_items: order.items,
+      p_items_text: order.itemsText,
+      p_subtotal: order.subtotal,
+      p_delivery_charge: order.deliveryCharge,
+      p_total: order.total,
+      p_payment_method: order.paymentMethod || 'COD'
+    });
+    if (error) throw error;
+    return data;
+  }
+
+  /* ---------------- INQUIRIES ---------------- */
+
+  async function saveInquiry(inquiry) {
+    const c = getClient();
+    if (!c) return null;
+    const { data, error } = await c.rpc('place_inquiry', {
+      p_type: inquiry.type,
+      p_name: inquiry.name,
+      p_phone: inquiry.phone,
+      p_message: inquiry.message
+    });
+    if (error) throw error;
+    return data;
+  }
+
+  window.SupabaseStore = {
+    isConfigured: isConfigured,
+    loadCdn: loadCdn,
+    getClient: getClient,
+    loadProducts: loadProducts,
+    saveOrder: saveOrder,
+    saveInquiry: saveInquiry,
+    getSession: getSession,
+    getUser: getUser,
+    signUp: signUp,
+    signIn: signIn,
+    signInWithGoogle: signInWithGoogle,
+    signOut: signOut,
+    onAuthChange: onAuthChange,
+    saveUserCart: saveUserCart,
+    loadUserCart: loadUserCart,
+    getMyOrders: getMyOrders
+  };
+
+})();

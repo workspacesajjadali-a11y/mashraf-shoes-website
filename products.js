@@ -3,7 +3,7 @@
    COMPLETE FILE — PRODUCTS 1 TO 6
    ===================================================================== */
 
-const products = [
+var products = [
 
   /* ================================================================
      PRODUCT 1 — DIAMANTE STRAP SANDALS

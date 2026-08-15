@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Discounts &amp; Deals — M Ashraf Shoes</title>
+<style>
+  :root{
+    --bg:#FBFAF7; --white:#FFFFFF; --ink:#1A1A18;
+    --ink-soft:rgba(26,26,24,0.62); --ink-faint:rgba(26,26,24,0.38);
+    --accent:#1B5E43; --accent-deep:#13452f; --line:rgba(26,26,24,0.10);
+    --sale:#A13A2E; --radius:14px;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:var(--sans); background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased; }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(251,250,247,0.85); backdrop-filter:saturate(180%) blur(12px);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line); padding:14px 5vw;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  header .brand{ text-decoration:none; font-family:var(--serif); font-weight:700; font-size:17px; }
+  header .brand em{ font-style:normal; color:var(--accent); }
+  header .cart-link{ position:relative; color:var(--ink); text-decoration:none; display:flex; align-items:center; }
+  header .cart-link svg{ width:21px; height:21px; }
+  #cartBadge{ display:none; position:absolute; top:-2px; right:-6px; background:var(--accent); color:#fff; font-size:10px; width:16px; height:16px; border-radius:50%; align-items:center; justify-content:center; }
+
+  .sale-banner{
+    background:linear-gradient(135deg, #A13A2E, #C05A3B);
+    color:#fff; text-align:center; padding:26px 20px;
+  }
+  .sale-banner .kicker{ font-size:11px; text-transform:uppercase; letter-spacing:0.18em; opacity:0.85; margin-bottom:6px; }
+  .sale-banner h1{ font-family:var(--serif); font-weight:400; font-size:clamp(24px,5vw,36px); }
+  .sale-banner p{ font-size:13px; opacity:0.9; margin-top:6px; }
+
+  .filters{ max-width:1120px; margin:24px auto 0; padding:0 20px; display:flex; gap:10px; flex-wrap:wrap; }
+  .filter-btn{
+    padding:9px 18px; border:1px solid var(--line); border-radius:999px; background:var(--white);
+    font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer; transition:all .2s ease;
+  }
+  .filter-btn.active{ background:var(--accent); border-color:var(--accent); color:#fff; }
+
+  main{ max-width:1120px; margin:0 auto; padding:32px 20px 80px; }
+  .product-grid{
+    display:grid; grid-template-columns:1fr; gap:20px;
+  }
+  @media (min-width:560px){ .product-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (min-width:920px){ .product-grid{ grid-template-columns:repeat(3, 1fr); } }
+
+  .card{
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; position:relative; transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{ transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,0.08); }
+  .card .photo{ display:block; width:100%; aspect-ratio:1/1; background:#fff; overflow:hidden; }
+  .card .photo img{ width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
+  .card:hover .photo img{ transform:scale(1.04); }
+  .card .discount-tag{
+    position:absolute; top:12px; left:12px; background:var(--sale); color:#fff;
+    font-size:11px; font-weight:700; padding:5px 11px; border-radius:999px;
+  }
+  .card .body{ padding:14px 16px 16px; }
+  .card .brand{ font-size:10.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.08em; }
+  .card .name{ font-size:14px; font-weight:600; margin:3px 0 8px; line-height:1.3; }
+  .card .price{ font-size:17px; font-weight:700; color:var(--accent); }
+  .card .price .old{ color:var(--ink-faint); text-decoration:line-through; font-weight:400; font-size:13px; margin-left:8px; }
+  .card .save{ font-size:12px; color:var(--sale); font-weight:600; margin-top:2px; }
+  .card .order{
+    width:100%; margin-top:14px; background:var(--accent); color:#fff; padding:10px;
+    border:none; border-radius:9px; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s ease;
+  }
+  .card .order:hover{ background:var(--accent-deep); }
+  .empty{ text-align:center; padding:48px 20px; color:var(--ink-faint); font-size:14px; }
+
+  footer{ text-align:center; padding:24px 20px; font-size:12px; color:var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="brand">M Ashraf <em>Shoes</em></a>
+  <a class="cart-link" href="cart.html" aria-label="Cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <span id="cartBadge"></span>
+  </a>
+</header>
+
+<div class="sale-banner">
+  <div class="kicker">Limited time</div>
+  <h1>Discounts &amp; Deals</h1>
+  <p>Save on selected styles — prices already cut. Order now, pay on delivery.</p>
+</div>
+
+<div class="filters" id="filters">
+  <button class="filter-btn active" data-cat="all">All Deals</button>
+  <button class="filter-btn" data-cat="women">Women</button>
+  <button class="filter-btn" data-cat="men">Men</button>
+</div>
+
+<main>
+  <div class="product-grid" id="grid"></div>
+</main>
+
+<footer>© M Ashraf Shoes Pakistan — Cash on Delivery · Nationwide Shipping</footer>
+
+<script src="supabase-config.js"></script>
+<script src="supabase.js"></script>
+<script src="cart.js"></script>
+<script src="products.js"></script>
+<script>
+  (function(){
+    var grid = document.getElementById('grid');
+    var currentFilter = 'all';
+    var swatchColors = {
+      'Maroon':'#7A1F2B','Mustard':'#C6A15B','Pink':'#E8B4BC','Grey':'#9B9B93',
+      'White':'#F0F0EC','Silver (Black Sole)':'#B8B8B0','Black':'#1A1A18','Red':'#B3261E',
+      'Multicolor (Pink Sole)':'linear-gradient(90deg,#E8B4BC,#C6A15B,#7A1F2B)',
+      'Multicolor (Black Sole)':'linear-gradient(90deg,#141312,#C6A15B,#7A1F2B)'
+    };
+
+    function render(){
+      var list = products.filter(function(p){ return p.oldPrice; });
+      if(currentFilter !== 'all'){
+        list = list.filter(function(p){ return p.category === currentFilter; });
+      }
+
+      if(!list.length){
+        grid.innerHTML = '<div class="empty">No discounts in this category right now — check back soon.</div>';
+        return;
+      }
+
+      grid.innerHTML = list.map(function(p){
+        var variant = p.variants[0];
+        var off = Math.round(100 - (p.price / p.oldPrice) * 100);
+        return '<div class="card">' +
+          '<a class="photo" href="' + p.pageUrl + '?color=' + encodeURIComponent(variant.color) + '">' +
+            '<img src="' + variant.images[0] + '" alt="' + p.name + '" loading="lazy" onerror="this.style.display=\'none\'">' +
+          '</a>' +
+          '<span class="discount-tag">-' + off + '%</span>' +
+          '<div class="body">' +
+            '<div class="brand">' + p.brand + '</div>' +
+            '<div class="name">' + p.name + '</div>' +
+            '<div class="price">Rs. ' + p.price.toLocaleString() + '<span class="old">Rs. ' + p.oldPrice.toLocaleString() + '</span></div>' +
+            '<div class="save">You save Rs. ' + (p.oldPrice - p.price).toLocaleString() + '</div>' +
+            '<button class="order" onclick="addToCart(' + p.id + ', \'' + p.name.replace(/'/g,"\\'") + '\', \'' + variant.color + '\', ' + variant.sizes[0] + ', ' + p.price + ', \'' + variant.images[0] + '\'); this.textContent=\'Added ✓\'; setTimeout(()=>this.textContent=\'Add to Cart\',1200);">Add to Cart</button>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentFilter = btn.dataset.cat;
+        render();
+      });
+    });
+
+    try{ render(); }catch(e){ console.error(e); }
+
+    if(window.SupabaseStore){
+      window.SupabaseStore.loadProducts().then(function(dbProducts){
+        if(!dbProducts) return;
+        window.products = dbProducts;
+        render();
+      }).catch(function(){});
+    }
+  })();
+</script>
+
+</body>
+</html>

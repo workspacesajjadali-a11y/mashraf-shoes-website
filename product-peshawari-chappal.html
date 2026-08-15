@@ -86,13 +86,13 @@ content="https://mashrafshoes.store/images/mens-peshawari-chappal-black-pakistan
 :root {
   color-scheme: light;
 
-  --canvas: #ffffff;
+  --canvas: #FBFAF7;
   --leather: #1B5E43;
   --leather-dark: #14432F;
   --ink: #1A1A18;
   --charcoal: #171614;
   --paper: #ffffff;
-  --muted: rgba(28,27,25,.65);
+  --muted: rgba(26,26,24,.65);
 }
 
 * {
@@ -102,13 +102,13 @@ content="https://mashrafshoes.store/images/mens-peshawari-chappal-black-pakistan
 }
 
 html {
-  background: #ffffff;
+  background: #FBFAF7;
 }
 
 body {
-  background: #ffffff;
+  background: #FBFAF7;
   color: var(--ink);
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.5;
 }
 
@@ -119,11 +119,11 @@ a {
 
 .tag-font {
   font-family: Georgia, "Times New Roman", serif;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .mono {
-  font-family: "Courier New", monospace;
+  font-family: "SF Mono", "Courier New", monospace;
   letter-spacing: .03em;
 }
 
@@ -133,14 +133,19 @@ a {
 ========================= */
 
 header {
-  padding: 20px 6vw;
-  border-bottom: 1px solid rgba(28,27,25,.12);
-  background: #ffffff;
+  padding: 16px 6vw;
+  border-bottom: 1px solid rgba(26,26,24,.10);
+  background: rgba(251,250,247,0.85);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 header .brand {
   font-size: 1.2rem;
-  letter-spacing: .06em;
+  letter-spacing: .02em;
 }
 
 
@@ -174,11 +179,12 @@ main {
 
 .visual {
   background: #ffffff;
-  border: 2px solid var(--leather);
-  border-radius: 8px;
+  border: 1px solid rgba(26,26,24,.10);
+  border-radius: 14px;
   padding: 20px;
   overflow: hidden;
   min-height: 300px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.03);
 }
 
 .visual img {
@@ -187,7 +193,7 @@ main {
   max-height: 650px;
   object-fit: contain;
   display: block;
-  border-radius: 3px;
+  border-radius: 8px;
   transition: transform .25s ease;
   background: #ffffff;
 }
@@ -204,7 +210,7 @@ main {
 
 .image-help {
   font-size: 11px;
-  color: rgba(28,27,25,.5);
+  color: rgba(26,26,24,.5);
   text-align: center;
   margin-top: 6px;
 }
@@ -221,11 +227,11 @@ main {
   width: 64px;
   height: 64px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   background: #ffffff;
   border: 2px solid transparent;
-  box-shadow: 0 0 0 1px rgba(28,27,25,.15);
+  box-shadow: 0 0 0 1px rgba(26,26,24,.15);
 }
 
 .thumb.active {
@@ -253,7 +259,7 @@ main {
 
 .brand-line {
   font-size: .85rem;
-  color: rgba(28,27,25,.6);
+  color: rgba(26,26,24,.6);
   margin-bottom: 16px;
 }
 
@@ -328,7 +334,7 @@ main {
   border-radius: 50%;
   border: 2px solid transparent;
   cursor: pointer;
-  box-shadow: 0 0 0 1px rgba(28,27,25,.25);
+  box-shadow: 0 0 0 1px rgba(26,26,24,.25);
 }
 
 .swatch.active {
@@ -341,7 +347,7 @@ main {
 #colorName {
   font-size: .85rem;
   margin-top: 10px;
-  color: rgba(28,27,25,.7);
+  color: rgba(26,26,24,.7);
 }
 
 
@@ -360,14 +366,19 @@ main {
 }
 
 .size-grid button {
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--ink);
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--ink);
   background: transparent;
   color: var(--ink);
-  border-radius: 3px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: .9rem;
+  transition: all .15s ease;
+}
+
+.size-grid button:hover {
+  border-color: var(--leather);
 }
 
 .size-grid button.active {
@@ -395,9 +406,9 @@ main {
 
 .trust-row span {
   font-size: .75rem;
-  border: 1px solid rgba(28,27,25,.2);
-  border-radius: 3px;
-  padding: 6px 10px;
+  border: 1px solid rgba(26,26,24,.12);
+  border-radius: 999px;
+  padding: 6px 12px;
   background: var(--paper);
 }
 
@@ -415,18 +426,23 @@ main {
 
 .cta button {
   padding: 15px;
-  border-radius: 3px;
+  border-radius: 999px;
   font-size: .9rem;
   text-align: center;
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: .03em;
+  transition: all .2s ease;
 }
 
 .primary {
-  background: var(--charcoal);
+  background: var(--leather);
   color: var(--paper);
   border: none;
+}
+
+.primary:hover {
+  background: var(--leather-dark);
 }
 
 .buy-now {
@@ -437,8 +453,8 @@ main {
 
 .pay-online {
   background: transparent;
-  border: 1px dashed rgba(28,27,25,.35);
-  color: rgba(28,27,25,.5);
+  border: 1.5px dashed rgba(26,26,24,.35);
+  color: rgba(26,26,24,.5);
   cursor: not-allowed !important;
 }
 
@@ -461,12 +477,12 @@ main {
 
 .desc p {
   margin-bottom: 12px;
-  color: rgba(28,27,25,.8);
+  color: rgba(26,26,24,.8);
 }
 
 .desc ul {
   margin: 0 0 12px 20px;
-  color: rgba(28,27,25,.8);
+  color: rgba(26,26,24,.8);
 }
 
 
@@ -483,7 +499,7 @@ table.size-table {
 
 table.size-table th,
 table.size-table td {
-  border: 1px solid rgba(28,27,25,.15);
+  border: 1px solid rgba(26,26,24,.15);
   padding: 8px 10px;
   text-align: center;
 }
@@ -501,9 +517,9 @@ table.size-table th {
 footer {
   padding: 24px 6vw;
   font-size: .75rem;
-  color: rgba(28,27,25,.5);
+  color: rgba(26,26,24,.5);
   text-align: center;
-  border-top: 1px solid rgba(28,27,25,.08);
+  border-top: 1px solid rgba(26,26,24,.08);
 }
 
 
@@ -565,9 +581,23 @@ footer {
         color:inherit;
       "
     >
-      ← M Ashraf Shoes
+      ← M Ashraf <em style="font-style:normal; color:#1B5E43;">Shoes</em>
     </a>
 
+
+    <div style="display:flex;align-items:center;gap:14px;">
+
+    <a
+      href="account.html"
+      style="
+        text-decoration:none;
+        color:inherit;
+      "
+      aria-label="My Account"
+      title="My Account"
+    >
+      <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+    </a>
 
     <a
       href="cart.html"
@@ -575,20 +605,20 @@ footer {
         position:relative;
         text-decoration:none;
         color:inherit;
-        font-size:22px;
+        font-size:20px;
       "
       aria-label="Cart"
     >
 
-      🛍️
+      <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
 
       <span
         id="cartBadge"
         style="
           display:none;
           position:absolute;
-          top:-4px;
-          right:-8px;
+          top:-2px;
+          right:-6px;
           background:#1B5E43;
           color:#fff;
           font-size:10px;
@@ -601,6 +631,8 @@ footer {
       ></span>
 
     </a>
+
+    </div>
 
   </div>
 

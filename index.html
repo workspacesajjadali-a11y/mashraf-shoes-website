@@ -30,175 +30,262 @@
 <style>
   :root{
     color-scheme: light;
-    --white:    #FFFFFF;
-    --ink:      #1A1A18;
-    --ink-soft: rgba(26,26,24,0.62);
-    --ink-faint:rgba(26,26,24,0.38);
-    --accent:   #1B5E43;      /* emerald green — the luxury border color */
-    --accent-soft: rgba(27,94,67,0.08);
-    --charcoal: #171614;
-    --sale:     #A13A2E;
+    --bg:        #FBFAF7;      /* warm paper white */
+    --white:     #FFFFFF;
+    --ink:       #1A1A18;
+    --ink-soft:  rgba(26,26,24,0.62);
+    --ink-faint: rgba(26,26,24,0.38);
+    --accent:    #1B5E43;      /* emerald — the only accent color */
+    --accent-deep: #13452f;
+    --line:      rgba(26,26,24,0.10);
+    --sale:      #A13A2E;
 
-    --space-1: 8px;  --space-2: 12px; --space-3: 16px; --space-4: 24px;
-    --space-5: 32px; --space-6: 48px;
-
-    --radius: 8px;
+    --radius: 14px;
     --container: 1120px;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; overflow-x:hidden; }
   body{
-    background:var(--white); color:var(--ink); overflow-x:hidden;
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.55; -webkit-font-smoothing:antialiased;
+    background:var(--bg); color:var(--ink); overflow-x:hidden;
+    font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased;
   }
   a{ color:inherit; }
   img{ max-width:100%; display:block; }
   button{ font-family:inherit; }
-  .wrap{ max-width:var(--container); margin:0 auto; padding:0 var(--space-3); }
-  .serif{ font-family:Georgia,'Times New Roman',serif; }
-  .mono{ font-family:'SF Mono','Courier New',monospace; }
+  .wrap{ max-width:var(--container); margin:0 auto; padding:0 20px; }
+  .serif{ font-family:var(--serif); }
 
-  /* ---------- header: menu | name | search (matches sketch) ---------- */
+  /* ============================================================
+     TOP DISCOUNT BANNER
+     ============================================================ */
+  .top-banner{
+    background:linear-gradient(135deg, #A13A2E, #C05A3B);
+    color:#fff; text-align:center; padding:11px 20px; font-size:13px; font-weight:600;
+    position:sticky; top:0; z-index:101;
+  }
+  .top-banner a{ color:#fff; text-decoration:underline; text-underline-offset:2px; }
+  .top-banner b{ color:#fff; }
+
+  /* ============================================================
+     HEADER — clean, floating glass bar
+     ============================================================ */
   header{
-    background:var(--white); border-bottom:2px solid var(--accent);
-    position:sticky; top:0; z-index:100;
+    position:sticky; top:34px; z-index:100;
+    background:rgba(251,250,247,0.85);
+    backdrop-filter:saturate(180%) blur(12px);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line);
   }
   .header-row{
     display:flex; align-items:center; justify-content:space-between;
-    padding:14px var(--space-3); gap:var(--space-2);
+    max-width:var(--container); margin:0 auto; padding:14px 20px; gap:12px;
   }
   .icon-btn{
     background:none; border:none; cursor:pointer; padding:6px; color:var(--ink);
-    display:flex; align-items:center; justify-content:center;
+    display:flex; align-items:center; justify-content:center; border-radius:8px;
+    transition:background .2s ease;
   }
-  .icon-btn svg{ width:22px; height:22px; }
-  .brand{ font-size:17px; font-weight:700; letter-spacing:0.02em; white-space:nowrap; }
-  .header-left{ display:flex; align-items:center; gap:8px; }
-  .header-right{ display:flex; align-items:center; gap:4px; }
+  .icon-btn:hover{ background:rgba(27,94,67,0.08); }
+  .icon-btn svg{ width:21px; height:21px; }
+  .brand{ font-size:17px; font-weight:700; letter-spacing:0.01em; white-space:nowrap; }
+  .brand em{ font-style:normal; color:var(--accent); }
+  .header-left{ display:flex; align-items:center; gap:10px; }
+  .header-right{ display:flex; align-items:center; gap:2px; }
 
   .nav-drawer{
     display:none; position:fixed; top:0; left:0; bottom:0; width:78%; max-width:300px;
-    background:var(--white); z-index:200; border-right:2px solid var(--accent);
-    padding:var(--space-4) var(--space-3); flex-direction:column; gap:var(--space-3);
+    background:var(--white); z-index:200; border-right:1px solid var(--line);
+    padding:24px 20px; flex-direction:column; gap:6px;
+    box-shadow:0 0 40px rgba(0,0,0,0.08);
   }
   .nav-drawer.open{ display:flex; }
-  .nav-drawer a{ text-decoration:none; color:var(--ink); font-size:16px; padding:8px 0; }
-  .nav-overlay{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:199; }
+  .nav-drawer a{ text-decoration:none; color:var(--ink); font-size:16px; padding:10px 0; border-bottom:1px solid var(--line); }
+  .nav-drawer a:last-child{ border-bottom:none; }
+  .nav-overlay{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.35); z-index:199; }
   .nav-overlay.open{ display:block; }
 
-  .search-bar{ display:none; padding:0 var(--space-3) var(--space-2); }
+  .search-bar{ display:none; max-width:var(--container); margin:0 auto; padding:0 20px 14px; }
   .search-bar.open{ display:block; }
   .search-bar input{
-    width:100%; padding:11px 14px; border:2px solid var(--accent); border-radius:var(--radius);
+    width:100%; padding:11px 16px; border:1.5px solid var(--line); border-radius:10px;
     font-size:15px; background:var(--white); color:var(--ink);
+    transition:border-color .2s ease;
   }
-  .search-bar input:focus{ outline:none; }
+  .search-bar input:focus{ outline:none; border-color:var(--accent); }
 
   nav.main-nav{ display:none; }
 
-  /* ---------- offer banner: left-right scrollable (matches sketch) ---------- */
-  .offer-section{ padding:var(--space-3); }
-  .offer-scroll{
-    display:flex; gap:var(--space-2); overflow-x:auto; scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch; scrollbar-width:none; padding-bottom:2px;
+  /* ============================================================
+     HERO — headline left, shoe on the side/background
+     ============================================================ */
+  .hero{
+    position:relative; padding:56px 20px 56px; overflow:hidden;
   }
-  .offer-scroll::-webkit-scrollbar{ display:none; }
-  .offer-card{
-    flex:0 0 88%; scroll-snap-align:start; background:var(--white);
-    border:2px solid var(--accent); border-radius:var(--radius);
-    padding:var(--space-4); text-align:center;
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(50% 60% at 80% 20%, rgba(27,94,67,0.08), transparent 70%),
+      radial-gradient(40% 50% at 12% 70%, rgba(27,94,67,0.05), transparent 70%);
+    pointer-events:none;
   }
-  .offer-card .tag{ font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); font-weight:700; margin-bottom:6px; }
-  .offer-card h2{ font-size:20px; margin-bottom:6px; }
-  .offer-card p{ font-size:13px; color:var(--ink-soft); margin-bottom:14px; }
+  .hero-inner{
+    position:relative; max-width:var(--container); margin:0 auto;
+    display:grid; grid-template-columns:1fr; gap:28px; align-items:center;
+  }
+  .hero-kicker{
+    font-size:12px; text-transform:uppercase; letter-spacing:0.18em;
+    color:var(--accent); font-weight:700; margin-bottom:14px;
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:400; font-size:clamp(34px, 7vw, 60px);
+    line-height:1.08; letter-spacing:-0.01em; max-width:640px; margin:0 0 16px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--accent); }
+  .hero p{
+    font-size:15px; color:var(--ink-soft); max-width:460px; margin:0 0 28px;
+  }
+  .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
 
   .btn{
     display:inline-flex; align-items:center; justify-content:center; gap:8px;
-    text-decoration:none; padding:12px 20px; border-radius:var(--radius);
+    text-decoration:none; padding:13px 24px; border-radius:999px;
     font-size:14px; font-weight:600; border:none; cursor:pointer;
+    transition:transform .2s ease, background .2s ease, color .2s ease;
   }
-  .btn-primary{ background:var(--charcoal); color:#fff; }
-  .btn-outline{ background:transparent; border:2px solid var(--accent); color:var(--accent); }
-  .btn-disabled{ background:transparent; border:1px dashed var(--ink-faint); color:var(--ink-faint); cursor:not-allowed; }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--accent); color:#fff; }
+  .btn-primary:hover{ background:var(--accent-deep); }
+  .btn-outline{ background:transparent; border:1.5px solid var(--ink); color:var(--ink); }
+  .btn-outline:hover{ background:var(--ink); color:#fff; }
 
-  /* ---------- category icons: men / women / kids / leather (matches sketch) ---------- */
-  .categories{ padding:var(--space-4) var(--space-3); }
-  .cat-row{ display:flex; justify-content:space-around; gap:var(--space-2); }
-  .cat-item{ background:none; border:none; cursor:pointer; text-align:center; }
-  .cat-circle{
-    width:56px; height:56px; border-radius:50%; border:2px solid var(--accent);
-    display:flex; align-items:center; justify-content:center; margin:0 auto 8px;
-    background:var(--white); font-size:22px;
+  /* the shoe + laces stage — sits on the side, in the background */
+  .lace-stage{
+    position:relative; max-width:440px; margin:0 auto; width:100%;
   }
-  .cat-item.active .cat-circle{ background:var(--accent); }
-  .cat-item span{ font-size:12px; color:var(--ink-soft); }
-
-  /* ---------- top products: horizontal scrollable (matches sketch) ---------- */
-  .products-section{ padding:var(--space-4) 0; }
-  .section-head{ padding:0 var(--space-3); margin-bottom:var(--space-3); }
-  .section-head .kicker{ font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); font-weight:700; margin-bottom:4px; }
-  .section-head h2{ font-size:19px; font-weight:700; }
-
-  .product-scroll{
-    display:flex; gap:var(--space-3); overflow-x:auto; padding:0 var(--space-3) 6px;
-    scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  .lace-stage svg{ width:100%; height:auto; display:block; }
+  .scroll-hint{
+    margin-top:16px; font-size:12px; color:var(--ink-faint);
+    letter-spacing:0.06em; text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:8px;
   }
-  .product-scroll::-webkit-scrollbar{ display:none; }
+  .scroll-hint .dot{
+    width:6px; height:6px; border-radius:50%; background:var(--accent);
+    animation:pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{opacity:.3; transform:scale(1);} 50%{opacity:1; transform:scale(1.4);} }
+
+  /* ============================================================
+     CATEGORY STRIP
+     ============================================================ */
+  .categories{ padding:8px 20px 8px; }
+  .cat-row{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+  .cat-item{
+    background:none; border:1px solid var(--line); cursor:pointer;
+    display:flex; align-items:center; gap:8px; padding:9px 16px;
+    border-radius:999px; font-size:13px; font-weight:600; color:var(--ink-soft);
+    transition:all .2s ease;
+  }
+  .cat-item .cat-ico{ font-size:16px; }
+  .cat-item:hover{ border-color:var(--accent); color:var(--ink); }
+  .cat-item.active{ background:var(--accent); border-color:var(--accent); color:#fff; }
+
+  /* ============================================================
+     PRODUCTS
+     ============================================================ */
+  .products-section{ padding:48px 20px; max-width:var(--container); margin:0 auto; }
+  .section-head{ margin-bottom:28px; text-align:center; }
+  .section-head .kicker{
+    font-size:11px; text-transform:uppercase; letter-spacing:0.16em;
+    color:var(--accent); font-weight:700; margin-bottom:8px;
+  }
+  .section-head h2{ font-family:var(--serif); font-weight:400; font-size:clamp(24px,4vw,34px); }
+
+  .product-grid{
+    display:grid; grid-template-columns:1fr; gap:20px;
+  }
+  @media (min-width:560px){
+    .product-grid{ grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (min-width:920px){
+    .product-grid{ grid-template-columns:repeat(3, 1fr); }
+  }
   .card{
-    flex:0 0 200px; scroll-snap-align:start; background:var(--white);
-    border:2px solid var(--accent); border-radius:var(--radius); overflow:hidden;
-    position:relative;
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; position:relative; transition:transform .25s ease, box-shadow .25s ease;
   }
-  .card .photo{ display:block; width:100%; aspect-ratio:1/1; background:#fff; border-bottom:2px solid var(--accent); }
-  .card .photo img{ width:100%; height:100%; object-fit:cover; }
+  .card:hover{ transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,0.08); }
+  .card .photo{ display:block; width:100%; aspect-ratio:1/1; background:#fff; overflow:hidden; }
+  .card .photo img{ width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
+  .card:hover .photo img{ transform:scale(1.04); }
   .card .badge{
-    position:absolute; top:8px; left:8px; background:var(--charcoal); color:#fff;
-    font-size:9px; text-transform:uppercase; letter-spacing:0.05em; padding:3px 8px; border-radius:3px;
+    position:absolute; top:12px; left:12px; background:var(--ink); color:#fff;
+    font-size:10px; text-transform:uppercase; letter-spacing:0.06em; padding:4px 10px; border-radius:999px;
   }
   .card .badge.sale{ background:var(--sale); }
   .card .wishlist{
-    position:absolute; top:6px; right:6px; width:26px; height:26px; border-radius:50%;
-    background:rgba(255,255,255,0.92); border:none; cursor:pointer; font-size:14px;
+    position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%;
+    background:rgba(255,255,255,0.92); border:1px solid var(--line); cursor:pointer; font-size:15px;
     display:flex; align-items:center; justify-content:center; color:var(--ink-soft);
+    transition:all .2s ease;
   }
-  .card .wishlist.active{ color:var(--sale); }
-  .card .body{ padding:var(--space-2) var(--space-2); }
-  .card .brand{ font-size:11px; color:var(--ink-soft); text-transform:uppercase; }
-  .card .name{ font-size:13px; font-weight:600; margin:2px 0 6px; line-height:1.3; }
-  .card .rating{ font-size:11px; color:var(--ink-soft); margin-bottom:6px; }
-  .card .rating .stars{ color:var(--accent); }
-  .card .swatch-row{ display:flex; gap:5px; margin-bottom:8px; flex-wrap:wrap; }
-  .swatch{ width:15px; height:15px; border-radius:50%; border:2px solid transparent; cursor:pointer; padding:0; box-shadow:0 0 0 1px rgba(26,26,24,0.2); }
-  .swatch.active{ border-color:var(--ink); }
-  .card .price{ font-size:15px; font-weight:700; margin-bottom:8px; }
+  .card .wishlist.active{ color:var(--sale); border-color:var(--sale); }
+  .card .body{ padding:14px 16px 16px; }
+  .card .brand{ font-size:10.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.08em; }
+  .card .name{ font-size:14px; font-weight:600; margin:3px 0 8px; line-height:1.3; }
+  .card .rating{ font-size:11px; color:var(--ink-faint); margin-bottom:10px; }
+  .card .rating .stars{ color:var(--accent); letter-spacing:1px; }
+  .card .swatch-row{ display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; }
+  .swatch{
+    width:16px; height:16px; border-radius:50%; border:2px solid transparent; cursor:pointer; padding:0;
+    box-shadow:0 0 0 1px rgba(26,26,24,0.18); transition:box-shadow .15s ease;
+  }
+  .swatch.active{ box-shadow:0 0 0 2px var(--accent); }
+  .card .price{ font-size:16px; font-weight:700; margin-bottom:12px; }
   .card .price .old{ color:var(--ink-faint); text-decoration:line-through; font-weight:400; font-size:12px; margin-left:6px; }
-  .card-actions{ display:flex; flex-direction:column; gap:6px; }
   .card .order{
-    text-decoration:none; text-align:center; background:var(--charcoal); color:#fff;
-    padding:9px; border-radius:6px; font-size:12px; font-weight:600; border:none; cursor:pointer; width:100%;
+    width:100%; background:var(--accent); color:#fff; padding:11px; border:none; border-radius:999px;
+    font-size:13px; font-weight:600; cursor:pointer; transition:background .2s ease, transform .2s ease;
   }
-  .card .btn-wa-outline{
-    background:transparent; border:1.5px solid var(--accent); color:var(--accent);
-    padding:8px; border-radius:6px; font-size:11.5px; font-weight:600; text-align:center; text-decoration:none; display:block;
-  }
-  .empty{ text-align:center; padding:var(--space-5) var(--space-3); color:var(--ink-faint); font-size:14px; }
+  .card .order:hover{ background:var(--accent-deep); transform:translateY(-1px); }
+  .empty{ text-align:center; padding:48px 20px; color:var(--ink-faint); font-size:14px; }
 
-  /* ---------- wholesale & bulk buyers: two-column box (matches sketch) ---------- */
-  .trade-section{ padding:var(--space-4) var(--space-3) var(--space-5); }
+  /* ============================================================
+     TRADE / WHOLESALE
+     ============================================================ */
+  .trade-section{ max-width:var(--container); margin:0 auto; padding:16px 20px 64px; }
   .trade-box{
-    display:grid; grid-template-columns:1fr 1fr; border:2px solid var(--accent); border-radius:var(--radius); overflow:hidden;
+    display:grid; grid-template-columns:1fr 1fr; gap:20px;
   }
-  .trade-box > div{ padding:var(--space-4) var(--space-2); text-align:center; }
-  .trade-box > div:first-child{ border-right:2px solid var(--accent); }
-  .trade-box h3{ font-size:15px; margin-bottom:6px; }
-  .trade-box p{ font-size:11.5px; color:var(--ink-soft); margin-bottom:12px; line-height:1.5; }
-  .trade-box .btn{ padding:9px 14px; font-size:12px; width:100%; }
+  .trade-box > div{
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px 24px; text-align:center;
+  }
+  .trade-box h3{ font-family:var(--serif); font-weight:400; font-size:20px; margin-bottom:8px; }
+  .trade-box p{ font-size:13px; color:var(--ink-soft); margin-bottom:16px; line-height:1.6; }
+  .trade-box .btn{ padding:10px 20px; font-size:13px; }
 
-  /* ---------- footer: about us | contacts | etc (matches sketch) ---------- */
-  footer{ border-top:2px solid var(--accent); padding:var(--space-4) var(--space-3); text-align:center; }
-  footer .foot-links{ display:flex; justify-content:center; gap:var(--space-4); margin-bottom:var(--space-2); flex-wrap:wrap; }
+  /* ============================================================
+     CONTACT
+     ============================================================ */
+  .section.contact{ padding:64px 20px; background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .section.contact .wrap{ max-width:480px; }
+  .contact label{ display:block; font-size:13px; font-weight:600; margin:14px 0 6px; }
+  .contact input, .contact textarea{
+    width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:10px;
+    font-size:14px; font-family:inherit; background:var(--bg);
+    transition:border-color .2s ease;
+  }
+  .contact input:focus, .contact textarea:focus{ outline:none; border-color:var(--accent); background:#fff; }
+  .contact .btn{ width:100%; margin-top:18px; }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  footer{ padding:40px 20px; text-align:center; }
+  footer .foot-links{ display:flex; justify-content:center; gap:28px; margin-bottom:14px; flex-wrap:wrap; }
   footer .foot-links a{ text-decoration:none; color:var(--ink); font-size:13px; font-weight:600; }
   footer .foot-contact{ font-size:12px; color:var(--ink-soft); margin-bottom:6px; }
   footer .foot-copy{ font-size:11px; color:var(--ink-faint); }
@@ -206,54 +293,29 @@
   body{ padding-bottom:60px; }
   .mobile-bar{
     position:fixed; bottom:0; left:0; right:0; z-index:90;
-    background:var(--charcoal); padding:12px var(--space-3);
+    background:var(--ink); padding:12px 20px;
     display:flex; align-items:center; justify-content:center;
   }
   .mobile-bar a{ color:#fff; text-decoration:none; font-size:14px; font-weight:600; display:flex; align-items:center; gap:8px; }
 
-  /* ---------- scroll reveal: sections fade in as you scroll down ----------
-     IMPORTANT: default state is fully VISIBLE. The .reveal-init class (added
-     only by JS, only if it runs successfully) is what hides elements before
-     animating them in. This way, if JS fails for any reason, the page still
-     shows everything normally instead of going blank. */
-  .reveal-init{ opacity:0; transform:translateY(24px); transition:opacity 0.6s ease, transform 0.6s ease; }
+  /* ---------- scroll reveal (safe: JS failure never hides content) ---------- */
+  .reveal-init{ opacity:0; transform:translateY(26px); transition:opacity .6s ease, transform .6s ease; }
   .reveal-init.visible{ opacity:1; transform:translateY(0); }
 
-  /* ===================================================================
-     DESKTOP — same sections, same order, same border language
-     =================================================================== */
   @media (min-width:760px){
     body{ padding-bottom:0; }
     .mobile-bar{ display:none; }
-
-    .header-row{ padding:16px var(--space-4); }
-    .brand{ font-size:20px; }
-    nav.main-nav{ display:flex; gap:var(--space-4); align-items:center; }
-    nav.main-nav a{ text-decoration:none; font-size:14px; color:var(--ink-soft); }
+    .header-row{ padding:16px 20px; }
+    .brand{ font-size:19px; }
+    nav.main-nav{ display:flex; gap:28px; align-items:center; }
+    nav.main-nav a{ text-decoration:none; font-size:13.5px; color:var(--ink-soft); font-weight:500; transition:color .2s ease; }
     nav.main-nav a:hover{ color:var(--ink); }
     #menuToggle{ display:none; }
-
-    .offer-section{ padding:var(--space-5) var(--space-4); max-width:var(--container); margin:0 auto; }
-    .offer-card{ flex:0 0 46%; padding:var(--space-5); }
-    .offer-card h2{ font-size:26px; }
-
-    .categories{ max-width:var(--container); margin:0 auto; padding:var(--space-5) var(--space-4); }
-    .cat-row{ justify-content:center; gap:var(--space-6); }
-    .cat-circle{ width:72px; height:72px; font-size:28px; }
-
-    .products-section{ max-width:var(--container); margin:0 auto; padding:var(--space-5) 0; }
-    .section-head{ padding:0 var(--space-4); text-align:center; }
-    .section-head h2{ font-size:26px; }
-    .product-scroll{ padding:0 var(--space-4) 8px; gap:var(--space-4); justify-content:center; flex-wrap:wrap; overflow-x:visible; min-height:0; }
-    .card{ flex:0 0 260px; }
-
-    .trade-section{ max-width:var(--container); margin:0 auto; padding:var(--space-6) var(--space-4); }
-    .trade-box > div{ padding:var(--space-6) var(--space-4); }
-    .trade-box h3{ font-size:19px; }
-    .trade-box p{ font-size:13px; }
-    .trade-box .btn{ width:auto; padding:11px 24px; }
-
-    footer{ padding:var(--space-5) var(--space-4); }
+    .hero{ padding:88px 20px 72px; }
+    .hero-inner{ grid-template-columns:1.05fr 0.95fr; gap:48px; }
+    .hero h1{ font-size:clamp(38px, 4.6vw, 56px); }
+    .lace-stage{ margin:0; }
+    .categories{ padding:16px 20px; }
   }
 </style>
 </head>
@@ -262,11 +324,17 @@
 <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
 <nav class="nav-drawer" id="navDrawer">
   <a href="#shop">Shop</a>
+  <a href="deals.html">Discounts &amp; Deals</a>
   <a href="#wholesale">Wholesale &amp; Bulk</a>
+  <a href="account.html">My Account</a>
   <a href="track-order.html">My Orders</a>
   <a href="#about">About Us</a>
   <a href="#contact">Contact</a>
 </nav>
+
+<div class="top-banner">
+  Discounted prices this week — <a href="deals.html"><b>Shop Deals →</b></a>
+</div>
 
 <header>
   <div class="header-row">
@@ -274,22 +342,26 @@
       <button class="icon-btn" id="menuToggle" aria-label="Menu" onclick="toggleMenu()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
-      <div class="brand serif">M Ashraf Shoes</div>
+      <div class="brand serif">M Ashraf <em>Shoes</em></div>
     </div>
     <nav class="main-nav">
       <a href="#shop">Shop</a>
+      <a href="deals.html">Deals</a>
       <a href="#wholesale">Wholesale</a>
+      <a href="account.html">My Account</a>
       <a href="track-order.html">My Orders</a>
-      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="header-right">
       <button class="icon-btn" id="searchToggle" aria-label="Search" onclick="toggleSearch()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </button>
+      <a class="icon-btn" href="account.html" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+      </a>
       <a class="icon-btn" href="cart.html" style="position:relative;" aria-label="Cart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <span id="cartBadge" style="display:none; position:absolute; top:-2px; right:-2px; background:#1B5E43; color:#fff; font-size:10px; width:16px; height:16px; border-radius:50%; align-items:center; justify-content:center;"></span>
+        <span id="cartBadge" style="display:none; position:absolute; top:-2px; right:-2px; background:var(--accent); color:#fff; font-size:10px; width:16px; height:16px; border-radius:50%; align-items:center; justify-content:center;"></span>
       </a>
     </div>
   </div>
@@ -298,55 +370,87 @@
   </div>
 </header>
 
-<!-- OFFER BANNER: left-right scrollable, per sketch -->
-<section class="offer-section reveal">
-  <h1 style="font-size:15px; font-weight:700; text-align:center; padding:0 var(--space-3) var(--space-2); color:var(--ink-soft);">
-    Women's Sandals &amp; Footwear Online in Pakistan — Cash on Delivery
-  </h1>
-  <div class="offer-scroll">
-    <div class="offer-card">
-      <div class="tag">New Arrival</div>
-      <h2 class="serif">Diamante Strap Sandals</h2>
-      <p>8 colors · Sizes 5–10 · Cash on Delivery</p>
-      <a class="btn btn-primary" href="#shop">Shop Now</a>
+<!-- HERO: headline left, shoe on the side — laces tie as you scroll -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-kicker">New Season · Cash on Delivery · Nationwide</div>
+      <h1>Step into style, <em>tied to perfection</em></h1>
+      <p>Women's sandals and men's classics, delivered anywhere in Pakistan. Keep scrolling — watch the laces tie.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#shop">Shop the Collection</a>
+        <a class="btn btn-outline" href="deals.html">View Discounts</a>
+      </div>
     </div>
-    <div class="offer-card">
-      <div class="tag">Easy Checkout</div>
-      <h2 class="serif">Order Directly, No Chatting Needed</h2>
-      <p>Add to cart, enter your address, done — Cash on Delivery available</p>
-      <a class="btn btn-outline" href="#shop">Shop Now</a>
-    </div>
-    <div class="offer-card">
-      <div class="tag">Trade</div>
-      <h2 class="serif">Wholesale &amp; Bulk Orders</h2>
-      <p>Special pricing for shopkeepers and resellers</p>
-      <a class="btn btn-outline" href="#wholesale">Learn More</a>
+
+    <div class="lace-stage">
+      <svg id="laceSvg" viewBox="0 0 520 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Shoe with laces that tie as you scroll">
+        <!-- sole -->
+        <path d="M78 236 C90 258 168 268 268 268 C368 268 446 258 458 236 L452 246 C430 260 330 268 268 268 C206 268 112 260 86 246 Z" fill="#1A1A18"/>
+        <!-- upper -->
+        <path d="M86 246 C84 220 96 196 118 184 L120 182 C136 176 176 176 196 178 L206 158 C212 142 228 132 246 130 L258 128 C274 126 290 130 302 138 C322 152 330 164 344 180 C356 194 368 206 452 246 L86 246 Z" fill="#F3F1EC"/>
+        <!-- tongue -->
+        <path d="M210 182 C218 168 238 162 256 162 L262 164 C250 180 244 196 244 214 C244 222 240 228 234 230 C224 224 216 204 210 182 Z" fill="#EAE7E0"/>
+        <!-- collar -->
+        <path d="M118 184 C104 192 96 208 94 222 L86 246 L120 246 C112 226 112 202 118 184 Z" fill="#E4E1D9"/>
+        <!-- heel cap -->
+        <path d="M330 164 C352 176 368 190 380 204 L452 246 L344 246 C332 220 326 190 330 164 Z" fill="#ECEAE3"/>
+
+        <!-- eyelets -->
+        <circle cx="200" cy="156" r="3.5" fill="#1A1A18"/>
+        <circle cx="262" cy="156" r="3.5" fill="#1A1A18"/>
+        <circle cx="210" cy="192" r="3.5" fill="#1A1A18"/>
+        <circle cx="272" cy="192" r="3.5" fill="#1A1A18"/>
+        <circle cx="222" cy="226" r="3.5" fill="#1A1A18"/>
+        <circle cx="284" cy="226" r="3.5" fill="#1A1A18"/>
+
+        <!-- laces: each path draws in as you scroll (bottom lace first) -->
+        <g stroke="#1B5E43" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+          <path class="lace" d="M222 226 C238 232 266 232 284 226"/>
+          <path class="lace" d="M210 192 C226 200 254 200 272 192"/>
+          <path class="lace" d="M200 156 C218 164 244 164 262 156"/>
+          <path class="lace" d="M200 156 C214 140 250 140 262 156"/>
+        </g>
+
+        <!-- the bow: scales in at the end of the scroll -->
+        <g id="bow" opacity="0">
+          <path d="M224 128 C204 118 192 104 190 92 C196 96 208 104 224 112 C232 100 226 82 216 74 C222 80 224 90 224 102 C230 96 240 94 248 96 C244 106 236 112 224 116 Z" fill="#1B5E43"/>
+          <path d="M256 128 C276 118 288 104 290 92 C284 96 272 104 256 112 C248 100 254 82 264 74 C258 80 256 90 256 102 C250 96 240 94 232 96 C236 106 244 112 256 116 Z" fill="#1B5E43"/>
+          <circle cx="240" cy="122" r="8" fill="#13452f"/>
+        </g>
+      </svg>
+      <div class="scroll-hint"><span class="dot"></span> scroll to tie the laces</div>
     </div>
   </div>
 </section>
 
-<!-- CATEGORY ICONS: men / women / kids / leather, per sketch -->
-<section class="categories reveal">
+<!-- CATEGORY STRIP -->
+<section class="categories">
   <div class="cat-row" id="catRow">
-    <button class="cat-item active" data-cat="all"><div class="cat-circle">✦</div><span>All</span></button>
-    <button class="cat-item" data-cat="men"><div class="cat-circle">👞</div><span>Men</span></button>
-    <button class="cat-item" data-cat="women"><div class="cat-circle">👡</div><span>Women</span></button>
-    <button class="cat-item" data-cat="kids"><div class="cat-circle">👟</div><span>Kids</span></button>
-    <button class="cat-item" data-cat="leather"><div class="cat-circle">🧵</div><span>Leather</span></button>
+    <button class="cat-item active" data-cat="all"><span class="cat-ico">✦</span><span>All</span></button>
+    <button class="cat-item" data-cat="women"><span class="cat-ico">👡</span><span>Women</span></button>
+    <button class="cat-item" data-cat="men"><span class="cat-ico">👞</span><span>Men</span></button>
+    <button class="cat-item" data-cat="kids"><span class="cat-ico">👟</span><span>Kids</span></button>
+    <button class="cat-item" data-cat="leather"><span class="cat-ico">🧵</span><span>Leather</span></button>
   </div>
 </section>
 
-<!-- TOP PRODUCTS: horizontal scrollable, per sketch -->
+<!-- TOP PRODUCTS -->
 <section class="products-section reveal" id="shop">
   <div class="section-head">
-    <div class="kicker">Top Products</div>
+    <div class="kicker">Our Collection</div>
     <h2>Shop the Collection</h2>
+    <p style="color:var(--ink-soft); font-size:13px; margin-top:8px;">Browse women's &amp; men's styles — up to 70+ products, growing every week.</p>
   </div>
-  <div class="product-scroll" id="grid"></div>
+  <div class="product-grid" id="grid"></div>
 </section>
 
-<!-- WHOLESALE & BULK BUYERS: two-column box, per sketch -->
+<!-- WHOLESALE & BULK BUYERS -->
 <section class="trade-section reveal" id="wholesale">
+  <div class="section-head">
+    <div class="kicker">For Shopkeepers</div>
+    <h2>Wholesale &amp; Bulk Orders</h2>
+  </div>
   <div class="trade-box">
     <div>
       <h3 class="serif">Wholesale</h3>
@@ -361,32 +465,35 @@
   </div>
 </section>
 
-<!-- CONTACT / INQUIRY: customer leaves their number, we call back -->
-<section class="section" id="contact" style="padding:var(--space-6) var(--space-3); background:#fff; border-top:2px solid var(--accent); border-bottom:2px solid var(--accent);">
-  <div class="wrap" style="max-width:480px;">
+<!-- CONTACT / INQUIRY -->
+<section class="section contact reveal" id="contact">
+  <div class="wrap">
     <div class="section-head">
       <div class="kicker">Contact</div>
       <h2>Have a Question?</h2>
-      <p>Leave your number and a short message — we'll contact you directly.</p>
+      <p style="color:var(--ink-soft); font-size:13px; margin-top:8px;">Leave your number and a short message — we'll contact you directly.</p>
     </div>
     <form id="inquiryForm">
       <input type="hidden" id="inquiryType" value="General">
-      <label style="display:block; font-size:13px; font-weight:600; margin:14px 0 6px;">Your Name</label>
-      <input type="text" id="inqName" required placeholder="Your name" style="width:100%; padding:12px; border:2px solid var(--line); border-radius:6px; font-size:14px;">
-      <label style="display:block; font-size:13px; font-weight:600; margin:14px 0 6px;">Phone Number</label>
-      <input type="tel" id="inqPhone" required placeholder="03XXXXXXXXX" style="width:100%; padding:12px; border:2px solid var(--line); border-radius:6px; font-size:14px;">
-      <label style="display:block; font-size:13px; font-weight:600; margin:14px 0 6px;">Message</label>
-      <textarea id="inqMessage" rows="3" required placeholder="What would you like to ask?" style="width:100%; padding:12px; border:2px solid var(--line); border-radius:6px; font-size:14px; font-family:inherit;"></textarea>
-      <button type="submit" class="btn btn-primary" style="width:100%; margin-top:16px;">Send Inquiry</button>
+      <label>Your Name</label>
+      <input type="text" id="inqName" required placeholder="Your name">
+      <label>Phone Number</label>
+      <input type="tel" id="inqPhone" required placeholder="03XXXXXXXXX">
+      <label>Message</label>
+      <textarea id="inqMessage" rows="3" required placeholder="What would you like to ask?"></textarea>
+      <button type="submit" class="btn btn-primary">Send Inquiry</button>
       <p id="inquiryStatus" style="font-size:12px; text-align:center; margin-top:10px; color:var(--ink-soft);"></p>
     </form>
   </div>
 </section>
 
-<!-- FOOTER: about us | contacts | etc, per sketch -->
-<footer id="about" class="reveal">
+<!-- FOOTER -->
+<footer id="about">
   <div class="foot-links">
     <a href="#about">About Us</a>
+    <a href="deals.html">Discounts</a>
+    <a href="account.html">My Account</a>
+    <a href="track-order.html">Track Order</a>
     <a href="#contact">Contact</a>
     <a href="mailto:info@mashrafshoes.store">Email</a>
   </div>
@@ -398,9 +505,74 @@
   <a href="cart.html">🛍️ View Cart</a>
 </div>
 
+<script src="supabase-config.js"></script>
+<script src="supabase.js"></script>
 <script src="cart.js"></script>
 <script src="products.js"></script>
 <script>
+  /* ============================================================
+     LACES TIE AS YOU SCROLL
+     As the page scrolls from top to bottom, each lace segment
+     draws in (bottom first) and the bow ties at the end.
+     Mobile-safe: it uses % of hero height + requestAnimationFrame,
+     so it works identically on phone and desktop.
+     ============================================================ */
+  (function(){
+    var svg = document.getElementById('laceSvg');
+    if(!svg) return;
+    var laces = Array.prototype.slice.call(document.querySelectorAll('#laceSvg .lace'));
+    var bow = document.getElementById('bow');
+    var hero = document.querySelector('.hero');
+
+    var lengths = laces.map(function(l){ return l.getTotalLength(); });
+    laces.forEach(function(l, i){
+      l.style.strokeDasharray = lengths[i];
+      l.style.strokeDashoffset = lengths[i];
+    });
+
+    var heroT = 0, heroH = 0;
+    function heroMeasures(){
+      var r = hero.getBoundingClientRect();
+      heroT = r.top + window.pageYOffset;
+      heroH = r.height;
+    }
+
+    var ticking = false;
+    function onScroll(){
+      if(!ticking){
+        ticking = true;
+        requestAnimationFrame(function(){
+          var p = (window.pageYOffset - heroT) / (heroH * 0.9);
+          p = Math.max(0, Math.min(1, p));
+
+          laces.forEach(function(l, i){
+            var start = i / laces.length;
+            var end = (i + 1) / laces.length;
+            var lp = (p - start) / (end - start);
+            lp = Math.max(0, Math.min(1, lp));
+            l.style.strokeDashoffset = lengths[i] * (1 - lp);
+          });
+
+          var bowP = (p - 0.72) / 0.28;
+          bowP = Math.max(0, Math.min(1, bowP));
+          bow.style.opacity = bowP;
+          bow.style.transform = 'scale(' + (0.4 + 0.6 * bowP) + ')';
+          bow.style.transformOrigin = '240px 122px';
+
+          ticking = false;
+        });
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive:true });
+    window.addEventListener('resize', heroMeasures);
+    heroMeasures();
+    onScroll();
+  })();
+
+  /* ============================================================
+     INQUIRY FORM — Formspree + Supabase
+     ============================================================ */
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeajevvd';
 
   document.getElementById('inquiryForm').addEventListener('submit', async function(e){
@@ -419,15 +591,22 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      statusEl.textContent = 'Thank you — we will contact you shortly.';
-      statusEl.style.color = '#1B5E43';
-      document.getElementById('inquiryForm').reset();
-    }catch(err){
-      statusEl.textContent = 'Something went wrong — please try again.';
-      statusEl.style.color = '#A13A2E';
+    }catch(err){ console.error('Inquiry email failed:', err); }
+
+    if(window.SupabaseStore){
+      try{
+        await window.SupabaseStore.saveInquiry(payload);
+      }catch(err){ console.error('Supabase inquiry save failed:', err); }
     }
+
+    statusEl.textContent = 'Thank you — we will contact you shortly.';
+    statusEl.style.color = '#1B5E43';
+    document.getElementById('inquiryForm').reset();
   });
 
+  /* ============================================================
+     PRODUCTS — render, filter, search, wishlist, cart
+     ============================================================ */
   const grid = document.getElementById('grid');
   const catButtons = document.querySelectorAll('.cat-item');
   let currentFilter = 'all';
@@ -506,7 +685,7 @@
       <div class="card">
         <a class="photo" href="${p.pageUrl}?color=${encodeURIComponent(variant.color)}">
           ${p.badge ? `<span class="badge ${badgeClass}">${p.badge}</span>` : ''}
-          <img src="${variant.images[0]}" alt="${p.name} — ${variant.color}" onerror="this.style.display='none'">
+          <img src="${variant.images[0]}" alt="${p.name} — ${variant.color}" loading="lazy" onerror="this.style.display='none'">
         </a>
         <button class="wishlist ${isWished ? 'active' : ''}" onclick="event.stopPropagation(); toggleWishlist(${p.id})">${isWished ? '♥' : '♡'}</button>
         <div class="body">
@@ -516,12 +695,10 @@
           </a>
           <div class="rating"><span class="stars">${starString(p.rating)}</span> ${p.rating} (${p.ratingCount})</div>
           <div class="swatch-row">${swatches}</div>
-          <div class="price mono">Rs. ${p.price.toLocaleString()}${p.oldPrice ? `<span class="old">Rs. ${p.oldPrice.toLocaleString()}</span>` : ''}</div>
-          <div class="card-actions">
-            <button class="order" onclick="addToCart(${p.id}, '${p.name.replace(/'/g,"\\'")}', '${variant.color}', ${variant.sizes[0]}, ${p.price}, '${variant.images[0]}'); this.textContent='Added ✓'; setTimeout(()=>this.textContent='Add to Cart',1200);">
-              Add to Cart
-            </button>
-          </div>
+          <div class="price">Rs. ${p.price.toLocaleString()}${p.oldPrice ? `<span class="old">Rs. ${p.oldPrice.toLocaleString()}</span>` : ''}</div>
+          <button class="order" onclick="addToCart(${p.id}, '${p.name.replace(/'/g,"\\'")}', '${variant.color}', ${variant.sizes[0]}, ${p.price}, '${variant.images[0]}'); this.textContent='Added ✓'; setTimeout(()=>this.textContent='Add to Cart',1200);">
+            Add to Cart
+          </button>
         </div>
       </div>
     `}).join('');
@@ -536,8 +713,7 @@
     });
   });
 
-  // scroll-reveal runs FIRST and independently — wrapped in try/catch so
-  // a failure here can never leave the page blank; worst case, no animation
+  // scroll reveal (safe — never hides content if JS fails)
   try{
     const revealEls = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
@@ -552,6 +728,10 @@
       el.classList.add('reveal-init');
       revealObserver.observe(el);
     });
+    document.querySelectorAll('.hero-inner > *').forEach((el, i) => {
+      el.classList.add('reveal-init');
+      setTimeout(() => el.classList.add('visible'), 120 + i * 90);
+    });
   }catch(err){
     console.error('Scroll animation failed to set up (page still works fine):', err);
   }
@@ -561,6 +741,19 @@
   }catch(err){
     console.error('Product data failed to load:', err);
     grid.innerHTML = '<div class="empty">Products are loading — check back in a moment.</div>';
+  }
+
+  // Supabase: refresh the catalog from the database when configured.
+  if(window.SupabaseStore){
+    window.SupabaseStore.loadProducts()
+      .then(function(dbProducts){
+        if(!dbProducts) return;
+        window.products = dbProducts;
+        render();
+      })
+      .catch(function(err){
+        console.error('Supabase product load failed (using static catalog):', err);
+      });
   }
 </script>
 

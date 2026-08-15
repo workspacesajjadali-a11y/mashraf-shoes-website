@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>My Account — M Ashraf Shoes</title>
+<style>
+  :root{
+    --bg:#FBFAF7; --white:#FFFFFF; --ink:#1A1A18;
+    --ink-soft:rgba(26,26,24,0.62); --ink-faint:rgba(26,26,24,0.38);
+    --accent:#1B5E43; --accent-deep:#13452f; --line:rgba(26,26,24,0.10);
+    --sale:#A13A2E; --radius:14px;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    font-family:var(--sans); background:var(--bg); color:var(--ink);
+    min-height:100vh; -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; }
+
+  header{
+    background:rgba(251,250,247,0.85); backdrop-filter:saturate(180%) blur(12px);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line); padding:16px 5vw;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  header .brand{ text-decoration:none; font-family:var(--serif); font-weight:700; font-size:17px; }
+  header .brand em{ font-style:normal; color:var(--accent); }
+  header .back{ font-size:13px; color:var(--ink-soft); text-decoration:none; font-weight:600; }
+  header .back:hover{ color:var(--ink); }
+
+  main{ max-width:900px; margin:0 auto; padding:40px 20px 80px; }
+
+  .loading{ text-align:center; padding:60px 20px; color:var(--ink-faint); font-size:14px; }
+
+  .profile{
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    padding:28px; display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-bottom:28px;
+  }
+  .avatar{
+    width:56px; height:56px; border-radius:50%; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-family:var(--serif);
+    font-size:24px; flex-shrink:0;
+  }
+  .profile .meta{ flex:1; min-width:180px; }
+  .profile h1{ font-family:var(--serif); font-weight:400; font-size:22px; }
+  .profile .email{ font-size:13px; color:var(--ink-soft); margin-top:2px; word-break:break-all; }
+  .logout{
+    padding:10px 18px; border:1.5px solid var(--line); border-radius:999px; background:var(--white);
+    font-size:13px; font-weight:600; color:var(--ink); cursor:pointer; transition:all .2s ease;
+  }
+  .logout:hover{ border-color:var(--sale); color:var(--sale); }
+
+  .tabs{ display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+  .tab{
+    padding:9px 18px; border:1px solid var(--line); border-radius:999px; background:var(--white);
+    font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer; transition:all .2s ease;
+  }
+  .tab.active{ background:var(--accent); border-color:var(--accent); color:#fff; }
+
+  .panel{ display:none; }
+  .panel.active{ display:block; }
+
+  .card{
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px; margin-bottom:14px;
+  }
+  .card h3{ font-family:var(--serif); font-weight:400; font-size:18px; margin-bottom:14px; }
+
+  .cart-item{ display:flex; gap:14px; align-items:center; padding:12px 0; border-bottom:1px solid var(--line); }
+  .cart-item:last-child{ border-bottom:none; padding-bottom:0; }
+  .cart-item img{ width:56px; height:56px; object-fit:cover; border-radius:10px; background:#fff; }
+  .cart-item .ci-meta{ flex:1; }
+  .cart-item .ci-name{ font-size:14px; font-weight:600; }
+  .cart-item .ci-sub{ font-size:12px; color:var(--ink-soft); margin-top:2px; }
+  .cart-item .ci-price{ font-size:14px; font-weight:700; color:var(--accent); }
+  .cart-empty{ text-align:center; padding:30px 10px; color:var(--ink-soft); font-size:14px; }
+  .cart-empty a{ color:var(--accent); font-weight:700; text-decoration:none; }
+
+  .order{
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px; margin-bottom:14px;
+  }
+  .order .o-top{ display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
+  .order .o-id{ font-size:13px; font-weight:700; }
+  .order .o-date{ font-size:12px; color:var(--ink-faint); }
+  .order .o-items{ font-size:13px; color:var(--ink-soft); line-height:1.5; margin-bottom:10px; }
+  .order .o-bottom{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+  .order .o-total{ font-size:15px; font-weight:700; }
+  .status{
+    padding:5px 12px; border-radius:999px; font-size:12px; font-weight:700;
+    background:rgba(27,94,67,0.10); color:var(--accent);
+  }
+
+  .empty{ text-align:center; padding:40px 20px; color:var(--ink-soft); }
+  .empty h3{ font-family:var(--serif); font-weight:400; font-size:20px; margin-bottom:8px; color:var(--ink); }
+  .empty a{ color:var(--accent); font-weight:700; text-decoration:none; }
+
+  footer{ text-align:center; padding:24px 20px; font-size:12px; color:var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="brand">M Ashraf <em>Shoes</em></a>
+  <a href="index.html" class="back">← Back to shop</a>
+</header>
+
+<main>
+  <div class="loading" id="loading">Checking your account…</div>
+
+  <div id="app" style="display:none;">
+    <div class="profile">
+      <div class="avatar" id="avatar">M</div>
+      <div class="meta">
+        <h1 id="name">Welcome</h1>
+        <div class="email" id="email"></div>
+      </div>
+      <button class="logout" id="logoutBtn">Log Out</button>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-panel="cartPanel">My Cart</button>
+      <button class="tab" data-panel="ordersPanel">Order History</button>
+    </div>
+
+    <div class="panel active" id="cartPanel">
+      <div class="card">
+        <h3>Saved cart <span style="color:var(--ink-faint); font-size:12px; font-family:var(--sans); font-weight:400;">— synced to your email</span></h3>
+        <div id="cartList"></div>
+      </div>
+    </div>
+
+    <div class="panel" id="ordersPanel">
+      <div class="card">
+        <h3>Order history</h3>
+        <div id="ordersList"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="guestView" style="display:none;">
+    <div class="empty">
+      <h3>You're not logged in</h3>
+      <p style="margin-bottom:16px;">Log in to see your saved cart and order history.</p>
+      <a href="login.html" style="display:inline-block; padding:12px 26px; border-radius:999px; background:var(--accent); color:#fff; font-size:14px; font-weight:700;">Log In</a>
+      <br><br>
+      <a href="signup.html" style="color:var(--ink); font-weight:600;">Create an account</a>
+    </div>
+  </div>
+</main>
+
+<footer>© M Ashraf Shoes Pakistan — Cash on Delivery · Nationwide Shipping</footer>
+
+<script src="supabase-config.js"></script>
+<script src="supabase.js"></script>
+<script src="products.js"></script>
+<script>
+  (function(){
+    var app = document.getElementById('app');
+    var loading = document.getElementById('loading');
+    var guestView = document.getElementById('guestView');
+
+    function showGuest(){
+      loading.style.display = 'none';
+      guestView.style.display = 'block';
+    }
+
+    function showApp(){
+      loading.style.display = 'none';
+      app.style.display = 'block';
+    }
+
+    function initUser(user){
+      showApp();
+      var email = (user.email || '').toLowerCase();
+      var namePart = email.split('@')[0] || 'Member';
+      document.getElementById('name').textContent = 'Hello, ' + namePart;
+      document.getElementById('email').textContent = email;
+      document.getElementById('avatar').textContent = (namePart.charAt(0) || 'M').toUpperCase();
+
+      // Merge the guest's local cart into their saved cart on first login,
+      // then always save the newest cart to their email.
+      var local = [];
+      try{ local = JSON.parse(localStorage.getItem('mashraf_cart') || '[]'); }catch(e){}
+
+      window.SupabaseStore.loadUserCart(email).then(function(saved){
+        var merged = [];
+        if(local && local.length){
+          merged = local;
+          localStorage.removeItem('mashraf_cart');
+        }else if(saved && saved.length){
+          merged = saved;
+        }
+        if(merged.length){
+          window.SupabaseStore.saveUserCart(email, merged).catch(function(){});
+        }
+        renderCart(email, merged);
+      }).catch(function(err){
+        renderCart(email, local);
+      });
+
+      loadOrders(email);
+    }
+
+    function renderCart(email, items){
+      var wrap = document.getElementById('cartList');
+      if(!items || !items.length){
+        wrap.innerHTML = '<div class="cart-empty">Your cart is empty.<br><br><a href="index.html">Browse products →</a></div>';
+        return;
+      }
+      wrap.innerHTML = items.map(function(it){
+        return '<div class="cart-item">' +
+          (it.image ? '<img src="' + it.image + '" alt="">' : '') +
+          '<div class="ci-meta">' +
+            '<div class="ci-name">' + it.productName + '</div>' +
+            '<div class="ci-sub">' + (it.color || '') + (it.size ? ' · Size ' + it.size : '') + ' · Qty ' + it.qty + '</div>' +
+          '</div>' +
+          '<div class="ci-price">Rs. ' + Number(it.price * it.qty).toLocaleString() + '</div>' +
+        '</div>';
+      }).join('') +
+      '<div style="margin-top:16px; text-align:center;">' +
+        '<a href="cart.html" style="display:inline-block; padding:12px 26px; border-radius:999px; background:var(--accent); color:#fff; font-size:14px; font-weight:700; text-decoration:none;">Open Cart</a>' +
+      '</div>';
+    }
+
+    function loadOrders(email){
+      var wrap = document.getElementById('ordersList');
+      wrap.innerHTML = '<div class="cart-empty">Loading your orders…</div>';
+      window.SupabaseStore.getMyOrders(email).then(function(orders){
+        if(!orders || !orders.length){
+          wrap.innerHTML = '<div class="cart-empty">No orders yet with this email.<br><br><a href="index.html">Start shopping →</a></div>';
+          return;
+        }
+        wrap.innerHTML = orders.map(function(o){
+          var date = new Date(o.created_at).toLocaleDateString();
+          return '<div class="order">' +
+            '<div class="o-top"><span class="o-id">' + o.order_id + '</span><span class="o-date">' + date + '</span></div>' +
+            '<div class="o-items">' + (o.items_text || 'Items') + '</div>' +
+            '<div class="o-bottom"><span class="o-total">Rs. ' + Number(o.total).toLocaleString() + '</span>' +
+            '<span class="status">' + (o.status || 'Processing') + '</span></div>' +
+          '</div>';
+        }).join('');
+      }).catch(function(){
+        wrap.innerHTML = '<div class="cart-empty">Could not load orders right now — please try again later.</div>';
+      });
+    }
+
+    function init(){
+      if(!window.SupabaseStore || !window.SupabaseStore.isConfigured()){
+        showGuest();
+        return;
+      }
+      window.SupabaseStore.getUser().then(function(user){
+        if(user){ initUser(user); }
+        else { showGuest(); }
+      }).catch(function(){ showGuest(); });
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', function(){
+      window.SupabaseStore.signOut().then(function(){
+        window.location.href = 'index.html';
+      }).catch(function(){
+        window.location.href = 'index.html';
+      });
+    });
+
+    document.querySelectorAll('.tab').forEach(function(tab){
+      tab.addEventListener('click', function(){
+        document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+        tab.classList.add('active');
+        document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+        document.getElementById(tab.dataset.panel).classList.add('active');
+      });
+    });
+
+    init();
+  })();
+</script>
+
+</body>
+</html>
