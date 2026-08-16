@@ -300,8 +300,8 @@ var products = [
       {
         color: "Black",
         images: [
-          "images/mens-peshawari-chappal-black-pakistan-1.jpeg.heic",
-          "images/mens-peshawari-chappal-black-pakistan-2.jpeg.heic"
+          "images/mens-peshawari-chappal-black-pakistan-1.jpeg",
+          "images/mens-peshawari-chappal-black-pakistan-2.jpeg"
         ],
         sizes: [6, 7, 8, 9, 10]
       },
@@ -309,8 +309,8 @@ var products = [
       {
         color: "Brown",
         images: [
-          "images/mens-peshawari-chappal-brown-pakistan-1.jpeg.heic",
-          "images/mens-peshawari-chappal-brown-pakistan-2.jpeg.heic"
+          "images/mens-peshawari-chappal-brown-pakistan-1.jpeg",
+          "images/mens-peshawari-chappal-brown-pakistan-2.jpeg"
         ],
         sizes: [6, 7, 8, 9, 10]
       }
