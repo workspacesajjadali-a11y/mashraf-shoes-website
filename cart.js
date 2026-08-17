@@ -57,7 +57,7 @@ async function loadCartFromEmail(){
   }catch(err){ console.error('Loading cart from email failed:', err); }
 }
 
-function addToCart(productId, productName, color, size, price, image){
+function addToCart(productId, productName, color, size, price, image, deliveryCharge){
   let cart = getCart();
   const existingIndex = cart.findIndex(item =>
     item.productId === productId && item.color === color && item.size === size
@@ -65,7 +65,16 @@ function addToCart(productId, productName, color, size, price, image){
   if(existingIndex > -1){
     cart[existingIndex].qty += 1;
   }else{
-    cart.push({ productId, productName, color, size, price, image, qty: 1 });
+    cart.push({
+      productId,
+      productName,
+      color,
+      size,
+      price,
+      image,
+      deliveryCharge: Number.isFinite(Number(deliveryCharge)) ? Number(deliveryCharge) : null,
+      qty: 1
+    });
   }
   saveCart(cart);
 }
