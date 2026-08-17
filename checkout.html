@@ -144,7 +144,12 @@
     const itemsHtml = cart.map(item => `
       <div class="cart-item"><span>${item.productName} — ${item.color}, Size ${item.size} × ${item.qty}</span><span>Rs. ${(item.price*item.qty).toLocaleString()}</span></div>
     `).join('');
-    const deliveryCharge = 250; // COD default, updates if online payment activates later
+    const itemDeliveryCharges = cart
+      .map(item => Number.isFinite(Number(item.deliveryCharge)) ? Number(item.deliveryCharge) : 250);
+
+    // Preserve the existing single delivery charge for mixed/legacy carts,
+    // while allowing products with a specific delivery charge to use it.
+    const deliveryCharge = itemDeliveryCharges.length ? Math.max(...itemDeliveryCharges) : 0;
     const total = cartTotal() + deliveryCharge;
     summaryEl.innerHTML = `
       <h2>Order Summary</h2>
