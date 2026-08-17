@@ -145,6 +145,17 @@
   }
 
   function rowToProduct(row) {
+    const cleanVariants = (row.variants || []).map(function(v){
+      return {
+        color: v.color,
+        sizes: v.sizes || [],
+        images: (v.images || []).map(function(img){
+          // Some product images were stored with a stray .heic suffix,
+          // which browsers cannot display. Normalize to the .jpeg file.
+          return img.replace(/\.heic$/i, '');
+        })
+      };
+    });
     return {
       id: row.id,
       brand: row.brand,
@@ -163,7 +174,7 @@
       seoTitle: row.seo_title,
       seoDescription: row.seo_description,
       seoKeywords: row.seo_keywords || [],
-      variants: row.variants || []
+      variants: cleanVariants
     };
   }
 
