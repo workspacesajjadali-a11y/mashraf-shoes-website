@@ -34,19 +34,22 @@
     return cdnPromise;
   }
 
-  function getClient() {
+  async function getClient() {
     if (!isConfigured()) return null;
     if (client) return client;
-    client = window.supabase
-      ? window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY)
-      : null;
+    try {
+      const supabase = await loadCdn();
+      client = supabase ? supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY) : null;
+    } catch (e) {
+      client = null;
+    }
     return client;
   }
 
   /* ---------------- AUTH ---------------- */
 
   async function getSession() {
-    const c = getClient();
+    const c = await getClient();
     if (!c) return null;
     const { data } = await c.auth.getSession();
     return data ? data.session : null;
@@ -58,19 +61,19 @@
   }
 
   async function signUp(email, password) {
-    const c = getClient();
+    const c = await getClient();
     if (!c) return { data: null, error: { message: 'Supabase not configured yet.' } };
     return c.auth.signUp({ email, password, options: { emailRedirectTo: window.location.origin + '/account.html' } });
   }
 
   async function signIn(email, password) {
-    const c = getClient();
+    const c = await getClient();
     if (!c) return { data: null, error: { message: 'Supabase not configured yet.' } };
     return c.auth.signInWithPassword({ email, password });
   }
 
   async function signInWithGoogle() {
-    const c = getClient();
+    const c = await getClient();
     if (!c) return { data: null, error: { message: 'Supabase not configured yet.' } };
     return c.auth.signInWithOAuth({
       provider: 'google',
@@ -79,13 +82,13 @@
   }
 
   async function signOut() {
-    const c = getClient();
+    const c = await getClient();
     if (!c) return { error: null };
     return c.auth.signOut();
   }
 
   async function onAuthChange(callback) {
-    const c = getClient();
+    const c = await getClient();
     if (!c) return function () {};
     const { data } = c.auth.onAuthStateChange(function (event, session) {
       callback(event, session);
@@ -96,7 +99,7 @@
   /* ---------------- USER CART (per-email) ---------------- */
 
   async function saveUserCart(email, items) {
-    const c = getClient();
+    const c = await getClient();
     if (!c || !email) return null;
     const { data, error } = await c.rpc('save_cart', {
       p_email: email,
@@ -107,7 +110,7 @@
   }
 
   async function loadUserCart(email) {
-    const c = getClient();
+    const c = await getClient();
     if (!c || !email) return null;
     const { data, error } = await c.rpc('load_cart', {
       p_email: email
@@ -119,7 +122,7 @@
   /* ---------------- MY ORDERS (by email) ---------------- */
 
   async function getMyOrders(email) {
-    const c = getClient();
+    const c = await getClient();
     if (!c || !email) return [];
     const { data, error } = await c.rpc('get_my_orders', {
       p_email: email
@@ -131,7 +134,7 @@
   /* ---------------- PRODUCTS ---------------- */
 
   async function loadProducts() {
-    const c = getClient();
+    const c = await getClient();
     if (!c) return null;
     const { data, error } = await c
       .from('products')
@@ -167,7 +170,7 @@
   /* ---------------- ORDERS ---------------- */
 
   async function saveOrder(order) {
-    const c = getClient();
+    const c = await getClient();
     if (!c) return null;
     const { data, error } = await c.rpc('place_order', {
       p_order_id: order.orderId,
@@ -189,7 +192,7 @@
   /* ---------------- INQUIRIES ---------------- */
 
   async function saveInquiry(inquiry) {
-    const c = getClient();
+    const c = await getClient();
     if (!c) return null;
     const { data, error } = await c.rpc('place_inquiry', {
       p_type: inquiry.type,
