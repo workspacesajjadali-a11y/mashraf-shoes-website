@@ -179,7 +179,7 @@
     if(window.SupabaseStore){
       window.SupabaseStore.loadProducts().then(function(dbProducts){
         if(!dbProducts || !dbProducts.length) return;
-        window.products = dbProducts;
+        window.products = window.SupabaseStore.mergeProducts(window.products, dbProducts);
         render();
       }).catch(function(){});
     }

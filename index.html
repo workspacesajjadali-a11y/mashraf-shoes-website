@@ -657,12 +657,13 @@
     grid.innerHTML = '<div class="empty">Products are loading — check back in a moment.</div>';
   }
 
-  // Supabase: refresh the catalog from the database when configured.
+  // Supabase: merge the database catalog with products.js. The file is the
+  // source of truth — DB products add to it, never remove your products.
   if(window.SupabaseStore){
     window.SupabaseStore.loadProducts()
       .then(function(dbProducts){
         if(!dbProducts || !dbProducts.length) return;
-        window.products = dbProducts;
+        window.products = window.SupabaseStore.mergeProducts(window.products, dbProducts);
         render();
       })
       .catch(function(err){

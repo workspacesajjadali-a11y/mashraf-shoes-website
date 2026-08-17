@@ -134,7 +134,7 @@
   /* ---------------- PRODUCTS ---------------- */
 
   async function loadProducts() {
-    const c = await getClient();
+    const c = getClient();
     if (!c) return null;
     const { data, error } = await c
       .from('products')
@@ -142,6 +142,20 @@
       .order('sort_order', { ascending: true });
     if (error) throw error;
     return data.map(rowToProduct);
+  }
+
+  /* Merge the static catalog (products.js) with the database catalog.
+     The database wins for the same product id, but any product that only
+     exists in products.js is kept — so new products added to the file are
+     always visible even before they are synced to Supabase. */
+  function mergeProducts(staticProducts, dbProducts) {
+    if (!dbProducts || !dbProducts.length) return staticProducts || [];
+    const byId = {};
+    (staticProducts || []).forEach(function(p){ byId[p.id] = p; });
+    dbProducts.forEach(function(p){ byId[p.id] = p; });
+    return Object.keys(byId)
+      .map(function(id){ return byId[id]; })
+      .sort(function(a, b){ return a.id - b.id; });
   }
 
   function rowToProduct(row) {
@@ -220,6 +234,7 @@
     loadCdn: loadCdn,
     getClient: getClient,
     loadProducts: loadProducts,
+    mergeProducts: mergeProducts,
     saveOrder: saveOrder,
     saveInquiry: saveInquiry,
     getSession: getSession,
