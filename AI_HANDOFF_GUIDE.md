@@ -28,7 +28,6 @@ A simple, single-repo, no-build website for selling shoes in Pakistan.
 | `product-perforated-cross-strap-sandals.html` | Product ID 4 |
 | `product-peshawari-chappal.html` | Product ID 5 |
 | `product-premium-loafers.html` | Product ID 6 |
-| `product-mens-horsebit-loafers.html` | Product ID 7 |
 | `product-mens-horsebit-buckle-loafers.html` | Product ID 8 |
 | `product-black-horsebit-tassel-loafers.html` | Product ID 9 |
 | `cart.html`, `checkout.html`, `order-confirmed.html` | Purchase flow |
@@ -72,7 +71,6 @@ REPLACE `window.products`. The correct behavior (already implemented in
    - Keep the mobile swatch fix (section 4).
 4. Add the new page URL to `sitemap.xml`.
 5. Do NOT edit Supabase to add products. products.js is enough.
-
 ### How to edit an existing product
 
 - Change text/price/images in `products.js` only. The product page reads from
@@ -122,6 +120,9 @@ Example for product ID 1 (Diamante Strap Sandals), black:
    sitemap in order.
 6. Orphan pages: `product-black-horsebit-tassel-loafers.html` was dead (wrong
    id, no products.js entry). Now fixed as product ID 9.
+7. Duplicate products: product ID 7 "Men's Horsebit Loafers" was the SAME
+   product as ID 8 "Men's Horsebit Buckle Loafers" — ID 7 was removed entirely
+   (page deleted, sitemap entry removed). Never create duplicate products.
 
 ---
 
@@ -286,7 +287,6 @@ for f in glob.glob('images/*'):
 | 4 | Men's Perforated Cross-Strap Casual Sandals | product-perforated-cross-strap-sandals.html | 2299 | ? | ? |
 | 5 | Men's Peshawari Chappal | product-peshawari-chappal.html | 999 | ? | ? |
 | 6 | Men's Premium Luxury-Style Loafers | product-premium-loafers.html | 2499 | 6 | 41-44 |
-| 7 | Men's Horsebit Loafers | product-mens-horsebit-loafers.html | 2499 | 4 | 41-44 |
 | 8 | Men's Horsebit Buckle Loafers | product-mens-horsebit-buckle-loafers.html | 2499 | 4 | 41-44 |
 | 9 | Men's Black Horsebit Tassel Loafers | product-black-horsebit-tassel-loafers.html | 2499 | 2 | 41-44 |
 
