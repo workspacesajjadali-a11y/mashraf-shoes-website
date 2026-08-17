@@ -115,7 +115,7 @@
     <div class="payment-options">
       <label class="payment-option selected" id="codOption">
         <input type="radio" name="payment" value="COD" checked onclick="selectPayment('COD')">
-        Cash on Delivery (Rs. 250 delivery charge)
+        Cash on Delivery — delivery charge shown below
       </label>
       <label class="payment-option disabled">
         <input type="radio" name="payment" value="Online" disabled>
@@ -133,6 +133,24 @@
 <script src="supabase.js"></script>
 <script src="cart.js"></script>
 <script>
+
+  function getDeliveryCharge(cart){
+    if(!cart.length) return 0;
+
+    // Keep the existing delivery behavior for older products while applying
+    // the specific Rs. 100 delivery charge to Product 7.
+    const charges = cart.map(item => {
+      if(Number(item.productId) === 7 || Number(item.productId) === 8) return 100;
+      if(Number(item.productId) === 6) return 0;
+      if(Number(item.productId) === 5) return 150;
+      return 250;
+    });
+
+    // For mixed carts, use the highest applicable delivery charge so an
+    // existing product is never accidentally undercharged.
+    return Math.max.apply(null, charges);
+  }
+
   function renderSummary(){
     const cart = getCart();
     const summaryEl = document.getElementById('orderSummary');
@@ -144,12 +162,7 @@
     const itemsHtml = cart.map(item => `
       <div class="cart-item"><span>${item.productName} — ${item.color}, Size ${item.size} × ${item.qty}</span><span>Rs. ${(item.price*item.qty).toLocaleString()}</span></div>
     `).join('');
-    const itemDeliveryCharges = cart
-      .map(item => Number.isFinite(Number(item.deliveryCharge)) ? Number(item.deliveryCharge) : 250);
-
-    // Preserve the existing single delivery charge for mixed/legacy carts,
-    // while allowing products with a specific delivery charge to use it.
-    const deliveryCharge = itemDeliveryCharges.length ? Math.max(...itemDeliveryCharges) : 0;
+    const deliveryCharge = getDeliveryCharge(cart); // Product-specific COD delivery charge
     const total = cartTotal() + deliveryCharge;
     summaryEl.innerHTML = `
       <h2>Order Summary</h2>
@@ -202,7 +215,7 @@
     const phone = document.getElementById('custPhone').value;
     const email = document.getElementById('custEmail').value;
     const address = document.getElementById('custAddress').value;
-    const deliveryCharge = 250;
+    const deliveryCharge = getDeliveryCharge(cart);
     const total = cartTotal() + deliveryCharge;
 
     const itemsText = cart.map(i => `${i.productName} (${i.color}, Size ${i.size}) x${i.qty}`).join(', ');
