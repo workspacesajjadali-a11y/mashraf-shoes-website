@@ -63,6 +63,12 @@
   </url>
 
   <url>
+    <loc>https://mashrafshoes.store/product-black-horsebit-tassel-loafers.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://mashrafshoes.store/account.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>

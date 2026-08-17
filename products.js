@@ -571,6 +571,74 @@ var products = [
       }
 
     ]
+  },
+
+
+  /* ================================================================
+     PRODUCT 9 — MEN'S BLACK HORSEBIT TASSEL LOAFERS
+     ================================================================ */
+
+  {
+    id: 9,
+    brand: "M Ashraf Shoes",
+    name: "Men's Black Horsebit Tassel Loafers",
+    category: "men",
+    price: 2499,
+    oldPrice: 3300,
+    rating: 0,
+    ratingCount: 0,
+    badge: "Sale",
+
+    material:
+      "Sleek slip-on silhouette with polished black finish, metal horsebit-style hardware and elegant tassel detail",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-black-horsebit-tassel-loafers.html",
+
+    deliveryCharge: 100,
+
+    description:
+      "Men's black horsebit tassel loafers with a sleek slip-on silhouette, polished black finish, metal horsebit-style hardware and elegant tassel detail. Available in sizes 41 to 44. A refined choice for office wear, formal outfits, weddings, dinners, gatherings and smart-casual looks in Pakistan.",
+
+    seoTitle:
+      "Men's Black Horsebit Tassel Loafers Online in Pakistan | M Ashraf Shoes",
+
+    seoDescription:
+      "Buy men's black horsebit tassel loafers online in Pakistan. Sleek slip-on style with metal horsebit hardware and tassel detail. Available in sizes 41, 42, 43 and 44. Sale price Rs. 2,499 with only Rs. 100 delivery.",
+
+    seoKeywords: [
+      "men's black loafers Pakistan",
+      "mens black loafers Pakistan",
+      "black loafers for men Pakistan",
+      "horsebit loafers men",
+      "horsebit loafers Pakistan",
+      "tassel loafers men",
+      "black tassel loafers",
+      "men's formal loafers Pakistan",
+      "men's formal shoes Pakistan",
+      "black formal shoes men",
+      "men's slip on shoes Pakistan",
+      "wedding shoes men Pakistan",
+      "office shoes men Pakistan",
+      "smart casual shoes men",
+      "luxury style loafers"
+    ],
+
+    variants: [
+
+      /* ---------------- BLACK ---------------- */
+
+      {
+        color: "Black",
+        images: [
+          "images/mens-black-horsebit-tassel-loafers-pakistan-1.jpeg",
+          "images/mens-black-horsebit-tassel-loafers-pakistan-2.jpeg"
+        ],
+        sizes: [41, 42, 43, 44]
+      }
+
+    ]
   }
 
 ];
