@@ -4,11 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#A13A2E">
+<meta name="description" content="Shop M Ashraf Shoes discounts and deals online in Pakistan. Women's sandals and men's classics at reduced prices with nationwide Cash on Delivery.">
+<meta name="keywords" content="shoe sale Pakistan, discounted shoes, sandals deals, women sandals sale, cash on delivery shoes Pakistan, M Ashraf Shoes">
+<link rel="canonical" href="https://mashrafshoes.store/deals.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Discounts &amp; Deals — M Ashraf Shoes">
+<meta property="og:description" content="Save on selected women's sandals and men's classics. Nationwide Cash on Delivery.">
+<meta property="og:url" content="https://mashrafshoes.store/deals.html">
 <title>Discounts &amp; Deals — M Ashraf Shoes</title>
 <style>
   :root{
     --bg:#FBFAF7; --white:#FFFFFF; --ink:#1A1A18;
-    --ink-soft:rgba(26,26,24,0.62); --ink-faint:rgba(26,26,24,0.38);
+    --ink-soft:rgba(26,26,24,0.68); --ink-faint:rgba(26,26,24,0.62);
     --accent:#1B5E43; --accent-deep:#13452f; --line:rgba(26,26,24,0.10);
     --sale:#A13A2E; --radius:14px;
     --serif:Georgia,'Times New Roman',serif;
@@ -42,17 +50,18 @@
 
   .filters{ max-width:1120px; margin:24px auto 0; padding:0 20px; display:flex; gap:10px; flex-wrap:wrap; }
   .filter-btn{
-    padding:9px 18px; border:1px solid var(--line); border-radius:999px; background:var(--white);
-    font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer; transition:all .2s ease;
+    padding:11px 18px; border:1px solid var(--line); border-radius:999px; background:var(--white);
+    font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer; min-height:44px;
+    transition:all .2s ease;
   }
   .filter-btn.active{ background:var(--accent); border-color:var(--accent); color:#fff; }
 
   main{ max-width:1120px; margin:0 auto; padding:32px 20px 80px; }
   .product-grid{
-    display:grid; grid-template-columns:1fr; gap:20px;
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:12px;
   }
-  @media (min-width:560px){ .product-grid{ grid-template-columns:repeat(2, 1fr); } }
-  @media (min-width:920px){ .product-grid{ grid-template-columns:repeat(3, 1fr); } }
+  @media (min-width:600px){ .product-grid{ grid-template-columns:repeat(3, 1fr); gap:16px; } }
+  @media (min-width:900px){ .product-grid{ grid-template-columns:repeat(4, 1fr); gap:20px; } }
 
   .card{
     background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
@@ -73,8 +82,9 @@
   .card .price .old{ color:var(--ink-faint); text-decoration:line-through; font-weight:400; font-size:13px; margin-left:8px; }
   .card .save{ font-size:12px; color:var(--sale); font-weight:600; margin-top:2px; }
   .card .order{
-    width:100%; margin-top:14px; background:var(--accent); color:#fff; padding:10px;
-    border:none; border-radius:9px; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s ease;
+    width:100%; margin-top:14px; background:var(--accent); color:#fff; padding:12px;
+    border:none; border-radius:999px; font-size:13px; font-weight:600; cursor:pointer; min-height:44px;
+    transition:background .2s ease;
   }
   .card .order:hover{ background:var(--accent-deep); }
   .empty{ text-align:center; padding:48px 20px; color:var(--ink-faint); font-size:14px; }
@@ -168,7 +178,7 @@
 
     if(window.SupabaseStore){
       window.SupabaseStore.loadProducts().then(function(dbProducts){
-        if(!dbProducts) return;
+        if(!dbProducts || !dbProducts.length) return;
         window.products = dbProducts;
         render();
       }).catch(function(){});

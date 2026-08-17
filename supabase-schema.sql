@@ -36,7 +36,7 @@ alter table public.products enable row level security;
 
 create policy "products_anon_read"
   on public.products for select
-  to anon
+  to anon, authenticated
   using (true);
 
 -- ---------------------------------------------------------------------

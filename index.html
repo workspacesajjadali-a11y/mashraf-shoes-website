@@ -33,8 +33,8 @@
     --bg:        #FBFAF7;      /* warm paper white */
     --white:     #FFFFFF;
     --ink:       #1A1A18;
-    --ink-soft:  rgba(26,26,24,0.62);
-    --ink-faint: rgba(26,26,24,0.38);
+    --ink-soft:  rgba(26,26,24,0.68);
+    --ink-faint: rgba(26,26,24,0.62);
     --accent:    #1B5E43;      /* emerald — the only accent color */
     --accent-deep: #13452f;
     --line:      rgba(26,26,24,0.10);
@@ -84,12 +84,13 @@
     max-width:var(--container); margin:0 auto; padding:14px 20px; gap:12px;
   }
   .icon-btn{
-    background:none; border:none; cursor:pointer; padding:6px; color:var(--ink);
-    display:flex; align-items:center; justify-content:center; border-radius:8px;
+    background:none; border:none; cursor:pointer; padding:0;
+    width:44px; height:44px; color:var(--ink);
+    display:flex; align-items:center; justify-content:center; border-radius:10px;
     transition:background .2s ease;
   }
   .icon-btn:hover{ background:rgba(27,94,67,0.08); }
-  .icon-btn svg{ width:21px; height:21px; }
+  .icon-btn svg{ width:22px; height:22px; }
   .brand{ font-size:17px; font-weight:700; letter-spacing:0.01em; white-space:nowrap; }
   .brand em{ font-style:normal; color:var(--accent); }
   .header-left{ display:flex; align-items:center; gap:10px; }
@@ -151,8 +152,9 @@
 
   .btn{
     display:inline-flex; align-items:center; justify-content:center; gap:8px;
-    text-decoration:none; padding:13px 24px; border-radius:999px;
-    font-size:14px; font-weight:600; border:none; cursor:pointer;
+    text-decoration:none; padding:14px 26px; border-radius:999px;
+    font-size:15px; font-weight:600; border:none; cursor:pointer;
+    min-height:48px;
     transition:transform .2s ease, background .2s ease, color .2s ease;
   }
   .btn:hover{ transform:translateY(-1px); }
@@ -161,30 +163,14 @@
   .btn-outline{ background:transparent; border:1.5px solid var(--ink); color:var(--ink); }
   .btn-outline:hover{ background:var(--ink); color:#fff; }
 
-  /* the shoe + laces stage — sits on the side, in the background */
-  .lace-stage{
-    position:relative; max-width:440px; margin:0 auto; width:100%;
-  }
-  .lace-stage svg{ width:100%; height:auto; display:block; }
-  .scroll-hint{
-    margin-top:16px; font-size:12px; color:var(--ink-faint);
-    letter-spacing:0.06em; text-transform:uppercase;
-    display:inline-flex; align-items:center; gap:8px;
-  }
-  .scroll-hint .dot{
-    width:6px; height:6px; border-radius:50%; background:var(--accent);
-    animation:pulse 1.6s ease-in-out infinite;
-  }
-  @keyframes pulse{ 0%,100%{opacity:.3; transform:scale(1);} 50%{opacity:1; transform:scale(1.4);} }
-
   /* ============================================================
      CATEGORY STRIP
      ============================================================ */
-  .categories{ padding:8px 20px 8px; }
-  .cat-row{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+  .categories{ padding:8px 16px 8px; }
+  .cat-row{ display:flex; justify-content:flex-start; gap:10px; flex-wrap:wrap; }
   .cat-item{
     background:none; border:1px solid var(--line); cursor:pointer;
-    display:flex; align-items:center; gap:8px; padding:9px 16px;
+    display:flex; align-items:center; gap:8px; padding:10px 16px;
     border-radius:999px; font-size:13px; font-weight:600; color:var(--ink-soft);
     transition:all .2s ease;
   }
@@ -193,10 +179,10 @@
   .cat-item.active{ background:var(--accent); border-color:var(--accent); color:#fff; }
 
   /* ============================================================
-     PRODUCTS
+     PRODUCTS — Amazon-style dense grid, 2-up on mobile
      ============================================================ */
-  .products-section{ padding:48px 20px; max-width:var(--container); margin:0 auto; }
-  .section-head{ margin-bottom:28px; text-align:center; }
+  .products-section{ padding:40px 16px; max-width:var(--container); margin:0 auto; }
+  .section-head{ margin-bottom:24px; text-align:center; }
   .section-head .kicker{
     font-size:11px; text-transform:uppercase; letter-spacing:0.16em;
     color:var(--accent); font-weight:700; margin-bottom:8px;
@@ -204,50 +190,52 @@
   .section-head h2{ font-family:var(--serif); font-weight:400; font-size:clamp(24px,4vw,34px); }
 
   .product-grid{
-    display:grid; grid-template-columns:1fr; gap:20px;
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:12px;
   }
-  @media (min-width:560px){
-    .product-grid{ grid-template-columns:repeat(2, 1fr); }
+  @media (min-width:600px){
+    .product-grid{ grid-template-columns:repeat(3, 1fr); gap:16px; }
   }
-  @media (min-width:920px){
-    .product-grid{ grid-template-columns:repeat(3, 1fr); }
+  @media (min-width:900px){
+    .product-grid{ grid-template-columns:repeat(4, 1fr); gap:20px; }
   }
   .card{
-    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
-    overflow:hidden; position:relative; transition:transform .25s ease, box-shadow .25s ease;
+    background:var(--white); border:1px solid var(--line); border-radius:12px;
+    overflow:hidden; position:relative; display:flex; flex-direction:column;
+    transition:transform .25s ease, box-shadow .25s ease;
   }
   .card:hover{ transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,0.08); }
   .card .photo{ display:block; width:100%; aspect-ratio:1/1; background:#fff; overflow:hidden; }
   .card .photo img{ width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
   .card:hover .photo img{ transform:scale(1.04); }
   .card .badge{
-    position:absolute; top:12px; left:12px; background:var(--ink); color:#fff;
-    font-size:10px; text-transform:uppercase; letter-spacing:0.06em; padding:4px 10px; border-radius:999px;
+    position:absolute; top:10px; left:10px; background:var(--ink); color:#fff;
+    font-size:10px; text-transform:uppercase; letter-spacing:0.06em; padding:4px 9px; border-radius:999px;
   }
   .card .badge.sale{ background:var(--sale); }
   .card .wishlist{
-    position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%;
+    position:absolute; top:8px; right:8px; width:36px; height:36px; border-radius:50%;
     background:rgba(255,255,255,0.92); border:1px solid var(--line); cursor:pointer; font-size:15px;
     display:flex; align-items:center; justify-content:center; color:var(--ink-soft);
     transition:all .2s ease;
   }
   .card .wishlist.active{ color:var(--sale); border-color:var(--sale); }
-  .card .body{ padding:14px 16px 16px; }
-  .card .brand{ font-size:10.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.08em; }
-  .card .name{ font-size:14px; font-weight:600; margin:3px 0 8px; line-height:1.3; }
-  .card .rating{ font-size:11px; color:var(--ink-faint); margin-bottom:10px; }
+  .card .body{ padding:12px 12px 14px; display:flex; flex-direction:column; flex:1; }
+  .card .brand{ font-size:10px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.08em; }
+  .card .name{ font-size:13px; font-weight:600; margin:3px 0 6px; line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .card .rating{ font-size:11px; color:var(--ink-faint); margin-bottom:8px; }
   .card .rating .stars{ color:var(--accent); letter-spacing:1px; }
-  .card .swatch-row{ display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; }
+  .card .swatch-row{ display:flex; gap:5px; margin-bottom:10px; flex-wrap:wrap; }
   .swatch{
-    width:16px; height:16px; border-radius:50%; border:2px solid transparent; cursor:pointer; padding:0;
+    width:20px; height:20px; border-radius:50%; border:2px solid transparent; cursor:pointer; padding:0;
     box-shadow:0 0 0 1px rgba(26,26,24,0.18); transition:box-shadow .15s ease;
   }
   .swatch.active{ box-shadow:0 0 0 2px var(--accent); }
-  .card .price{ font-size:16px; font-weight:700; margin-bottom:12px; }
+  .card .price{ font-size:15px; font-weight:700; margin-top:auto; margin-bottom:10px; }
   .card .price .old{ color:var(--ink-faint); text-decoration:line-through; font-weight:400; font-size:12px; margin-left:6px; }
   .card .order{
-    width:100%; background:var(--accent); color:#fff; padding:11px; border:none; border-radius:999px;
-    font-size:13px; font-weight:600; cursor:pointer; transition:background .2s ease, transform .2s ease;
+    width:100%; background:var(--accent); color:#fff; padding:12px; border:none; border-radius:999px;
+    font-size:13px; font-weight:600; cursor:pointer; min-height:44px;
+    transition:background .2s ease, transform .2s ease;
   }
   .card .order:hover{ background:var(--accent-deep); transform:translateY(-1px); }
   .empty{ text-align:center; padding:48px 20px; color:var(--ink-faint); font-size:14px; }
@@ -311,10 +299,11 @@
     nav.main-nav a{ text-decoration:none; font-size:13.5px; color:var(--ink-soft); font-weight:500; transition:color .2s ease; }
     nav.main-nav a:hover{ color:var(--ink); }
     #menuToggle{ display:none; }
-    .hero{ padding:88px 20px 72px; }
-    .hero-inner{ grid-template-columns:1.05fr 0.95fr; gap:48px; }
-    .hero h1{ font-size:clamp(38px, 4.6vw, 56px); }
-    .lace-stage{ margin:0; }
+    .hero{ padding:88px 20px 72px; text-align:center; }
+    .hero-inner{ max-width:760px; margin:0 auto; }
+    .hero h1{ font-size:clamp(38px, 4.6vw, 56px); margin-left:auto; margin-right:auto; }
+    .hero p{ margin-left:auto; margin-right:auto; }
+    .hero-cta{ justify-content:center; }
     .categories{ padding:16px 20px; }
   }
 </style>
@@ -370,56 +359,17 @@
   </div>
 </header>
 
-<!-- HERO: headline left, shoe on the side — laces tie as you scroll -->
+<!-- HERO: clean headline, no laces -->
 <section class="hero">
   <div class="hero-inner">
     <div>
       <div class="hero-kicker">New Season · Cash on Delivery · Nationwide</div>
       <h1>Step into style, <em>tied to perfection</em></h1>
-      <p>Women's sandals and men's classics, delivered anywhere in Pakistan. Keep scrolling — watch the laces tie.</p>
+      <p>Women's sandals and men's classics, delivered anywhere in Pakistan. Quality you can feel, prices that make sense.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#shop">Shop the Collection</a>
         <a class="btn btn-outline" href="deals.html">View Discounts</a>
       </div>
-    </div>
-
-    <div class="lace-stage">
-      <svg id="laceSvg" viewBox="0 0 520 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Shoe with laces that tie as you scroll">
-        <!-- sole -->
-        <path d="M78 236 C90 258 168 268 268 268 C368 268 446 258 458 236 L452 246 C430 260 330 268 268 268 C206 268 112 260 86 246 Z" fill="#1A1A18"/>
-        <!-- upper -->
-        <path d="M86 246 C84 220 96 196 118 184 L120 182 C136 176 176 176 196 178 L206 158 C212 142 228 132 246 130 L258 128 C274 126 290 130 302 138 C322 152 330 164 344 180 C356 194 368 206 452 246 L86 246 Z" fill="#F3F1EC"/>
-        <!-- tongue -->
-        <path d="M210 182 C218 168 238 162 256 162 L262 164 C250 180 244 196 244 214 C244 222 240 228 234 230 C224 224 216 204 210 182 Z" fill="#EAE7E0"/>
-        <!-- collar -->
-        <path d="M118 184 C104 192 96 208 94 222 L86 246 L120 246 C112 226 112 202 118 184 Z" fill="#E4E1D9"/>
-        <!-- heel cap -->
-        <path d="M330 164 C352 176 368 190 380 204 L452 246 L344 246 C332 220 326 190 330 164 Z" fill="#ECEAE3"/>
-
-        <!-- eyelets -->
-        <circle cx="200" cy="156" r="3.5" fill="#1A1A18"/>
-        <circle cx="262" cy="156" r="3.5" fill="#1A1A18"/>
-        <circle cx="210" cy="192" r="3.5" fill="#1A1A18"/>
-        <circle cx="272" cy="192" r="3.5" fill="#1A1A18"/>
-        <circle cx="222" cy="226" r="3.5" fill="#1A1A18"/>
-        <circle cx="284" cy="226" r="3.5" fill="#1A1A18"/>
-
-        <!-- laces: each path draws in as you scroll (bottom lace first) -->
-        <g stroke="#1B5E43" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-          <path class="lace" d="M222 226 C238 232 266 232 284 226"/>
-          <path class="lace" d="M210 192 C226 200 254 200 272 192"/>
-          <path class="lace" d="M200 156 C218 164 244 164 262 156"/>
-          <path class="lace" d="M200 156 C214 140 250 140 262 156"/>
-        </g>
-
-        <!-- the bow: scales in at the end of the scroll -->
-        <g id="bow" opacity="0">
-          <path d="M224 128 C204 118 192 104 190 92 C196 96 208 104 224 112 C232 100 226 82 216 74 C222 80 224 90 224 102 C230 96 240 94 248 96 C244 106 236 112 224 116 Z" fill="#1B5E43"/>
-          <path d="M256 128 C276 118 288 104 290 92 C284 96 272 104 256 112 C248 100 254 82 264 74 C258 80 256 90 256 102 C250 96 240 94 232 96 C236 106 244 112 256 116 Z" fill="#1B5E43"/>
-          <circle cx="240" cy="122" r="8" fill="#13452f"/>
-        </g>
-      </svg>
-      <div class="scroll-hint"><span class="dot"></span> scroll to tie the laces</div>
     </div>
   </div>
 </section>
@@ -510,66 +460,6 @@
 <script src="cart.js"></script>
 <script src="products.js"></script>
 <script>
-  /* ============================================================
-     LACES TIE AS YOU SCROLL
-     As the page scrolls from top to bottom, each lace segment
-     draws in (bottom first) and the bow ties at the end.
-     Mobile-safe: it uses % of hero height + requestAnimationFrame,
-     so it works identically on phone and desktop.
-     ============================================================ */
-  (function(){
-    var svg = document.getElementById('laceSvg');
-    if(!svg) return;
-    var laces = Array.prototype.slice.call(document.querySelectorAll('#laceSvg .lace'));
-    var bow = document.getElementById('bow');
-    var hero = document.querySelector('.hero');
-
-    var lengths = laces.map(function(l){ return l.getTotalLength(); });
-    laces.forEach(function(l, i){
-      l.style.strokeDasharray = lengths[i];
-      l.style.strokeDashoffset = lengths[i];
-    });
-
-    var heroT = 0, heroH = 0;
-    function heroMeasures(){
-      var r = hero.getBoundingClientRect();
-      heroT = r.top + window.pageYOffset;
-      heroH = r.height;
-    }
-
-    var ticking = false;
-    function onScroll(){
-      if(!ticking){
-        ticking = true;
-        requestAnimationFrame(function(){
-          var p = (window.pageYOffset - heroT) / (heroH * 0.9);
-          p = Math.max(0, Math.min(1, p));
-
-          laces.forEach(function(l, i){
-            var start = i / laces.length;
-            var end = (i + 1) / laces.length;
-            var lp = (p - start) / (end - start);
-            lp = Math.max(0, Math.min(1, lp));
-            l.style.strokeDashoffset = lengths[i] * (1 - lp);
-          });
-
-          var bowP = (p - 0.72) / 0.28;
-          bowP = Math.max(0, Math.min(1, bowP));
-          bow.style.opacity = bowP;
-          bow.style.transform = 'scale(' + (0.4 + 0.6 * bowP) + ')';
-          bow.style.transformOrigin = '240px 122px';
-
-          ticking = false;
-        });
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive:true });
-    window.addEventListener('resize', heroMeasures);
-    heroMeasures();
-    onScroll();
-  })();
-
   /* ============================================================
      INQUIRY FORM — Formspree + Supabase
      ============================================================ */
@@ -702,6 +592,8 @@
         </div>
       </div>
     `}).join('');
+
+    if(typeof armCardReveal === 'function') armCardReveal();
   }
 
   catButtons.forEach(btn => {
@@ -723,17 +615,39 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12 });
     revealEls.forEach(el => {
       el.classList.add('reveal-init');
       revealObserver.observe(el);
     });
+
     document.querySelectorAll('.hero-inner > *').forEach((el, i) => {
       el.classList.add('reveal-init');
       setTimeout(() => el.classList.add('visible'), 120 + i * 90);
     });
   }catch(err){
     console.error('Scroll animation failed to set up (page still works fine):', err);
+  }
+
+  // stagger product cards as they appear (re-arms after every render)
+  let cardObserver = null;
+  function armCardReveal(){
+    if(!('IntersectionObserver' in window)) return;
+    if(!cardObserver){
+      cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+    }
+    document.querySelectorAll('#grid .card').forEach((el, i) => {
+      el.classList.add('reveal-init');
+      el.style.transitionDelay = (i % 4) * 60 + 'ms';
+      cardObserver.observe(el);
+    });
   }
 
   try{
@@ -747,7 +661,7 @@
   if(window.SupabaseStore){
     window.SupabaseStore.loadProducts()
       .then(function(dbProducts){
-        if(!dbProducts) return;
+        if(!dbProducts || !dbProducts.length) return;
         window.products = dbProducts;
         render();
       })
