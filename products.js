@@ -469,8 +469,8 @@ var products = [
       {
         color: "Black",
         images: [
-          "images/mens-horsebit-loafers-black-pakistan-1.jpg",
-          "images/mens-horsebit-loafers-black-pakistan-2.jpg"
+          "images/mens-horsebit-loafers-black-pakistan-1.jpeg",
+          "images/mens-horsebit-loafers-black-pakistan-2.jpeg"
         ],
         sizes: [41, 42, 43, 44]
       },
@@ -478,8 +478,8 @@ var products = [
       {
         color: "Brown",
         images: [
-          "images/mens-horsebit-loafers-brown-pakistan-1.jpg",
-          "images/mens-horsebit-loafers-brown-pakistan-2.jpg"
+          "images/mens-horsebit-loafers-brown-pakistan-1.jpeg",
+          "images/mens-horsebit-loafers-brown-pakistan-2.jpeg"
         ],
         sizes: [41, 42, 43, 44]
       }
