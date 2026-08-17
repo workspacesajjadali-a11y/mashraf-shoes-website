@@ -1,0 +1,308 @@
+# M Ashraf Shoes — Complete Handoff Guide for AI Tools
+
+You are now the developer for the M Ashraf Shoes e-commerce website.
+This file is your complete operating manual. Read it fully before doing ANY task.
+
+---
+
+## 1. WHAT THIS SITE IS
+
+A simple, single-repo, no-build website for selling shoes in Pakistan.
+
+- **Hosting:** GitHub Pages (repo `mashraf-shoes-website`, branch `main`, live at `mashrafshoes.store`)
+- **Payments:** Cash on Delivery only (no payment gateway)
+- **Cart:** Browser `localStorage` — no account needed
+- **Login:** Optional — Supabase (email/password + Google). Logged-in users get their cart synced to their email across devices.
+- **Orders:** WhatsApp to the shop owner (not a real backend)
+- **Supabase:** only used for login + catalog merging + cart sync. NOT required for the site to work.
+
+### ALL FILES (15 HTML pages + 5 JS + images)
+
+| File | Purpose |
+|---|---|
+| `index.html` | Homepage — product grid, loads all products |
+| `deals.html` | Deals page — same grid, sale items |
+| `product-page.html` | Product page for **product ID 1** (Diamante Strap Sandals) |
+| `product-braided-sandals.html` | Product ID 2 |
+| `product-kare-embellished-sandals.html` | Product ID 3 |
+| `product-perforated-cross-strap-sandals.html` | Product ID 4 |
+| `product-peshawari-chappal.html` | Product ID 5 |
+| `product-premium-loafers.html` | Product ID 6 |
+| `product-mens-horsebit-loafers.html` | Product ID 7 |
+| `product-mens-horsebit-buckle-loafers.html` | Product ID 8 |
+| `product-black-horsebit-tassel-loafers.html` | Product ID 9 |
+| `cart.html`, `checkout.html`, `order-confirmed.html` | Purchase flow |
+| `account.html`, `login.html`, `signup.html`, `track-order.html` | Accounts + order tracking |
+| `products.js` | **THE SOURCE OF TRUTH** for all product data |
+| `cart.js` | Shared cart logic |
+| `supabase.js` | Supabase client + catalog merge |
+| `supabase-config.js` | Supabase URL + anon key |
+| `sitemap.xml` | SEO sitemap — update when products change |
+| `images/` | Product photos |
+
+---
+
+## 2. THE #1 RULE: `products.js` IS THE SOURCE OF TRUTH
+
+This was a hard-won fix. A previous developer broke the site by having Supabase
+REPLACE `window.products`. The correct behavior (already implemented in
+`supabase.js`):
+
+- `products.js` defines the full static catalog (currently 9 products).
+- `supabase.js` `mergeProducts()` merges the database on top — the DB wins only
+  for matching product `id`s, static-only products are KEPT.
+- **DO NOT** change this. `products.js` entries must keep `id`, `name`,
+  `category`, `price`, `oldPrice`, `rating`, `ratingCount`, `badge`, `material`,
+  `whatsappNumber`, `pageUrl`, `deliveryCharge`, `description`, `seoTitle`,
+  `seoDescription`, `seoKeywords`, and `variants[]`.
+
+### How to add a NEW product (the ONLY correct way)
+
+1. Add photos to `images/` first. **File name rules are CRITICAL — see section 3.**
+2. Append a new object to the `var products = [...]` array in `products.js`.
+   - Give it the next free `id` (currently 10).
+   - `pageUrl` must match the product page filename exactly.
+3. Create the product page HTML. The EASIEST correct method:
+   - Copy the newest product page (`product-mens-horsebit-loafers.html`).
+   - Search-replace the product name, images, and the line `const PRODUCT_ID = 7;`
+     to your new id.
+   - Keep the `<script>` order at the bottom:
+     `supabase-config.js` → `supabase.js` → `cart.js` → `products.js`
+     (in that order — DO NOT reorder, DO NOT drop any).
+   - Keep the mobile swatch fix (section 4).
+4. Add the new page URL to `sitemap.xml`.
+5. Do NOT edit Supabase to add products. products.js is enough.
+
+### How to edit an existing product
+
+- Change text/price/images in `products.js` only. The product page reads from
+  `products.js` by `id`, so text changes flow automatically.
+- If you change a product's `pageUrl` or image filenames, update the page HTML
+  too (canonical/OG/JSON-LD tags) — otherwise you get dead links.
+
+---
+
+## 3. IMAGE FILE NAMING — the biggest source of past bugs
+
+Every image lives in `images/`. The filename written in code MUST match the
+file on disk **exactly** — including extension.
+
+### Naming convention
+
+```
+<product-slug>-<color>-pakistan-<number>.<ext>
+```
+
+Example for product ID 1 (Diamante Strap Sandals), black:
+`images/diamante-strap-sandals-black-pakistan-1.jpeg`
+
+### Extension rules (this bit everyone — read carefully)
+
+- The site uses `.jpeg` for most images, `.jpg` for the premium loafers.
+- **The extension in the code must equal the extension of the uploaded file.**
+  If the file is `.jpeg`, code must say `.jpeg`. If `.jpg`, code must say `.jpg`.
+- Do NOT mix them. A mismatch = broken image with no error message.
+- The owner uploads photos manually. After they upload, VERIFY each referenced
+  image exists with the exact name. (See section 7 for the check script.)
+
+### Known historical mistakes — DO NOT repeat
+
+1. Image extensions wrong in code vs actual files (`.jpg` vs `.jpeg`) — fixed
+   for product 7 by switching code to `.jpeg`.
+2. A filename containing a space: `images/diamante-strap-sandals-maroon-pakistan 2.jpeg`
+   — already referenced correctly in `product-page.html`; preserve the space
+   exactly.
+3. Broken image refs: `product-premium-loafers.html` used `.jpeg` when files
+   were `.jpg` — fixed.
+4. HEIC files: the Supabase DB had `image.jpeg.heic` suffixes (unrenderable in
+   browsers). `supabase.js` `rowToProduct()` strips a `.heic` suffix as a safety
+   net. Never upload `.heic` — convert to `.jpeg`/`.jpg` first.
+5. Adding products to `products.js` WITHOUT creating the page or uploading
+   images — this created a 404 product. ALWAYS do images → products.js → page →
+   sitemap in order.
+6. Orphan pages: `product-black-horsebit-tassel-loafers.html` was dead (wrong
+   id, no products.js entry). Now fixed as product ID 9.
+
+---
+
+## 4. MOBILE SWATCH FIX (mandatory on every product page)
+
+On mobile, color swatches must appear directly BELOW the product photo.
+
+Every product page's `<style>` must contain this inside its
+`@media (max-width:760px)` block:
+
+```css
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.info .swatch-section {
+  order: -1;
+}
+```
+
+Note: whitespace can vary (some pages use `max-width:760px`, the peshawari page
+uses `max-width: 760px`). The `.info .swatch-section { order: -1; }` line is the
+part that matters. All 9 product pages currently have it. Keep it on any new page.
+
+---
+
+## 5. JS SCRIPT ORDER (mandatory on every page that uses cart/login)
+
+At the bottom of the body, scripts must load in EXACTLY this order:
+
+```html
+<script src="supabase-config.js"></script>
+<script src="supabase.js"></script>
+<script src="cart.js"></script>
+<script src="products.js"></script>
+```
+
+- `supabase.js` exposes `window.SupabaseStore`. Its `getClient()` is ASYNC —
+  always `await getClient()` or `.then()`, never use it synchronously.
+- `cart.js`'s `currentUserEmail()` is now async (returns a Promise) — callers
+  must await it.
+- Every product page MUST load `supabase.js` so logged-in carts sync from that
+  page. (This was missing before — product pages originally only loaded
+  `cart.js` + `products.js`.)
+- `order-confirmed.html` needs no scripts. `track-order.html` needs no Supabase.
+
+---
+
+## 6. DESIGN SYSTEM (match this exactly on every page)
+
+- Warm paper background: `#FBFAF7`
+- Emerald accent: `#1B5E43`, dark variant `#14432F`
+- Ink text: `#1A1A18`
+- Headings: Georgia serif (class `.tag-font`)
+- Body: system sans-serif stack
+- Pill buttons, glass sticky headers (`backdrop-filter: blur(12px)`)
+- Mobile-first grids; product cards: 2-col mobile / 3-col tablet / 4-col desktop
+- All buttons/tap targets >= 44px
+- Do NOT add emojis, do NOT add laces/scroll-tie animations (removed on purpose)
+
+---
+
+## 7. VERIFICATION — ALWAYS RUN THESE BEFORE PUSHING
+
+Run every time you change products, pages, or images:
+
+```bash
+# 1. All products.js page files exist
+python3 -c "
+import re, os
+t = open('products.js', encoding='utf-8').read()
+for u in re.findall(r'pageUrl:\s*\"([^\"]+)\"', t):
+    print(('OK  ' if os.path.exists(u) else 'MISSING ') + u)
+"
+
+# 2. All image references resolve on disk
+python3 -c "
+import re, os, glob
+refs = set()
+for f in glob.glob('*.html') + glob.glob('*.js'):
+    t = open(f, encoding='utf-8', errors='ignore').read()
+    refs.update(re.findall(r'[\"\'](images/[^\"\']+\.(?:jpeg|jpg|png|webp))', t))
+    refs.update(re.findall(r'src=\"(images/[^\"\']+\.(?:jpeg|jpg|png|webp))', t))
+missing = sorted([r for r in refs if not os.path.exists(r)])
+print('Unique refs:', len(refs))
+print('MISSING:', missing if missing else 'NONE')
+"
+
+# 3. All internal HTML links resolve
+python3 -c "
+import re, os
+for f in sorted(x for x in os.listdir('.') if x.endswith('.html')):
+    t = open(f, encoding='utf-8', errors='ignore').read()
+    broken = [l for l in set(re.findall(r'href=\"([a-zA-Z0-9\-_\.]+\.html)', t)) if not os.path.exists(l)]
+    if broken: print(f, 'BROKEN:', broken)
+print('done')
+"
+
+# 4. JS syntax (external files + inline blocks)
+for f in *.js; do node --check "$f" || echo "SYNTAX FAIL: $f"; done
+
+# 5. Sitemap URLs all have pages
+grep -o '<loc>[^<]*</loc>' sitemap.xml | sed 's/.*store\///;s/<\/loc>//;s/<loc>//' | while read u; do
+  [ -z "$u" ] && continue
+  [ -f "$u" ] || echo "SITEMAP MISSING: $u"
+done
+echo "sitemap check done"
+```
+
+Commit with a clear message (past style examples):
+
+```
+feat: add product X
+fix: broken image link
+perf: compress images
+```
+
+---
+
+## 8. IMAGE COMPRESSION (before finalizing a new product)
+
+Product photos should be under ~150KB. If you receive large photos, compress
+them (Python PIL available):
+
+```python
+from PIL import Image
+import glob
+for f in glob.glob('images/*'):
+    try:
+        im = Image.open(f)
+        im.thumbnail((1200, 1200))
+        im.convert('RGB').save(f, 'JPEG', quality=82, optimize=True, progressive=True)
+        print('ok', f)
+    except Exception as e:
+        print('skip', f, e)
+```
+
+---
+
+## 9. WHAT TO DO WHEN THE OWNER UPLOADS NEW PRODUCTS
+
+1. Ask for: product name, price, old price (if sale), badge (Sale/New), sizes,
+   colors, photos.
+2. Put photos in `images/` with correct names (section 3).
+3. Compress them (section 8).
+4. Add the object to `products.js` with the next free id.
+5. Clone a product page → rename → fix `PRODUCT_ID` → fix images → keep script
+   order + mobile swatch fix.
+6. Update `sitemap.xml`.
+7. Run ALL checks in section 7.
+8. Push. GitHub Pages auto-deploys in ~2 min.
+
+---
+
+## 10. CURRENT PRODUCTS (as of handoff)
+
+| id | name | page | price | images | sizes |
+|---|---|---|---|---|---|
+| 1 | Diamante Strap Sandals | product-page.html | 1799 | 11 | 36-40 |
+| 2 | Braided Toe-Ring Sandals | product-braided-sandals.html | 1899 | 12 | 36-40 |
+| 3 | KARE Women's Embellished Flat Sandals | product-kare-embellished-sandals.html | 1999 | 9 | 6-9 |
+| 4 | Men's Perforated Cross-Strap Casual Sandals | product-perforated-cross-strap-sandals.html | 2299 | ? | ? |
+| 5 | Men's Peshawari Chappal | product-peshawari-chappal.html | 999 | ? | ? |
+| 6 | Men's Premium Luxury-Style Loafers | product-premium-loafers.html | 2499 | 6 | 41-44 |
+| 7 | Men's Horsebit Loafers | product-mens-horsebit-loafers.html | 2499 | 4 | 41-44 |
+| 8 | Men's Horsebit Buckle Loafers | product-mens-horsebit-buckle-loafers.html | 2499 | 4 | 41-44 |
+| 9 | Men's Black Horsebit Tassel Loafers | product-black-horsebit-tassel-loafers.html | 2499 | 2 | 41-44 |
+
+Verify prices/sizes from `products.js` — the table above is a quick reference
+only.
+
+---
+
+## 11. NEVER DO THIS
+
+- Never let Supabase replace `window.products` (merge only).
+- Never reference an image that isn't in `images/` with the exact same name.
+- Never use `.heic` files.
+- Never use `getClient()` synchronously (it's async).
+- Never add a product to `products.js` without its page + images + sitemap entry.
+- Never drop or reorder the script tags.
+- Never add laces/scroll animations, emojis, or change the design system.
+- Never commit the Google OAuth client secret or any API secret.
+- Never delete files unless the owner confirms.
