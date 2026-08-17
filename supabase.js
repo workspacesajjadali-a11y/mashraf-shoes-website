@@ -134,7 +134,7 @@
   /* ---------------- PRODUCTS ---------------- */
 
   async function loadProducts() {
-    const c = getClient();
+    const c = await getClient();
     if (!c) return null;
     const { data, error } = await c
       .from('products')

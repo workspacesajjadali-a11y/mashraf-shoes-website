@@ -206,17 +206,18 @@
         showMsg('Enter your email above first, then click Forgot password.', true);
         return;
       }
-      var c = window.SupabaseStore ? window.SupabaseStore.getClient() : null;
-      if(!c){
-        showMsg('Password reset needs Supabase configured.', true);
-        return;
-      }
-      c.auth.resetPasswordForEmail(email).then(function(res){
-        if(res.error){
-          showMsg(res.error.message, true);
-        }else{
-          showMsg('Reset link sent to ' + email + ' — check your inbox.', false);
+      window.SupabaseStore.getClient().then(function(client){
+        if(!client){
+          showMsg('Password reset needs Supabase configured.', true);
+          return;
         }
+        client.auth.resetPasswordForEmail(email).then(function(res){
+          if(res.error){
+            showMsg(res.error.message, true);
+          }else{
+            showMsg('Reset link sent to ' + email + ' — check your inbox.', false);
+          }
+        });
       });
     };
   })();

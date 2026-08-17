@@ -10,10 +10,12 @@ var __cartSyncing = false;
 
 function currentUserEmail(){
   var c = window.SupabaseStore ? window.SupabaseStore.getClient() : null;
-  if(!c) return null;
-  var session = c.auth.getSession();
-  return session && session.data && session.data.session && session.data.session.user
-    ? session.data.session.user.email : null;
+  return c ? c.then(function(client){
+    if(!client) return null;
+    var session = client.auth.getSession();
+    return session && session.data && session.data.session && session.data.session.user
+      ? session.data.session.user.email : null;
+  }) : null;
 }
 
 function getCart(){
@@ -29,19 +31,22 @@ function saveCart(cart){
 
 function syncCartToEmail(cart){
   if(__cartSyncing || !window.SupabaseStore) return;
-  var email = currentUserEmail();
-  if(!email) return;
+  var p = currentUserEmail();
+  if(!p) return;
   __cartSyncing = true;
-  window.SupabaseStore.saveUserCart(email, cart)
-    .catch(function(err){ console.error('Cart sync to email failed:', err); })
-    .then(function(){ __cartSyncing = false; });
+  p.then(function(email){
+    if(!email){ __cartSyncing = false; return; }
+    return window.SupabaseStore.saveUserCart(email, cart)
+      .catch(function(err){ console.error('Cart sync to email failed:', err); })
+      .then(function(){ __cartSyncing = false; });
+  }).catch(function(){ __cartSyncing = false; });
 }
 
 /* Pull the user's saved cart from their email once at page load.
    Called from account.html/login flow — safe to call anywhere. */
 async function loadCartFromEmail(){
   if(!window.SupabaseStore) return;
-  var email = currentUserEmail();
+  var email = await currentUserEmail();
   if(!email) return;
   try{
     var saved = await window.SupabaseStore.loadUserCart(email);
