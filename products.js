@@ -1,6 +1,6 @@
 /* =====================================================================
    M ASHRAF SHOES — PRODUCT DATA
-   COMPLETE FILE — PRODUCTS 1 TO 6
+   COMPLETE FILE — PRODUCTS 1 TO 7
    ===================================================================== */
 
 var products = [
@@ -402,6 +402,77 @@ var products = [
           "images/mens-premium-loafers-black-pakistan-3.jpg"
         ],
         sizes: [7, 8, 9, 10, 11]
+      }
+
+    ]
+  },
+
+
+  /* ================================================================
+     PRODUCT 7 — MEN'S BLACK HORSEBIT TASSEL LOAFERS
+     ================================================================ */
+
+  {
+    id: 7,
+    brand: "M Ashraf Shoes",
+    name: "Men's Black Horsebit Tassel Loafers",
+    category: "men",
+    price: 2499,
+    oldPrice: 3300,
+    rating: 0,
+    ratingCount: 0,
+    badge: "Sale",
+
+    material:
+      "Smooth black upper with metal horsebit-style hardware and tassel detail",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-black-horsebit-tassel-loafers.html",
+
+    deliveryCharge: 100,
+
+    description:
+      "Men's black horsebit tassel loafers featuring a sleek slip-on silhouette, polished black finish, decorative metal hardware and tassel detailing. A versatile choice for formal wear, office outfits, weddings, dinners, gatherings and smart-casual styling.",
+
+    seoTitle:
+      "Men's Black Horsebit Tassel Loafers Online in Pakistan | M Ashraf Shoes",
+
+    seoDescription:
+      "Shop men's black horsebit tassel loafers online in Pakistan. Sleek slip-on loafers with elegant metal horsebit-style hardware and tassel detail. Available in sizes 41-44. Sale price Rs. 2,499 with Rs. 100 delivery across Pakistan.",
+
+    seoKeywords: [
+      "men's black loafers",
+      "mens black loafers Pakistan",
+      "black loafers for men",
+      "horsebit loafers men",
+      "horsebit loafers Pakistan",
+      "tassel loafers men",
+      "black tassel loafers",
+      "men's formal loafers Pakistan",
+      "men's formal shoes Pakistan",
+      "men's dress shoes Pakistan",
+      "black formal shoes men",
+      "men's slip on shoes Pakistan",
+      "office shoes for men Pakistan",
+      "wedding shoes for men Pakistan",
+      "smart casual shoes men",
+      "luxury style loafers",
+      "quiet luxury style shoes",
+      "premium men's loafers Pakistan",
+      "gents shoes Pakistan",
+      "men's shoes online Pakistan"
+    ],
+
+    variants: [
+
+      {
+        color: "Black",
+        images: [
+          "images/mens-black-horsebit-tassel-loafers-pakistan-1.jpeg",
+          "images/mens-black-horsebit-tassel-loafers-pakistan-2.jpeg"
+        ],
+        sizes: [41, 42, 43, 44]
       }
 
     ]
