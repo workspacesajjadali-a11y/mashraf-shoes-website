@@ -626,8 +626,8 @@ var products = [
       {
         color: "Brown",
         images: [
-          "images/mens-brown-casual-chappal-pakistan-1.jpeg",
-          "images/mens-brown-casual-chappal-pakistan-2.jpeg"
+          "images/mens-brown-casual-chappal-pakistan-1.jpg",
+          "images/mens-brown-casual-chappal-pakistan-2.jpg"
         ],
         sizes: [7, 8, 9, 10]
       }
