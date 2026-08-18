@@ -1,6 +1,6 @@
 /* =====================================================================
    M ASHRAF SHOES — PRODUCT DATA
-   COMPLETE FILE — PRODUCTS 1 TO 6
+   COMPLETE FILE — PRODUCTS 1 TO 10
    ===================================================================== */
 
 var products = [
@@ -559,6 +559,77 @@ var products = [
           "images/mens-black-horsebit-tassel-loafers-pakistan-2.jpeg"
         ],
         sizes: [41, 42, 43, 44]
+      }
+
+    ]
+  },
+
+
+  /* ================================================================
+     PRODUCT 10 — MEN'S BROWN CASUAL CHAPPAL
+     ================================================================ */
+
+  {
+    id: 10,
+    brand: "M Ashraf Shoes",
+    name: "Men's Brown Casual Chappal",
+    category: "men",
+    price: 1499,
+    oldPrice: 2200,
+    rating: 0,
+    ratingCount: 0,
+    badge: "Sale",
+
+    material:
+      "Good-quality artificial leather",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-mens-brown-casual-chappal.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "Men's brown casual chappal made from good-quality artificial leather. A simple brown men's sandal and casual chappal option for everyday wear. Suitable for customers looking for men's sandals, brown sandals, brown chappal, casual chappal and daily-wear men's footwear in Pakistan. Available in Pakistani sizes 7, 8, 9 and 10.",
+
+    seoTitle:
+      "Men's Brown Casual Chappal Online in Pakistan | M Ashraf Shoes",
+
+    seoDescription:
+      "Buy men's brown casual chappal online in Pakistan. Brown men's sandal made from good-quality artificial leather, available in Pakistani sizes 7, 8, 9 and 10. Sale price Rs. 1,499 with free delivery.",
+
+    seoKeywords: [
+      "men's brown chappal Pakistan",
+      "mens brown chappal Pakistan",
+      "brown chappal for men",
+      "men's chappal Pakistan",
+      "mens chappal online Pakistan",
+      "men's sandal Pakistan",
+      "mens sandals Pakistan",
+      "brown sandals for men Pakistan",
+      "brown sandal Pakistan",
+      "casual chappal for men",
+      "casual sandals for men Pakistan",
+      "men's casual footwear Pakistan",
+      "daily wear chappal men",
+      "daily wear sandals men",
+      "gents chappal Pakistan",
+      "mardana chappal",
+      "men shoes online Pakistan",
+      "men footwear Pakistan",
+      "artificial leather chappal",
+      "artificial leather sandals men"
+    ],
+
+    variants: [
+
+      {
+        color: "Brown",
+        images: [
+          "images/mens-brown-casual-chappal-pakistan-1.jpeg",
+          "images/mens-brown-casual-chappal-pakistan-2.jpeg"
+        ],
+        sizes: [7, 8, 9, 10]
       }
 
     ]
