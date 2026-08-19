@@ -80,4 +80,10 @@
     <priority>0.4</priority>
   </url>
 
-</urlset>
+  <url>
+    <loc>https://mashrafshoes.store/product-ladies-fur-wali-chappal.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  </urlset>
