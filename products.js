@@ -633,6 +633,124 @@ var products = [
       }
 
     ]
+  },
+
+
+  /* ================================================================
+     PRODUCT 11 — LADIES FAUX-FUR SLIDE SANDALS (GOLD EMBLEM)
+     ================================================================ */
+
+  {
+    id: 11,
+    brand: "M Ashraf Shoes",
+    name: "Faux-Fur Slide Sandals with Gold Emblem",
+    category: "women",
+    price: 1099,
+    oldPrice: 1600,
+    rating: 4.5,
+    ratingCount: 8,
+    badge: "Sale",
+
+    material:
+      "Soft faux-fur strap with decorative gold-tone emblem on the slide strap and comfortable flat sole",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-faux-fur-slide-sandals.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "Ladies faux-fur flat slide sandals with a decorative gold-tone hardware emblem on the strap. Known in the Pakistani market as fur wali chappal, fur sandals or fur slides. Available in Grey, Baby Pink, Brown, Blue, Black, Maroon and White. Soft, warm and stylish — perfect for daily wear, winters and casual outings in Pakistan. Sizes 6 to 10, with Baby Pink also available in size 4.",
+
+    seoTitle:
+      "Fur Wali Chappal for Ladies Online in Pakistan | Faux-Fur Slide Sandals with Gold Emblem",
+
+    seoDescription:
+      "Buy fur wali chappal (ladies faux-fur slide sandals) online in Pakistan with free delivery. Gold emblem design in Grey, Baby Pink, Brown, Blue, Black, Maroon and White. Sizes 6-10. Sale price Rs. 1,099.",
+
+    seoKeywords: [
+      "fur wali chappal",
+      "fur chappal for ladies",
+      "fur sandals ladies Pakistan",
+      "faux fur slide sandals",
+      "fur slides women",
+      "ladies fur sandals online Pakistan",
+      "gold emblem sandals",
+      "fur wali sandal",
+      "winter sandals for ladies Pakistan",
+      "ladies slides Pakistan",
+      "ladies sandals online Pakistan",
+      "women sandals online Pakistan",
+      "soft fur sandals",
+      "furry slides women",
+      "casual ladies sandals Pakistan",
+      "gents fur chappal",
+      "fancy chappal for ladies",
+      "ladies chappal online Pakistan",
+      "comfy fur slides",
+      "slide sandals with gold hardware"
+    ],
+
+    variants: [
+
+      {
+        color: "Grey",
+        images: [
+          "images/faux-fur-slide-sandals-grey-pakistan.jpeg"
+        ],
+        sizes: [6, 7, 8, 9, 10]
+      },
+
+      {
+        color: "Baby Pink",
+        images: [
+          "images/faux-fur-slide-sandals-baby-pink-pakistan.jpeg"
+        ],
+        sizes: [4, 6, 7, 8, 9, 10]
+      },
+
+      {
+        color: "Brown",
+        images: [
+          "images/faux-fur-slide-sandals-brown-pakistan.jpeg"
+        ],
+        sizes: [6, 7, 8, 9, 10]
+      },
+
+      {
+        color: "Blue",
+        images: [
+          "images/faux-fur-slide-sandals-blue-pakistan.jpeg"
+        ],
+        sizes: [6, 7, 8, 9, 10]
+      },
+
+      {
+        color: "Black",
+        images: [
+          "images/faux-fur-slide-sandals-black-pakistan.jpeg"
+        ],
+        sizes: [6, 7, 8, 9, 10]
+      },
+
+      {
+        color: "Maroon",
+        images: [
+          "images/faux-fur-slide-sandals-maroon-pakistan.jpeg"
+        ],
+        sizes: [6, 7, 8, 9, 10]
+      },
+
+      {
+        color: "White",
+        images: [
+          "images/faux-fur-slide-sandals-white-pakistan.jpeg"
+        ],
+        sizes: [6, 7, 8, 9, 10]
+      }
+
+    ]
   }
 
 ];
