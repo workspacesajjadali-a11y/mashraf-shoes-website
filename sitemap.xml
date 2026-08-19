@@ -69,21 +69,9 @@
   </url>
 
   <url>
-    <loc>https://mashrafshoes.store/account.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
-  <url>
-    <loc>https://mashrafshoes.store/track-order.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
-  <url>
-    <loc>https://mashrafshoes.store/product-ladies-fur-wali-chappal.html</loc>
+    <loc>https://mashrafshoes.store/product-medicated-comfort-slippers.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  </urlset>
+</urlset>

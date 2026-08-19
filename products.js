@@ -751,6 +751,69 @@ var products = [
       }
 
     ]
+  },
+
+  /* ================================================================
+     PRODUCT 12 — MEN'S MEDICATED COMFORT SLIPPERS
+     ================================================================ */
+
+  {
+    id: 12,
+    brand: "M Ashraf Shoes",
+    name: "Medicated Comfort Slippers for Men",
+    category: "men",
+    price: 1499,
+    oldPrice: 1899,
+    rating: 4.5,
+    ratingCount: 6,
+    badge: "Sale",
+
+    material:
+      "PU leather upper with soft cushioned medicated footbed and soft sole",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-medicated-comfort-slippers.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "Men's medicated comfort slippers made of PU leather with a soft sole and a cushioned, ergonomic medicated footbed. Known in the Pakistani market as medicated slippers, comfort chappal or soft sole chappal for gents. Available in Tan in Pakistani sizes 7 to 10. Comfortable for daily wear, office, market and all-day walking.",
+
+    seoTitle:
+      "Medicated Comfort Slippers for Men in Pakistan | Soft Sole PU Chappal | Free Delivery",
+
+    seoDescription:
+      "Buy medicated comfort slippers for men online in Pakistan with free delivery. Soft sole PU leather chappal with cushioned medicated footbed in Tan. Sizes 7-10. Sale price Rs. 1,499.",
+
+    seoKeywords: [
+      "medicated slippers for men",
+      "comfort sandals for men Pakistan",
+      "soft sole chappal for gents",
+      "PU leather sandals men",
+      "gents casual chappal online",
+      "Peshawari style daily wear sandals",
+      "Bata orthopedic sandals",
+      "comfort chappal gents",
+      "best daily wear sandals for men price in Pakistan",
+      "gents chappal online Pakistan",
+      "men sandals online Pakistan",
+      "daily wear sandals men",
+      "mens casual chappal online"
+    ],
+
+    variants: [
+
+      {
+        color: "Tan",
+        images: [
+          "images/men-medicated-comfort-slippers-tan-1-pakistan.jpeg",
+          "images/men-medicated-comfort-slippers-tan-2-pakistan.jpeg"
+        ],
+        sizes: [7, 8, 9, 10]
+      }
+
+    ]
   }
 
 ];
