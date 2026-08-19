@@ -137,11 +137,15 @@
   function getDeliveryCharge(cart){
     if(!cart.length) return 0;
 
-    // Keep the existing delivery behavior for older products while applying
-    // the specific Rs. 100 delivery charge to Product 7.
+    // Use the delivery charge stored on each cart item (passed from the
+    // product page). This correctly handles free-delivery products.
     const charges = cart.map(item => {
-      if(Number(item.productId) === 7 || Number(item.productId) === 8) return 100;
-      if(Number(item.productId) === 6) return 0;
+      if(Number.isFinite(Number(item.deliveryCharge)) && Number(item.deliveryCharge) >= 0){
+        return Number(item.deliveryCharge);
+      }
+      // Fallback for older carts that have no stored charge.
+      if(Number(item.productId) === 6 || Number(item.productId) === 11 ||
+         Number(item.productId) === 12 || Number(item.productId) === 13) return 0;
       if(Number(item.productId) === 5) return 150;
       return 250;
     });

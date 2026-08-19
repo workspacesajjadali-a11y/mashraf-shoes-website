@@ -590,7 +590,7 @@
           <div class="rating"><span class="stars">${starString(p.rating)}</span> ${p.rating} (${p.ratingCount})</div>
           <div class="swatch-row">${swatches}</div>
           <div class="price">Rs. ${p.price.toLocaleString()}${p.oldPrice ? `<span class="old">Rs. ${p.oldPrice.toLocaleString()}</span>` : ''}</div>
-          <button class="order" onclick="addToCart(${p.id}, '${p.name.replace(/'/g,"\\'")}', '${variant.color}', ${variant.sizes[0]}, ${p.price}, '${variant.images[0]}'); this.textContent='Added ✓'; setTimeout(()=>this.textContent='Add to Cart',1200);">
+          <button class="order" onclick="addToCart(${p.id}, '${p.name.replace(/'/g,"\\'")}', '${variant.color}', ${variant.sizes[0]}, ${p.price}, '${variant.images[0]}', ${p.deliveryCharge}); this.textContent='Added ✓'; setTimeout(()=>this.textContent='Add to Cart',1200);">
             Add to Cart
           </button>
         </div>

@@ -160,7 +160,7 @@
             '<div class="name">' + p.name + '</div>' +
             '<div class="price">Rs. ' + p.price.toLocaleString() + '<span class="old">Rs. ' + p.oldPrice.toLocaleString() + '</span></div>' +
             '<div class="save">You save Rs. ' + (p.oldPrice - p.price).toLocaleString() + '</div>' +
-            '<button class="order" onclick="addToCart(' + p.id + ', \'' + p.name.replace(/'/g,"\\'") + '\', \'' + variant.color + '\', ' + variant.sizes[0] + ', ' + p.price + ', \'' + variant.images[0] + '\'); this.textContent=\'Added ✓\'; setTimeout(()=>this.textContent=\'Add to Cart\',1200);">Add to Cart</button>' +
+            '<button class="order" onclick="addToCart(' + p.id + ', \'' + p.name.replace(/'/g,"\\'") + '\', \'' + variant.color + '\', ' + variant.sizes[0] + ', ' + p.price + ', \'' + variant.images[0] + '\', ' + p.deliveryCharge + '); this.textContent=\'Added ✓\'; setTimeout(()=>this.textContent=\'Add to Cart\',1200);">Add to Cart</button>' +
           '</div>' +
         '</div>';
       }).join('');
