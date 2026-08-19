@@ -205,10 +205,13 @@
     return 'MAS-' + num;
   }
 
+  let submitting = false;
+
   document.getElementById('checkoutForm').addEventListener('submit', async function(e){
     e.preventDefault();
     const cart = getCart();
     if(!cart.length) return;
+    if(submitting) return; // prevent duplicate orders from double-clicking
 
     const orderId = generateOrderId();
     const name = document.getElementById('custName').value;
@@ -216,63 +219,86 @@
     const email = document.getElementById('custEmail').value;
     const address = document.getElementById('custAddress').value;
     const deliveryCharge = getDeliveryCharge(cart);
-    const total = cartTotal() + deliveryCharge;
+    const subtotal = cartTotal();
+    const total = subtotal + deliveryCharge;
 
     const itemsText = cart.map(i => `${i.productName} (${i.color}, Size ${i.size}) x${i.qty}`).join(', ');
 
     const SHEETDB_ENDPOINT = 'https://sheetdb.io/api/v1/yzl7r82ebgjdk';
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeajevvd';
 
-    /* =====================================================================
-       CUSTOMER ORDER CONFIRMATION EMAIL — EmailJS
-       Fill these in once you've completed EmailJS setup (see the guide).
-       Until then, this step is silently skipped — everything else still works.
-       ===================================================================== */
     const EMAILJS_PUBLIC_KEY = 'c7yXvgOghq9a9CwfT';
     const EMAILJS_SERVICE_ID = 'service_52gd5h6';
     const EMAILJS_TEMPLATE_ID = 'template_g7s2238';
+
+    // Lock the form so the order is placed exactly ONCE.
+    submitting = true;
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Placing your order...';
+
+    // Abort third-party requests if they hang so the order never gets stuck.
+    const withTimeout = (ms) => {
+      const ctrl = new AbortController();
+      setTimeout(() => ctrl.abort(), ms);
+      return { signal: ctrl.signal };
+    };
 
     // Save order to Supabase (primary database). Silent if not configured yet.
     if (window.SupabaseStore) {
       try{
         await window.SupabaseStore.saveOrder({
           orderId, name, phone, email, address, items: cart, itemsText,
-          subtotal: cartTotal(), deliveryCharge, total, paymentMethod: 'COD'
+          subtotal, deliveryCharge, total, paymentMethod: 'COD'
         });
       }catch(err){ console.error('Supabase order save failed:', err); }
     }
 
-    // Write order to Google Sheet (order tracking)
-    try{
-      await fetch(SHEETDB_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ data: [{
-          OrderID: orderId, Date: new Date().toLocaleString(), CustomerName: name,
-          Phone: phone, Email: email, Address: address, Product: itemsText, Color: '', Size: '',
-          Price: cartTotal(), DeliveryCharge: deliveryCharge, PaymentMethod: 'COD', Status: 'Processing'
-        }]})
-      });
-    }catch(err){ console.error('Sheet logging failed:', err); }
+    // Sheets + owner email + customer email run in PARALLEL and never block
+    // the order. A failure in any of them is logged but never loses the order.
+    await Promise.allSettled([
 
-    // Notify you (the shop owner) via Formspree
-    try{
-      await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ orderId, name, phone, email, address, items: itemsText, total })
-      });
-    }catch(err){ console.error('Owner email notification failed:', err); }
+      // 1. Write order to Google Sheet (order tracking)
+      (async function(){
+        try{
+          const res = await fetch(SHEETDB_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ data: [{
+              OrderID: orderId, Date: new Date().toLocaleString(), CustomerName: name,
+              Phone: phone, Email: email, Address: address, Product: itemsText, Color: '', Size: '',
+              Price: subtotal, DeliveryCharge: deliveryCharge, PaymentMethod: 'COD', Status: 'Processing'
+            }]}),
+            ...withTimeout(8000)
+          });
+          if(!res.ok) console.error('Sheet logging failed:', res.status);
+        }catch(err){ console.error('Sheet logging failed:', err); }
+      })(),
 
-    // Send confirmation to the CUSTOMER via EmailJS
-    if(window.emailjs){
-      try{
-        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-          to_email: email, to_name: name, order_id: orderId,
-          items: itemsText, total: total
-        }, EMAILJS_PUBLIC_KEY);
-      }catch(err){ console.error('Customer confirmation email failed:', err); }
-    }
+      // 2. Notify you (the shop owner) via Formspree
+      (async function(){
+        try{
+          const res = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ orderId, name, phone, email, address, items: itemsText, total }),
+            ...withTimeout(8000)
+          });
+          if(!res.ok) console.error('Owner email notification failed:', res.status);
+        }catch(err){ console.error('Owner email notification failed:', err); }
+      })(),
+
+      // 3. Send confirmation to the CUSTOMER via EmailJS
+      (async function(){
+        if(!window.emailjs) return;
+        try{
+          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            to_email: email, to_name: name, order_id: orderId,
+            items: itemsText, total: total
+          }, EMAILJS_PUBLIC_KEY);
+        }catch(err){ console.error('Customer confirmation email failed:', err); }
+      })()
+    ]);
 
     localStorage.removeItem('mashraf_cart');
 
