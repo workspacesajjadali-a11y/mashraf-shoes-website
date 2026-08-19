@@ -74,4 +74,10 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://mashrafshoes.store/product-ladies-comfort-slippers.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

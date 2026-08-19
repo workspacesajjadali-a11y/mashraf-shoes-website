@@ -814,6 +814,68 @@ var products = [
       }
 
     ]
+  },
+
+  /* ================================================================
+     PRODUCT 13 — LADIES COMFORT SLIPPERS (THICK PU SOLE)
+     ================================================================ */
+
+  {
+    id: 13,
+    brand: "M Ashraf Shoes",
+    name: "Ladies Comfort Slippers with Thick PU Sole",
+    category: "women",
+    price: 1599,
+    oldPrice: 2700,
+    rating: 4.5,
+    ratingCount: 7,
+    badge: "Sale",
+
+    material:
+      "Thick lightweight PU sole with soft cushioned contoured footbed (not leather)",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-ladies-comfort-slippers.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "Ladies comfort slippers with a thick, lightweight PU sole and a soft cushioned contoured footbed. Known in the Pakistani market as ladies chappal, casual chappal, soft sole chappal or thick sole slippers. Available in Beige in Pakistani sizes 6 to 9. Not leather — comfortable for daily wear at home, market, office and all-day walking.",
+
+    seoTitle:
+      "Ladies Comfort Slippers with Thick PU Sole in Pakistan | Beige Chappal | Free Delivery",
+
+    seoDescription:
+      "Buy ladies comfort slippers online in Pakistan with free delivery. Thick PU sole chappal with soft cushioned footbed in Beige. Sizes 6-9. Sale price Rs. 1,599.",
+
+    seoKeywords: [
+      "ladies comfort slippers Pakistan",
+      "ladies chappal online",
+      "PU sole chappal",
+      "thick sole slippers ladies",
+      "soft sole chappal for ladies",
+      "casual chappals for ladies",
+      "daily wear chappal ladies",
+      "ladies slippers online Pakistan",
+      "cushioned slippers women",
+      "diabetic slippers ladies",
+      "women chappal online Pakistan",
+      "beige slippers ladies"
+    ],
+
+    variants: [
+
+      {
+        color: "Beige",
+        images: [
+          "images/ladies-comfort-slippers-beige-1-pakistan.jpeg",
+          "images/ladies-comfort-slippers-beige-2-pakistan.jpeg"
+        ],
+        sizes: [6, 7, 8, 9]
+      }
+
+    ]
   }
 
 ];
