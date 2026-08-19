@@ -152,7 +152,24 @@
     if (!dbProducts || !dbProducts.length) return staticProducts || [];
     const byId = {};
     (staticProducts || []).forEach(function(p){ byId[p.id] = p; });
-    dbProducts.forEach(function(p){ byId[p.id] = p; });
+    dbProducts.forEach(function(p){
+      const base = byId[p.id] || {};
+      /* The DB row overrides fields it actually has, but we never let it
+         wipe out the static pageUrl/images when the DB row lacks them —
+         otherwise product cards link to "/undefined?color=..." */
+      const merged = {};
+      (staticProducts ? Object.keys(base) : []).forEach(function(k){
+        merged[k] = base[k];
+      });
+      Object.keys(p).forEach(function(k){
+        const v = p[k];
+        if (v === null || v === undefined || v === '' || (Array.isArray(v) && !v.length)) return;
+        merged[k] = v;
+      });
+      if (!merged.pageUrl && base.pageUrl) merged.pageUrl = base.pageUrl;
+      if (!merged.pageUrl) merged.pageUrl = (p.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.html';
+      byId[p.id] = merged;
+    });
     return Object.keys(byId)
       .map(function(id){ return byId[id]; })
       .sort(function(a, b){ return a.id - b.id; });
