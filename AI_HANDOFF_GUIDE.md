@@ -30,6 +30,8 @@ A simple, single-repo, no-build website for selling shoes in Pakistan.
 | `product-premium-loafers.html` | Product ID 6 |
 | `product-mens-horsebit-buckle-loafers.html` | Product ID 8 |
 | `product-black-horsebit-tassel-loafers.html` | Product ID 9 |
+| `product-mens-brown-casual-chappal.html` | Product ID 10 |
+| `product-faux-fur-slide-sandals.html` | Product ID 11 |
 | `cart.html`, `checkout.html`, `order-confirmed.html` | Purchase flow |
 | `account.html`, `login.html`, `signup.html`, `track-order.html` | Accounts + order tracking |
 | `products.js` | **THE SOURCE OF TRUTH** for all product data |
@@ -59,16 +61,20 @@ REPLACE `window.products`. The correct behavior (already implemented in
 
 1. Add photos to `images/` first. **File name rules are CRITICAL — see section 3.**
 2. Append a new object to the `var products = [...]` array in `products.js`.
-   - Give it the next free `id` (currently 10).
+   - Give it the next free `id` (currently 12).
    - `pageUrl` must match the product page filename exactly.
 3. Create the product page HTML. The EASIEST correct method:
-   - Copy the newest product page (`product-mens-horsebit-loafers.html`).
-   - Search-replace the product name, images, and the line `const PRODUCT_ID = 7;`
-     to your new id.
+   - Copy the newest product page (`product-faux-fur-slide-sandals.html`).
+   - Search-replace the product name, images, colors, prices, and the line
+     `const PRODUCT_ID = 11;` to your new id.
    - Keep the `<script>` order at the bottom:
      `supabase-config.js` → `supabase.js` → `cart.js` → `products.js`
      (in that order — DO NOT reorder, DO NOT drop any).
    - Keep the mobile swatch fix (section 4).
+   - Add a FAQ section (class `faq`, `<details class="faq-item">`) before
+     `</main>` with the most common buyer questions (COD, delivery time,
+     colors/sizes, material, ordering via WhatsApp, exchange policy) —
+     customers search these, so they help SEO.
 4. Add the new page URL to `sitemap.xml`.
 5. Do NOT edit Supabase to add products. products.js is enough.
 ### How to edit an existing product
@@ -123,6 +129,11 @@ Example for product ID 1 (Diamante Strap Sandals), black:
 7. Duplicate products: product ID 7 "Men's Horsebit Loafers" was the SAME
    product as ID 8 "Men's Horsebit Buckle Loafers" — ID 7 was removed entirely
    (page deleted, sitemap entry removed). Never create duplicate products.
+8. Product cards linking to `/undefined?color=...`: caused when the Supabase DB
+   row for a matching product id had a NULL `page_url`, which wiped out the
+   static pageUrl in `mergeProducts()`. Fixed in `supabase.js` — the merge now
+   overlays DB fields but PRESERVES the static `pageUrl`. Never let a DB row
+   delete the static pageUrl.
 
 ---
 
@@ -289,6 +300,8 @@ for f in glob.glob('images/*'):
 | 6 | Men's Premium Luxury-Style Loafers | product-premium-loafers.html | 2499 | 6 | 41-44 |
 | 8 | Men's Horsebit Buckle Loafers | product-mens-horsebit-buckle-loafers.html | 2499 | 4 | 41-44 |
 | 9 | Men's Black Horsebit Tassel Loafers | product-black-horsebit-tassel-loafers.html | 2499 | 2 | 41-44 |
+| 10 | Men's Brown Casual Chappal | product-mens-brown-casual-chappal.html | 1499 | 2 | 7-10 |
+| 11 | Faux-Fur Slide Sandals (Fur Wali Chappal) | product-faux-fur-slide-sandals.html | 1099 | 7 (one per color) | 6-10 (Baby Pink also 4) |
 
 Verify prices/sizes from `products.js` — the table above is a quick reference
 only.
