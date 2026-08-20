@@ -888,7 +888,7 @@ var products = [
     name: "Men's Comfort Strap Sandals with PU Sole",
     category: "men",
     price: 1799,
-    oldPrice: 2350,
+    oldPrice: 2399,
     rating: 4.5,
     ratingCount: 6,
     badge: "Sale",
