@@ -876,6 +876,82 @@ var products = [
       }
 
     ]
+  },
+
+  /* ================================================================
+     PRODUCT 14 — MEN'S COMFORT STRAP SANDALS (PU SOLE, MACHINE WASHABLE)
+     ================================================================ */
+
+  {
+    id: 14,
+    brand: "M Ashraf Shoes",
+    name: "Men's Comfort Strap Sandals with PU Sole",
+    category: "men",
+    price: 1799,
+    oldPrice: 2350,
+    rating: 4.5,
+    ratingCount: 6,
+    badge: "Sale",
+
+    material:
+      "Soft durable PU sole with machine washable upper and comfortable straps",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-mens-comfort-strap-sandals.html",
+
+    deliveryCharge: 50,
+
+    description:
+      "Men's comfort strap sandals with a soft, durable PU sole and a machine washable upper. Known in the Pakistani market as Skechers style sandals, medicated chappal for men or soft PU sole sandals. Available in Black, Tan and Dark Brown in Pakistani sizes 6 to 11. Comfortable for daily wear with Rs. 50 delivery anywhere in Pakistan.",
+
+    seoTitle:
+      "Men's Comfort Strap Sandals Price in Pakistan | Skechers Style Machine Washable Sandals",
+
+    seoDescription:
+      "Buy men's comfort strap sandals in Pakistan. Skechers style machine washable sandals with soft PU sole in Black, Tan and Dark Brown. Sizes 6-11. Sale price Rs. 1,799.",
+
+    seoKeywords: [
+      "Skechers sandals price in Pakistan",
+      "medicated chappal for men",
+      "comfort slippers men",
+      "soft PU sole sandals",
+      "machine washable sandals",
+      "waterproof daily use slippers",
+      "men sandals size 40 to 44",
+      "cheap men sandals online",
+      "casual strap sandals men",
+      "PU sole sandals men Pakistan",
+      "men chappal online Pakistan"
+    ],
+
+    variants: [
+
+      {
+        color: "Black",
+        images: [
+          "images/mens-comfort-strap-sandals-black-pakistan.jpeg"
+        ],
+        sizes: [7, 8, 11]
+      },
+
+      {
+        color: "Tan",
+        images: [
+          "images/mens-comfort-strap-sandals-tan-pakistan.jpeg"
+        ],
+        sizes: [6, 7, 9, 10]
+      },
+
+      {
+        color: "Dark Brown",
+        images: [
+          "images/mens-comfort-strap-sandals-dark-brown-pakistan.jpeg"
+        ],
+        sizes: [7, 8, 9, 11]
+      }
+
+    ]
   }
 
 ];
