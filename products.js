@@ -912,17 +912,21 @@ var products = [
       "Buy men's comfort strap sandals in Pakistan. Skechers style machine washable sandals with soft PU sole in Black, Tan and Dark Brown. Sizes 6-11. Sale price Rs. 1,799.",
 
     seoKeywords: [
-      "Skechers sandals price in Pakistan",
-      "medicated chappal for men",
-      "comfort slippers men",
-      "soft PU sole sandals",
-      "machine washable sandals",
-      "waterproof daily use slippers",
-      "men sandals size 40 to 44",
-      "cheap men sandals online",
-      "casual strap sandals men",
-      "PU sole sandals men Pakistan",
-      "men chappal online Pakistan"
+      "casual sandals for men Pakistan",
+      "men casual sandals",
+      "summer sandals for men Pakistan",
+      "casual sandals in Karachi",
+      "casual sandals in Lahore",
+      "casual sandals in Islamabad",
+      "sandals for men in Rawalpindi",
+      "men sandals in Peshawar",
+      "casual sandals in Faisalabad",
+      "soft sole sandals in Multan",
+      "machine washable sandals Pakistan",
+      "gents casual sandals online",
+      "PU sole sandals men",
+      "summer new arrival sandals men",
+      "casual sandals price in Pakistan"
     ],
 
     variants: [
@@ -930,7 +934,8 @@ var products = [
       {
         color: "Black",
         images: [
-          "images/mens-comfort-strap-sandals-black-pakistan.jpeg"
+          "images/mens-comfort-strap-sandals-black-1-pakistan.jpeg",
+          "images/mens-comfort-strap-sandals-black-2-pakistan.jpeg"
         ],
         sizes: [7, 8, 11]
       },
@@ -938,7 +943,8 @@ var products = [
       {
         color: "Tan",
         images: [
-          "images/mens-comfort-strap-sandals-tan-pakistan.jpeg"
+          "images/mens-comfort-strap-sandals-tan-1-pakistan.jpeg",
+          "images/mens-comfort-strap-sandals-tan-2-pakistan.jpeg"
         ],
         sizes: [6, 7, 9, 10]
       },
@@ -946,7 +952,8 @@ var products = [
       {
         color: "Dark Brown",
         images: [
-          "images/mens-comfort-strap-sandals-dark-brown-pakistan.jpeg"
+          "images/mens-comfort-strap-sandals-dark-brown-1-pakistan.jpeg",
+          "images/mens-comfort-strap-sandals-dark-brown-2-pakistan.jpeg"
         ],
         sizes: [7, 8, 9, 11]
       }
