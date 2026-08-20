@@ -934,8 +934,8 @@ var products = [
       {
         color: "Black",
         images: [
-          "images/mens-comfort-strap-sandals-black-1-pakistan.jpeg",
-          "images/mens-comfort-strap-sandals-black-2-pakistan.jpeg"
+          "images/mens-comfort-strap-sandals-black-1-pakistan.jpg",
+          "images/mens-comfort-strap-sandals-black-2-pakistan.jpg"
         ],
         sizes: [7, 8, 11]
       },
@@ -943,8 +943,8 @@ var products = [
       {
         color: "Tan",
         images: [
-          "images/mens-comfort-strap-sandals-tan-1-pakistan.jpeg",
-          "images/mens-comfort-strap-sandals-tan-2-pakistan.jpeg"
+          "images/mens-comfort-strap-sandals-tan-1-pakistan.jpg",
+          "images/mens-comfort-strap-sandals-tan-2-pakistan.jpg"
         ],
         sizes: [6, 7, 9, 10]
       },
@@ -952,8 +952,8 @@ var products = [
       {
         color: "Dark Brown",
         images: [
-          "images/mens-comfort-strap-sandals-dark-brown-1-pakistan.jpeg",
-          "images/mens-comfort-strap-sandals-dark-brown-2-pakistan.jpeg"
+          "images/mens-comfort-strap-sandals-dark-brown-1-pakistan.jpg",
+          "images/mens-comfort-strap-sandals-dark-brown-2-pakistan.jpg"
         ],
         sizes: [7, 8, 9, 11]
       }
