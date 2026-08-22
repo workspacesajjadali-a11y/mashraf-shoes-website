@@ -390,6 +390,13 @@
     <button class="cat-item" data-cat="men"><span class="cat-ico">👞</span><span>Men</span></button>
     <button class="cat-item" data-cat="kids"><span class="cat-ico">👟</span><span>Kids</span></button>
     <button class="cat-item" data-cat="leather"><span class="cat-ico">🧵</span><span>Leather</span></button>
+    <select id="priceFilter" onchange="handlePriceFilter(this.value)" style="margin-left:auto;padding:8px 12px;border:1px solid rgba(26,26,24,.2);border-radius:8px;background:var(--paper);font-size:.85rem;color:var(--ink);">
+      <option value="">Price: All</option>
+      <option value="0-1200">Under Rs. 1,200</option>
+      <option value="1201-1800">Rs. 1,201 - 1,800</option>
+      <option value="1801-2500">Rs. 1,801 - 2,500</option>
+      <option value="2501-99999">Above Rs. 2,500</option>
+    </select>
   </div>
 </section>
 
@@ -503,6 +510,7 @@
   const grid = document.getElementById('grid');
   const catButtons = document.querySelectorAll('.cat-item');
   let currentFilter = 'all';
+  let currentPriceRange = '';
   let searchTerm = '';
   let selectedVariant = {};
 
@@ -524,6 +532,7 @@
     if(bar.classList.contains('open')) document.getElementById('searchInput').focus();
   }
   function handleSearch(val){ searchTerm = val.toLowerCase(); render(); }
+  function handlePriceFilter(val){ currentPriceRange = val; render(); }
 
   function getWishlist(){
     try{ return JSON.parse(localStorage.getItem('mashraf_wishlist') || '[]'); }
@@ -553,6 +562,11 @@
         p.brand.toLowerCase().includes(searchTerm) ||
         p.variants.some(v => v.color.toLowerCase().includes(searchTerm))
       );
+    }
+
+    if(currentPriceRange){
+      const [minP, maxP] = currentPriceRange.split('-').map(Number);
+      list = list.filter(p => p.price >= minP && p.price <= maxP);
     }
 
     if(!list.length){

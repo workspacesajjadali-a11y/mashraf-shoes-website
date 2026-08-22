@@ -703,6 +703,17 @@ Delivery Across Pakistan
 Loafer Size Guide
 </h2>
 
+<div class="size-calc">
+  <label class="label mono">YOUR FOOT LENGTH</label>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <input type="number" id="footCm" placeholder="e.g. 24.5" min="15" max="32" step="0.5"
+      style="flex:1;min-width:140px;padding:10px;border:1px solid rgba(26,26,24,.2);border-radius:8px;font-size:1rem;">
+    <span class="label mono">cm</span>
+    <button type="button" class="primary" style="padding:10px 16px;" onclick="findSize()">Show My Size</button>
+  </div>
+  <p id="sizeResult" style="margin-top:10px;font-size:.9rem;min-height:20px;"></p>
+</div>
+
 <table class="size-table">
 
 <tr>
@@ -1092,6 +1103,47 @@ document
 
 };
 
+</script>
+
+
+<script>
+function findSize(){
+  var input = document.getElementById('footCm');
+  var table = document.querySelector('table.size-table');
+  var result = document.getElementById('sizeResult');
+  if(!table || !result){ return; }
+  table.querySelectorAll('tr').forEach(function(r){ r.style.background=''; });
+  var cm = parseFloat(input.value);
+  if(!cm || cm < 15 || cm > 32){
+    result.textContent = 'Please enter your foot length in cm between 15 and 32.';
+    return;
+  }
+  var vals = [];
+  table.querySelectorAll('tr').forEach(function(r){
+    var td = r.querySelector('td');
+    if(!td) return;
+    var v = parseFloat(td.textContent);
+    if(!isNaN(v)) vals.push(v);
+  });
+  if(!vals.length){ result.textContent = 'Could not read the size table.'; return; }
+  var isEU = Math.min.apply(null, vals) >= 30;
+  var ref = isEU ? 36 : 4;
+  var best = null, bestDiff = Infinity, sizeVal = null;
+  table.querySelectorAll('tr').forEach(function(r){
+    var td = r.querySelector('td');
+    if(!td) return;
+    var v = parseFloat(td.textContent);
+    if(isNaN(v)) return;
+    var foot = 22.5 + (v - ref);
+    var diff = Math.abs(foot - cm);
+    if(diff < bestDiff){ bestDiff = diff; best = r; sizeVal = v; }
+  });
+  if(best){
+    best.style.background = 'rgba(27,94,67,.12)';
+    result.innerHTML = 'For a <strong>' + cm + ' cm</strong> foot, we recommend <strong>size ' + sizeVal + '</strong>. ' +
+      'If your foot is wide or you are between sizes, order one size up.';
+  }
+}
 </script>
 
 </body>
