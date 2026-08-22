@@ -86,4 +86,10 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://mashrafshoes.store/product-mens-cargo-sandals.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

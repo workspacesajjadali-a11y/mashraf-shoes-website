@@ -959,6 +959,75 @@ var products = [
       }
 
     ]
+  },
+
+  /* ================================================================
+     PRODUCT 15 — MEN'S CARGO SANDALS (SKECHERS STYLE)
+     ================================================================ */
+
+  {
+    id: 15,
+    brand: "M Ashraf Shoes",
+    name: "Men's Cargo Sandals",
+    category: "men",
+    price: 1699,
+    oldPrice: 2500,
+    rating: 4.5,
+    ratingCount: 8,
+    badge: "Sale",
+
+    material:
+      "Comfortable medium sole with strong fabric upper and soft foam inside",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-mens-cargo-sandals.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "Men's cargo sandals in Skechers style — a comfortable medium sole (not too flat, not too high) with a strong fabric upper and soft foam inside. Known in the Pakistani market as Skechers cargo sandals, cargo chappal or Skechers style sandals for men. Available in Tan and Black in Pakistani sizes 6 to 10. Free delivery across Pakistan.",
+
+    seoTitle:
+      "Men's Cargo Sandals Price in Pakistan | Skechers Style Tan & Black Sandals | Free Delivery",
+
+    seoDescription:
+      "Buy men's cargo sandals online in Pakistan with free delivery. Skechers style sandals with comfortable medium sole and strong fabric upper in Tan and Black. Sizes 6-10. Sale price Rs. 1,699.",
+
+    seoKeywords: [
+      "Skechers cargo sandals price in Pakistan",
+      "cargo sandals for men",
+      "Skechers style sandals men",
+      "men cargo chappal",
+      "cargo sandals Karachi",
+      "cargo sandals Lahore",
+      "men sandals online Pakistan",
+      "comfortable sole sandals men",
+      "men sandals free delivery Pakistan",
+      "gents sandals online"
+    ],
+
+    variants: [
+
+      {
+        color: "Tan",
+        images: [
+          "images/mens-cargo-sandals-tan-pakistan-1.jpg",
+          "images/mens-cargo-sandals-tan-pakistan-2.jpg"
+        ],
+        sizes: [6, 7, 8, 9, 10]
+      },
+
+      {
+        color: "Black",
+        images: [
+          "images/mens-cargo-sandals-black-pakistan-1.jpg",
+          "images/mens-cargo-sandals-black-pakistan-2.jpg"
+        ],
+        sizes: [6, 7, 8, 9, 10]
+      }
+
+    ]
   }
 
 ];
