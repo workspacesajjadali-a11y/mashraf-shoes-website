@@ -1028,6 +1028,94 @@ var products = [
       }
 
     ]
+  },
+
+  /* ================================================================
+     PRODUCT 16 — WOMEN'S JALI WALA KHUSSA (FLORAL, TIKTOK TRENDING)
+     ================================================================ */
+
+  {
+    id: 16,
+    brand: "M Ashraf Shoes",
+    name: "Jali Wala Khussa Floral",
+    category: "women",
+    price: 1799,
+    oldPrice: 2400,
+    rating: 4.8,
+    ratingCount: 12,
+    badge: "Sale",
+
+    material:
+      "Floral embroidered net (jali) upper on a traditional khussa sole with foam padding",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-women-jali-khussa.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "TikTok trending jali wala khussa for women with a floral design made on a net (jali) upper with embroidery, sitting on a traditional khussa sole with foam padding. Available in Light Yellow, Black, Red and Green in Pakistani sizes 36 to 40. Free delivery across Pakistan.",
+
+    seoTitle:
+      "Jali Wala Khussa for Women in Pakistan | Floral Embroidered Khussa Online | Free Delivery",
+
+    seoDescription:
+      "Buy jali wala khussa for women online in Pakistan with free delivery. TikTok trending floral embroidered khussa in Light Yellow, Black, Red and Green. Sizes 36-40. Sale price Rs. 1,799.",
+
+    seoKeywords: [
+      "khussa online Pakistan",
+      "jali wala khussa",
+      "floral khussa",
+      "embroidered khussa women",
+      "women khussa online",
+      "khussa Karachi",
+      "khussa Lahore",
+      "bridal khussa",
+      "TikTok trending khussa",
+      "ladies khussa online Pakistan",
+      "khusay for women",
+      "khussa free delivery Pakistan"
+    ],
+
+    variants: [
+
+      {
+        color: "Light Yellow",
+        images: [
+          "images/jali-khussa-light-yellow-pakistan-1.jpeg",
+          "images/jali-khussa-light-yellow-pakistan-2.jpeg"
+        ],
+        sizes: [36, 40, 38, 37]
+      },
+
+      {
+        color: "Black",
+        images: [
+          "images/jali-khussa-black-pakistan-1.jpeg"
+        ],
+        sizes: [38, 36, 40]
+      },
+
+      {
+        color: "Red",
+        images: [
+          "images/jali-khussa-red-pakistan-1.jpeg",
+          "images/jali-khussa-red-pakistan-2.jpeg"
+        ],
+        sizes: [38, 39, 37, 40]
+      },
+
+      {
+        color: "Green",
+        images: [
+          "images/jali-khussa-green-pakistan-1.jpeg",
+          "images/jali-khussa-green-pakistan-2.jpeg"
+        ],
+        sizes: [38, 39, 40]
+      }
+
+    ]
   }
 
 ];
