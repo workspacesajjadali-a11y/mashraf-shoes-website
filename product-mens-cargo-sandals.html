@@ -34,7 +34,7 @@ content="Men's cargo sandals with comfortable medium sole and strong fabric uppe
 content="https://mashrafshoes.store/product-mens-cargo-sandals.html">
 
 <meta property="og:image"
-content="https://mashrafshoes.store/images/mens-cargo-sandals-tan-pakistan-1.jpg">
+content="https://mashrafshoes.store/images/mens-cargo-sandals-tan-pakistan-1.jpeg">
 
 
 <script type="application/ld+json">
@@ -47,7 +47,7 @@ content="https://mashrafshoes.store/images/mens-cargo-sandals-tan-pakistan-1.jpg
   "description":"Men's cargo sandals with a comfortable medium sole and strong fabric upper with foam inside. Available in Tan and Black in Pakistani sizes 6 to 10 with free delivery across Pakistan.",
 
   "image":[
-    "https://mashrafshoes.store/images/mens-cargo-sandals-tan-pakistan-1.jpg",
+    "https://mashrafshoes.store/images/mens-cargo-sandals-tan-pakistan-1.jpeg",
     "https://mashrafshoes.store/images/mens-comfort-strap-sandals-tan-pakistan.jpeg"
   ],
 
@@ -696,17 +696,61 @@ Pay Online — Coming Soon
 
 <h2>Size Guide</h2>
 
-<table class="size-table">
+
+<h2>Find Your Size</h2>
+
+<div class="size-calc">
+  <label class="label mono">YOUR FOOT LENGTH</label>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <input type="number" id="footCm" placeholder="e.g. 26.0" min="15" max="32" step="0.5"
+      style="flex:1;min-width:140px;padding:10px;border:1px solid rgba(26,26,24,.2);border-radius:8px;font-size:1rem;">
+    <span class="label mono">cm</span>
+    <button type="button" class="primary" style="padding:10px 16px;" onclick="findSize()">Show My Size</button>
+  </div>
+  <p id="sizeResult" style="margin-top:10px;font-size:.9rem;min-height:20px;"></p>
+</div>
+
+<table class="size-table" id="sizeTable">
 <tr>
-<th>EU</th>
 <th>Pakistan / UK</th>
+<th>Foot Length</th>
+<th>EU</th>
 <th>US (Men)</th>
 </tr>
-<tr><td>40</td><td>7</td><td>8</td></tr>
-<tr><td>41</td><td>8</td><td>9</td></tr>
-<tr><td>42</td><td>9</td><td>10</td></tr>
-<tr><td>43</td><td>10</td><td>11</td></tr>
+<tr data-eu="39" data-pk="6"><td>6</td><td>24.5 cm</td><td>39</td><td>7</td></tr>
+<tr data-eu="40" data-pk="7"><td>7</td><td>25.0 cm</td><td>40</td><td>8</td></tr>
+<tr data-eu="41" data-pk="8"><td>8</td><td>26.0 cm</td><td>41</td><td>9</td></tr>
+<tr data-eu="42" data-pk="9"><td>9</td><td>27.0 cm</td><td>42</td><td>10</td></tr>
+<tr data-eu="43" data-pk="10"><td>10</td><td>28.0 cm</td><td>43</td><td>11</td></tr>
 </table>
+
+<script>
+function findSize(){
+  const input = document.getElementById('footCm');
+  const rows = document.querySelectorAll('#sizeTable tr[data-eu]');
+  const result = document.getElementById('sizeResult');
+  rows.forEach(r => r.style.background = '');
+  const cm = parseFloat(input.value);
+  if(!cm || cm < 15 || cm > 32){
+    result.textContent = 'Please enter your foot length in cm between 15 and 32.';
+    return;
+  }
+  let best = null, bestDiff = Infinity;
+  rows.forEach(r => {
+    const foot = parseFloat(r.querySelector('td:nth-child(2)').textContent);
+    const diff = Math.abs(foot - cm);
+    if(diff < bestDiff){ bestDiff = diff; best = r; }
+  });
+  if(best){
+    const pk = best.dataset.pk;
+    best.style.background = 'rgba(27,94,67,.12)';
+    result.innerHTML = 'For a <strong>' + cm + ' cm</strong> foot, we recommend <strong>Pakistan/UK size ' + pk + '</strong>. ' +
+      'If your foot is wide or you are between sizes, order one size up.';
+  }
+}
+</script>
+
+<p style="font-size:.82rem;color:rgba(26,26,24,.65);">These sandals run in Pakistan/UK sizes 6 to 10. Please check your foot length before ordering because sizing can vary between brands.</p>
 
 <p style="font-size:.82rem;color:rgba(26,26,24,.65);">Pakistan size 7-10 is shown with UK, US and EU conversions for reference. Please check the size conversion before ordering because sizing can vary between brands and shoe styles.</p>
 
