@@ -35,6 +35,38 @@
 </style>
 </head>
 <body>
+<div id="loginScreen" style="position:fixed;inset:0;background:#f4f5f3;display:flex;align-items:center;justify-content:center;z-index:100000;">
+  <div style="background:#fff;padding:32px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.12);max-width:360px;width:90%;">
+    <h2 style="margin-bottom:6px;font-size:1.2rem;">M Ashraf Shoes Admin</h2>
+    <p style="color:#666;font-size:.85rem;margin-bottom:16px;">Enter password to manage inventory.</p>
+    <input type="password" id="pwInput" placeholder="Password" style="width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;font-size:1rem;margin-bottom:10px;">
+    <button id="pwBtn" style="width:100%;padding:12px;background:#1B5E43;color:#fff;border:none;border-radius:8px;font-size:1rem;cursor:pointer;font-weight:600;">Unlock</button>
+    <p id="pwErr" style="color:#B3261E;font-size:.8rem;margin-top:10px;min-height:16px;"></p>
+  </div>
+</div>
+
+<script>
+  const ADMIN_HASH = 'ab47ff689087777fbe207edcba5eb1b1747e66ea4efebce8cd1aa6a7ecf0c332';
+  function sha256(str){
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(str)).then(buf => {
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+    });
+  }
+  async function unlock(){
+    const pw = document.getElementById('pwInput').value;
+    const hash = await sha256(pw);
+    if(hash === ADMIN_HASH){
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('appRoot').style.display = 'block';
+    }else{
+      document.getElementById('pwErr').textContent = 'Wrong password. Access denied.';
+    }
+  }
+  document.getElementById('pwBtn').addEventListener('click', unlock);
+  document.getElementById('pwInput').addEventListener('keydown', e => { if(e.key === 'Enter') unlock(); });
+</script>
+
+<div id="appRoot" style="display:none;">
 
 <h1>M Ashraf Shoes — Inventory &amp; Price Manager</h1>
 <p class="sub">Edit prices, sale offers, stock and delivery. Then download the updated <code>products.js</code> and replace it in your GitHub repo to go live.</p>
@@ -80,7 +112,9 @@
     const rows = document.getElementById('rows');
     rows.innerHTML = products.map(p => {
       const inStock = p.inStock !== false;
-      const colors = p.variants.map(v => v.color).join(', ');
+      const sizesHtml = p.variants.map(v =>
+        '<div style="margin-bottom:3px;"><strong>' + v.color + '</strong>: <input type="text" class="sizes" data-color="' + v.color + '" value="' + v.sizes.join(',') + '" placeholder="e.g. 6,7,8" style="min-width:110px;"></div>'
+      ).join('');
       if(q && !p.name.toLowerCase().includes(q)) return '';
       return '<tr data-id="' + p.id + '">' +
         '<td>' + p.id + '</td>' +
@@ -91,7 +125,7 @@
         '<td><input type="text" class="badge" value="' + (p.badge || '') + '" placeholder="Sale/New/None" style="min-width:70px;" onchange="mark()"></td>' +
         '<td><input type="number" class="delivery" value="' + (p.deliveryCharge === 0 ? 0 : (p.deliveryCharge || 250)) + '" min="0" step="50" onchange="mark()"></td>' +
         '<td><input type="checkbox" class="stock" ' + (inStock ? 'checked' : '') + ' onchange="toggleStock(' + p.id + ', this)"></td>' +
-        '<td style="font-size:.72rem;color:#666;">' + colors + '</td>' +
+        '<td style="font-size:.72rem;color:#666;">' + sizesHtml + '</td>' +
       '</tr>';
     }).join('');
   }
@@ -144,6 +178,10 @@
       p.badge = badge || null;
       p.deliveryCharge = Number(tr.querySelector('.delivery').value) || 0;
       p.inStock = tr.querySelector('.stock').checked;
+      tr.querySelectorAll('.sizes').forEach(inp => {
+        const v = p.variants.find(x => x.color === inp.dataset.color);
+        if(v) v.sizes = inp.value.split(',').map(x => parseFloat(x.trim())).filter(x => !isNaN(x));
+      });
     });
     dirty = false;
   }
@@ -214,5 +252,6 @@
 
   render();
 </script>
+</div>
 </body>
 </html>
