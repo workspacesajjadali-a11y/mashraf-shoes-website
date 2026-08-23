@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Admin — M Ashraf Shoes</title>
+<style>
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif; background:#f4f5f3; color:#171614; padding:20px; }
+  h1{ font-size:1.4rem; margin-bottom:4px; }
+  .sub{ color:#666; font-size:.85rem; margin-bottom:20px; }
+  .toolbar{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px; }
+  button{ padding:10px 16px; border:none; border-radius:8px; cursor:pointer; font-size:.9rem; font-weight:600; }
+  .btn-primary{ background:#1B5E43; color:#fff; }
+  .btn-outline{ background:#fff; color:#1B5E43; border:1px solid #1B5E43; }
+  .btn-danger{ background:#fff; color:#B3261E; border:1px solid #B3261E; }
+  .search{ flex:1; min-width:200px; padding:10px 12px; border:1px solid #ccc; border-radius:8px; font-size:.9rem; }
+  table{ width:100%; border-collapse:collapse; background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.06); }
+  th, td{ padding:10px 8px; text-align:left; font-size:.82rem; border-bottom:1px solid #eee; vertical-align:middle; }
+  th{ background:#1B5E43; color:#fff; font-size:.75rem; text-transform:uppercase; letter-spacing:.03em; }
+  tr:hover{ background:#f9fbfa; }
+  input[type=number], input[type=text]{ width:100%; padding:6px 8px; border:1px solid #ccc; border-radius:6px; font-size:.85rem; }
+  .badge-sale{ background:#B3261E; color:#fff; font-size:.65rem; padding:3px 6px; border-radius:4px; }
+  .badge-new{ background:#1B5E43; color:#fff; font-size:.65rem; padding:3px 6px; border-radius:4px; }
+  .savebar{ position:fixed; bottom:0; left:0; right:0; background:#fff; padding:12px 20px; display:flex; gap:12px; align-items:center; box-shadow:0 -2px 10px rgba(0,0,0,.08); }
+  #status{ font-size:.85rem; }
+  .ok{ color:#1B5E43; }
+  .err{ color:#B3261E; }
+  .stock-on{ color:#1B5E43; }
+  .stock-off{ color:#B3261E; }
+  input[type=checkbox]{ width:16px; height:16px; }
+  .cat-tag{ font-size:.65rem; background:#eee; padding:2px 6px; border-radius:4px; text-transform:capitalize; }
+  code{ background:#eee; padding:2px 5px; border-radius:4px; font-size:.75rem; }
+</style>
+</head>
+<body>
+
+<h1>M Ashraf Shoes — Inventory &amp; Price Manager</h1>
+<p class="sub">Edit prices, sale offers, stock and delivery. Then download the updated <code>products.js</code> and replace it in your GitHub repo to go live.</p>
+
+<div class="toolbar">
+  <input type="text" id="search" class="search" placeholder="Search by product name..." oninput="render()">
+  <button class="btn-outline" onclick="toggleBadges()">Toggle Sale Badges</button>
+  <button class="btn-outline" onclick="setAllFreeDelivery()">All Free Delivery</button>
+  <button class="btn-outline" onclick="applyDiscount()">Apply Discount %</button>
+  <select id="discountPct" style="padding:10px;border-radius:8px;border:1px solid #ccc;">
+    <option value="10">10%</option><option value="15">15%</option><option value="20">20%</option><option value="25">25%</option><option value="30">30%</option><option value="40">40%</option><option value="50">50%</option>
+  </select>
+</div>
+
+<div style="overflow-x:auto;">
+<table>
+<thead>
+<tr>
+  <th>ID</th><th>Product</th><th>Sale Price (Rs)</th><th>Original Price (Rs)</th><th>On Sale</th><th>Badge</th><th>Delivery Charge (Rs)</th><th>In Stock</th><th>Colors</th>
+</tr>
+</thead>
+<tbody id="rows"></tbody>
+</table>
+</div>
+
+<div class="savebar">
+  <button class="btn-primary" onclick="exportProducts()">Download Updated products.js</button>
+  <span id="status"></span>
+</div>
+
+<script src="products.js"></script>
+<script>
+  let dirty = false;
+
+  function badgeHtml(b){
+    if(!b) return '<span class="cat-tag">None</span>';
+    const cls = b.toLowerCase() === 'sale' ? 'badge-sale' : 'badge-new';
+    return '<span class="' + cls + '">' + b + '</span>';
+  }
+
+  function render(){
+    const q = (document.getElementById('search').value || '').toLowerCase();
+    const rows = document.getElementById('rows');
+    rows.innerHTML = products.map(p => {
+      const inStock = p.inStock !== false;
+      const colors = p.variants.map(v => v.color).join(', ');
+      if(q && !p.name.toLowerCase().includes(q)) return '';
+      return '<tr data-id="' + p.id + '">' +
+        '<td>' + p.id + '</td>' +
+        '<td><strong>' + p.name + '</strong><br><span class="cat-tag">' + p.category + '</span> <span style="color:#999;font-size:.7rem;">' + p.pageUrl + '</span></td>' +
+        '<td><input type="number" class="price" value="' + p.price + '" min="0" step="1" onchange="mark()"></td>' +
+        '<td><input type="number" class="oldprice" value="' + (p.oldPrice || '') + '" min="0" step="1" onchange="mark()"></td>' +
+        '<td><input type="checkbox" class="onsale" ' + (p.oldPrice ? 'checked' : '') + ' onchange="mark()"></td>' +
+        '<td><input type="text" class="badge" value="' + (p.badge || '') + '" placeholder="Sale/New/None" style="min-width:70px;" onchange="mark()"></td>' +
+        '<td><input type="number" class="delivery" value="' + (p.deliveryCharge === 0 ? 0 : (p.deliveryCharge || 250)) + '" min="0" step="50" onchange="mark()"></td>' +
+        '<td><input type="checkbox" class="stock" ' + (inStock ? 'checked' : '') + ' onchange="toggleStock(' + p.id + ', this)"></td>' +
+        '<td style="font-size:.72rem;color:#666;">' + colors + '</td>' +
+      '</tr>';
+    }).join('');
+  }
+
+  function mark(){ dirty = true; document.getElementById('status').innerHTML = '<span class="ok">Changes pending — remember to download.</span>'; }
+
+  function toggleStock(id, el){
+    const p = products.find(x => x.id === id);
+    if(p) p.inStock = el.checked;
+    mark();
+  }
+
+  function toggleBadges(){
+    products.forEach(p => {
+      if(p.badge === 'Sale') p.badge = '';
+      else if(!p.badge || p.badge === 'New') p.badge = 'Sale';
+    });
+    render(); mark();
+  }
+
+  function setAllFreeDelivery(){
+    if(!confirm('Set delivery charge to Rs. 0 (free) for ALL products?')) return;
+    products.forEach(p => { p.deliveryCharge = 0; });
+    render(); mark();
+  }
+
+  function applyDiscount(){
+    const pct = parseInt(document.getElementById('discountPct').value);
+    const current = products.map(p => p.price).join(',');
+    products.forEach(p => {
+      const orig = p.oldPrice && p.oldPrice > p.price ? p.oldPrice : p.price;
+      p.price = Math.round(orig * (100 - pct) / 100);
+      p.oldPrice = orig;
+      p.badge = 'Sale';
+    });
+    render();
+    mark();
+    document.getElementById('status').innerHTML = '<span class="ok">Applied ' + pct + '% discount to all products.</span>';
+  }
+
+  function collectChanges(){
+    document.querySelectorAll('#rows tr').forEach(tr => {
+      if(!tr.dataset.id) return;
+      const p = products.find(x => x.id === Number(tr.dataset.id));
+      if(!p) return;
+      p.price = Number(tr.querySelector('.price').value) || 0;
+      const old = tr.querySelector('.oldprice').value;
+      p.oldPrice = old === '' || Number(old) <= 0 ? null : Number(old);
+      const badge = tr.querySelector('.badge').value.trim();
+      p.badge = badge || null;
+      p.deliveryCharge = Number(tr.querySelector('.delivery').value) || 0;
+      p.inStock = tr.querySelector('.stock').checked;
+    });
+    dirty = false;
+  }
+
+  function exportProducts(){
+    collectChanges();
+    // Serialize products back into the file shape, preserving original formatting style.
+    const out = [];
+    out.push('/* =====================================================================');
+    out.push('   M ASHRAF SHOES — PRODUCT DATA');
+    out.push('   AUTO-GENERATED BY ADMIN PANEL — ' + new Date().toLocaleString());
+    out.push('   ==================================================================== */');
+    out.push('');
+    out.push('var products = [');
+    products.forEach((p, idx) => {
+      out.push('');
+      out.push('  {');
+      out.push('    id: ' + p.id + ',');
+      out.push('    brand: ' + JSON.stringify(p.brand) + ',');
+      out.push('    name: ' + JSON.stringify(p.name) + ',');
+      out.push('    category: ' + JSON.stringify(p.category) + ',');
+      out.push('    price: ' + p.price + ',');
+      out.push('    oldPrice: ' + (p.oldPrice || 'null') + ',');
+      out.push('    rating: ' + (p.rating || 0) + ',');
+      out.push('    ratingCount: ' + (p.ratingCount || 0) + ',');
+      out.push('    badge: ' + (p.badge ? JSON.stringify(p.badge) : 'null') + ',');
+      out.push('    material: ' + JSON.stringify(p.material || '') + ',');
+      out.push('    whatsappNumber: ' + JSON.stringify(p.whatsappNumber || '') + ',');
+      out.push('    pageUrl: ' + JSON.stringify(p.pageUrl) + ',');
+      out.push('    deliveryCharge: ' + (p.deliveryCharge !== undefined ? p.deliveryCharge : 0) + ',');
+      out.push('    inStock: ' + (p.inStock === false ? 'false' : 'true') + ',');
+      out.push('    description: ' + JSON.stringify(p.description || '') + ',');
+      out.push('    seoTitle: ' + JSON.stringify(p.seoTitle || '') + ',');
+      out.push('    seoDescription: ' + JSON.stringify(p.seoDescription || '') + ',');
+      out.push('    seoKeywords: ' + JSON.stringify(p.seoKeywords || []) + ',');
+      out.push('    variants: [');
+      p.variants.forEach(v => {
+        out.push('      {');
+        out.push('        color: ' + JSON.stringify(v.color) + ',');
+        out.push('        images: ' + JSON.stringify(v.images) + ',');
+        out.push('        sizes: ' + JSON.stringify(v.sizes));
+        out.push('      },');
+      });
+      out.push('    ]');
+      out.push('  }' + (idx < products.length - 1 ? ',' : ''));
+    });
+    out.push('];');
+    out.push('');
+    out.push('/* =====================================================================');
+    out.push('   GLOBAL ACCESS');
+    out.push('   ===================================================================== */');
+    out.push('');
+    out.push('window.products = products;');
+    out.push('');
+
+    const blob = new Blob([out.join('\n')], { type: 'text/javascript' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'products.js';
+    a.click();
+    dirty = false;
+    document.getElementById('status').innerHTML = '<span class="ok">products.js downloaded. Replace the file in GitHub to go live.</span>';
+  }
+
+  window.addEventListener('beforeunload', e => {
+    if(dirty){ e.preventDefault(); e.returnValue = ''; }
+  });
+
+  render();
+</script>
+</body>
+</html>

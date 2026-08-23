@@ -274,6 +274,13 @@
       if(foundIndex > -1) currentVariant = foundIndex;
     }
 
+
+    if(product.inStock === false){
+      ['addToCartBtn','buyNowBtn'].forEach(function(id){
+        var b = document.getElementById(id);
+        if(b){ b.disabled = true; b.style.opacity = '.5'; b.style.cursor = 'not-allowed'; }
+      });
+    }
     window.addProductToCart = function(){
       const variant = product.variants[currentVariant];
       addToCart(product.id, product.name, variant.color, selectedSize, product.price, variant.images[0], product.deliveryCharge);

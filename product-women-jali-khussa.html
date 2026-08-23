@@ -1135,6 +1135,19 @@ renderSwatches();
 
 renderSizes();
 
+// Out-of-stock guard — reads inStock from products.js
+(function(){
+  if(product.inStock === false){
+    var btn = document.getElementById("addToCartBtn");
+    var bn = document.getElementById("buyNowBtn");
+    [btn, bn].forEach(function(b){ if(b){ b.disabled = true; b.style.opacity = ".5"; b.style.cursor = "not-allowed"; } });
+    var delivery = document.querySelector(".delivery-note");
+    if(delivery) delivery.textContent = "Currently Out of Stock";
+    var stock = document.querySelector(".stock-badge");
+    if(stock) stock.textContent = "Out of Stock";
+  }
+})();
+
 }
 catch(error){
 
