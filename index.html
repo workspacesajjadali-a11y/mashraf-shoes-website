@@ -123,6 +123,9 @@
   /* ============================================================
      HERO BANNER — solid emerald, same compact dimensions
      ============================================================ */
+  .hero-slider{ position:relative; overflow:hidden; }
+  .hero-slide{ display:none; }
+  .hero-slide.active{ display:block; }
   .hero{
     position:relative; padding:26px 20px 20px; overflow:hidden;
     background:
@@ -368,19 +371,37 @@
   </div>
 </header>
 
-<!-- HERO: clean headline, no laces -->
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-kicker">New Season · Cash on Delivery · Nationwide</div>
-      <h1>Step into style, <em>tied to perfection</em></h1>
-      <p>Women's sandals and men's classics, delivered anywhere in Pakistan. Quality you can feel, prices that make sense.</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="#shop">Shop the Collection</a>
-        <a class="btn btn-outline" href="deals.html">View Discounts</a>
+<!-- HERO SLIDER: Summer Flash Sale + New Season -->
+<section class="hero-slider">
+
+  <div class="hero hero-slide active">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker">Summer Flash Sale · Up To 50% Off · Limited Time</div>
+        <h1>Summer Flash Sale — <em>up to 50% off</em></h1>
+        <p>Best-selling sandals, slippers, khussas and loafers at unbeatable prices. Cash on Delivery with fast nationwide shipping.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="deals.html">Shop Discounted Items</a>
+          <a class="btn btn-outline" href="#shop">Browse All</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="hero hero-slide">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker">New Season · Cash on Delivery · Nationwide</div>
+        <h1>Step into style, <em>tied to perfection</em></h1>
+        <p>Women's sandals and men's classics, delivered anywhere in Pakistan. Quality you can feel, prices that make sense.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#shop">Shop the Collection</a>
+          <a class="btn btn-outline" href="deals.html">View Discounts</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- CATEGORY STRIP -->
@@ -701,5 +722,17 @@
   <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
 </a>
 
+<script>
+  (function(){
+    var slides = document.querySelectorAll('.hero-slide');
+    if(slides.length < 2) return;
+    var i = 0;
+    setInterval(function(){
+      slides[i].classList.remove('active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('active');
+    }, 6000);
+  })();
+</script>
 </body>
 </html>
