@@ -156,6 +156,85 @@
   }
   .hero-cta{ display:flex; gap:10px; flex-wrap:wrap; }
 
+  /* ---------- 3D FLASH SALE BADGE (slide-in from right) ---------- */
+  .hero-3d{
+    position:absolute; top:50%; right:4%; z-index:2; pointer-events:none;
+    width:250px; height:250px; perspective:900px;
+    opacity:0; transform:translateX(140px) translateY(-50%) rotateY(-40deg) scale(.7);
+    transform-origin:right center;
+  }
+  .hero-slide.active .hero-3d{
+    animation:hero3dIn 1.1s cubic-bezier(.16,1,.3,1) .25s forwards;
+  }
+  @keyframes hero3dIn{
+    0%{ opacity:0; transform:translateX(140px) translateY(-50%) rotateY(-40deg) scale(.7); }
+    60%{ opacity:1; transform:translateX(-12px) translateY(-50%) rotateY(8deg) scale(1.03); }
+    100%{ opacity:1; transform:translateX(0) translateY(-50%) rotateY(0deg) scale(1); }
+  }
+  .flash-badge{
+    position:absolute; inset:0; transform-style:preserve-3d;
+    animation:badgeFloat 5s ease-in-out infinite;
+  }
+  .badge-disc{
+    position:absolute; inset:0; border-radius:50%;
+    background:
+      radial-gradient(circle at 32% 26%, rgba(255,255,255,.55), transparent 42%),
+      radial-gradient(circle at 50% 50%, #FFE7BE 0%, #F6C453 40%, #E09F1F 72%, #B97B10 100%);
+    box-shadow:
+      inset 0 -10px 22px rgba(122,74,4,.45),
+      inset 0 6px 12px rgba(255,255,255,.6),
+      0 26px 50px rgba(0,0,0,.35);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; color:#5B3A06;
+  }
+  .badge-disc::after{
+    content:""; position:absolute; top:10px; left:10px; right:10px; bottom:10px;
+    border:2px dashed rgba(91,58,6,.45); border-radius:50%;
+  }
+  .badge-kicker{
+    font-size:12px; font-weight:800; letter-spacing:.22em; text-transform:uppercase;
+    color:#8A5A08; margin-bottom:2px;
+  }
+  .badge-off{
+    font-family:var(--serif); font-style:italic; font-size:58px; line-height:.95;
+    letter-spacing:-.02em; color:#5B3A06; margin:2px 0 0;
+  }
+  .badge-off strong{ font-weight:400; }
+  .badge-sub{
+    font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    background:#5B3A06; color:#FFE7BE; border-radius:999px; padding:3px 12px; margin-top:6px;
+  }
+  .badge-ring{
+    position:absolute; inset:-14px; border-radius:50%;
+    border:2px solid rgba(255,217,160,.55);
+    animation:badgeRingSpin 9s linear infinite;
+  }
+  .badge-ring::before{
+    content:""; position:absolute; top:-6px; left:50%; width:12px; height:12px;
+    background:#FFD9A0; border-radius:50%; box-shadow:0 0 12px rgba(255,217,160,.9);
+  }
+  .badge-spark{ position:absolute; width:6px; height:6px; background:#fff; border-radius:50%; opacity:0; }
+  .badge-spark:nth-of-type(1){ top:8%; left:20%; animation:spark 2.4s ease-in-out infinite; }
+  .badge-spark:nth-of-type(2){ top:26%; right:6%; animation:spark 2.4s ease-in-out .8s infinite; }
+  .badge-spark:nth-of-type(3){ bottom:12%; left:10%; animation:spark 2.4s ease-in-out 1.4s infinite; }
+  .badge-spark:nth-of-type(4){ bottom:6%; right:24%; animation:spark 2.4s ease-in-out .4s infinite; }
+  @keyframes badgeFloat{
+    0%,100%{ transform:translateY(0) rotateY(0deg); }
+    50%{ transform:translateY(-14px) rotateY(6deg); }
+  }
+  @keyframes badgeRingSpin{ from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+  @keyframes spark{
+    0%,100%{ opacity:0; transform:scale(.4); }
+    50%{ opacity:1; transform:scale(1.3); }
+  }
+  @media (max-width:980px){
+    .hero-3d{ width:200px; height:200px; right:2%; }
+    .badge-off{ font-size:46px; }
+  }
+  @media (max-width:640px){
+    .hero-3d{ display:none; }
+  }
+
   .btn{
     display:inline-flex; align-items:center; justify-content:center; gap:8px;
     text-decoration:none; padding:11px 20px; border-radius:999px;
@@ -383,6 +462,20 @@
         <div class="hero-cta">
           <a class="btn btn-primary" href="deals.html">Shop Discounted Items</a>
           <a class="btn btn-outline" href="#shop">Browse All</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-3d" aria-hidden="true">
+      <div class="flash-badge">
+        <span class="badge-spark"></span>
+        <span class="badge-spark"></span>
+        <span class="badge-spark"></span>
+        <span class="badge-spark"></span>
+        <span class="badge-ring"></span>
+        <div class="badge-disc">
+          <div class="badge-kicker">Flash Sale</div>
+          <div class="badge-off"><strong>50%</strong></div>
+          <div class="badge-sub">Off · Today</div>
         </div>
       </div>
     </div>

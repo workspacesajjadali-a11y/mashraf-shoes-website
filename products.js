@@ -1012,8 +1012,8 @@ var products = [
       {
         color: "Tan",
         images: [
-          "images/kids-cargo-sandals-tan-pakistan-1.jpeg",
-          "images/kids-cargo-sandals-tan-pakistan-2.jpeg"
+          "images/mens-cargo-sandals-tan-pakistan-1.jpeg",
+          "images/mens-cargo-sandals-tan-pakistan-2.jpeg"
         ],
         sizes: [6, 7, 8, 9, 10]
       },
@@ -1021,8 +1021,8 @@ var products = [
       {
         color: "Black",
         images: [
-          "images/kids-cargo-sandals-black-pakistan-1.jpeg",
-          "images/kids-cargo-sandals-black-pakistan-2.jpeg"
+          "images/mens-cargo-sandals-black-pakistan-1.jpeg",
+          "images/mens-cargo-sandals-black-pakistan-2.jpeg"
         ],
         sizes: [6, 7, 8, 9, 10]
       }
