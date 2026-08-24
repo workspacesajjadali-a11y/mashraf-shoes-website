@@ -1116,6 +1116,75 @@ var products = [
       }
 
     ]
+  },
+
+  /* ================================================================
+     PRODUCT 17 — KIDS' CARGO SANDALS (SKECHERS STYLE)
+     ================================================================ */
+
+  {
+    id: 17,
+    brand: "M Ashraf Shoes",
+    name: "Kids' Cargo Sandals",
+    category: "kids",
+    price: 1399,
+    oldPrice: 2000,
+    rating: 4.5,
+    ratingCount: 6,
+    badge: "Sale",
+
+    material:
+      "Comfortable medium sole with strong fabric upper and soft foam inside",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-kids-cargo-sandals.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "Kids' cargo sandals in Skechers style — a comfortable medium sole with a strong fabric upper and soft foam inside. Known in the Pakistani market as Skechers style sandals for boys, kids cargo chappal or bacho k sandal. Available in Tan and Black in kids sizes. Free delivery across Pakistan.",
+
+    seoTitle:
+      "Kids' Cargo Sandals Price in Pakistan | Boys Skechers Style Tan & Black Sandals | Free Delivery",
+
+    seoDescription:
+      "Buy kids' cargo sandals online in Pakistan with free delivery. Boys Skechers style sandals with comfortable medium sole and strong fabric upper in Tan and Black. Kids sizes. Sale price Rs. 1,399.",
+
+    seoKeywords: [
+      "kids cargo sandals price in Pakistan",
+      "boys Skechers style sandals",
+      "cargo sandals for kids",
+      "bacho k sandal",
+      "kids cargo chappal",
+      "boys sandals Karachi",
+      "boys sandals Lahore",
+      "kids sandals online Pakistan",
+      "comfortable sandals for boys",
+      "kids sandals free delivery Pakistan"
+    ],
+
+    variants: [
+
+      {
+        color: "Tan",
+        images: [
+          "images/kids-cargo-sandals-tan-pakistan-1.jpeg",
+          "images/kids-cargo-sandals-tan-pakistan-2.jpeg"
+        ],
+        sizes: [11, 12, 13, 1, 2, 3]
+      },
+
+      {
+        color: "Black",
+        images: [
+          "images/kids-cargo-sandals-black-pakistan-1.jpeg",
+          "images/kids-cargo-sandals-black-pakistan-2.jpeg"
+        ],
+        sizes: [11, 12, 13, 1, 2, 3]
+      }
+
+    ]
   }
 
 ];
