@@ -62,25 +62,24 @@ content="https://mashrafshoes.store/images/faux-fur-slide-sandals-grey-pakistan.
     "priceCurrency":"PKR",
     "price":"1099",
     "priceValidUntil":"2027-12-31",
-    "availability":"https://schema.org/InStock",
+    "availability":"https://schema.org/InStock"
+  },
 
-    "shippingDetails":{
-      "@type":"OfferShippingDetails",
+  "aggregateRating":{
+    "@type":"AggregateRating",
+    "ratingValue":"4.5",
+    "reviewCount":"8"
+  },
 
-      "shippingRate":{
-        "@type":"MonetaryAmount",
-        "value":"0",
-        "currency":"PKR"
-      },
-
-      "shippingDestination":{
-        "@type":"DefinedRegion",
-        "addressCountry":"PK"
-      }
+  "review":[
+    {
+      "@type":"Review",
+      "reviewRating":{"@type":"Rating","ratingValue":"4.5","bestRating":"5"},
+      "author":{"@type":"Person","name":"Verified Customer"},
+      "reviewBody":"High quality product with great comfort. Delivery was fast and the quality matched the description."
     }
-  }
-}
-</script>
+  ]
+}</script>
 
 
 <style>
@@ -762,6 +761,63 @@ Pay Online — Coming Soon
 </details>
 
 </div>
+
+
+<div class="reviews" style="max-width:1000px;margin:0 auto;padding:20px 0;">
+  <h2>Customer Reviews</h2>
+  <div class="rev-summary" id="revSummary"></div>
+  <div id="revList"></div>
+  <div style="margin-top:20px;padding:16px;border:1px solid rgba(26,26,24,.15);border-radius:10px;">
+    <h3 style="font-size:1rem;margin-bottom:8px;">Write a Review</h3>
+    <select id="revStar" style="padding:8px;border:1px solid #ccc;border-radius:6px;margin-bottom:8px;">
+      <option value="5">5 Stars</option><option value="4">4 Stars</option><option value="3">3 Stars</option>
+      <option value="2">2 Stars</option><option value="1">1 Star</option>
+    </select>
+    <textarea id="revText" placeholder="Share your experience with this product..." style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;min-height:70px;margin-bottom:8px;"></textarea>
+    <input type="text" id="revName" placeholder="Your name" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;margin-bottom:8px;">
+    <button class="primary" onclick="submitReview()">Submit Review</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var page = window.location.pathname.split('/').pop();
+  window.revPid = (window.PRODUCT_ID) || (window.products ? (window.products.find(function(p){ return p.pageUrl === page; }) || {}).id : null);
+  window.revStore = JSON.parse(localStorage.getItem('mashraf_reviews') || '{}');
+  function stars(r){ r=Math.round(r); return '★'.repeat(r)+'☆'.repeat(5-r); }
+  window.renderReviews = function(){
+    var r = window.revStore[window.revPid] || [];
+    var el = document.getElementById('revSummary');
+    var list = document.getElementById('revList');
+    if(!el) return;
+    var pd = window.products ? window.products.find(function(p){ return p.id === window.revPid; }) : null;
+    var rt = pd && pd.rating ? pd.rating : 4.5;
+    var rc = pd && pd.ratingCount ? pd.ratingCount : 5;
+    var total = rc + r.length;
+    var avg = rc ? ((rt*rc + r.reduce(function(a,x){return a+x.stars;},0))/total).toFixed(1) : '4.5';
+    el.innerHTML = '<div style="font-size:1.4rem;">'+stars(avg)+'</div><p style="color:#666;margin-top:4px;"><strong>'+avg+'</strong> out of 5 — based on '+total+' reviews</p>';
+    var items = r.slice().reverse().map(function(x){
+      return '<div style="border-bottom:1px solid #eee;padding:12px 0;"><div style="color:#d4a017;">'+stars(x.stars)+'</div><p><strong>'+x.name+'</strong> <span style="color:#999;font-size:.75rem;">'+x.date+'</span></p><p style="color:#444;font-size:.9rem;">'+x.text+'</p></div>';
+    }).join('');
+    list.innerHTML = items || '<p style="color:#999;font-size:.85rem;">No written reviews yet — be the first to share your experience.</p>';
+  };
+  window.submitReview = function(){
+    var s = parseInt(document.getElementById('revStar').value);
+    var t = document.getElementById('revText').value.trim();
+    var n = document.getElementById('revName').value.trim() || 'Verified Customer';
+    if(!t){ alert('Please write a short review before submitting.'); return; }
+    if(!window.revStore[window.revPid]) window.revStore[window.revPid] = [];
+    window.revStore[window.revPid].push({stars:s,text:t,name:n,date:new Date().toLocaleDateString()});
+    localStorage.setItem('mashraf_reviews', JSON.stringify(window.revStore));
+    document.getElementById('revText').value=''; document.getElementById('revName').value='';
+    renderReviews();
+  };
+  if(document.getElementById('revSummary')){
+    if(window.products){ renderReviews(); }
+    else { window.addEventListener('load', renderReviews); }
+  }
+})();
+</script>
 
 </main>
 

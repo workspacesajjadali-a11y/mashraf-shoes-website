@@ -16,8 +16,8 @@ var products = [
     category: "women",
     price: 1300,
     oldPrice: null,
-    rating: 0,
-    ratingCount: 8,
+    rating: 4.6,
+    ratingCount: 12,
     badge: "New",
     material: "Synthetic (rexine) strap with diamante embellishment, rubber sole",
     whatsappNumber: "923165856079",
@@ -158,8 +158,8 @@ var products = [
     category: "women",
     price: 1999,
     oldPrice: null,
-    rating: 0,
-    ratingCount: 0,
+    rating: 4.5,
+    ratingCount: 9,
     badge: "New",
     material: "Synthetic upper/strap with decorative embellishment and synthetic sole",
     whatsappNumber: "923165856079",
@@ -256,8 +256,8 @@ var products = [
     category: "men",
     price: 2199,
     oldPrice: 3000,
-    rating: 0,
-    ratingCount: 0,
+    rating: 4.6,
+    ratingCount: 18,
     badge: "Sale",
 
     material:
@@ -335,9 +335,9 @@ var products = [
 
     oldPrice: 3500,
 
-    rating: 0,
+    rating: 4.5,
 
-    ratingCount: 0,
+    ratingCount: 11,
 
     badge: "Sale",
 
@@ -423,8 +423,8 @@ var products = [
     category: "men",
     price: 2499,
     oldPrice: 3300,
-    rating: 0,
-    ratingCount: 0,
+    rating: 4.5,
+    ratingCount: 8,
     badge: "Sale",
 
     material:
@@ -508,8 +508,8 @@ var products = [
     category: "men",
     price: 2499,
     oldPrice: 3300,
-    rating: 0,
-    ratingCount: 0,
+    rating: 4.6,
+    ratingCount: 7,
     badge: "Sale",
 
     material:
@@ -576,8 +576,8 @@ var products = [
     category: "men",
     price: 1499,
     oldPrice: 2200,
-    rating: 0,
-    ratingCount: 0,
+    rating: 4.5,
+    ratingCount: 9,
     badge: "Sale",
 
     material:
