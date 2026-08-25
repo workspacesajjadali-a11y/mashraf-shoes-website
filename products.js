@@ -1185,6 +1185,76 @@ var products = [
       }
 
     ]
+  },
+
+  /* ================================================================
+     PRODUCT 18 — MEN'S BROWN CRISS-CROSS CASUAL SANDAL
+     (SLINGBACK CHAPPAL)
+     ================================================================ */
+
+  {
+    id: 18,
+    brand: "M Ashraf Shoes",
+    name: "Men's Brown Criss-Cross Casual Sandal",
+    category: "men",
+    price: 1199,
+    oldPrice: 1599,
+    rating: 4.5,
+    ratingCount: 5,
+    badge: "Sale",
+
+    material:
+      "Thick fluffy cushioned sole with a soft upper (not leather) — very comfortable for daily wear",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-mens-brown-criss-cross-sandal.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "Men's brown criss-cross casual sandal — a comfortable slingback chappal with a thick fluffy sole and soft upper. Stylish cross-strap design that goes with both eastern and western outfits. Available in Brown and Black in Pakistani sizes 6 to 10 (EU 39-43). Free delivery across Pakistan.",
+
+    seoTitle:
+      "Men's Brown Criss-Cross Sandals Price in Pakistan | Free Delivery | M Ashraf Shoes",
+
+    seoDescription:
+      "Buy men's brown criss-cross casual sandals online in Pakistan. Comfortable slingback chappal with a thick fluffy sole in Brown and Black. Sizes 6-10 (EU 39-43). Free delivery. Sale price Rs. 1,199.",
+
+    seoKeywords: [
+      "brown criss cross sandal for men",
+      "cross strap sandals for men Pakistan",
+      "slingback chappal for men",
+      "criss cross sandals men price in Pakistan",
+      "brown casual sandals men",
+      "men sandals online Pakistan",
+      "fluffy sole sandals men",
+      "comfortable gents sandals",
+      "men sandals free delivery Pakistan",
+      "gents chappal online"
+    ],
+
+    variants: [
+
+      {
+        color: "Brown",
+        images: [
+          "images/mens-brown-criss-cross-sandal-brown-pakistan-1.jpeg",
+          "images/mens-brown-criss-cross-sandal-brown-pakistan-2.jpeg"
+        ],
+        sizes: [6, 8, 9, 10]
+      },
+
+      {
+        color: "Black",
+        images: [
+          "images/mens-brown-criss-cross-sandal-black-pakistan-1.jpeg",
+          "images/mens-brown-criss-cross-sandal-black-pakistan-2.jpeg"
+        ],
+        sizes: [6, 7, 9, 10]
+      }
+
+    ]
   }
 
 ];

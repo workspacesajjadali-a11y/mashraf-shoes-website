@@ -49,7 +49,7 @@ This was a hard-won fix. A previous developer broke the site by having Supabase
 REPLACE `window.products`. The correct behavior (already implemented in
 `supabase.js`):
 
-- `products.js` defines the full static catalog (currently 9 products).
+- `products.js` defines the full static catalog (currently 17 products).
 - `supabase.js` `mergeProducts()` merges the database on top — the DB wins only
   for matching product `id`s, static-only products are KEPT.
 - **DO NOT** change this. `products.js` entries must keep `id`, `name`,
@@ -61,7 +61,7 @@ REPLACE `window.products`. The correct behavior (already implemented in
 
 1. Add photos to `images/` first. **File name rules are CRITICAL — see section 3.**
 2. Append a new object to the `var products = [...]` array in `products.js`.
-   - Give it the next free `id` (currently 12).
+   - Give it the next free `id` (currently 19).
    - `pageUrl` must match the product page filename exactly.
 3. Create the product page HTML. The EASIEST correct method:
    - Copy the newest product page (`product-faux-fur-slide-sandals.html`).
@@ -302,6 +302,13 @@ for f in glob.glob('images/*'):
 | 9 | Men's Black Horsebit Tassel Loafers | product-black-horsebit-tassel-loafers.html | 2499 | 2 | 41-44 |
 | 10 | Men's Brown Casual Chappal | product-mens-brown-casual-chappal.html | 1499 | 2 | 7-10 |
 | 11 | Faux-Fur Slide Sandals (Fur Wali Chappal) | product-faux-fur-slide-sandals.html | 1099 | 7 (one per color) | 6-10 (Baby Pink also 4) |
+| 12 | Medicated Comfort Slippers for Men | product-medicated-comfort-slippers.html | ? | 2 | ? |
+| 13 | Ladies Comfort Slippers with Thick PU Sole | product-ladies-comfort-slippers.html | ? | 2 | ? |
+| 14 | Men's Comfort Strap Sandals with PU Sole | product-mens-comfort-strap-sandals.html | ? | 6 | ? |
+| 15 | Men's Cargo Sandals | product-mens-cargo-sandals.html | 1699 | 4 | 6-10 |
+| 16 | Jali Wala Khussa Floral | product-women-jali-khussa.html | 1799 | 6 | ? |
+| 17 | Kids' Cargo Sandals | product-kids-cargo-sandals.html | 1399 | 4 | 11-3 |
+| 18 | Men's Brown Criss-Cross Casual Sandal | product-mens-brown-criss-cross-sandal.html | 1199 | 4 (Brown 2, Black 2) | Brown 6,8,9,10 / Black 6,7,9,10 |
 
 Verify prices/sizes from `products.js` — the table above is a quick reference
 only.
