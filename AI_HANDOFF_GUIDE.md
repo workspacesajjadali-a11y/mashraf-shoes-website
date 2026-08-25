@@ -277,14 +277,19 @@ for f in glob.glob('images/*'):
 
 1. Ask for: product name, price, old price (if sale), badge (Sale/New), sizes,
    colors, photos.
-2. Put photos in `images/` with correct names (section 3).
-3. Compress them (section 8).
-4. Add the object to `products.js` with the next free id.
-5. Clone a product page → rename → fix `PRODUCT_ID` → fix images → keep script
+2. **OWNER PREFERENCE: the AI handles photo uploads directly.** Do NOT ask the
+   owner to upload, rename, or git-push photos. When the owner provides photos,
+   the AI brings them into `images/` itself (downloads/fetches them if given a
+   link, or pulls them in via git), names them correctly, and commits + pushes
+   everything in one go.
+3. Put photos in `images/` with correct names (section 3).
+4. Compress them (section 8).
+5. Add the object to `products.js` with the next free id.
+6. Clone a product page → rename → fix `PRODUCT_ID` → fix images → keep script
    order + mobile swatch fix.
-6. Update `sitemap.xml`.
-7. Run ALL checks in section 7.
-8. Push. GitHub Pages auto-deploys in ~2 min.
+7. Update `sitemap.xml`.
+8. Run ALL checks in section 7.
+9. Push. GitHub Pages auto-deploys in ~2 min.
 
 ---
 
