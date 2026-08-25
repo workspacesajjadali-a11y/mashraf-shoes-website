@@ -1372,7 +1372,6 @@ var products = [
         images: [
           "images/green-golden-embroidered-ladies-khussa-mehndi-green-pakistan-1.jpeg",
           "images/green-golden-embroidered-ladies-khussa-mehndi-green-pakistan-2.jpeg",
-          "images/green-golden-embroidered-ladies-khussa-mehndi-green-pakistan-3.jpeg"
         ],
         sizes: [6, 7, 8, 9, 10]
       }
