@@ -1255,6 +1255,129 @@ var products = [
       }
 
     ]
+  },
+
+  /* ================================================================
+     PRODUCT 19 — RED & GOLDEN STONE EMBELLISHED BRIDAL SANDAL
+     ================================================================ */
+
+  {
+    id: 19,
+    brand: "M Ashraf Shoes",
+    name: "Red & Golden Stone Embellished Bridal Sandal",
+    category: "women",
+    price: 999,
+    oldPrice: 1499,
+    rating: 4.6,
+    ratingCount: 6,
+    badge: "Sale",
+
+    material:
+      "Medium heel with stone embroidery work — perfect for bridal, mehndi and wedding wear",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-red-golden-stone-bridal-sandal.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "Red & golden stone embellished bridal sandal for women — a fancy stone work sandal with a medium heel, perfect for bridal, mehndi, walima and wedding wear. Stunning red color with golden stone embroidery. Free delivery across Pakistan.",
+
+    seoTitle:
+      "Buy Red & Golden Bridal Sandal for Women Online in Pakistan",
+
+    seoDescription:
+      "Buy red & golden stone embellished bridal sandals for women online in Pakistan. Fancy stone work sandal with medium heel, perfect for weddings, mehndi and walima. Free delivery. Sale price Rs. 999.",
+
+    seoKeywords: [
+      "bridal sandals for women",
+      "fancy bridal sandals",
+      "red bridal sandals",
+      "stone work sandals",
+      "wedding sandals",
+      "ladies fancy sandals Pakistan",
+      "red golden bridal sandals for women Pakistan",
+      "stone work bridal sandals",
+      "fancy wedding sandals Pakistan",
+      "ladies bridal footwear online Pakistan"
+    ],
+
+    variants: [
+
+      {
+        color: "Red",
+        images: [
+          "images/red-golden-stone-bridal-sandal-red-pakistan-1.jpeg",
+          "images/red-golden-stone-bridal-sandal-red-pakistan-2.jpeg",
+          "images/red-golden-stone-bridal-sandal-red-pakistan-3.jpeg"
+        ],
+        sizes: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      }
+
+    ]
+  },
+
+  /* ================================================================
+     PRODUCT 20 — GREEN & GOLDEN EMBROIDERED LADIES KHUSSA
+     ================================================================ */
+
+  {
+    id: 20,
+    brand: "M Ashraf Shoes",
+    name: "Green & Golden Embroidered Ladies Khussa",
+    category: "women",
+    price: 1499,
+    oldPrice: 1999,
+    rating: 4.6,
+    ratingCount: 6,
+    badge: "Sale",
+
+    material:
+      "Embroidered top with a comfortable sole and good quality foam between the sole and core",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-green-golden-embroidered-ladies-khussa.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "Green & golden embroidered ladies khussa — a fancy traditional flat khussa with golden embroidery work on a light mehndi green upper and a comfortable foam sole. Perfect for Eid, weddings, mehndi and festive wear. Available in Light Mehndi Green in sizes 6 to 10. Free delivery across Pakistan.",
+
+    seoTitle:
+      "Buy Green Embroidered Ladies Khussa Online in Pakistan",
+
+    seoDescription:
+      "Buy green & golden embroidered ladies khussa online in Pakistan. Fancy traditional flat khussa with golden work in Light Mehndi Green. Sizes 6-10. Free delivery. Sale price Rs. 1,499.",
+
+    seoKeywords: [
+      "ladies khussa",
+      "fancy khussa",
+      "embroidered khussa",
+      "green khussa",
+      "traditional khussa",
+      "ladies khussa Pakistan",
+      "fancy shoes for women",
+      "green embroidered ladies khussa Pakistan",
+      "fancy traditional khussa for women",
+      "golden work ladies khussa",
+      "buy ladies khussa online Pakistan"
+    ],
+
+    variants: [
+
+      {
+        color: "Mehndi Green",
+        images: [
+          "images/green-golden-embroidered-ladies-khussa-mehndi-green-pakistan-1.jpeg",
+          "images/green-golden-embroidered-ladies-khussa-mehndi-green-pakistan-2.jpeg",
+          "images/green-golden-embroidered-ladies-khussa-mehndi-green-pakistan-3.jpeg"
+        ],
+        sizes: [6, 7, 8, 9, 10]
+      }
+
+    ]
   }
 
 ];
