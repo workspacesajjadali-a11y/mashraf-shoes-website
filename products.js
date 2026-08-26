@@ -1377,6 +1377,76 @@ var products = [
       }
 
     ]
+  },
+
+  /* ================================================================
+     PRODUCT 21 — GREY KIDS & TEENS CASUAL SLIDE CHAPPAL
+     ================================================================ */
+
+  {
+    id: 21,
+    brand: "M Ashraf Shoes",
+    name: "Grey Kids & Teens Casual Slide Chappal",
+    category: "kids",
+    price: 700,
+    oldPrice: 1200,
+    rating: 4.5,
+    ratingCount: 5,
+    badge: "Sale",
+
+    material:
+      "Lightweight and comfortable slide chappal — perfect for kids and girls",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-grey-kids-teens-casual-chappal.html",
+
+    deliveryCharge: 200,
+
+    description:
+      "Grey kids & teens casual slide chappal — a lightweight and comfortable slide sandal for boys and girls, ages 8 to 16. Available in Grey and Green in kids sizes 1 to 12. Perfect for summer, school and daily wear. Delivery charge Rs. 200 anywhere in Pakistan.",
+
+    seoTitle:
+      "Buy Grey Casual Chappal for Kids & Teens Online in Pakistan",
+
+    seoDescription:
+      "Buy grey casual chappal for kids & teens online in Pakistan. Lightweight comfortable slide chappal for boys and girls ages 8-16. Grey and Green. Kids sizes. Delivery Rs. 200. Sale price Rs. 700.",
+
+    seoKeywords: [
+      "kids chappal",
+      "boys chappal",
+      "teen chappal",
+      "grey chappal",
+      "casual slide chappal",
+      "kids slippers Pakistan",
+      "boys sandals Pakistan",
+      "chappal for boys age 8 to 16 Pakistan",
+      "kids casual chappal Pakistan",
+      "grey teen chappal",
+      "boys slide slippers online Pakistan"
+    ],
+
+    variants: [
+
+      {
+        color: "Grey",
+        images: [
+          "images/grey-kids-teens-casual-chappal-grey-pakistan-1.jpeg",
+          "images/grey-kids-teens-casual-chappal-grey-pakistan-2.jpeg"
+        ],
+        sizes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      },
+
+      {
+        color: "Green",
+        images: [
+          "images/grey-kids-teens-casual-chappal-green-pakistan-1.jpeg",
+          "images/grey-kids-teens-casual-chappal-green-pakistan-2.jpeg"
+        ],
+        sizes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      }
+
+    ]
   }
 
 ];

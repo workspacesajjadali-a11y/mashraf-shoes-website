@@ -315,7 +315,8 @@ for f in glob.glob('images/*'):
 | 17 | Kids' Cargo Sandals | product-kids-cargo-sandals.html | 1399 | 4 | 11-3 |
 | 18 | Men's Brown Criss-Cross Casual Sandal | product-mens-brown-criss-cross-sandal.html | 1199 | 4 (Brown 2, Black 2) | Brown 6,8,9,10 / Black 6,7,9,10 |
 | 19 | Red & Golden Stone Embellished Bridal Sandal | product-red-golden-stone-bridal-sandal.html | 999 | 3 (Red) | 1-9 |
-| 20 | Green & Golden Embroidered Ladies Khussa | product-green-golden-embroidered-ladies-khussa.html | 1499 | 3 (Mehndi Green) | 6-10 |
+| 20 | Green & Golden Embroidered Ladies Khussa | product-green-golden-embroidered-ladies-khussa.html | 1499 | 2 (Mehndi Green) | 6-10 |
+| 21 | Grey Kids & Teens Casual Slide Chappal | product-grey-kids-teens-casual-chappal.html | 700 | 4 (Grey 2, Green 2) | 1-12 (ages 8-16) |
 
 Verify prices/sizes from `products.js` — the table above is a quick reference
 only.
