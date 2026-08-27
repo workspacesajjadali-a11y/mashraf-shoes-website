@@ -24,12 +24,33 @@
   "@type": "Product",
   "name": "Braided Toe-Ring Sandals",
   "description": "Braided synthetic strap toe-ring sandals with rhinestone embellishment, available in 4 colors.",
+  "image":[
+    "https://mashrafshoes.store/images/braided-toe-ring-sandals-black-pakistan-1.jpeg",
+    "https://mashrafshoes.store/images/braided-toe-ring-sandals-black-pakistan-2.jpeg"
+  ],
+
   "brand": { "@type": "Brand", "name": "Stylish Shoes" },
   "offers": {
     "@type": "Offer",
     "priceCurrency": "PKR",
     "price": "999",
     "availability": "https://schema.org/InStock"
+  },
+
+  "shippingDetails":{
+    "@type":"OfferShippingDetails",
+    "shippingRate":{"@type":"MonetaryAmount","value":"250","currency":"PKR"},
+    "shippingDestination":{"@type":"DefinedRegion","addressCountry":"PK"},
+    "deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":1,"maxValue":1,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":2,"maxValue":5,"unitCode":"DAY"}}
+  },
+
+  "hasMerchantReturnPolicy":{
+    "@type":"MerchantReturnPolicy",
+    "applicableCountry":"PK",
+    "returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays":7,
+    "returnMethod":"https://schema.org/ReturnInStore",
+    "returnFees":"https://schema.org/FreeReturn"
   },
 
   "aggregateRating":{

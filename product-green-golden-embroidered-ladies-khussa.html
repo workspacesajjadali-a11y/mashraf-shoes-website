@@ -65,6 +65,22 @@ content="https://mashrafshoes.store/images/green-golden-embroidered-ladies-khuss
     "availability":"https://schema.org/InStock"
   },
 
+  "shippingDetails":{
+    "@type":"OfferShippingDetails",
+    "shippingRate":{"@type":"MonetaryAmount","value":"0","currency":"PKR"},
+    "shippingDestination":{"@type":"DefinedRegion","addressCountry":"PK"},
+    "deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":1,"maxValue":1,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":2,"maxValue":5,"unitCode":"DAY"}}
+  },
+
+  "hasMerchantReturnPolicy":{
+    "@type":"MerchantReturnPolicy",
+    "applicableCountry":"PK",
+    "returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays":7,
+    "returnMethod":"https://schema.org/ReturnInStore",
+    "returnFees":"https://schema.org/FreeReturn"
+  },
+
   "aggregateRating":{
     "@type":"AggregateRating",
     "ratingValue":"4.6",

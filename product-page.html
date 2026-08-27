@@ -24,12 +24,33 @@
   "@type": "Product",
   "name": "Diamante Strap Sandals",
   "description": "Synthetic strap sandals with diamante embellishment and rubber sole, available in 8 colors.",
+  "image":[
+    "https://mashrafshoes.store/images/diamante-strap-sandals-mustard-pakistan.jpeg",
+    "https://mashrafshoes.store/images/diamante-strap-sandals-pink-pakistan.jpeg"
+  ],
+
   "brand": { "@type": "Brand", "name": "Stylo Shoes" },
   "offers": {
     "@type": "Offer",
     "priceCurrency": "PKR",
     "price": "1300",
     "availability": "https://schema.org/InStock"
+  },
+
+  "shippingDetails":{
+    "@type":"OfferShippingDetails",
+    "shippingRate":{"@type":"MonetaryAmount","value":"250","currency":"PKR"},
+    "shippingDestination":{"@type":"DefinedRegion","addressCountry":"PK"},
+    "deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":1,"maxValue":1,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":2,"maxValue":5,"unitCode":"DAY"}}
+  },
+
+  "hasMerchantReturnPolicy":{
+    "@type":"MerchantReturnPolicy",
+    "applicableCountry":"PK",
+    "returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays":7,
+    "returnMethod":"https://schema.org/ReturnInStore",
+    "returnFees":"https://schema.org/FreeReturn"
   },
 
   "aggregateRating":{
