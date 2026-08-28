@@ -62,7 +62,7 @@ REPLACE `window.products`. The correct behavior (already implemented in
 1. Add photos to `images/` first. **File name rules are CRITICAL — see section 3.**
 2. Append a new object to the `var products = [...]` array in `products.js`.
    - Give it the next free `id` (currently 19).
-   - `pageUrl` must match the product page filename exactly.
+   - `pageUrl` must match the product page filename exactly, minus the `.html` suffix.
 3. Create the product page HTML. The EASIEST correct method:
    - Copy the newest product page (`product-faux-fur-slide-sandals.html`).
    - Search-replace the product name, images, colors, prices, and the line
@@ -83,6 +83,15 @@ REPLACE `window.products`. The correct behavior (already implemented in
   `products.js` by `id`, so text changes flow automatically.
 - If you change a product's `pageUrl` or image filenames, update the page HTML
   too (canonical/OG/JSON-LD tags) — otherwise you get dead links.
+
+### URL convention (IMPORTANT — SEO)
+
+- All internal links, canonicals, OG URLs, and `sitemap.xml` entries use
+  **extensionless** URLs (e.g. `/product-braided-sandals`, NOT `.html`).
+  Cloudflare clean-URL redirects every `.html` URL (307) to the extensionless
+  form; `.html` URLs were the suspected cause of weak Google indexing.
+- When adding a page, link to it WITHOUT the `.html` suffix everywhere.
+- `rjdU8_relwac.html` is an admin page kept `noindex` on purpose.
 
 ---
 

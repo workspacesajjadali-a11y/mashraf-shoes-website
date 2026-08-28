@@ -21,7 +21,7 @@ var products = [
     badge: "New",
     material: "Synthetic (rexine) strap with diamante embellishment, rubber sole",
     whatsappNumber: "923165856079",
-    pageUrl: "product-page.html",
+    pageUrl: "product-page",
 
     variants: [
 
@@ -109,7 +109,7 @@ var products = [
     badge: "New",
     material: "Synthetic (rexine) braided strap with rhinestone embellishment, synthetic sole",
     whatsappNumber: "923165856079",
-    pageUrl: "product-braided-sandals.html",
+    pageUrl: "product-braided-sandals",
 
     variants: [
 
@@ -163,7 +163,7 @@ var products = [
     badge: "New",
     material: "Synthetic upper/strap with decorative embellishment and synthetic sole",
     whatsappNumber: "923165856079",
-    pageUrl: "product-kare-embellished-sandals.html",
+    pageUrl: "product-kare-embellished-sandals",
 
     variants: [
 
@@ -217,7 +217,7 @@ var products = [
     badge: "New",
     material: "Leather-look synthetic material",
     whatsappNumber: "923165856079",
-    pageUrl: "product-perforated-cross-strap-sandals.html",
+    pageUrl: "product-perforated-cross-strap-sandals",
 
     variants: [
 
@@ -265,7 +265,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-peshawari-chappal.html",
+    pageUrl: "product-peshawari-chappal",
 
     deliveryCharge: 150,
 
@@ -346,7 +346,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-premium-loafers.html",
+    pageUrl: "product-premium-loafers",
 
     deliveryCharge: 0,
 
@@ -432,7 +432,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-mens-horsebit-buckle-loafers.html",
+    pageUrl: "product-mens-horsebit-buckle-loafers",
 
     deliveryCharge: 100,
 
@@ -517,7 +517,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-black-horsebit-tassel-loafers.html",
+    pageUrl: "product-black-horsebit-tassel-loafers",
 
     deliveryCharge: 100,
 
@@ -585,7 +585,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-mens-brown-casual-chappal.html",
+    pageUrl: "product-mens-brown-casual-chappal",
 
     deliveryCharge: 0,
 
@@ -656,7 +656,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-faux-fur-slide-sandals.html",
+    pageUrl: "product-faux-fur-slide-sandals",
 
     deliveryCharge: 0,
 
@@ -773,7 +773,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-medicated-comfort-slippers.html",
+    pageUrl: "product-medicated-comfort-slippers",
 
     deliveryCharge: 0,
 
@@ -836,7 +836,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-ladies-comfort-slippers.html",
+    pageUrl: "product-ladies-comfort-slippers",
 
     deliveryCharge: 0,
 
@@ -898,7 +898,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-mens-comfort-strap-sandals.html",
+    pageUrl: "product-mens-comfort-strap-sandals",
 
     deliveryCharge: 50,
 
@@ -981,7 +981,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-mens-cargo-sandals.html",
+    pageUrl: "product-mens-cargo-sandals",
 
     deliveryCharge: 0,
 
@@ -1050,7 +1050,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-women-jali-khussa.html",
+    pageUrl: "product-women-jali-khussa",
 
     deliveryCharge: 0,
 
@@ -1138,7 +1138,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-kids-cargo-sandals.html",
+    pageUrl: "product-kids-cargo-sandals",
 
     deliveryCharge: 0,
 
@@ -1208,7 +1208,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-mens-brown-criss-cross-sandal.html",
+    pageUrl: "product-mens-brown-criss-cross-sandal",
 
     deliveryCharge: 0,
 
@@ -1277,7 +1277,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-red-golden-stone-bridal-sandal.html",
+    pageUrl: "product-red-golden-stone-bridal-sandal",
 
     deliveryCharge: 0,
 
@@ -1338,7 +1338,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-green-golden-embroidered-ladies-khussa.html",
+    pageUrl: "product-green-golden-embroidered-ladies-khussa",
 
     deliveryCharge: 0,
 
@@ -1417,7 +1417,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-grey-kids-teens-casual-chappal.html",
+    pageUrl: "product-grey-kids-teens-casual-chappal",
 
     deliveryCharge: 200,
 
@@ -1483,7 +1483,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-stone-bead-embroidered-ladies-khussa.html",
+    pageUrl: "product-stone-bead-embroidered-ladies-khussa",
 
     deliveryCharge: 0,
 
@@ -1557,7 +1557,7 @@ var products = [
 
     whatsappNumber: "923165856079",
 
-    pageUrl: "product-green-embroidered-kids-girls-khussa.html",
+    pageUrl: "product-green-embroidered-kids-girls-khussa",
 
     deliveryCharge: 0,
 

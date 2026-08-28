@@ -6,11 +6,11 @@
 <meta name="color-scheme" content="light only">
 <meta name="description" content="Log in to your M Ashraf Shoes account to see your saved cart and order history.">
 <meta name="keywords" content="M Ashraf Shoes login, customer account, shoe store login Pakistan">
-<link rel="canonical" href="https://mashrafshoes.store/login.html">
+<link rel="canonical" href="https://mashrafshoes.store/login">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Login — M Ashraf Shoes">
 <meta property="og:description" content="Log in to see your cart, orders and account.">
-<meta property="og:url" content="https://mashrafshoes.store/login.html">
+<meta property="og:url" content="https://mashrafshoes.store/login">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Login — M Ashraf Shoes</title>
@@ -102,8 +102,8 @@
 <body>
 
 <header>
-  <a href="index.html" class="brand">M Ashraf <em>Shoes</em></a>
-  <a href="index.html" class="back">← Back to shop</a>
+  <a href="index" class="brand">M Ashraf <em>Shoes</em></a>
+  <a href="index" class="back">← Back to shop</a>
 </header>
 
 <main>
@@ -135,11 +135,11 @@
 
     <div class="msg" id="msg"></div>
 
-    <p class="switch">New here? <a href="signup.html">Create an account</a></p>
+    <p class="switch">New here? <a href="signup">Create an account</a></p>
   </div>
 </main>
 
-<footer><a href="sitemap.html" style="color:inherit;text-decoration:underline">All Products</a> &middot; © M Ashraf Shoes Pakistan — Cash on Delivery · Nationwide Shipping</footer>
+<footer><a href="sitemap" style="color:inherit;text-decoration:underline">All Products</a> &middot; © M Ashraf Shoes Pakistan — Cash on Delivery · Nationwide Shipping</footer>
 
 <script src="supabase-config.js"></script>
 <script src="supabase.js"></script>
@@ -155,7 +155,7 @@
     function redirectIfLoggedIn(){
       if(window.SupabaseStore){
         window.SupabaseStore.getUser().then(function(user){
-          if(user) window.location.href = 'account.html';
+          if(user) window.location.href = 'account ';
         }).catch(function(){});
       }
     }
@@ -191,7 +191,7 @@
           showMsg(res.error.message || 'Login failed. Please try again.', true);
         }else{
           showMsg('Logged in! Taking you to your account…');
-          setTimeout(function(){ window.location.href = 'account.html'; }, 700);
+          setTimeout(function(){ window.location.href = 'account '; }, 700);
         }
       }catch(err){
         showMsg('Something went wrong — please try again.', true);
@@ -227,7 +227,7 @@
 
 
 
-<a href="cart.html"
+<a href="cart"
    style="position:fixed;bottom:20px;right:20px;z-index:9999;background:var(--accent,#1B5E43);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25);"
    aria-label="View Cart">
   <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>

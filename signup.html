@@ -6,11 +6,11 @@
 <meta name="color-scheme" content="light only">
 <meta name="description" content="Create a free M Ashraf Shoes account. Your cart and order history follow your email. Shop women's sandals and men's classics in Pakistan.">
 <meta name="keywords" content="M Ashraf Shoes signup, create account, shoe store account Pakistan">
-<link rel="canonical" href="https://mashrafshoes.store/signup.html">
+<link rel="canonical" href="https://mashrafshoes.store/signup">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Create Account — M Ashraf Shoes">
 <meta property="og:description" content="Your cart and order history follow your email.">
-<meta property="og:url" content="https://mashrafshoes.store/signup.html">
+<meta property="og:url" content="https://mashrafshoes.store/signup">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Create Account — M Ashraf Shoes</title>
@@ -100,8 +100,8 @@
 <body>
 
 <header>
-  <a href="index.html" class="brand">M Ashraf <em>Shoes</em></a>
-  <a href="index.html" class="back">← Back to shop</a>
+  <a href="index" class="brand">M Ashraf <em>Shoes</em></a>
+  <a href="index" class="back">← Back to shop</a>
 </header>
 
 <main>
@@ -136,11 +136,11 @@
 
     <div class="msg" id="msg"></div>
 
-    <p class="switch">Already have an account? <a href="login.html">Log in</a></p>
+    <p class="switch">Already have an account? <a href="login">Log in</a></p>
   </div>
 </main>
 
-<footer><a href="sitemap.html" style="color:inherit;text-decoration:underline">All Products</a> &middot; © M Ashraf Shoes Pakistan — Cash on Delivery · Nationwide Shipping</footer>
+<footer><a href="sitemap" style="color:inherit;text-decoration:underline">All Products</a> &middot; © M Ashraf Shoes Pakistan — Cash on Delivery · Nationwide Shipping</footer>
 
 <script src="supabase-config.js"></script>
 <script src="supabase.js"></script>
@@ -156,7 +156,7 @@
     function redirectIfLoggedIn(){
       if(window.SupabaseStore){
         window.SupabaseStore.getUser().then(function(user){
-          if(user) window.location.href = 'account.html';
+          if(user) window.location.href = 'account ';
         }).catch(function(){});
       }
     }
@@ -190,7 +190,7 @@
           showMsg(res.error.message || 'Signup failed. Please try again.', true);
         }else if(res.data && res.data.session){
           showMsg('Account created! Taking you to your account…');
-          setTimeout(function(){ window.location.href = 'account.html'; }, 700);
+          setTimeout(function(){ window.location.href = 'account '; }, 700);
         }else{
           showMsg('Account created! Check your inbox for a confirmation link, then log in.', false);
           document.getElementById('signupForm').reset();
@@ -207,7 +207,7 @@
 
 
 
-<a href="cart.html"
+<a href="cart"
    style="position:fixed;bottom:20px;right:20px;z-index:9999;background:var(--accent,#1B5E43);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25);"
    aria-label="View Cart">
   <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>

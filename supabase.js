@@ -63,7 +63,7 @@
   async function signUp(email, password) {
     const c = await getClient();
     if (!c) return { data: null, error: { message: 'Supabase not configured yet.' } };
-    return c.auth.signUp({ email, password, options: { emailRedirectTo: window.location.origin + '/account.html' } });
+    return c.auth.signUp({ email, password, options: { emailRedirectTo: window.location.origin + '/account' } });
   }
 
   async function signIn(email, password) {
@@ -77,7 +77,7 @@
     if (!c) return { data: null, error: { message: 'Supabase not configured yet.' } };
     return c.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: window.location.origin + '/account.html' }
+      options: { redirectTo: window.location.origin + '/account' }
     });
   }
 
@@ -167,7 +167,7 @@
         merged[k] = v;
       });
       if (!merged.pageUrl && base.pageUrl) merged.pageUrl = base.pageUrl;
-      if (!merged.pageUrl) merged.pageUrl = (p.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.html';
+      if (!merged.pageUrl) merged.pageUrl = (p.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-') + ' ';
       byId[p.id] = merged;
     });
     return Object.keys(byId)
