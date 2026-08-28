@@ -406,6 +406,27 @@ only.
 
 ## 11. BACKLINKS (why the site has zero, and how to get them)
 
+**UPDATE 2026-08-28: the site now has 8 verified live backlinks** (all dofollow,
+no nofollow/sponsored rel, all return 200 with a working link to
+https://mashrafshoes.store). They are Web 2.0 / free-blog platform links with
+spun/AI content — see the tracking list below. Treat them as low-to-medium
+quality: they help with citation/brand signals, but the content is clearly
+auto-generated and these networks can be devalued. Do NOT rely on them as the
+backlink strategy; keep building real citations (OLX, Daraz, directories, GBP).
+
+### Verified backlinks (all verified live 2026-08-28, all dofollow)
+
+| Platform | URL | Anchor |
+|---|---|---|
+| pointblog.net | shoespakistan106384.pointblog.net/the-shoe-spot-96825172 | click here |
+| blogdigy.com | shoespakistan272084.blogdigy.com/footwear-haven-70025823 | read more |
+| blog5.net | shoespakistan309406.blog5.net/96758593/shoespakistan | click here |
+| mpeblog.com | shoespakistan702650.mpeblog.com/78125024/footwear-haven | get more info |
+| blog-gold.com | shoespakistan524572.blog-gold.com/1009298/shoespakistan | read more |
+| blognody.com | shoespakistan133635.blognody.com/53818026/footwear-haven | website |
+| veronicablog.com | shoespakistan212206.veronicablog.com/62089126/shoespakistan | website |
+| newsyblog.com | shoespakistan111262.newsyblog.com/820283/the-shoe-spot | here |
+
 The site currently has **zero backlinks** — no other site links to
 mashrafshoes.store. Backlinks are external links from other websites to yours;
 Google treats them as votes of trust, and without them a new store stays nearly
