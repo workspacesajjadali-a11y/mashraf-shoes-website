@@ -284,6 +284,18 @@ for f in glob.glob('images/*'):
 
 ## 9. WHAT TO DO WHEN THE OWNER UPLOADS NEW PRODUCTS
 
+### 9a. MANDATORY RULE — NEVER LOSE SEO / TRUST / INDEXING
+
+**Products are permanent. Every addition MUST pass the full checklist below.
+Speed is not an excuse. A product that is added but unindexable, un-schemed,
+or with dead links costs the store trust and search visibility — treat that
+as worse than not adding it at all.**
+
+The checklist below (9b–9h) is the ONLY correct order. Run every step, then
+run all of section 7 verification before pushing. Never skip, never reorder.
+
+### 9b. GATHER & VERIFY (do not skip the verify step)
+
 1. Ask for: product name, price, old price (if sale), badge (Sale/New), sizes,
    colors, photos.
 2. **OWNER PREFERENCE: the AI handles photo uploads directly.** Do NOT ask the
@@ -294,11 +306,69 @@ for f in glob.glob('images/*'):
 3. Put photos in `images/` with correct names (section 3).
 4. Compress them (section 8).
 5. Add the object to `products.js` with the next free id.
-6. Clone a product page → rename → fix `PRODUCT_ID` → fix images → keep script
-   order + mobile swatch fix.
-7. Update `sitemap.xml`.
-8. Run ALL checks in section 7.
-9. Push. GitHub Pages auto-deploys in ~2 min.
+
+### 9c. ADD THE PRODUCT OBJECT (products.js)
+
+- Next free `id`, unique `name`, real `price`, `oldPrice` only if a real sale.
+- `pageUrl` = filename **without** the `.html` suffix (see URL convention in
+  section 2).
+- `seoKeywords`: include Pakistan terms + a Karachi/Lahore/Islamabad geo term,
+  e.g. `"shoes online Karachi"`. Match the product type (`khussa`, `chappal`,
+  `sandal`, `loafer`, `slipper`).
+- `image` array: names must match files on disk EXACTLY (section 3).
+
+### 9d. CREATE THE PRODUCT PAGE
+
+- Copy the newest product page → rename → fix `PRODUCT_ID` → fix images →
+  keep script order (section 5) + mobile swatch fix (section 4).
+- SEO tags on the new page MUST be unique and correct:
+  - `<title>` = product + "online in Pakistan" + COD.
+  - `<meta name="description">` = colors, sizes, COD, "order directly online".
+  - `<meta name="keywords">` = product terms + city terms (Karachi/Lahore/
+    Islamabad).
+  - `<link rel="canonical">` = the extensionless URL (no `.html`).
+  - `og:title`, `og:description`, `og:url` (extensionless), `og:image` =
+    first product image (absolute URL).
+  - JSON-LD `Product` schema: name, description, `image` array (absolute URLs),
+    `offers` with PKR price + `availability`, `aggregateRating`/`review`,
+    `shippingDetails`, `hasMerchantReturnPolicy`. Copy an existing page's
+    schema block and edit fields — do NOT write it from scratch.
+  - `areaServed`/`address` country PK where applicable.
+
+### 9e. WIRE THE PAGE IN (so it can be FOUND — indexing depends on this)
+
+- Add the new page URL (extensionless) to `sitemap.xml`.
+- Link the new page from at least one crawlable page (homepage "All Products"
+  list, `sitemap.html`, and/or the `<noscript>` block on `index.html`).
+- Verify `robots.txt` allows it (it does: `Allow: /`).
+- Never leave a product page as an orphan with no internal links and no
+  sitemap entry — orphan pages do not get indexed.
+
+### 9f. NOINDEX ADMIN PAGES ONLY
+
+- `rjdU8_relwac.html` is the only intentionally-noindexed page. Never add
+  `noindex` to any product page, and never remove it from the admin page.
+
+### 9g. EXTENSIONLESS URL RULE (indexing-critical)
+
+- ALL links, canonicals, OG URLs, sitemap entries, and `products.js` `pageUrl`
+  use extensionless URLs. Cloudflare 307-redirects every `.html` URL, and
+  307-redirected URLs were the suspected cause of weak Google indexing.
+- After adding a page, curl-check the live extensionless URL returns 200.
+
+### 9h. VERIFY, THEN PUSH (same as section 7)
+
+1. `node --check products.js` — JS parse OK.
+2. Validate every JSON-LD block parses (python3 json check).
+3. Validate `sitemap.xml` is well-formed XML and contains the new URL.
+4. Grep the new page for: correct `PRODUCT_ID`, no template leftovers, image
+   filenames that actually exist in `images/`, no `noindex`, no `.html` links.
+5. Confirm no `.html` suffix anywhere in links/canonicals/sitemap.
+6. Push. GitHub Pages auto-deploys in ~2 min, then curl the live URL → expect
+   200.
+
+**Rule of thumb: if a step is uncertain, STOP and fix it. Never ship a product
+with missing images, a broken link, a 307'd canonical, or no sitemap entry.**
 
 ---
 
@@ -334,7 +404,48 @@ only.
 
 ---
 
-## 11. NEVER DO THIS
+## 11. BACKLINKS (why the site has zero, and how to get them)
+
+The site currently has **zero backlinks** — no other site links to
+mashrafshoes.store. Backlinks are external links from other websites to yours;
+Google treats them as votes of trust, and without them a new store stays nearly
+invisible. This CANNOT be done from the repo — it needs accounts and manual
+submission. These are the highest-value, free sources for Pakistan (ranked):
+
+1. **OLX Pakistan (olx.com.pk)** — list each product as an ad with your store
+   URL in the description. OLX pages rank in Google.com.pk and pass brand
+   signals. Best first move.
+2. **Daraz.pk** — open a seller store and list products. Daraz product pages
+   rank prominently and link back to your site/brand.
+3. **Local directories (NAP citations)** — Locally.pk, PakistanYellowPages.com,
+   Businesslist.pk, Hamariweb.com. Register the business with IDENTICAL name,
+   address, phone (+92) on each. Consistency is what makes them count.
+4. **Google Business Profile** — create one with a +92 phone, Pakistan address,
+   photos, and get customer reviews. Drives the local pack + website visits.
+5. **Facebook/Instagram page + WhatsApp Business** — put your store link in the
+   bio and posts. Social links are weak signals but free and easy.
+6. **Pakistan shoe blogs / Urdu content** — guest posts or mentions on
+   Hamariweb articles and local blogs (low-volume, higher effort).
+
+Never buy link farms or spam comment sections — that can de-index the site
+(trust loss is irreversible).
+
+---
+
+## 12. WHY THE AI CANNOT "PROCESS" IMAGES HERE
+
+- The AI works from text: it can verify that a filename exists, check
+  dimensions/extensions via shell tools, and name files correctly — but it
+  **cannot view photo content**, retouch, crop, or decide which photo looks
+  best. No image input channel exists in this environment.
+- Image file uploads must be made by the owner (drag into chat, or provide a
+  download link — then the AI fetches them into `images/` itself per rule 9b).
+- Image compression (section 8) runs as a command on files already on disk,
+  which the AI CAN do once the photos exist.
+
+---
+
+## 13. NEVER DO THIS
 
 - Never let Supabase replace `window.products` (merge only).
 - Never reference an image that isn't in `images/` with the exact same name.
