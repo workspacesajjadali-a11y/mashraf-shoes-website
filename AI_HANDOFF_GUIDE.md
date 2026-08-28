@@ -317,6 +317,8 @@ for f in glob.glob('images/*'):
 | 19 | Red & Golden Stone Embellished Bridal Sandal | product-red-golden-stone-bridal-sandal.html | 999 | 3 (Red) | 1-9 |
 | 20 | Green & Golden Embroidered Ladies Khussa | product-green-golden-embroidered-ladies-khussa.html | 1499 | 2 (Mehndi Green) | 6-10 |
 | 21 | Grey Kids & Teens Casual Slide Chappal | product-grey-kids-teens-casual-chappal.html | 700 | 4 (Grey 2, Green 2) | 1-12 (ages 8-16) |
+| 22 | Stone & Bead Embroidered Ladies Khussa | product-stone-bead-embroidered-ladies-khussa.html | 1099 | 6 (Black 2, White 2, Golden 2) | White & Golden 37-40 / Black 37-39 |
+| 23 | Green Embroidered Kids Girls Khussa | product-green-embroidered-kids-girls-khussa.html | 800 | 2 (Green) | 9-13 (kids) |
 
 Verify prices/sizes from `products.js` — the table above is a quick reference
 only.

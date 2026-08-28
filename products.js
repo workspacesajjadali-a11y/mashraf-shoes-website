@@ -1447,6 +1447,136 @@ var products = [
       }
 
     ]
+  },
+
+  {
+    id: 22,
+    brand: "M Ashraf Shoes",
+    name: "Stone & Bead Embroidered Ladies Khussa",
+    category: "women",
+    price: 1099,
+    oldPrice: null,
+    rating: 4.6,
+    ratingCount: 6,
+    badge: "Sale",
+
+    material:
+      "Stone & bead embroidered upper with a comfortable sole and good quality foam between the sole and core",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-stone-bead-embroidered-ladies-khussa.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "Stone & bead embroidered ladies khussa — a fancy traditional flat khussa with elegant stone and bead work. Available in Black, White and Golden in Pakistani sizes 37 to 40 with free delivery across Pakistan.",
+
+    seoTitle:
+      "Buy Embroidered Fancy Ladies Khussa Online in Pakistan",
+
+    seoDescription:
+      "Buy embroidered fancy ladies khussa online in Pakistan. Stone & bead embroidered khussa in Black, White and Golden. Sizes 37-40. Free delivery. Sale price Rs. 1,099.",
+
+    seoKeywords: [
+      "ladies khussa Pakistan",
+      "embroidered khussa",
+      "fancy khussa",
+      "stone work khussa",
+      "bead work khussa",
+      "black khussa",
+      "white khussa",
+      "golden khussa",
+      "embellished khussa",
+      "fancy khussa for women"
+    ],
+
+    variants: [
+
+      {
+        color: "Black",
+        images: [
+          "images/stone-bead-embroidered-ladies-khussa-black-pakistan-1.jpeg",
+          "images/stone-bead-embroidered-ladies-khussa-black-pakistan-2.jpeg"
+        ],
+        sizes: [37, 38, 39]
+      },
+
+      {
+        color: "White",
+        images: [
+          "images/stone-bead-embroidered-ladies-khussa-white-pakistan-1.jpeg",
+          "images/stone-bead-embroidered-ladies-khussa-white-pakistan-2.jpeg"
+        ],
+        sizes: [37, 38, 39, 40]
+      },
+
+      {
+        color: "Golden",
+        images: [
+          "images/stone-bead-embroidered-ladies-khussa-golden-pakistan-1.jpeg",
+          "images/stone-bead-embroidered-ladies-khussa-golden-pakistan-2.jpeg"
+        ],
+        sizes: [37, 38, 39, 40]
+      }
+
+    ]
+  },
+
+  {
+    id: 23,
+    brand: "M Ashraf Shoes",
+    name: "Green Embroidered Kids Girls Khussa",
+    category: "kids",
+    price: 800,
+    oldPrice: null,
+    rating: 4.5,
+    ratingCount: 5,
+    badge: "Sale",
+
+    material:
+      "Embroidered kids girls khussa with a comfortable flat sole",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-green-embroidered-kids-girls-khussa.html",
+
+    deliveryCharge: 0,
+
+    description:
+      "Green embroidered kids girls khussa — a fancy traditional flat khussa for girls with pretty green embroidery. Available in Green in kids sizes 9 to 13 with free delivery all over Pakistan.",
+
+    seoTitle:
+      "Buy Fancy Girls Khussa for Kids Online in Pakistan",
+
+    seoDescription:
+      "Buy fancy girls khussa for kids online in Pakistan. Green embroidered kids girls khussa — bachiyon ka fancy khussa for girls. Kids sizes 9-13. Free delivery all over Pakistan. Sale price Rs. 800.",
+
+    seoKeywords: [
+      "kids khussa",
+      "girls khussa",
+      "bachiyon ka khussa",
+      "fancy girls khussa",
+      "embroidered kids khussa",
+      "baby girl khussa",
+      "green khussa for girls",
+      "children khussa Pakistan",
+      "bachiyon ka fancy khussa Pakistan",
+      "girls embroidered khussa online Pakistan"
+    ],
+
+    variants: [
+
+      {
+        color: "Green",
+        images: [
+          "images/green-embroidered-kids-girls-khussa-green-pakistan-1.jpeg",
+          "images/green-embroidered-kids-girls-khussa-green-pakistan-2.jpeg"
+        ],
+        sizes: [9, 10, 11, 12, 13]
+      }
+
+    ]
   }
 
 ];
