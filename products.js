@@ -1374,6 +1374,24 @@ var products = [
           "images/green-golden-embroidered-ladies-khussa-mehndi-green-pakistan-2.jpeg",
         ],
         sizes: [6, 7, 8, 9, 10]
+      },
+
+      {
+        color: "Red",
+        images: [
+          "images/green-golden-embroidered-ladies-khussa-red-pakistan-1.jpeg",
+          "images/green-golden-embroidered-ladies-khussa-red-pakistan-2.jpeg",
+        ],
+        sizes: [6, 7, 8, 9, 10]
+      },
+
+      {
+        color: "Yellow",
+        images: [
+          "images/green-golden-embroidered-ladies-khussa-yellow-pakistan-1.jpeg",
+          "images/green-golden-embroidered-ladies-khussa-yellow-pakistan-2.jpeg",
+        ],
+        sizes: [6, 7, 8, 9, 10]
       }
 
     ]
