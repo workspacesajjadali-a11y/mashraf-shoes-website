@@ -93,6 +93,22 @@ REPLACE `window.products`. The correct behavior (already implemented in
 - When adding a page, link to it WITHOUT the `.html` suffix everywhere.
 - `rjdU8_relwac.html` is an admin page kept `noindex` on purpose.
 
+### Category pages (long-tail keyword hubs)
+
+- 6 category pages exist: `category-khussa.html`, `category-chappal.html`,
+  `category-sandals.html`, `category-slippers.html`, `category-loafers.html`,
+  `category-bridal-sandals.html`. Each targets a long-tail phrase like
+  "Khussa Online in Pakistan" (Hush Puppies owns the head term; we win the
+  niches).
+- They use `CollectionPage` + `ItemList` JSON-LD, an FAQ section, and link to
+  their products. Generator: `scripts/gen_categories.py`.
+- Every product page has a breadcrumb back to its category page. Keep this
+  bidirectional linking when adding products — it is what lets Google find
+  both the product and its category.
+- When adding a NEW category: create the page (copy generator pattern), add
+  it to `sitemap.xml`, link it from homepage footer, `sitemap.html`, deals
+  footer, and the `<noscript>` block in `index.html`.
+
 ---
 
 ## 3. IMAGE FILE NAMING — the biggest source of past bugs
