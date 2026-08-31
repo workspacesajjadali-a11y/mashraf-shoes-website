@@ -267,6 +267,6 @@ def build(cat):
     return page
 
 for cat in CATS:
-    with open("category-%s.html" % cat["slug"], "w") as f:
+    with open("%s.html" % cat["slug"], "w") as f:
         f.write(build(cat))
-    print("wrote category-%s.html" % cat["slug"])
+    print("wrote %s.html" % cat["slug"])
