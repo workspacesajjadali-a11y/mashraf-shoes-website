@@ -493,3 +493,35 @@ Never buy link farms or spam comment sections — that can de-index the site
 - Never add laces/scroll animations, emojis, or change the design system.
 - Never commit the Google OAuth client secret or any API secret.
 - Never delete files unless the owner confirms.
+
+---
+
+## 14. INDEXNOW (Bing/Yandex fast indexing) — setup
+
+Google/Bing deprecated sitemap pings (Google 404, Bing 410). IndexNow is the
+modern replacement — submit all URLs once and Bing/Yandex crawl within hours.
+
+- Key file hosted at site root: `c8b561f47cdc40f89a54bd737cae3128.txt` (must
+  return 200 from https://mashrafshoes.store/<key>.txt to verify).
+- To re-submit after adding products:
+  ```
+  KEY=c8b561f47cdc40f89a54bd737cae3128
+  curl -s "https://mashrafshoes.store/sitemap.xml" | grep -o '<loc>[^<]*' | sed 's|<loc>||' > /tmp/urls.txt
+  python3 -c "import json; urls=[l.strip() for l in open('/tmp/urls.txt') if l.strip()]; open('/tmp/p.json','w').write(json.dumps({'host':'mashrafshoes.store','key':'$KEY','keyLocation':'https://mashrafshoes.store/'+chr(36)+'KEY.txt','urlList':urls}))"
+  curl -s -X POST "https://api.indexnow.org/indexnow" -H "Content-Type: application/json; charset=utf-8" -d @/tmp/p.json -w "HTTP %{http_code}\n"   # expect 202
+  ```
+  **Do this after every product/category push.**
+- Google does NOT use IndexNow — Google needs Search Console sitemap
+  submission + ownership verification (user must do this).
+
+## 15. WHAT THE OWNER MUST DO NEXT (GSC + real citations)
+
+1. **Verify Search Console ownership** — go to search.google.com/search-console →
+   add property → choose DNS TXT (easiest on Cloudflare). I'll handle the
+   sitemap submission + data pull once verified.
+2. **Google Business Profile** — create with +92 phone, address, photos; this is
+   the single biggest local ranking factor.
+3. **OLX Pakistan + Daraz.pk** — list products with store URL (these get crawled
+   constantly and link back).
+4. **Directories** — Locally.pk, PakistanYellowPages.com, Businesslist.pk with
+   identical NAP.
