@@ -213,7 +213,7 @@ TEMPLATE = """<!DOCTYPE html>
   </div>
 
   <footer>
-    &copy; M Ashraf Shoes Pakistan &middot; <a href="{base}/sitemap.xml">XML Sitemap</a> &middot; <a href="{base}/sitemap">All Products</a>
+    &copy; M Ashraf Shoes Pakistan &middot; <a href="{base}/sitemap.xml">XML Sitemap</a> &middot; <a href="{base}/sitemap">All Products</a> &middot; <a href="https://www.instagram.com/ashraf_shoe26/" rel="me">Instagram</a>
   </footer>
 </div>
 </body>

@@ -443,6 +443,22 @@ backlink strategy; keep building real citations (OLX, Daraz, directories, GBP).
 | veronicablog.com | shoespakistan212206.veronicablog.com/62089126/shoespakistan | website |
 | newsyblog.com | shoespakistan111262.newsyblog.com/820283/the-shoe-spot | here |
 
+### Social profiles (E-E-A-T / brand signals — added 2026-09-01)
+
+Owner created an Instagram business page and connected it to Facebook; the
+website link is in the Instagram bio. Instagram/Facebook profile links are
+nofollow so they pass no direct link equity, but they build brand/E-E-A-T
+signals and satisfy the "no social profiles" gap flagged by the SEOmator audit.
+
+- Instagram: https://www.instagram.com/ashraf_shoe26/ (confirmed live)
+- Facebook: owner-connected (page URL not yet added — get it from the owner and
+  add to `sameAs` + footer once known)
+
+Site integration (committed): `sameAs` array added to the homepage
+`OnlineStore` JSON-LD, Instagram link added to homepage footer (rel="me") and
+to the 6 category-page footers (via `scripts/gen_categories.py`). Keep social
+links consistent across any new pages.
+
 The site currently has **zero backlinks** — no other site links to
 mashrafshoes.store. Backlinks are external links from other websites to yours;
 Google treats them as votes of trust, and without them a new store stays nearly
