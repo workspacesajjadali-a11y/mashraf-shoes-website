@@ -469,7 +469,7 @@ var products = [
         images: [
           "images/colorful-embroidered-kids-khussa-girls-multicolor-pakistan-1.jpeg",
           "images/colorful-embroidered-kids-khussa-girls-multicolor-pakistan-2.jpeg",
-          "images/colorful-embroidered-kids-khussa-girls-multicolor-pakistan-anatomy.jpeg"
+          "images/colorful-embroidered-kids-khussa-girls-multicolor-pakistan-anatomy.png"
         ],
         sizes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
       }
