@@ -409,8 +409,73 @@ var products = [
 
 
   /* ================================================================
-     PRODUCT 7 — MEN'S HORSEBIT LOAFERS
+     PRODUCT 7 — COLORFUL EMBROIDERED KIDS GIRLS KHUSSA
      ================================================================ */
+
+  {
+    id: 7,
+    brand: "M Ashraf Shoes",
+    name: "Colorful Embroidered Kids Khussa for Girls",
+    category: "kids",
+    price: 799,
+    oldPrice: 1500,
+    rating: 4.5,
+    ratingCount: 3,
+    badge: "Sale",
+
+    material:
+      "Colorful embroidered upper with bead and sequin detailing on a comfortable flat sole",
+
+    whatsappNumber: "923165856079",
+
+    pageUrl: "product-colorful-embroidered-kids-khussa-for-girls",
+
+    deliveryCharge: 0,
+
+    description:
+      "Colorful embroidered kids khussa for girls with vibrant multicolor detailing and a classic Pakistani khusa style. This kids khussa pairs pink, yellow, green, purple and cream tones for a playful festive look, perfect with shalwar kameez, frocks, lehengas and kurtis for Eid, weddings, mehndi and family gatherings. Available in Multicolor in kids sizes 1 to 11 with free delivery all over Pakistan.",
+
+    seoTitle:
+      "Kids Khussa for Girls | Colorful Embroidered Pakistani Khusa",
+
+    seoDescription:
+      "Buy colorful kids khussa for girls online in Pakistan. Beautiful embroidered Pakistani khusa, perfect for Eid, weddings and traditional outfits. Kids sizes 1-11. Free delivery.",
+
+    seoKeywords: [
+      "kids khussa for girls",
+      "kids khussa",
+      "kids khusa",
+      "girls khussa",
+      "girls khusa",
+      "khussa for girls",
+      "baby girl khussa",
+      "kids jutti",
+      "girls jutti",
+      "colorful khussa",
+      "embroidered kids khussa",
+      "Pakistani khussa for girls",
+      "kids khussa online Pakistan",
+      "girls khussa online Pakistan",
+      "Eid khussa for girls",
+      "bachiyon ka khussa",
+      "traditional kids khussa",
+      "kids festive shoes Pakistan"
+    ],
+
+    variants: [
+
+      {
+        color: "Multicolor",
+        images: [
+          "images/colorful-embroidered-kids-khussa-girls-multicolor-pakistan-1.jpeg",
+          "images/colorful-embroidered-kids-khussa-girls-multicolor-pakistan-2.jpeg",
+          "images/colorful-embroidered-kids-khussa-girls-multicolor-pakistan-anatomy.jpeg"
+        ],
+        sizes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+      }
+
+    ]
+  },
 
   /* ================================================================
      PRODUCT 8 — MEN'S HORSEBIT BUCKLE LOAFERS

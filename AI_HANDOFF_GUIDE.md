@@ -49,7 +49,7 @@ This was a hard-won fix. A previous developer broke the site by having Supabase
 REPLACE `window.products`. The correct behavior (already implemented in
 `supabase.js`):
 
-- `products.js` defines the full static catalog (currently 17 products).
+- `products.js` defines the full static catalog (currently 23 products).
 - `supabase.js` `mergeProducts()` merges the database on top — the DB wins only
   for matching product `id`s, static-only products are KEPT.
 - **DO NOT** change this. `products.js` entries must keep `id`, `name`,
@@ -154,6 +154,14 @@ Example for product ID 1 (Diamante Strap Sandals), black:
 7. Duplicate products: product ID 7 "Men's Horsebit Loafers" was the SAME
    product as ID 8 "Men's Horsebit Buckle Loafers" — ID 7 was removed entirely
    (page deleted, sitemap entry removed). Never create duplicate products.
+   **2026-09-02: ID 7 was reused for a NEW product "Colorful Embroidered Kids
+   Khussa for Girls" (kids khussa, page
+   `product-colorful-embroidered-kids-khussa-for-girls.html`). Page/product
+   data/sitemap/category were all built and staged, but NOT pushed/deployed
+   because the 3 images (`images/colorful-embroidered-kids-khussa-girls-multicolor-pakistan-1.jpeg`,
+   `...-2.jpeg`, `...-anatomy.jpeg`) are still
+   pending owner upload. Complete the §9a–9h checklist (verify images 200),
+   then commit+push and re-submit IndexNow (see §14).
 8. Product cards linking to `/undefined?color=...`: caused when the Supabase DB
    row for a matching product id had a NULL `page_url`, which wiped out the
    static pageUrl in `mergeProducts()`. Fixed in `supabase.js` — the merge now

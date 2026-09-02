@@ -7,18 +7,19 @@ CATS = [
     {
         "slug": "khussa",
         "title": "Khussa Online in Pakistan – Handcrafted Pakistani Khussa | M Ashraf Shoes",
-        "meta_desc": "Buy handcrafted khussa online in Pakistan. Embroidered ladies khussa, jali wala khussa, stone & bead khussa and kids girls khussa with nationwide Cash on Delivery.",
+        "meta_desc": "Buy handcrafted khussa online in Pakistan. Embroidered ladies khussa, jali wala khussa, stone & bead khussa, colorful kids khussa and kids girls khussa with nationwide Cash on Delivery.",
         "h1": "Khussa Online in Pakistan",
-        "intro": "Shop handcrafted Pakistani khussa online at M Ashraf Shoes. Our embroidered ladies khussa, jali wala khussa, stone & bead khussa and kids girls khussa are made with traditional craft. Cash on Delivery to Karachi, Lahore, Islamabad and all Pakistan.",
+        "intro": "Shop handcrafted Pakistani khussa online at M Ashraf Shoes. Our embroidered ladies khussa, jali wala khussa, stone & bead khussa, colorful embroidered kids khussa and kids girls khussa are made with traditional craft. Cash on Delivery to Karachi, Lahore, Islamabad and all Pakistan.",
         "faq": [
             ("What is khussa?", "Khussa is a traditional Pakistani hand-embroidered shoe, worn by women and children for weddings, eid and everyday wear."),
-            ("Is khussa available in kids sizes?", "Yes, we stock embroidered kids girls khussa in small sizes with Cash on Delivery across Pakistan."),
+            ("Is khussa available in kids sizes?", "Yes, we stock embroidered colorful kids khussa and kids girls khussa in small sizes with Cash on Delivery across Pakistan."),
             ("Do you deliver khussa to Karachi, Lahore and Islamabad?", "Yes, we ship nationwide across all Pakistan with Cash on Delivery."),
         ],
         "products": [
             ("product-women-jali-khussa", "Jali Wala Khussa Floral – Ladies Embroidered Khussa"),
             ("product-green-golden-embroidered-ladies-khussa", "Green & Golden Embroidered Ladies Khussa"),
             ("product-stone-bead-embroidered-ladies-khussa", "Stone & Bead Embroidered Ladies Khussa"),
+            ("product-colorful-embroidered-kids-khussa-for-girls", "Colorful Embroidered Kids Khussa for Girls"),
             ("product-green-embroidered-kids-girls-khussa", "Green Embroidered Kids Girls Khussa"),
         ],
     },
