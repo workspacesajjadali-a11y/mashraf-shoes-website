@@ -11,7 +11,7 @@
 
 <title>Diamante Sandals Online in Pakistan | M Ashraf Shoes</title>
 <meta name="description" content="Buy Diamante Strap Sandals online in Pakistan. 8 colors, sizes 5-10, synthetic strap with rubber sole. Nationwide Cash on Delivery. Order directly online.">
-<meta name="keywords" content="women sandals online Pakistan, diamante sandals Pakistan, flat sandals online, cash on delivery sandals, Stylo Shoes sandals, ladies sandals Pakistan, shoes online Karachi, shoes online Lahore, shoes online Islamabad, buy shoes online Pakistan">
+
 <link rel="canonical" href="https://mashrafshoes.store/product-page">
 
 <meta property="og:type" content="product">
@@ -24,50 +24,57 @@
   "@type": "Product",
   "name": "Diamante Strap Sandals",
   "description": "Synthetic strap sandals with diamante embellishment and rubber sole, available in 8 colors.",
-  "image":[
+  "image": [
     "https://mashrafshoes.store/images/diamante-strap-sandals-mustard-pakistan.jpeg",
     "https://mashrafshoes.store/images/diamante-strap-sandals-pink-pakistan.jpeg"
   ],
-
-  "brand": { "@type": "Brand", "name": "Stylo Shoes" },
+  "brand": {
+    "@type": "Brand",
+    "name": "Stylo Shoes"
+  },
   "offers": {
     "@type": "Offer",
     "priceCurrency": "PKR",
     "price": "1300",
     "availability": "https://schema.org/InStock"
   },
-
-  "shippingDetails":{
-    "@type":"OfferShippingDetails",
-    "shippingRate":{"@type":"MonetaryAmount","value":"250","currency":"PKR"},
-    "shippingDestination":{"@type":"DefinedRegion","addressCountry":"PK"},
-    "deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":1,"maxValue":1,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":2,"maxValue":5,"unitCode":"DAY"}}
-  },
-
-  "hasMerchantReturnPolicy":{
-    "@type":"MerchantReturnPolicy",
-    "applicableCountry":"PK",
-    "returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow",
-    "merchantReturnDays":7,
-    "returnMethod":"https://schema.org/ReturnInStore",
-    "returnFees":"https://schema.org/FreeReturn"
-  },
-
-  "aggregateRating":{
-    "@type":"AggregateRating",
-    "ratingValue":"4.6",
-    "reviewCount":"12"
-  },
-
-  "review":[
-    {
-      "@type":"Review",
-      "reviewRating":{"@type":"Rating","ratingValue":"4.6","bestRating":"5"},
-      "author":{"@type":"Person","name":"Verified Customer"},
-      "reviewBody":"High quality product with great comfort. Delivery was fast and the quality matched the description."
+  "shippingDetails": {
+    "@type": "OfferShippingDetails",
+    "shippingRate": {
+      "@type": "MonetaryAmount",
+      "value": "250",
+      "currency": "PKR"
+    },
+    "shippingDestination": {
+      "@type": "DefinedRegion",
+      "addressCountry": "PK"
+    },
+    "deliveryTime": {
+      "@type": "ShippingDeliveryTime",
+      "handlingTime": {
+        "@type": "QuantitativeValue",
+        "minValue": 1,
+        "maxValue": 1,
+        "unitCode": "DAY"
+      },
+      "transitTime": {
+        "@type": "QuantitativeValue",
+        "minValue": 2,
+        "maxValue": 5,
+        "unitCode": "DAY"
+      }
     }
-  ]
-}</script>
+  },
+  "hasMerchantReturnPolicy": {
+    "@type": "MerchantReturnPolicy",
+    "applicableCountry": "PK",
+    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays": 7,
+    "returnMethod": "https://schema.org/ReturnInStore",
+    "returnFees": "https://schema.org/FreeReturn"
+  }
+}
+</script>
 
 <style>
   :root{
@@ -198,6 +205,8 @@
         <span>💵 Cash on Delivery</span>
         <span>🚚 Nationwide delivery</span>
         <span>↩ 7-day exchange</span>
+      <span>100% Original Brand</span>
+        <span>Secure Checkout</span>
       </div>
 
       <div class="cta">
@@ -444,11 +453,305 @@ function findSize(){
 
 
 
+<script>
+(function(){
+  try{
+    var img=document.getElementById('mainImage');
+    var container=document.getElementById('zoomContainer')||(img&&img.parentElement);
+    if(!img){return;}
+    var dragging=false,startX=0,moved=0;
+    function colorName(){var el=document.getElementById('colorName');return el?el.textContent.trim():'';}
+    function curPos(){
+      var p=(window.products||[]).find(function(x){return x.id===window.revPid;});
+      if(!p){return null;}
+      var vi=p.variants.findIndex(function(v){return v.color===colorName();});
+      if(vi<0){vi=0;}
+      var src=img.getAttribute('src')||'';
+      var file=src.split('/').pop();
+      var ii=p.variants[vi].images.findIndex(function(im){return (im.split('/').pop())===file;});
+      if(ii<0){ii=0;}
+      return {p:p,vi:vi,ii:ii};
+    }
+    function flatLen(p){var n=0;(p.variants||[]).forEach(function(v){n+=v.images.length;});return n;}
+    function totalIdx(c){var n=0;for(var v=0;v<c.p.variants.length;v++){if(v<c.vi){n+=c.p.variants[v].images.length;}else{return n+c.ii;}}return n;}
+    function setTotal(idx,p){
+      var pos={vi:0,ii:0};
+      var remaining=idx;
+      for(var v=0;v<p.variants.length;v++){
+        var L=p.variants[v].images.length;
+        if(remaining<L){pos.vi=v;pos.ii=remaining;break;}
+        remaining-=L;
+      }
+      var cur=curPos();
+      if(cur&&cur.vi!==pos.vi&&typeof window.selectVariant==='function'){window.selectVariant(pos.vi);}
+      if(typeof window.selectImage==='function'){window.selectImage(pos.ii);}
+    }
+    function step(dir){
+      var c=curPos();if(!c)return;
+      var t=totalIdx(c)+dir;
+      var total=flatLen(c.p);
+      t=((t%total)+total)%total;
+      setTotal(t,c.p);
+    }
+    function px(e){return (e.touches&&e.touches[0]?e.touches[0].clientX:(e.changedTouches&&e.changedTouches[0]?e.changedTouches[0].clientX:e.clientX));}
+    function grab(x){
+      if(container&&container.classList.contains('zoomed')){return;}
+      dragging=true;moved=0;startX=x;
+      if(img){img.style.transition='none';}
+    }
+    function drag(x){
+      if(!dragging)return;
+      moved=x-startX;
+      if(img){img.style.transform='translateX('+moved+'px)';}
+      if(container){container.style.cursor='grabbing';}
+    }
+    function release(){
+      if(!dragging)return;dragging=false;
+      if(img){img.style.transition='transform .25s ease';img.style.transform='';}
+      if(container){container.style.cursor=container.classList.contains('zoomed')?'zoom-out':'zoom-in';}
+      var w=img.clientWidth||300;
+      if(Math.abs(moved)>=Math.min(55,w*0.15)){step(moved<0?1:-1);}
+    }
+    var zoomedBefore=false;
+    if(container){
+      container.addEventListener('touchstart',function(e){if(e.touches.length===1){grab(px(e));}},{passive:true});
+      container.addEventListener('touchmove',function(e){if(e.touches.length===1){drag(px(e));}},{passive:true});
+      container.addEventListener('touchend',function(e){release();},{passive:true});
+      container.addEventListener('mousedown',function(e){if(e.button===0){grab(px(e));}});
+      window.addEventListener('mousemove',function(e){drag(px(e));});
+      window.addEventListener('mouseup',function(){release();});
+      container.addEventListener('click',function(){});
+    }
+  }catch(e){console.error('swipe init failed',e);}
+})();
+</script>
+
+<script>
+(function(){
+  try{
+    var btn=document.getElementById('addToCartBtn');
+    var priceEl=document.querySelector('.price.mono');
+    if(!btn){return;}
+    var bar=document.createElement('div');
+    bar.id='stickyBuy';
+    bar.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:9998;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#FBFAF7;border-top:1px solid rgba(26,26,24,.12);box-shadow:0 -4px 16px rgba(26,26,24,.08);';
+    var price=document.createElement('span');
+    price.style.cssText='font-weight:700;font-size:1rem;color:#1A1A18;font-variant-numeric:tabular-nums;';
+    var old=document.querySelector('.old-price.mono');
+    price.innerHTML=(old?old.outerHTML+'&nbsp;':'')+(priceEl?priceEl.textContent:'');
+    var b2=btn.cloneNode(true);
+    b2.style.cssText='flex:1;max-width:240px;background:#1B5E43;color:#fff;border:0;border-radius:10px;padding:12px 18px;font-size:.95rem;font-weight:700;cursor:pointer;';
+    b2.removeAttribute('disabled');
+    b2.onclick=function(){if(typeof window.addProductToCart==='function'){window.addProductToCart();}};
+    bar.appendChild(price);bar.appendChild(b2);
+    document.body.appendChild(bar);
+    var style=document.createElement('style');
+    style.textContent='@media(min-width:768px){#stickyBuy{display:none!important}}';
+    document.head.appendChild(style);
+    var lastY=window.scrollY,shown=false;
+    window.addEventListener('scroll',function(){
+      var y=window.scrollY;
+      if(window.innerWidth>767){bar.style.display='none';return;}
+      var nearBottom=(window.innerHeight+window.scrollY)>=(document.body.offsetHeight-60);
+      if(y>260&&!nearBottom){bar.style.display='flex';shown=true;}
+      else if(nearBottom){bar.style.display='none';}
+      else if(y<=100){bar.style.display='none';}
+      lastY=y;
+    },{passive:true});
+  }catch(e){console.error('sticky init failed',e);}
+})();
+
+(function(){
+  try{
+    var p=(window.products||[]).find(function(x){return x.id===window.revPid;});
+    if(!p){return;}
+    var rel=p.variants&&p.variants[0]?p.variants[0].images[0]:'';
+    var related=(window.products||[]).filter(function(x){return x.id!==p.id&&x.category===p.category;});
+    if(related.length<1){related=(window.products||[]).filter(function(x){return x.id!==p.id;});}
+    related=related.slice(0,4);
+    if(!related.length){return;}
+    var sec=document.createElement('div');
+    sec.style.cssText='max-width:1120px;margin:10px auto 40px;padding:0 16px;';
+    var h=document.createElement('h2');
+    h.style.cssText='font-size:1.15rem;margin:28px 0 14px;';
+    h.textContent='Related Products';
+    sec.appendChild(h);
+    var grid=document.createElement('div');
+    grid.style.cssText='display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;';
+    related.forEach(function(r){
+      var a=document.createElement('a');
+      a.href=r.pageUrl;
+      a.style.cssText='text-decoration:none;color:inherit;background:#fff;border:1px solid rgba(26,26,24,.1);border-radius:12px;overflow:hidden;';
+      var im=r.variants&&r.variants[0]&&r.variants[0].images[0]?r.variants[0].images[0]:'';
+      var card='<img src="'+im+'" alt="'+r.name.replace(/"/g,'&quot;')+'" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;">'
+        +'<div style="padding:10px 12px;"><div style="font-size:.8rem;font-weight:600;line-height:1.3;min-height:2.4em;">'+r.name.replace(/"/g,'&quot;')+'</div>'
+        +'<div style="font-size:.85rem;color:#1B5E43;font-weight:700;margin-top:4px;">Rs. '+(r.price||0).toLocaleString()+'</div>'
+        +'</div>';
+      a.innerHTML=card;
+      grid.appendChild(a);
+    });
+    sec.appendChild(grid);
+    var footer=document.querySelector('footer');
+    if(footer){footer.parentNode.insertBefore(sec,footer);}
+    else{document.body.appendChild(sec);}
+  }catch(e){console.error('related init failed',e);}
+})();
+</script>
+
+
 <a href="cart"
    style="position:fixed;bottom:20px;right:20px;z-index:9999;background:var(--accent,#1B5E43);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25);"
    aria-label="View Cart">
   <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
 </a>
+
+
+
+<script>
+(function(){
+  try{
+    var img=document.getElementById('mainImage');
+    var container=document.getElementById('zoomContainer')||(img&&img.parentElement);
+    if(!img){return;}
+    var dragging=false,startX=0,moved=0;
+    function colorName(){var el=document.getElementById('colorName');return el?el.textContent.trim():'';}
+    function curPos(){
+      var p=(window.products||[]).find(function(x){return x.id===window.revPid;});
+      if(!p){return null;}
+      var vi=p.variants.findIndex(function(v){return v.color===colorName();});
+      if(vi<0){vi=0;}
+      var src=img.getAttribute('src')||'';
+      var file=src.split('/').pop();
+      var ii=p.variants[vi].images.findIndex(function(im){return (im.split('/').pop())===file;});
+      if(ii<0){ii=0;}
+      return {p:p,vi:vi,ii:ii};
+    }
+    function flatLen(p){var n=0;(p.variants||[]).forEach(function(v){n+=v.images.length;});return n;}
+    function totalIdx(c){var n=0;for(var v=0;v<c.p.variants.length;v++){if(v<c.vi){n+=c.p.variants[v].images.length;}else{return n+c.ii;}}return n;}
+    function setTotal(idx,p){
+      var pos={vi:0,ii:0};
+      var remaining=idx;
+      for(var v=0;v<p.variants.length;v++){
+        var L=p.variants[v].images.length;
+        if(remaining<L){pos.vi=v;pos.ii=remaining;break;}
+        remaining-=L;
+      }
+      var cur=curPos();
+      if(cur&&cur.vi!==pos.vi&&typeof window.selectVariant==='function'){window.selectVariant(pos.vi);}
+      if(typeof window.selectImage==='function'){window.selectImage(pos.ii);}
+    }
+    function step(dir){
+      var c=curPos();if(!c)return;
+      var t=totalIdx(c)+dir;
+      var total=flatLen(c.p);
+      t=((t%total)+total)%total;
+      setTotal(t,c.p);
+    }
+    function px(e){return (e.touches&&e.touches[0]?e.touches[0].clientX:(e.changedTouches&&e.changedTouches[0]?e.changedTouches[0].clientX:e.clientX));}
+    function grab(x){
+      if(container&&container.classList.contains('zoomed')){return;}
+      dragging=true;moved=0;startX=x;
+      if(img){img.style.transition='none';}
+    }
+    function drag(x){
+      if(!dragging)return;
+      moved=x-startX;
+      if(img){img.style.transform='translateX('+moved+'px)';}
+      if(container){container.style.cursor='grabbing';}
+    }
+    function release(){
+      if(!dragging)return;dragging=false;
+      if(img){img.style.transition='transform .25s ease';img.style.transform='';}
+      if(container){container.style.cursor=container.classList.contains('zoomed')?'zoom-out':'zoom-in';}
+      var w=img.clientWidth||300;
+      if(Math.abs(moved)>=Math.min(55,w*0.15)){step(moved<0?1:-1);}
+    }
+    var zoomedBefore=false;
+    if(container){
+      container.addEventListener('touchstart',function(e){if(e.touches.length===1){grab(px(e));}},{passive:true});
+      container.addEventListener('touchmove',function(e){if(e.touches.length===1){drag(px(e));}},{passive:true});
+      container.addEventListener('touchend',function(e){release();},{passive:true});
+      container.addEventListener('mousedown',function(e){if(e.button===0){grab(px(e));}});
+      window.addEventListener('mousemove',function(e){drag(px(e));});
+      window.addEventListener('mouseup',function(){release();});
+      container.addEventListener('click',function(){});
+    }
+  }catch(e){console.error('swipe init failed',e);}
+})();
+</script>
+
+
+<script>
+(function(){
+  try{
+    var btn=document.getElementById('addToCartBtn');
+    var priceEl=document.querySelector('.price.mono');
+    if(!btn){return;}
+    var bar=document.createElement('div');
+    bar.id='stickyBuy';
+    bar.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:9998;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#FBFAF7;border-top:1px solid rgba(26,26,24,.12);box-shadow:0 -4px 16px rgba(26,26,24,.08);';
+    var price=document.createElement('span');
+    price.style.cssText='font-weight:700;font-size:1rem;color:#1A1A18;font-variant-numeric:tabular-nums;';
+    var old=document.querySelector('.old-price.mono');
+    price.innerHTML=(old?old.outerHTML+'&nbsp;':'')+(priceEl?priceEl.textContent:'');
+    var b2=btn.cloneNode(true);
+    b2.style.cssText='flex:1;max-width:240px;background:#1B5E43;color:#fff;border:0;border-radius:10px;padding:12px 18px;font-size:.95rem;font-weight:700;cursor:pointer;';
+    b2.removeAttribute('disabled');
+    b2.onclick=function(){if(typeof window.addProductToCart==='function'){window.addProductToCart();}};
+    bar.appendChild(price);bar.appendChild(b2);
+    document.body.appendChild(bar);
+    var style=document.createElement('style');
+    style.textContent='@media(min-width:768px){#stickyBuy{display:none!important}}';
+    document.head.appendChild(style);
+    var lastY=window.scrollY,shown=false;
+    window.addEventListener('scroll',function(){
+      var y=window.scrollY;
+      if(window.innerWidth>767){bar.style.display='none';return;}
+      var nearBottom=(window.innerHeight+window.scrollY)>=(document.body.offsetHeight-60);
+      if(y>260&&!nearBottom){bar.style.display='flex';shown=true;}
+      else if(nearBottom){bar.style.display='none';}
+      else if(y<=100){bar.style.display='none';}
+      lastY=y;
+    },{passive:true});
+  }catch(e){console.error('sticky init failed',e);}
+})();
+
+(function(){
+  try{
+    var p=(window.products||[]).find(function(x){return x.id===window.revPid;});
+    if(!p){return;}
+    var rel=p.variants&&p.variants[0]?p.variants[0].images[0]:'';
+    var related=(window.products||[]).filter(function(x){return x.id!==p.id&&x.category===p.category;});
+    if(related.length<1){related=(window.products||[]).filter(function(x){return x.id!==p.id;});}
+    related=related.slice(0,4);
+    if(!related.length){return;}
+    var sec=document.createElement('div');
+    sec.style.cssText='max-width:1120px;margin:10px auto 40px;padding:0 16px;';
+    var h=document.createElement('h2');
+    h.style.cssText='font-size:1.15rem;margin:28px 0 14px;';
+    h.textContent='Related Products';
+    sec.appendChild(h);
+    var grid=document.createElement('div');
+    grid.style.cssText='display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;';
+    related.forEach(function(r){
+      var a=document.createElement('a');
+      a.href=r.pageUrl;
+      a.style.cssText='text-decoration:none;color:inherit;background:#fff;border:1px solid rgba(26,26,24,.1);border-radius:12px;overflow:hidden;';
+      var im=r.variants&&r.variants[0]&&r.variants[0].images[0]?r.variants[0].images[0]:'';
+      var card='<img src="'+im+'" alt="'+r.name.replace(/"/g,'&quot;')+'" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;">'
+        +'<div style="padding:10px 12px;"><div style="font-size:.8rem;font-weight:600;line-height:1.3;min-height:2.4em;">'+r.name.replace(/"/g,'&quot;')+'</div>'
+        +'<div style="font-size:.85rem;color:#1B5E43;font-weight:700;margin-top:4px;">Rs. '+(r.price||0).toLocaleString()+'</div>'
+        +'</div>';
+      a.innerHTML=card;
+      grid.appendChild(a);
+    });
+    sec.appendChild(grid);
+    var footer=document.querySelector('footer');
+    if(footer){footer.parentNode.insertBefore(sec,footer);}
+    else{document.body.appendChild(sec);}
+  }catch(e){console.error('related init failed',e);}
+})();
+</script>
 
 </body>
 </html>

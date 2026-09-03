@@ -461,10 +461,20 @@ signals and satisfy the "no social profiles" gap flagged by the SEOmator audit.
 - Instagram: https://www.instagram.com/ashraf_shoe26/ (confirmed live)
 - Facebook: owner-connected (page URL not yet added — get it from the owner and
   add to `sameAs` + footer once known)
+- Pinterest: https://www.pinterest.com/ashrafshoe/ (confirmed live 2026-09-03;
+  profile bio links mashrafshoes.store). Added to homepage `sameAs` +
+  `Organization` JSON-LD and footer.
+
+**UPDATE 2026-09-03:** the earlier Facebook share URL
+(facebook.com/share/19RUXJtd1F/...) returns HTTP 400 and is not a stable
+backlink — DROPPED from verification. Pinterest profile added to the homepage
+footer and to the `OnlineStore` + `Organization` `sameAs` arrays instead.
 
 Site integration (committed): `sameAs` array added to the homepage
 `OnlineStore` JSON-LD, Instagram link added to homepage footer (rel="me") and
-to the 6 category-page footers (via `scripts/gen_categories.py`). Keep social
+to the 6 category-page footers (via `scripts/gen_categories.py`). Pinterest
+profile added alongside Instagram on the homepage footer and in both homepage
+`schema.org` `sameAs` arrays. Keep social
 links consistent across any new pages.
 
 The site currently has **zero backlinks** — no other site links to
@@ -535,6 +545,12 @@ modern replacement — submit all URLs once and Bing/Yandex crawl within hours.
   curl -s -X POST "https://api.indexnow.org/indexnow" -H "Content-Type: application/json; charset=utf-8" -d @/tmp/p.json -w "HTTP %{http_code}\n"   # expect 202
   ```
   **Do this after every product/category push.**
+- **Status 2026-09-03:** after the product-ID-7 push the JSON submit started
+  returning `HTTP 403 {"errorCode":"UserForbiddedToAccessSite"}` even though the
+  key file still returns 200 at site root; the plain-text POST and Bing sitemap
+  ping (410) also fail. The IndexNow property registration/verification appears
+  to have been reset. Re-verify the property for mashrafshoes.store via
+  `https://www.indexnow.org/` before relying on submissions again.
 - Google does NOT use IndexNow — Google needs Search Console sitemap
   submission + ownership verification (user must do this).
 
