@@ -154,14 +154,15 @@ Example for product ID 1 (Diamante Strap Sandals), black:
 7. Duplicate products: product ID 7 "Men's Horsebit Loafers" was the SAME
    product as ID 8 "Men's Horsebit Buckle Loafers" — ID 7 was removed entirely
    (page deleted, sitemap entry removed). Never create duplicate products.
-   **2026-09-02: ID 7 was reused for a NEW product "Colorful Embroidered Kids
-   Khussa for Girls" (kids khussa, page
-   `product-colorful-embroidered-kids-khussa-for-girls.html`). Page/product
-   data/sitemap/category were all built and staged, but NOT pushed/deployed
-   because the 3 images (`images/colorful-embroidered-kids-khussa-girls-multicolor-pakistan-1.jpeg`,
-   `...-2.jpeg`, `...-anatomy.jpeg`) are still
-   pending owner upload. Complete the §9a–9h checklist (verify images 200),
-   then commit+push and re-submit IndexNow (see §14).
+    **2026-09-02: ID 7 was reused for a NEW product "Colorful Embroidered Kids
+    Khussa for Girls" (kids khussa, page
+    `product-colorful-embroidered-kids-khussa-for-girls.html`). DEPLOYED LIVE
+    2026-09-03. Owner uploaded the real photos (photos `...-1.jpeg`,
+    `...-2.jpeg` and `...-anatomy.png` — note the anatomy image is `.png`, not
+    `.jpeg`); product page + products.js both reference the `.png`. Verify all 3
+    images return 200 after any future re-upload. `...-anatomy.png` is 1.9 MB —
+    compress it (ideally <300 KB) for LCP. Site ID-7 numbering note: never reuse
+    a freed ID for a different product without documenting it like this.
 8. Product cards linking to `/undefined?color=...`: caused when the Supabase DB
    row for a matching product id had a NULL `page_url`, which wiped out the
    static pageUrl in `mergeProducts()`. Fixed in `supabase.js` — the merge now
@@ -565,3 +566,21 @@ modern replacement — submit all URLs once and Bing/Yandex crawl within hours.
    constantly and link back).
 4. **Directories** — Locally.pk, PakistanYellowPages.com, Businesslist.pk with
    identical NAP.
+5. **Cloudflare returns empty 404 bodies** — 2026-09-03 a `404.html` was added
+   to the repo root (custom page with category links), but requests for missing
+   paths on mashrafshoes.store return HTTP 404 with a 0-byte body, so the custom
+   page is not being shown. Check the Cloudflare dashboard for a Custom Error
+   Page / Worker/transform rule that empties 4xx responses on this zone; if
+   none, raise a Pages support check. (GitHub itself serves custom 404.html for
+   the repo — it may be blocked only at the edge.)
+6. **Compress `images/...-anatomy.png`** (1.9 MB) — target <300 KB to protect
+   mobile LCP on the Colorful Kids Khussa page.
+7. **GSC "not indexed" (~33 pages)** — after Search Console verification
+   (item 1), request indexing for the new product page
+   `https://mashrafshoes.store/product-colorful-embroidered-kids-khussa-for-girls`
+   and re-submit the sitemap; then mirror the GSC "Pages" report data here so
+   the remaining "not indexed" causes can be triaged one-by-one.
+8. **Backlinks** — Pinterest profile (https://www.pinterest.com/ashrafshoe/)
+   is confirmed live and now linked in the homepage footer + `sameAs`. The
+   earlier Facebook share URL was dropped (HTTP 400). When the Facebook *page*
+   URL is known, add it to `sameAs` + footer too.
