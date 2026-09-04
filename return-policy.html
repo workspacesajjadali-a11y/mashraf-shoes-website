@@ -127,6 +127,61 @@ body{
   font-size:14px;
 }
 
+/* ---- second-line category nav (same row style as Men/Women/Kids on main pages) ---- */
+.catbar{
+  background:var(--white);
+  border-bottom:1px solid var(--line);
+  padding:10px 5%;
+}
+.catbar-inner{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 18px;
+  align-items:center;
+  justify-content:center;
+}
+.catbar-inner a{
+  color:var(--soft);
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+}
+.catbar-inner a:hover{ color:var(--green); }
+.catbar-inner .lbl{
+  color:var(--green);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-weight:700;
+}
+@media (min-width:900px){ .catbar-inner{ justify-content:flex-start; } }
+
+/* ---- site footer with main-page links ---- */
+.site-footer{
+  border-top:1px solid var(--line);
+  background:var(--white);
+  padding:26px 5% 34px;
+  text-align:center;
+}
+.site-footer .f-links{
+  max-width:1100px;
+  margin:0 auto 12px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px 18px;
+}
+.site-footer .f-links a{
+  color:var(--soft);
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+}
+.site-footer .f-links a:hover{ color:var(--green); }
+.site-footer .f-copy{ font-size:12px; color:rgba(26,26,24,.55); }
+
 .container{
   max-width:850px;
   margin:auto;
@@ -226,6 +281,7 @@ footer{
   }
 }
 </style>
+  <meta name="p:domain_verify" content="91c137f4a89057e716103e1a3fd86f19"/>
 </head>
 
 <body>
@@ -243,6 +299,21 @@ footer{
 
   </div>
 </header>
+
+<div class="catbar">
+  <div class="catbar-inner">
+    <span class="lbl">Shop</span>
+    <a href="index.html">Home</a>
+    <a href="khussa.html">Khussa</a>
+    <a href="chappal.html">Chappal</a>
+    <a href="sandals.html">Sandals</a>
+    <a href="slippers.html">Slippers</a>
+    <a href="loafers.html">Loafers</a>
+    <a href="bridal-sandals.html">Bridal &amp; Wedding</a>
+    <a href="deals.html">Deals</a>
+    <a href="sitemap.html">All Products</a>
+  </div>
+</div>
 
 <main class="container">
 
@@ -401,8 +472,27 @@ footer{
 
 </main>
 
-<footer>
-  © M Ashraf Shoes Pakistan — Online Shoe Shop · Cash on Delivery · Nationwide Shipping
+<footer class="site-footer">
+  <div class="f-links">
+    <a href="index.html">Home</a>
+    <a href="khussa.html">Khussa</a>
+    <a href="chappal.html">Chappal</a>
+    <a href="sandals.html">Sandals</a>
+    <a href="slippers.html">Slippers</a>
+    <a href="loafers.html">Loafers</a>
+    <a href="bridal-sandals.html">Bridal &amp; Wedding</a>
+    <a href="deals.html">Deals</a>
+  </div>
+  <div class="f-links">
+    <a href="account.html">My Account</a>
+    <a href="track-order.html">Track Order</a>
+    <a href="index.html#about">About M Ashraf Shoes</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="https://www.instagram.com/ashraf_shoe26/" rel="me">Instagram</a>
+    <a href="https://www.pinterest.com/ashrafshoe/" rel="me">Pinterest</a>
+    <a href="sitemap.xml">XML Sitemap</a>
+  </div>
+  <div class="f-copy">© M Ashraf Shoes Pakistan — Online Shoe Shop · Cash on Delivery · Nationwide Shipping</div>
 </footer>
 
 </body>
